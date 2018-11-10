@@ -2,7 +2,7 @@ package modelo;
 
 public class Casillero {
 	
-	Posicion posicion;
+	private Posicion posicion;
 	
 	Casillero (Posicion posicion){
 		this.posicion = posicion;
