@@ -1,4 +1,4 @@
-package modelo;
+package modelo.mapa;
 
 public class Posicion {
 	
