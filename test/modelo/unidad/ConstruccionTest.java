@@ -94,5 +94,32 @@ public class ConstruccionTest {
 		
 		assertEquals (3,cuartel2.getTurnosConstruccion());
 	}
+	
+
+	@Test
+	public void test07CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador2YGetTurnosConstruccionDeCuartel2Devuelve2(){
+		Jugador jugadorActual = new Jugador();
+		
+		Cuartel cuartel1;
+		Cuartel cuartel2;
+		
+		cuartel1 = jugadorActual.construirCuartel();
+		jugadorActual.avanzarTurno();
+		cuartel2 = jugadorActual.construirCuartel();
+		jugadorActual.avanzarTurno();
+		
+		assertEquals (2,cuartel2.getTurnosConstruccion());
+	}
+	
+	@Test
+	public void test08CreoUnAldeanoAvanzarTurnoDevuelve20() {
+		Aldeano aldeano = new Aldeano();
+		int oroGenerado = 0;
+		
+		oroGenerado = aldeano.avanzarTurno();
+	
+		assertEquals (20,oroGenerado);
+	}
+
 
 }
