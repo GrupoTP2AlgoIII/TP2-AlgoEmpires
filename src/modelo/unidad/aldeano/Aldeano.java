@@ -1,8 +1,9 @@
 package modelo.unidad.aldeano;
 
 import modelo.edificio.cuartel.Cuartel;
+import modelo.unidad.Unidad;
 
-public class Aldeano {
+public class Aldeano extends Unidad {
 	
 	private int oroGenerado;
 	private boolean construyendo;
@@ -24,4 +25,5 @@ public class Aldeano {
 	    	}
 	    	return this.oroGenerado;
 	    }
+
 }

@@ -134,7 +134,7 @@
 	</target>
 
     <target name="test" depends="compilar.tests.sin.instrumentar">
-        <junit fork="no" failureProperty="test.failure" showoutput="true">
+        <junit fork="true" failureProperty="test.failure" showoutput="true">
             <classpath location="${build}" />
             <classpath refid="classpath" />
             <batchtest todir="${reports.xml.dir}" unless="testcase">
