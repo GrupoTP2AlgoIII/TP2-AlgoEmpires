@@ -1,7 +1,6 @@
 package modelo.edificio.cuartel;
 
 public class Cuartel {
-    """"
 
 	private int turnosConstruccion;
 	
