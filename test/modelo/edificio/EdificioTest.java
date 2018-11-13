@@ -8,5 +8,7 @@ public class EdificioTest {
 
     @Test
     public void getOro() {
+        Edificio edificio = new Edificio();
+        assertEquals(30,edificio.getOro());
     }
 }
