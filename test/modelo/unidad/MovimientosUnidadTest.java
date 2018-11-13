@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import modelo.juego.Juego;
+import modelo.jugador.PosicionDesocupadaError;
+import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 
 public class MovimientosUnidadTest {
@@ -99,7 +101,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test09moverAldeanoFueraDelLimiteIzquierdoDelMapa () throws PosicionFueraDelMapaError {
+	public void test09moverAldeanoFueraDelLimiteIzquierdoDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -109,7 +111,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test10moverAldeanoFueraDelLimiteDerechoDelMapa () throws PosicionFueraDelMapaError {
+	public void test10moverAldeanoFueraDelLimiteDerechoDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -119,7 +121,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test11moverAldeanoFueraDelLimiteSuperiorDelMapa () throws PosicionFueraDelMapaError {
+	public void test11moverAldeanoFueraDelLimiteSuperiorDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -129,7 +131,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test12moverAldeanoFueraDelLimiteInferiorDelMapa () throws PosicionFueraDelMapaError {
+	public void test12moverAldeanoFueraDelLimiteInferiorDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -139,7 +141,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test13moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorDerecho () throws PosicionFueraDelMapaError {
+	public void test13moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorDerecho () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -149,7 +151,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test14moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorIzquierdo () throws PosicionFueraDelMapaError {
+	public void test14moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorIzquierdo () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -159,7 +161,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test15moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorDerecho () throws PosicionFueraDelMapaError {
+	public void test15moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorDerecho () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -169,7 +171,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test16moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorIzquierdo () throws PosicionFueraDelMapaError {
+	public void test16moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorIzquierdo () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -179,7 +181,7 @@ public class MovimientosUnidadTest {
 	}
 
 	@Test (expected = MovimientosPorTurnoExcedidosError.class)
-	public void test17moverAldeanoDosVecesEnUnMismoTurno () throws PosicionFueraDelMapaError, MovimientosPorTurnoExcedidosError {
+	public void test17moverAldeanoDosVecesEnUnMismoTurno () throws PosicionFueraDelMapaError, MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
 		
 		Juego juego = new Juego ();
 		Unidad unidad = new Unidad ();

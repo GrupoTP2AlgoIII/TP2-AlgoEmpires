@@ -1,7 +1,5 @@
 package modelo.unidad;
 
-import modelo.mapa.Posicion;
-
 public class Unidad extends Posicionable {
 	
 	private int cantidadDeMovimientos;
@@ -9,19 +7,12 @@ public class Unidad extends Posicionable {
 	
 	public Unidad () {
 		
-		this.posicion = new Posicion ();
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
 	}
-	
-	public void posicionarEnFilaColumna(int fila, int columna) {
-		
-		
-		//agregar excepcion: si esa ocupada esa fila y columna entonces LugarOcupadoError ()
-		this.posicion.posicionarEnFilaColumna (fila, columna);
-		
-	}
 
+	
+//esta bien redefinir los metodos heredados?
 	public void desplazarHaciaLaDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
@@ -31,12 +22,6 @@ public class Unidad extends Posicionable {
 		}
 		
 		this.posicion.desplazarHaciaLaDerecha (cantidadDePosiciones);
-		
-	}
-
-	public Posicion getPosicion() {
-		
-		return this.posicion;
 		
 	}
 
@@ -123,7 +108,5 @@ public class Unidad extends Posicionable {
 		
 		this.posicion.desplazarHaciaLaDiagonalInferiorIzquierda (cantidadDePosiciones);
 	}
-	
-	
 
 }

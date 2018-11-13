@@ -1,7 +1,8 @@
 package modelo.juego;
 
 import modelo.jugador.Jugador;
-
+import modelo.jugador.PosicionDesocupadaError;
+import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
@@ -18,19 +19,17 @@ public class Juego {
 		this.jugadorActual = new Jugador (mapa);
 	}
 
-	public void agregarUnidadEnFilaColumna(Unidad unidad, int fila, int columna) throws PosicionFueraDelMapaError {
+	public void agregarUnidadEnFilaColumna(Unidad unidad, int fila, int columna) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		this.mapa.posicionarEnFilaColumna(unidad, fila, columna);
 		this.jugadorActual.agregarPosicionableEnFilaColumna (unidad, fila, columna);
 		
 	}
 
-	public void desplazarFilaColumnaHaciaArriba(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarFilaColumnaHaciaArriba(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
 		
 		
 		this.jugadorActual.desplazarFilaColumnaHaciaArriba (fila, columna, cantidadDePosiciones);
-		
-		//this.mapa.desplazarFilaColumnaHaciaArriba (fila, columna, cantidadDePosiciones);
 		
 	}
 

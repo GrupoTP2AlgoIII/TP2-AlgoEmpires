@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import java.util.Map;
 
+import modelo.jugador.PosicionOcupadaError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
 
@@ -42,7 +43,7 @@ public class Mapa {
 	}
 
 
-	public void posicionarEnFilaColumna(Posicionable posicionable, int fila, int columna) throws PosicionFueraDelMapaError {
+	public void posicionarEnFilaColumna(Posicionable posicionable, int fila, int columna) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
 		
@@ -51,13 +52,18 @@ public class Mapa {
 			throw new PosicionFueraDelMapaError ();
 		}
 		
+		if (this.estaOcupado(posicionDelPosicionable)) {
+			
+			throw new PosicionOcupadaError ();
+		}
+		
 		Casillero casilleroDelPosicionable = new Casillero (posicionDelPosicionable, posicionable);
 		
 		this.mapa.put(posicionDelPosicionable, casilleroDelPosicionable);
 		
 	}
 
-	public void desplazarFilaColumnaHaciaLaIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError {
+	public void desplazarFilaColumnaHaciaLaIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Posicion posicionInicial = new Posicion (fila, columna);
 		
@@ -72,10 +78,15 @@ public class Mapa {
 			
 			throw new PosicionFueraDelMapaError ();
 		}
+		
+		if (this.estaOcupado(posicionInicial)) {
+			
+			throw new PosicionOcupadaError ();
+		}
 		 
 	}
 
-	public void desplazarFilaColumnaHaciaLaDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError {
+	public void desplazarFilaColumnaHaciaLaDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Posicion posicionInicial = new Posicion (fila, columna);
 		
@@ -92,10 +103,15 @@ public class Mapa {
 			
 		}
 		
+		if (this.estaOcupado(posicionInicial)) {
+			
+			throw new PosicionOcupadaError ();
+		}
+		
 	}
 	
 
-	public void desplazarFilaColumnaHaciaArriba(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError {
+	public void desplazarFilaColumnaHaciaArriba(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Posicion posicionInicial = new Posicion (fila, columna);
 		
@@ -111,17 +127,27 @@ public class Mapa {
 			throw new PosicionFueraDelMapaError ();
 		}
 		
+		if (this.estaOcupado(posicionInicial)) {
+			
+			throw new PosicionOcupadaError ();
+		}
+		
 		
 	}
 
-	public void posicionarPosicionableEnPosicion(Posicionable posicionable, Posicion posicion) {
+	public void posicionarPosicionableEnPosicion(Posicionable posicionable, Posicion posicion) throws PosicionOcupadaError {
+		
+		if (this.estaOcupado(posicion)) {
+			
+			throw new PosicionOcupadaError ();
+		}
 
 		Casillero casillero = new Casillero (posicion, posicionable);
 		this.mapa.put(posicion, casillero);
 		
 	}
 
-	public void desplazarFilaColumnaHaciaAbajo(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError {
+	public void desplazarFilaColumnaHaciaAbajo(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Posicion posicionInicial = new Posicion (fila, columna);
 		
@@ -136,9 +162,14 @@ public class Mapa {
 			
 			throw new PosicionFueraDelMapaError ();
 		}
+		
+		if (this.estaOcupado(posicionInicial)) {
+			
+			throw new PosicionOcupadaError ();
+		}
 	}
 
-	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError {
+	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Posicion posicionInicial = new Posicion (fila, columna);
 		
@@ -154,9 +185,13 @@ public class Mapa {
 			throw new PosicionFueraDelMapaError ();
 		}
 		
+		if (this.estaOcupado(posicionInicial)) {
+			
+			throw new PosicionOcupadaError ();
+		}
 	}
 
-	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError {
+	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Posicion posicionInicial = new Posicion (fila, columna);
 		
@@ -171,9 +206,14 @@ public class Mapa {
 			
 			throw new PosicionFueraDelMapaError ();
 		}
+		
+		if (this.estaOcupado(posicionInicial)) {
+			
+			throw new PosicionOcupadaError ();
+		}
 	}
 
-	public void desplazarFilaColumnaHaciaLaDiagonalInferiorDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError {
+	public void desplazarFilaColumnaHaciaLaDiagonalInferiorDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Posicion posicionInicial = new Posicion (fila, columna);
 		
@@ -189,9 +229,14 @@ public class Mapa {
 			throw new PosicionFueraDelMapaError ();
 		}
 		
+		if (this.estaOcupado(posicionInicial)) {
+			
+			throw new PosicionOcupadaError ();
+		}
+		
 	}
 
-	public void desplazarFilaColumnaHaciaLaDiagonalInferiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError {
+	public void desplazarFilaColumnaHaciaLaDiagonalInferiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Posicion posicionInicial = new Posicion (fila, columna);
 		
@@ -207,6 +252,16 @@ public class Mapa {
 			throw new PosicionFueraDelMapaError ();
 		}
 		
+		if (this.estaOcupado(posicionInicial)) {
+			
+			throw new PosicionOcupadaError ();
+		}
+		
+	}
+
+	public boolean estaOcupado(Posicion posicion) {
+		
+		return this.mapa.containsKey(posicion);
 	}
 	
 }
