@@ -2,14 +2,16 @@ package modelo.unidad;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Test;
 
+import modelo.juego.Juego;
 import modelo.mapa.Mapa;
 
 public class MovimientosUnidadTest {
 
 	@Test
-	public void moverUnidadUnaPosicionHaciaLaDerecha() {
+	public void test01moverUnidadUnaPosicionHaciaLaDerecha() throws MovimientosPorTurnoExcedidosError {
 		
 		Unidad unidad = new Unidad();
 		unidad.posicionarEnFilaColumna (4, 5);
@@ -20,7 +22,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void moverUnidadUnaPosicionHaciaLaIzquierda() {
+	public void test02moverUnidadUnaPosicionHaciaLaIzquierda() throws MovimientosPorTurnoExcedidosError {
 		
 		Unidad unidad = new Unidad();
 		unidad.posicionarEnFilaColumna (4, 5);
@@ -31,7 +33,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void moverUnidadUnaPosicionHaciaArriba() {
+	public void test03moverUnidadUnaPosicionHaciaArriba() throws MovimientosPorTurnoExcedidosError {
 		
 		Unidad unidad = new Unidad();
 		unidad.posicionarEnFilaColumna (4, 5);
@@ -42,7 +44,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void moverAldeanoUnaPosicionHaciaAbajo() {
+	public void test04moverAldeanoUnaPosicionHaciaAbajo() throws MovimientosPorTurnoExcedidosError {
 		
 	 Unidad unidad = new Unidad();
 	 unidad.posicionarEnFilaColumna (4, 5);
@@ -53,7 +55,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void moverAldeanoUnaPosicionHaciaDiagonalSuperiorDerecha() {
+	public void test05moverAldeanoUnaPosicionHaciaDiagonalSuperiorDerecha() throws MovimientosPorTurnoExcedidosError {
 		
 	 Unidad unidad = new Unidad();
 	 unidad.posicionarEnFilaColumna (4, 5);
@@ -64,7 +66,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void moverAldeanoUnaPosicionHaciaDiagonalSuperiorIzquierda() {
+	public void test06moverAldeanoUnaPosicionHaciaDiagonalSuperiorIzquierda() throws MovimientosPorTurnoExcedidosError {
 		
 	 Unidad unidad = new Unidad();
 	 unidad.posicionarEnFilaColumna (4, 5);
@@ -75,7 +77,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void moverAldeanoUnaPosicionHaciaDiagonalInferiorDerecha() {
+	public void test07moverAldeanoUnaPosicionHaciaDiagonalInferiorDerecha() throws MovimientosPorTurnoExcedidosError {
 		
 	 Unidad unidad = new Unidad();
 	 unidad.posicionarEnFilaColumna (4, 5);
@@ -86,7 +88,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void moverAldeanoUnaPosicionHaciaDiagonalInferiorIzquierda() {
+	public void test08moverAldeanoUnaPosicionHaciaDiagonalInferiorIzquierda() throws MovimientosPorTurnoExcedidosError {
 		
 	 Unidad unidad = new Unidad();
 	 unidad.posicionarEnFilaColumna (4, 5);
@@ -96,9 +98,8 @@ public class MovimientosUnidadTest {
 	 
 	}
 	
-/*
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void moverAldeanoFueraDelLimiteIzquierdoDelMapa () throws PosicionFueraDelMapaError {
+	public void test09moverAldeanoFueraDelLimiteIzquierdoDelMapa () throws PosicionFueraDelMapaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -108,7 +109,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void moverAldeanoFueraDelLimiteDerechoDelMapa () throws PosicionFueraDelMapaError {
+	public void test10moverAldeanoFueraDelLimiteDerechoDelMapa () throws PosicionFueraDelMapaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -118,7 +119,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void moverAldeanoFueraDelLimiteSuperiorDelMapa () throws PosicionFueraDelMapaError {
+	public void test11moverAldeanoFueraDelLimiteSuperiorDelMapa () throws PosicionFueraDelMapaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -128,7 +129,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void moverAldeanoFueraDelLimiteInferiorDelMapa () throws PosicionFueraDelMapaError {
+	public void test12moverAldeanoFueraDelLimiteInferiorDelMapa () throws PosicionFueraDelMapaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -138,7 +139,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorDerecho () throws PosicionFueraDelMapaError {
+	public void test13moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorDerecho () throws PosicionFueraDelMapaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -148,7 +149,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorIzquierdo () throws PosicionFueraDelMapaError {
+	public void test14moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorIzquierdo () throws PosicionFueraDelMapaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -158,7 +159,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorDerecho () throws PosicionFueraDelMapaError {
+	public void test15moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorDerecho () throws PosicionFueraDelMapaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -168,7 +169,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorIzquierdo () throws PosicionFueraDelMapaError {
+	public void test16moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorIzquierdo () throws PosicionFueraDelMapaError {
 		
 		Mapa mapa = new Mapa ();
 		Unidad unidad = new Unidad ();
@@ -176,17 +177,17 @@ public class MovimientosUnidadTest {
 		mapa.posicionarEnFilaColumna (unidad, 50, 1);
 		mapa.desplazarFilaColumnaHaciaLaDiagonalInferiorIzquierda (50, 1, 1);
 	}
-	
+
 	@Test (expected = MovimientosPorTurnoExcedidosError.class)
-	public void moverAldeanoDosVecesEnUnMismoTurno () {
+	public void test17moverAldeanoDosVecesEnUnMismoTurno () throws PosicionFueraDelMapaError, MovimientosPorTurnoExcedidosError {
 		
 		Juego juego = new Juego ();
-		juego.iniciarTurno();
 		Unidad unidad = new Unidad ();
-		unidad.posicionarEnFilaColumna (10, 10);
-		unidad.desplazarHaciaArriba (1);
-		unidad.desplazarHaciaArriba (1);
+		juego.iniciarJuego ();
+		juego.agregarUnidadEnFilaColumna (unidad, 10, 10);
+		juego.desplazarFilaColumnaHaciaArriba (10, 10, 1);
+		juego.desplazarFilaColumnaHaciaArriba (10, 10, 1);
 	}
-*/
+
 
 }
