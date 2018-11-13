@@ -11,18 +11,9 @@ import modelo.jugador.Jugador;
 import modelo.unidad.aldeano.Aldeano;
 
 public class ConstruccionTest {
-/*
-	@Test
-	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveNull() {
-		Cuartel cuartel = new Cuartel();
-
-		
-		assertNull ( cuartel.crearArquero());
-	}
-*/
 
 	@Test
-	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveArquero() {
+	public void test01CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveArquero() {
 		Cuartel cuartel = new Cuartel();
 
 		
@@ -33,7 +24,7 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test03CreoUnaPlazaCentralYComoEstaEnConstruccionCrearAldeanoDevuelveFalse() {
+	public void test02CreoUnaPlazaCentralYComoEstaEnConstruccionCrearAldeanoDevuelveFalse() {
 		PlazaCentral plaza = new PlazaCentral();
 		
 		
@@ -43,7 +34,7 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test04CreoUnaPlazaCentralYComoEstaConstruidaCrearAldeanoDevuelveTrue() {
+	public void test03CreoUnaPlazaCentralYComoEstaConstruidaCrearAldeanoDevuelveTrue() {
 		PlazaCentral plaza = new PlazaCentral();
 		
 		plaza.avanzarTurno();
@@ -56,7 +47,7 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test05CreoUnAldeanoYComoEstaConstruyendoAvanzarTurnoDevuelveCero() {
+	public void test04CreoUnAldeanoYComoEstaConstruyendoAvanzarTurnoDevuelveCero() {
 		Aldeano aldeano = new Aldeano();
 		Cuartel cuartel = aldeano.construirCuartel();
 		int cero = 0;
@@ -68,7 +59,7 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test06CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel1Devuelve2(){
+	public void test05CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel1Devuelve2(){
 		Jugador jugadorActual = new Jugador();
 		
 		Cuartel cuartel1 = jugadorActual.construirCuartel();
