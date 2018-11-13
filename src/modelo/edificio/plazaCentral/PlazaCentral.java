@@ -1,11 +1,17 @@
 package modelo.edificio.plazaCentral;
 
-public class PlazaCentral {
-	
-		private int turnosConstruccion;
-		
-		   public PlazaCentral() {
+import modelo.edificio.Edificio;
+
+public class PlazaCentral extends Edificio {
+
+		   public PlazaCentral()
+
+		   {
+		        this.vida = 450;
+                this.costo = 100 ;
 		        this.turnosConstruccion = 3;
+		        this.tamanio = 4;
+		        this.velocidadReparacion = 25;
 		    }
 		   
 		    public boolean crearAldeano() {
@@ -14,7 +20,8 @@ public class PlazaCentral {
 		        }
 		        return false;
 		    }
-		    
+
+
 		    public void avanzarTurno() {
 		    	this.turnosConstruccion--;
 		    }

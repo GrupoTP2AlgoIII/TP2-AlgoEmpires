@@ -2,6 +2,7 @@ package modelo.unidad.aldeano;
 
 import static org.junit.Assert.*;
 
+import modelo.unidad.arquero.Arquero;
 import org.junit.Test;
 
 import modelo.edificio.cuartel.Cuartel;
@@ -12,26 +13,26 @@ import modelo.unidad.aldeano.Aldeano;
 public class ConstruccionTest {
 
 	@Test
-	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveFalse() {
+	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveNull() {
 		Cuartel cuartel = new Cuartel();
-		
-		boolean retorno = cuartel.crearArquero();
 
 		
-		assertEquals (false,retorno);
+		assertNull ( cuartel.crearArquero());
 	}
-	
+
+
 	@Test
-	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveTrue() {
+	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveArquero() {
 		Cuartel cuartel = new Cuartel();
 		
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		boolean retorno = cuartel.crearArquero();
-	
-		assertEquals (true,retorno);
+		Arquero retorno = cuartel.crearArquero();
+
+
+		assertEquals (retorno.getClass(),Arquero.class);
 	}
 	
 	@Test

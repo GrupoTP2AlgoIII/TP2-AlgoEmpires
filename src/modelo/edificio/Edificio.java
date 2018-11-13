@@ -1,10 +1,13 @@
 package modelo.edificio;
 
 public class Edificio {
-    private int oro = 30;
+    protected int vida;
+    protected int costo;
+    protected int turnosConstruccion;
+    protected int tamanio;
+    protected int velocidadReparacion;
 
-
-    public int getOro(){
-        return this.oro;
+    public void crearUnidad(){
+        return;
     }
 }
