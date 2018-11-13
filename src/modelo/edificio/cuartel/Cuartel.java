@@ -16,20 +16,15 @@ public class Cuartel extends Edificio{
 	    }
 	   
 	    public Arquero crearArquero() {
-			if (this.turnosConstruccion == 0) {
-				Arquero arquero = new Arquero();
-				return arquero;
-			}
-			return null;
+			Arquero arquero = new Arquero();
+			return arquero;
 		}
 
 
 		public Espadachin crearEspadachin() {
 			Espadachin espadachin = new Espadachin();
-			if (this.turnosConstruccion == 0) {
-				return espadachin;
-			}
-			return null;
+
+			return espadachin;
 		}
 	    
 	    public void avanzarTurno() {

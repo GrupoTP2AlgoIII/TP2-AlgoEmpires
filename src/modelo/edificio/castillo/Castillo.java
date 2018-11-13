@@ -13,7 +13,6 @@ public class Castillo extends Edificio {
 
     public ArmaDeAsedio crearArmaAsedio(){
         ArmaDeAsedio nuevaArmaAsedio = new ArmaDeAsedio();
-
             return nuevaArmaAsedio;
     }
 
