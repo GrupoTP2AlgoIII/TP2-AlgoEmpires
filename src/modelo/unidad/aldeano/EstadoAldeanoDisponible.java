@@ -6,7 +6,7 @@ public class EstadoAldeanoDisponible implements EstadoAldeano {
 
 	@Override
 	public EstadoAldeano reparar(Edificio edificio) {
-		int turnosOcupado = 2;
+		int turnosOcupado = edificio.getTurnosConstruccion();
 		return (new EstadoAldeanoOcupado(turnosOcupado));
 		
 	}

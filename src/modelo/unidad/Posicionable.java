@@ -2,7 +2,7 @@ package modelo.unidad;
 
 import modelo.mapa.Posicion;
 
-public class Posicionable {
+public abstract class Posicionable {
 	
 	protected Posicion posicion;
 	
@@ -74,5 +74,7 @@ public class Posicionable {
 
 		this.posicion.desplazarHaciaLaDiagonalInferiorIzquierda (cantidadDePosiciones);
 	}
+
+	public abstract int avanzarTurno();
 
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import modelo.edificio.Edificio;
+import modelo.edificio.EdificioOcupadoException;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
@@ -16,21 +17,16 @@ public class ConstruccionTest {
 	int vidaCuartel = 450;
 	int vidaCuartelDaniado = 400;
 	
-	@Test
-	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveFalse() {
-		Cuartel cuartel = new Cuartel(vidaCuartel);
+	@Test(expected=EdificioOcupadoException.class)
+	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveException() throws EdificioOcupadoException {
+		Cuartel cuartel = new Cuartel();
 		
 		Unidad arquero = cuartel.crearArquero();
-		boolean retorno = false;
-		if(arquero != null) {
-			retorno = true;
-		}	
-		assertEquals (false,retorno);
 	}
 	
 	@Test
 	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveTrue() {
-		Cuartel cuartel = new Cuartel(vidaCuartel);
+		Cuartel cuartel = new Cuartel();
 		
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
@@ -45,18 +41,12 @@ public class ConstruccionTest {
 		assertEquals (true,retorno);
 	}
 	
-	@Test
-	public void test03CreoUnaPlazaCentralYComoEstaEnConstruccionCrearAldeanoDevuelveFalse() {
+	@Test(expected=EdificioOcupadoException.class)
+	public void test03CreoUnaPlazaCentralYComoEstaEnConstruccionCrearAldeanoDevuelveFalse() throws EdificioOcupadoException {
 		PlazaCentral plaza = new PlazaCentral();
 		
-		
 		Unidad aldeano = plaza.crearAldeano();
-		boolean retorno = false;
-		if(aldeano != null) {
-			retorno = true;
-		}	
-	
-		assertEquals (false,retorno);
+
 	}
 	
 	@Test
@@ -95,8 +85,8 @@ public class ConstruccionTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
-		Edificio cuartel1 = jugador1.construirCuartel();
-		Edificio cuartel2 = jugador2.construirCuartel();
+		Edificio cuartel1 = jugador1.construirCuartel(1,1);
+		Edificio cuartel2 = jugador2.construirCuartel(1,1);
 		
 		jugador1.avanzarTurno();
 		
@@ -105,26 +95,12 @@ public class ConstruccionTest {
 	}
 
 	@Test
-	public void test06CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel2Devuelve3(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
-		
-		Edificio cuartel1 = jugador1.construirCuartel();
-		Edificio cuartel2 = jugador2.construirCuartel();
-		
-		jugador1.avanzarTurno();
-		
-		assertEquals (3,cuartel2.getTurnosConstruccion());
-	}
-	
-
-	@Test
 	public void test07CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador2YGetTurnosConstruccionDeCuartel2Devuelve2(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
-		Edificio cuartel1 = jugador1.construirCuartel();
-		Edificio cuartel2 = jugador2.construirCuartel();
+		Edificio cuartel1 = jugador1.construirCuartel(1,1);
+		Edificio cuartel2 = jugador2.construirCuartel(1,1);
 		
 		jugador2.avanzarTurno();
 		
@@ -160,12 +136,17 @@ public class ConstruccionTest {
 		
 		
 		Aldeano aldeano = new Aldeano();
-		Edificio cuartel = new Cuartel(vidaCuartelDaniado);
+		Edificio cuartel = new Cuartel();
 		int oroGenerado;
 		
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+		
+		cuartel.restarVida(50);
 		aldeano.reparar(cuartel);
 		aldeano.avanzarTurno();
-		aldeano.avanzarTurno();
+
 		
 		oroGenerado = aldeano.avanzarTurno();
 	
@@ -176,12 +157,13 @@ public class ConstruccionTest {
 	public void test11CreoUnCuartelCon400DeVidaYComoEstaReparadoGetVidaDevuelve450() {
 		
 		Aldeano aldeano = new Aldeano();
-		Edificio cuartel = new Cuartel(vidaCuartelDaniado);
+		Edificio cuartel = new Cuartel();
 		
 		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
 		cuartel.avanzarTurno();	    //construccion cuartel - 3 turnos	
 		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
 		
+		cuartel.restarVida(50);
 		aldeano.reparar(cuartel);
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
@@ -193,7 +175,7 @@ public class ConstruccionTest {
 	@Test
 	public void test12CreoUnAldeanoYContruirCuartelDevuelveCuartel() {
 		Aldeano aldeano = new Aldeano();
-		Edificio cuartel = aldeano.construirCuartel();
+		Edificio cuartel = aldeano.construirCuartel();	
 		boolean valorEsperado = false;
 		
 		if(cuartel != null) {
@@ -203,6 +185,59 @@ public class ConstruccionTest {
 		assertEquals (true,valorEsperado);
 	}
 	
+	@Test
+	public void test13CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel2Devuelve3(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		Edificio cuartel1 = jugador1.construirCuartel(1,1);
+		Edificio cuartel2 = jugador2.construirCuartel(1,1);
+		
+		jugador1.avanzarTurno();
+		
+		assertEquals (3,cuartel2.getTurnosConstruccion());
+	}
+	
+	@Test(expected=AldeanoOcupadoException.class)
+	public void test14CreoUnAldeanoYComoEstaOcupadoConstruirCuartelDevuelveException() throws AldeanoOcupadoException {
+		Aldeano aldeano = new Aldeano();
+		Edificio cuartelDaniado = new Cuartel();
+		
+		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.avanzarTurno();
+		
+		cuartelDaniado.restarVida(50);
+		aldeano.reparar(cuartelDaniado);
+		aldeano.construirCuartel();
+	}
+	
+	@Test(expected=AldeanoOcupadoException.class)
+	public void test15CreoUnAldeanoYComoEstaOcupadoRepararCuartelDevuelveException() throws AldeanoOcupadoException {
+		Aldeano aldeano = new Aldeano();
+		Edificio cuartelDaniado = new Cuartel();
+		Edificio otroCuartelDaniado = new Cuartel();
+		
+		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.avanzarTurno();
+		otroCuartelDaniado.avanzarTurno();
+		otroCuartelDaniado.avanzarTurno();
+		otroCuartelDaniado.avanzarTurno();
+		
+		cuartelDaniado.restarVida(50);
+		otroCuartelDaniado.restarVida(50);
+		aldeano.reparar(cuartelDaniado);
+		aldeano.reparar(otroCuartelDaniado);
+	}
+	
+	@Test(expected=EdificioOcupadoException.class)
+	public void test15CreoUnCuartelYComoEstaEnConstruccionRepararCuartelDevuelveException() throws EdificioOcupadoException {
+		Aldeano aldeano = new Aldeano();
+		Edificio cuartel = new Cuartel();
+	
+		aldeano.reparar(cuartel);
+	}
 
 
 }

@@ -15,11 +15,12 @@ public abstract class Edificio extends Posicionable{
 	protected abstract int getVidaFull();
 	protected abstract void sumarVida();
 	public abstract int getTurnosConstruccion();
-	public abstract void avanzarTurno();
+	public abstract int avanzarTurno();
 	
 	public Edificio(){
 		int turnosEnConstruccionInicial = 3;
 		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);
 	}
+	public abstract void restarVida(int vidaARestar);
 
 }

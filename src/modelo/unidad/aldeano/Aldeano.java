@@ -16,7 +16,7 @@ public class Aldeano extends Unidad {
 	    }
 	   
 	    public Edificio construirCuartel() {
-	    	Edificio cuartel = new Cuartel(0);//cambiar cero por vida inicial del cuartel
+	    	Edificio cuartel = new Cuartel();
 	    	estado = estado.construir(cuartel);
 	    	return cuartel;
 	    }

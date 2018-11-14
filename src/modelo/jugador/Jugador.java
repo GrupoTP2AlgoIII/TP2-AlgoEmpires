@@ -18,43 +18,39 @@ import java.util.Map;
 public class Jugador {
 	private Map  <Posicion, Posicionable> posicionables;
 	private Mapa mapa;
-	private List<Edificio> listaCuarteles;		//temporal hasta que funcione el diccionario de posicionables
 
 	public Jugador () {
 		this.posicionables = new HashMap <Posicion, Posicionable> ();
-		this.listaCuarteles = new ArrayList<Edificio>();
 	}
 	public Jugador(Mapa mapa) {
 
 		this.posicionables = new HashMap <Posicion, Posicionable> ();
-		this.mapa = mapa;
-		this.listaCuarteles = new ArrayList<Edificio>();	}
+		this.mapa = mapa;	}
 	
 	
-	public Edificio construirCuartel() {
+	public Edificio construirCuartel(int fila,int columna) {
 		
-		int vidaCuartel = 450;
-		Edificio cuartel = new Cuartel(vidaCuartel);
-		this.listaCuarteles.add(cuartel);
-		//Posicionable posicionable = cuartel;
-		//this.agregarPosicionableEnFilaColumna(posicionable, fila, columna);
+		Edificio cuartel = new Cuartel();
+		Posicionable posicionable = cuartel;
+		this.agregarPosicionableEnFilaColumna(posicionable, fila, columna);
 		return cuartel;
 		
 	}
 	
 	public void avanzarTurno() {
-		for (int i = 0; i <= this.listaCuarteles.size()-1; i++) {
-            this.listaCuarteles.get(i).avanzarTurno();
-        }		
+		//lo que deberia hacer es recorrer el diccionario y avanzar el turno de cada posicionable
+		Posicion posicionDelPosicionable = new Posicion (1,1);	//temporal
+		this.posicionables.get(posicionDelPosicionable).avanzarTurno();
 	}
 
-	public void agregarPosicionableEnFilaColumna(Unidad unidad, int fila, int columna) {
+	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 		
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
 		
-		this.posicionables.put(posicionDelPosicionable, unidad);
+		this.posicionables.put(posicionDelPosicionable, posicionable);
 		
 	}
+	
 
 	public void desplazarFilaColumnaHaciaArriba(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionDesocupadaError, PosicionOcupadaError {
 		

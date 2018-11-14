@@ -20,8 +20,9 @@ public class PlazaCentral extends Edificio {
 		    }
 
 
-		    public void avanzarTurno() {
+		    public int avanzarTurno() {
 				estado = estado.avanzarTurno(this);
+				return 0;
 		    }
 		    
 			@Override
@@ -50,6 +51,12 @@ public class PlazaCentral extends Edificio {
 			@Override
 			public int getTurnosConstruccion() {
 				return estado.getTurnosOcupado();
+			}
+
+			@Override
+			public void restarVida(int vidaARestar) {
+				// TODO Auto-generated method stub
+				
 			}
 		    
 

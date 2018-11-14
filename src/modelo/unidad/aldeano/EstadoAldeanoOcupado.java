@@ -11,15 +11,12 @@ public class EstadoAldeanoOcupado implements EstadoAldeano{
 	}
 	@Override
 	public EstadoAldeano reparar(Edificio edificio) {
-		//throw new AldeanoOcupadoException();
-		return null;
-		
+		throw new AldeanoOcupadoException();	
 	}
 
 	@Override
 	public EstadoAldeano construir(Edificio edificio) {
-		//throw new AldeanoOcupadoException();
-		return null;
+		throw new AldeanoOcupadoException();
 	}
 
 	@Override

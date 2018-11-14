@@ -11,7 +11,7 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 
 	@Override
 	public Unidad crearArquero() {
-		return null;//cambiar por exception, esta asi para que pasen las pruebas.
+		throw new EdificioOcupadoException();
 	}
 
 	@Override
@@ -30,13 +30,12 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 
 	@Override
 	public EstadoEdificio reparar(Edificio edificio) {
-		//throw new EdificioOcupadoException();
-		return null;
+		throw new EdificioOcupadoException();
 	}
 
 	@Override
 	public Unidad crearAldeano() {
-		return null; //cambiar por exception
+		throw new EdificioOcupadoException();
 	}
 
 	@Override

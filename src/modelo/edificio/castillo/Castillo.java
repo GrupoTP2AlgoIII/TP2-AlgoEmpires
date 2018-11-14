@@ -47,7 +47,14 @@ public class Castillo extends Edificio {
 	}
 
 	@Override
-	public void avanzarTurno() {
+	public int avanzarTurno() {
+		// TODO Auto-generated method stub
+		return 0;
+		
+	}
+
+	@Override
+	public void restarVida(int vidaARestar) {
 		// TODO Auto-generated method stub
 		
 	}

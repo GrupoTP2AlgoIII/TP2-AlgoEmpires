@@ -10,20 +10,25 @@ public class CuartelTest {
 
     @Test
     public void test01CuartelEsCreadoYCreaArquero() {
-        Cuartel cuartel =  new Cuartel(450);
+        Cuartel cuartel =  new Cuartel();
 
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        
 		Unidad arquero = cuartel.crearArquero();
 		boolean retorno = false;
+		
 		if(arquero != null) {
 			retorno = true;
 		}	
-		assertEquals (false,retorno);
+		assertEquals (true,retorno);
 
     }
 
     @Test
     public void test02CuartelEsCreadoYCreaEspadachin() {
-        Cuartel cuartel =  new Cuartel(450);
+        Cuartel cuartel =  new Cuartel();
 
         Espadachin soldier = cuartel.crearEspadachin();
         assertEquals(soldier.getClass(),  (Espadachin.class));
