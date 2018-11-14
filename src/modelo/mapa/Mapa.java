@@ -2,37 +2,35 @@ package modelo.mapa;
 
 import java.util.HashMap;
 
-
-
 import java.util.Map;
 
 import modelo.jugador.PosicionOcupadaError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
+import modelo.unidad.Unidad;
+import modelo.vacio.Vacio;
 
 
 public class Mapa {
 	
-	private Map <Posicion, Casillero> mapa; // <clave, valor>
+	private Map <Posicion, Posicionable> mapa; // <clave, valor>
 	private final int filas;
 	private final int columnas;
 	
 	public Mapa () {
-		this.mapa = new HashMap <Posicion, Casillero>();
+		this.mapa = new HashMap <Posicion, Posicionable>();
 		this.filas = 50;
 		this.columnas = 50;
 	}
 	
-	public void iniciarMapa () { 
+	public void iniciarMapaVacio () { 
 		
-		//esto despues sera un submetodo llamado iniciar mapa vacio
-		//y va a haber otro metodo para poner las unidades y edificios basicos
 		for (int i = 1; i <= this.filas; i++) {
 			for (int j = 1; j <= this.columnas; j++) {
 				
-				Posicion posicion = new Posicion(i,j);
-				Casillero casillero = new Casillero(posicion);
-				this.mapa.put(posicion, casillero);
+				Posicion posicion = new Posicion(i, j);
+				Posicionable vacio = new Vacio(i, j); 
+				this.mapa.put(posicion, vacio);
 			}
 		}
 	}
@@ -40,6 +38,15 @@ public class Mapa {
 	public int obtenerTamanioMapa() {
 		
 		return this.mapa.size();
+	}
+
+	// ESTO NO DA SIEMPRE TRUE?
+	// Yo pondria un estado Disponible y otro EnUso en la clase Posicionable
+	// Si es Disponible, te acepta el mensaje
+	// SI es En_Uso, devuelve un error.
+	public boolean estaOcupado(Posicion posicion) {
+		
+		return this.mapa.containsKey(posicion);
 	}
 
 
@@ -57,9 +64,48 @@ public class Mapa {
 			throw new PosicionOcupadaError ();
 		}
 		
-		Casillero casilleroDelPosicionable = new Casillero (posicionDelPosicionable, posicionable);
+		this.mapa.put(posicionDelPosicionable, posicionable);
 		
-		this.mapa.put(posicionDelPosicionable, casilleroDelPosicionable);
+	}
+	
+	// Agrego este metodo
+	// MODULARIZAR
+	public void moverDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionFueraDelMapaError, PosicionOcupadaError, PosicionNoAdyacenteError {
+		
+		Posicion posicionDesde = new Posicion (desdeX, desdeY);
+		Posicionable posicionable = this.mapa.get(posicionDesde);
+		
+		if (posicionDesde.noPerteneceAlRango(this.filas, this.columnas)) {
+			
+			throw new PosicionFueraDelMapaError ();
+		}
+		
+//		if (this.estaOcupado(posicionDesde)) {
+//			
+//			throw new PosicionOcupadaError ();
+//		}
+		
+		Posicion posicionHasta = new Posicion (hastaX, hastaY);
+		
+		if(posicionHasta.noPerteneceAlRango(this.filas, this.columnas)) {
+			
+			throw new PosicionFueraDelMapaError ();
+		}
+		
+//		if (this.estaOcupado(posicionHasta)) {
+//			
+//			throw new PosicionOcupadaError ();
+//		}
+		
+		if (! posicionHasta.esAdyacenteA(posicionDesde)) {
+			
+			throw new PosicionNoAdyacenteError();
+		}
+		
+		this.mapa.put(posicionHasta, posicionable);
+		
+		Posicionable vacio = new Vacio(desdeX, desdeY);
+		this.mapa.put(posicionDesde, vacio);
 		
 	}
 
@@ -142,8 +188,7 @@ public class Mapa {
 			throw new PosicionOcupadaError ();
 		}
 
-		Casillero casillero = new Casillero (posicion, posicionable);
-		this.mapa.put(posicion, casillero);
+		this.mapa.put(posicion,  posicionable);
 		
 	}
 
@@ -258,10 +303,12 @@ public class Mapa {
 		}
 		
 	}
-
-	public boolean estaOcupado(Posicion posicion) {
-		
-		return this.mapa.containsKey(posicion);
+	
+	public Posicionable obtenerPosicionableEn(Posicion posicion) {
+		return (this.mapa.get(posicion));
 	}
 	
+	
+	
 }
+

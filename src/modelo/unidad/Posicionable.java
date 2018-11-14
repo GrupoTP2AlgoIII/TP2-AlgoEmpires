@@ -10,6 +10,11 @@ public class Posicionable {
 		
 		this.posicion = new Posicion ();
 	}
+
+    // Agrego este constructor    
+    public Posicionable (int fila, int columna) {
+		this.posicion = new Posicion(fila, columna);
+	}
 	
 	public void posicionarEnFilaColumna(int fila, int columna) {
 		

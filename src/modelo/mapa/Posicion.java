@@ -5,6 +5,7 @@ public class Posicion {
 	private int x;
 	private int y;
 	
+	//Para que este constructor?
 	public Posicion () {
 		
 		//posiciones invalidas
@@ -18,6 +19,25 @@ public class Posicion {
 		this.y = columna;
 	}
 
+	// Agrego este metodo	
+	public boolean esAdyacenteA(Posicion otraPosicion) {
+		
+		boolean esAdyacente = true;
+		
+		if (this.x > (otraPosicion.getFila() + 1) || this.x < (otraPosicion.getFila() - 1)){
+			esAdyacente = false;
+		}
+		
+		if (this.y > (otraPosicion.getColumna() + 1) || this.y < (otraPosicion.getColumna() - 1)){
+			esAdyacente = false;
+		}
+		
+		return esAdyacente;
+	}
+
+	// La posicion es inmutable por ser clave de un diccionario
+	// Si usamos el constructor con parametros, este metodo no tendria uso
+	// (Se crean todas las posiciones al crear el mapa usando el constructor con parametros)
 	public void posicionarEnFilaColumna(int fila, int columna) {
 		
 		this.x = fila;
@@ -89,6 +109,7 @@ public class Posicion {
 		
 		return (x > filas) || (x < 1) || (y > columnas) || (y < 1);
 	}
+	
 
     // Fuente para redefinir los metodos equals y hashcode:
 	// https://www.geeksforgeeks.org/override-equalsobject-hashcode-method/
@@ -121,7 +142,7 @@ public class Posicion {
 	@Override
 	public int hashCode(){
 		
-		int resultado = 17;
+		int resultado = 50;
 		resultado = resultado * (this.x) + (this.y);
 		return resultado;		
 	}
@@ -129,3 +150,5 @@ public class Posicion {
 
 
 }
+
+

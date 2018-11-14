@@ -13,8 +13,12 @@ public abstract class Unidad extends Posicionable {
 		this.movimientosPermitidos = 1;
 	}
 
-	
-//esta bien redefinir los metodos heredados?
+	// Agrego este constructor
+	public Unidad(int x, int y) {
+		super (x, y);
+	}
+
+    //esta bien redefinir los metodos heredados?
 	public void desplazarHaciaLaDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {

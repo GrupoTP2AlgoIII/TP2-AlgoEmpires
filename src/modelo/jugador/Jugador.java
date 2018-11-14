@@ -7,6 +7,7 @@ import modelo.mapa.Posicion;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
+import modelo.unidad.aldeano.Aldeano;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -196,6 +197,15 @@ public class Jugador {
 		posicionDesplazable.desplazarHaciaLaDiagonalInferiorIzquierda(1);
 		this.mapa.posicionarPosicionableEnPosicion (posicionableEnPosicion, posicionDesplazable);
 		
+		
+	}
+
+	public void iniciarUnidades(Mapa mapa) {
+	
+		for (int i = 5; i <= 8; i++ ) {
+		    Aldeano aldeano = new Aldeano();
+		    this.agregarPosicionableEnFilaColumna(aldeano, 5, i);
+        }
 		
 	}
 }

@@ -14,7 +14,7 @@ public class MapaTest {
 	public void test01comprobarTamanioDelMapaTest() {
 		
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapa();
+		mapa.iniciarMapaVacio();
 		
 		int cantidadCasilleros = mapa.obtenerTamanioMapa();
 		
