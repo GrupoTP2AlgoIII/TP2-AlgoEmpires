@@ -8,4 +8,10 @@ public class Vacio extends Posicionable{
 		super(i, j);
 	}
 
+	@Override
+	public int avanzarTurno() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
