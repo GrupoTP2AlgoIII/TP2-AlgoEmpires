@@ -2,54 +2,86 @@ package modelo.unidad.aldeano;
 
 import static org.junit.Assert.*;
 
-import modelo.unidad.arquero.Arquero;
 import org.junit.Test;
 
+import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
+import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 
 public class ConstruccionTest {
 
-	@Test
-	public void test01CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveArquero() {
-		Cuartel cuartel = new Cuartel();
-
-		
-		Arquero retorno = cuartel.crearArquero();
-
-
-		assertEquals (retorno.getClass(),Arquero.class);
-	}
+	int vidaCuartel = 450;
+	int vidaCuartelDaniado = 400;
 	
 	@Test
-	public void test02CreoUnaPlazaCentralYComoEstaEnConstruccionCrearAldeanoDevuelveFalse() {
-		PlazaCentral plaza = new PlazaCentral();
+	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveFalse() {
+		Cuartel cuartel = new Cuartel(vidaCuartel);
 		
-		
-		boolean retorno = plaza.crearAldeano();
-	
+		Unidad arquero = cuartel.crearArquero();
+		boolean retorno = false;
+		if(arquero != null) {
+			retorno = true;
+		}	
 		assertEquals (false,retorno);
 	}
 	
 	@Test
-	public void test03CreoUnaPlazaCentralYComoEstaConstruidaCrearAldeanoDevuelveTrue() {
-		PlazaCentral plaza = new PlazaCentral();
+	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveTrue() {
+		Cuartel cuartel = new Cuartel(vidaCuartel);
 		
-		plaza.avanzarTurno();
-		plaza.avanzarTurno();
-		plaza.avanzarTurno();
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
 		
-		boolean retorno = plaza.crearAldeano();
+		Unidad arquero = cuartel.crearArquero();
+		boolean retorno = false;
+		if(arquero != null) {
+			retorno = true;
+		}	
 	
 		assertEquals (true,retorno);
 	}
 	
 	@Test
-	public void test04CreoUnAldeanoYComoEstaConstruyendoAvanzarTurnoDevuelveCero() {
+	public void test03CreoUnaPlazaCentralYComoEstaEnConstruccionCrearAldeanoDevuelveFalse() {
+		PlazaCentral plaza = new PlazaCentral();
+		
+		
+		Unidad aldeano = plaza.crearAldeano();
+		boolean retorno = false;
+		if(aldeano != null) {
+			retorno = true;
+		}	
+	
+		assertEquals (false,retorno);
+	}
+	
+	@Test
+	public void test04CreoUnaPlazaCentralYComoEstaConstruidaCrearAldeanoDevuelveTrue() {
+		
+		PlazaCentral plaza = new PlazaCentral();
+		
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		plaza.avanzarTurno();
+		
+		Unidad aldeano = plaza.crearAldeano();
+		boolean retorno = false;
+		if(aldeano != null) {
+			retorno = true;
+		}	
+	
+	
+		assertEquals (true,retorno);
+	}
+	
+	@Test
+	public void test05CreoUnAldeanoYComoEstaConstruyendoAvanzarTurnoDevuelveCero() {
 		Aldeano aldeano = new Aldeano();
-		Cuartel cuartel = aldeano.construirCuartel();
+		Edificio cuartel = aldeano.construirCuartel();
 		int cero = 0;
 		int oroGenerado = 0;
 		
@@ -59,27 +91,28 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test05CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel1Devuelve2(){
-		Jugador jugadorActual = new Jugador();
+	public void test06CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel1Devuelve2(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		
-		Cuartel cuartel1 = jugadorActual.construirCuartel();
-		jugadorActual.avanzarTurno();
-		Cuartel cuartel2 = jugadorActual.construirCuartel();
+		Edificio cuartel1 = jugador1.construirCuartel();
+		Edificio cuartel2 = jugador2.construirCuartel();
 		
-		assertEquals (2,cuartel1.getTurnosConstruccion());
+		jugador1.avanzarTurno();
+		
+		assertEquals (2,(cuartel1.getTurnosConstruccion()));
 			
 	}
-	
+
 	@Test
 	public void test06CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel2Devuelve3(){
-		Jugador jugadorActual = new Jugador();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		
-		Cuartel cuartel1;
-		Cuartel cuartel2;
+		Edificio cuartel1 = jugador1.construirCuartel();
+		Edificio cuartel2 = jugador2.construirCuartel();
 		
-		cuartel1 = jugadorActual.construirCuartel();
-		jugadorActual.avanzarTurno();
-		cuartel2 = jugadorActual.construirCuartel();
+		jugador1.avanzarTurno();
 		
 		assertEquals (3,cuartel2.getTurnosConstruccion());
 	}
@@ -87,15 +120,13 @@ public class ConstruccionTest {
 
 	@Test
 	public void test07CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador2YGetTurnosConstruccionDeCuartel2Devuelve2(){
-		Jugador jugadorActual = new Jugador();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		
-		Cuartel cuartel1;
-		Cuartel cuartel2;
+		Edificio cuartel1 = jugador1.construirCuartel();
+		Edificio cuartel2 = jugador2.construirCuartel();
 		
-		cuartel1 = jugadorActual.construirCuartel();
-		jugadorActual.avanzarTurno();
-		cuartel2 = jugadorActual.construirCuartel();
-		jugadorActual.avanzarTurno();
+		jugador2.avanzarTurno();
 		
 		assertEquals (2,cuartel2.getTurnosConstruccion());
 	}
@@ -109,6 +140,69 @@ public class ConstruccionTest {
 	
 		assertEquals (20,oroGenerado);
 	}
+
+	@Test
+	public void test09CreoUnAldeanoYContruirPlazaCentralDevuelvePlazaCentral() {
+		Aldeano aldeano = new Aldeano();
+		Edificio plaza = aldeano.construirPlazaCentral();
+		boolean valorEsperado = false;
+		
+		if(plaza != null) {
+			valorEsperado = true;
+		}
+		
+		assertEquals (true,valorEsperado);
+	}
+	
+	
+	@Test
+	public void test10CreoUnAldeanoYComoTerminoDeRepararDevuelve20() {
+		
+		
+		Aldeano aldeano = new Aldeano();
+		Edificio cuartel = new Cuartel(vidaCuartelDaniado);
+		int oroGenerado;
+		
+		aldeano.reparar(cuartel);
+		aldeano.avanzarTurno();
+		aldeano.avanzarTurno();
+		
+		oroGenerado = aldeano.avanzarTurno();
+	
+		assertEquals (20,oroGenerado);
+	}
+	
+	@Test
+	public void test11CreoUnCuartelCon400DeVidaYComoEstaReparadoGetVidaDevuelve450() {
+		
+		Aldeano aldeano = new Aldeano();
+		Edificio cuartel = new Cuartel(vidaCuartelDaniado);
+		
+		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
+		cuartel.avanzarTurno();	    //construccion cuartel - 3 turnos	
+		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
+		
+		aldeano.reparar(cuartel);
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+		
+	
+		assertEquals (450,cuartel.getVida());
+	}
+	
+	@Test
+	public void test12CreoUnAldeanoYContruirCuartelDevuelveCuartel() {
+		Aldeano aldeano = new Aldeano();
+		Edificio cuartel = aldeano.construirCuartel();
+		boolean valorEsperado = false;
+		
+		if(cuartel != null) {
+			valorEsperado = true;
+		}
+		
+		assertEquals (true,valorEsperado);
+	}
+	
 
 
 }

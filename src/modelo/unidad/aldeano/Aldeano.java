@@ -1,29 +1,42 @@
 package modelo.unidad.aldeano;
 
+import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
+import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.unidad.Unidad;
 
 public class Aldeano extends Unidad {
 	
-	private int oroGenerado;
-	private boolean construyendo;
+	private EstadoAldeano estado = new EstadoAldeanoDisponible();
+
 	
 	   public Aldeano() {
-	        this.oroGenerado = 20;
-	        this.construyendo = false;
+	        this.vida = 50;
+	        this.costo = 25;
 	    }
 	   
-	    public Cuartel construirCuartel() {
-	    	this.construyendo = true;
-	    	Cuartel cuartel = new Cuartel();
+	    public Edificio construirCuartel() {
+	    	Edificio cuartel = new Cuartel(0);//cambiar cero por vida inicial del cuartel
+	    	estado = estado.construir(cuartel);
 	    	return cuartel;
 	    }
 	    
-	    public int avanzarTurno() {
-	    	if (this.construyendo) {
-	    		return 0;
-	    	}
-	    	return this.oroGenerado;
+	    public Edificio construirPlazaCentral() {
+	    	Edificio plaza = new PlazaCentral();
+	    	estado = estado.construir(plaza);
+	    	return plaza;
 	    }
+	    
+	    
+	    public int avanzarTurno() {
+	    	estado = estado.avanzarTurno();
+	    	return estado.obtenerOro();
+	    }
+
+		public void reparar(Edificio cuartel) {
+			cuartel.reparar();
+			estado = estado.reparar(cuartel);
+
+		}
 
 }

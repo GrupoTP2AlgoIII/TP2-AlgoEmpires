@@ -1,5 +1,6 @@
 package modelo.jugador;
 
+import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
@@ -7,53 +8,43 @@ import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 public class Jugador {
-	private Cuartel jugadores [];
-	private boolean jugadorActual;
 	private Map  <Posicion, Posicionable> posicionables;
 	private Mapa mapa;
-	
-	
+	private List<Edificio> listaCuarteles;		//temporal hasta que funcione el diccionario de posicionables
+
 	public Jugador () {
-		
-		this.jugadores = new Cuartel[2];
-		this.jugadorActual = true;
 		this.posicionables = new HashMap <Posicion, Posicionable> ();
+		this.listaCuarteles = new ArrayList<Edificio>();
 	}
 	public Jugador(Mapa mapa) {
-		this.jugadores = new Cuartel[2];
-		this.jugadorActual = true;
+
 		this.posicionables = new HashMap <Posicion, Posicionable> ();
 		this.mapa = mapa;
-	}
+		this.listaCuarteles = new ArrayList<Edificio>();	}
 	
-	public Cuartel construirCuartel() {
-		Cuartel cuartel = new Cuartel();
-		if(this.jugadorActual) {
-			this.jugadores[0] = cuartel;
-		}else {
-			this.jugadores[1] = cuartel;
-		}
+	
+	public Edificio construirCuartel() {
+		
+		int vidaCuartel = 450;
+		Edificio cuartel = new Cuartel(vidaCuartel);
+		this.listaCuarteles.add(cuartel);
+		//Posicionable posicionable = cuartel;
+		//this.agregarPosicionableEnFilaColumna(posicionable, fila, columna);
 		return cuartel;
+		
 	}
 	
 	public void avanzarTurno() {
-		Cuartel aux;
-		if(this.jugadorActual) {
-			aux = this.jugadores[0];
-			aux.avanzarTurno();
-			this.jugadores[0]=aux;
-		}else{
-			aux = this.jugadores[1];
-			aux.avanzarTurno();
-			this.jugadores[1]=aux;
-		}
-	
-		this.jugadorActual = !(this.jugadorActual);
+		for (int i = 0; i <= this.listaCuarteles.size()-1; i++) {
+            this.listaCuarteles.get(i).avanzarTurno();
+        }		
 	}
 
 	public void agregarPosicionableEnFilaColumna(Unidad unidad, int fila, int columna) {

@@ -16,4 +16,40 @@ public class Castillo extends Edificio {
             return nuevaArmaAsedio;
     }
 
+	@Override
+	public void reparar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getVida() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected int getVidaFull() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected void sumarVida() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getTurnosConstruccion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void avanzarTurno() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

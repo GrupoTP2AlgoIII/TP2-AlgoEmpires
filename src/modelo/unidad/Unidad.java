@@ -1,9 +1,11 @@
 package modelo.unidad;
 
-public class Unidad extends Posicionable {
+public abstract class Unidad extends Posicionable {
 	
 	private int cantidadDeMovimientos;
 	private int movimientosPermitidos;
+	protected int vida;
+	protected int costo;
 	
 	public Unidad () {
 		
