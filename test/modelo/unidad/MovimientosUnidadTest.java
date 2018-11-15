@@ -105,6 +105,7 @@ public class MovimientosUnidadTest {
 	public void test09moverAldeanoFueraDelLimiteIzquierdoDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		Unidad unidad = new Arquero();
 		
 		mapa.posicionarEnFilaColumna(unidad, 2, 1);
@@ -115,6 +116,7 @@ public class MovimientosUnidadTest {
 	public void test10moverAldeanoFueraDelLimiteDerechoDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		Unidad unidad = new Arquero();
 		
 		mapa.posicionarEnFilaColumna (unidad, 2, 50);
@@ -125,6 +127,7 @@ public class MovimientosUnidadTest {
 	public void test11moverAldeanoFueraDelLimiteSuperiorDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		Unidad unidad = new Arquero();
 		
 		mapa.posicionarEnFilaColumna (unidad, 1, 10);
@@ -135,6 +138,7 @@ public class MovimientosUnidadTest {
 	public void test12moverAldeanoFueraDelLimiteInferiorDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		Unidad unidad = new Arquero();
 		
 		mapa.posicionarEnFilaColumna (unidad, 50, 10);
@@ -145,6 +149,7 @@ public class MovimientosUnidadTest {
 	public void test13moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorDerecho () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		Unidad unidad = new Arquero();
 		
 		mapa.posicionarEnFilaColumna (unidad, 1, 50);
@@ -155,6 +160,7 @@ public class MovimientosUnidadTest {
 	public void test14moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorIzquierdo () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		Unidad unidad = new Arquero();
 		
 		mapa.posicionarEnFilaColumna (unidad, 1, 1);
@@ -165,6 +171,7 @@ public class MovimientosUnidadTest {
 	public void test15moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorDerecho () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		Unidad unidad = new Arquero();
 		
 		mapa.posicionarEnFilaColumna (unidad, 50, 50);
@@ -175,6 +182,7 @@ public class MovimientosUnidadTest {
 	public void test16moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorIzquierdo () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		Unidad unidad = new Arquero();
 		
 		mapa.posicionarEnFilaColumna (unidad, 50, 1);
@@ -183,7 +191,7 @@ public class MovimientosUnidadTest {
 
 	@Test (expected = MovimientosPorTurnoExcedidosError.class)
 	public void test17moverAldeanoDosVecesEnUnMismoTurno () throws PosicionFueraDelMapaError, MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
-		
+	
 		Juego juego = new Juego ();
 		Unidad unidad = new Arquero();
 		juego.iniciarJuego ();

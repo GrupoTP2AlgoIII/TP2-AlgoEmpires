@@ -16,6 +16,7 @@ public class Juego {
 	public Juego () {
 		
 		this.mapa = new Mapa ();
+		mapa.iniciarMapaVacio();
 		this.jugadorActual = new Jugador (mapa);
 	}
 

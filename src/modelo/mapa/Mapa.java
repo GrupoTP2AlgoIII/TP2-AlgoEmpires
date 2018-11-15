@@ -40,13 +40,9 @@ public class Mapa {
 		return this.mapa.size();
 	}
 
-	// ESTO NO DA SIEMPRE TRUE?
-	// Yo pondria un estado Disponible y otro EnUso en la clase Posicionable
-	// Si es Disponible, te acepta el mensaje
-	// SI es En_Uso, devuelve un error.
 	public boolean estaOcupado(Posicion posicion) {
 		
-		return this.mapa.containsKey(posicion);
+		return (this.mapa.get(posicion).getClass() != Vacio.class);
 	}
 
 
