@@ -43,6 +43,55 @@ public class Juego {
 
 		
 	}
+	
+	public void desplazarFilaColumnaHaciaAbajo(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
+		
+		
+		this.jugadorActual.desplazarFilaColumnaHaciaAbajo(fila, columna, cantidadDePosiciones);
+		
+	}
+
+	public void desplazarFilaColumnaHaciaLaDerecha(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
+	
+	
+		this.jugadorActual.desplazarFilaColumnaHaciaLaDerecha (fila, columna, cantidadDePosiciones);
+	
+	}
+
+	public void desplazarFilaColumnaHaciaLaIzquierda(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
+	
+	
+		this.jugadorActual.desplazarFilaColumnaHaciaLaIzquierda (fila, columna, cantidadDePosiciones);
+	
+	}
+
+	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorDerecha(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
+	
+	
+		this.jugadorActual.desplazarFilaColumnaHaciaLaDiagonalSuperiorDerecha (fila, columna, cantidadDePosiciones);
+	
+	}
+
+	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
+	
+	
+		this.jugadorActual.desplazarFilaColumnaHaciaLaDiagonalSuperiorIzquierda(fila, columna, cantidadDePosiciones);
+	
+	}
+
+	public void desplazarFilaColumnaHaciaLaDiagionalInferiorDerecha(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
+	
+	
+		this.jugadorActual.desplazarFilaColumnaHaciaLaDiagonalInferiorDerecha(fila, columna, cantidadDePosiciones);
+	
+	}
+	
+	public void desplazarFilaColumnaHaciaLaDiagionalInferiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
+		
+		
+		this.jugadorActual.desplazarFilaColumnaHaciaLaDiagonalInferiorIzquierda (fila, columna, cantidadDePosiciones);
+		
+	}
 
 	
 }

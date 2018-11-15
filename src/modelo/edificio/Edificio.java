@@ -8,8 +8,8 @@ public abstract class Edificio extends Posicionable{
     protected int tamanio;
     protected int velocidadReparacion;
     protected int vidaFull;
+    protected EstadoEdificio estado;
     
-	protected EstadoEdificio estado;
 	public abstract void reparar();
 	public abstract int getVida();
 	protected abstract int getVidaFull();
