@@ -1,6 +1,7 @@
 package modelo.jugador;
 
 import modelo.edificio.Edificio;
+
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.TamanioIncorrectoError;
 import modelo.edificio.castillo.Castillo;
@@ -8,14 +9,13 @@ import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.Posicionable;
-import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.PosicionFueraDelMapaError;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
 
 
 public class Jugador {

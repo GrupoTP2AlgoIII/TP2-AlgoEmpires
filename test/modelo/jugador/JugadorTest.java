@@ -1,4 +1,4 @@
-package modelo.mapa;
+package modelo.jugador;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.jugador.PosicionOcupadaError;
