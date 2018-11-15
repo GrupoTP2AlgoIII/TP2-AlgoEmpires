@@ -16,6 +16,18 @@ public class Castillo extends Edificio {
             return nuevaArmaAsedio;
     }
 
+    public boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY){
+
+    	boolean tamanioCorrecto = true;
+
+    	// Se pasan coordeanadas de izquierda a derecha y de abajo hacia arriba
+    	if ( hastaX != (desdeX + 3) || hastaY != (desdeY + 3)){
+    		tamanioCorrecto = false;
+    	}
+
+    	return tamanioCorrecto;
+    }
+
 	@Override
 	public void reparar() {
 		// TODO Auto-generated method stub

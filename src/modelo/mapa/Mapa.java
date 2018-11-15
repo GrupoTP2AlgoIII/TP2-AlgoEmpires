@@ -41,8 +41,13 @@ public class Mapa {
 	}
 
 	public boolean estaOcupado(Posicion posicion) {
-		
-		return (this.mapa.get(posicion).getClass() != Vacio.class);
+
+		if (this.mapa.get(posicion).getClass() != Vacio.class){
+					return true;
+		}
+
+		return false;
+
 	}
 
 
@@ -64,46 +69,6 @@ public class Mapa {
 		
 	}
 	
-	// Agrego este metodo
-	// MODULARIZAR
-	public void moverDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionFueraDelMapaError, PosicionOcupadaError, PosicionNoAdyacenteError {
-		
-		Posicion posicionDesde = new Posicion (desdeX, desdeY);
-		Posicionable posicionable = this.mapa.get(posicionDesde);
-		
-		if (posicionDesde.noPerteneceAlRango(this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-//		if (this.estaOcupado(posicionDesde)) {
-//			
-//			throw new PosicionOcupadaError ();
-//		}
-		
-		Posicion posicionHasta = new Posicion (hastaX, hastaY);
-		
-		if(posicionHasta.noPerteneceAlRango(this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-//		if (this.estaOcupado(posicionHasta)) {
-//			
-//			throw new PosicionOcupadaError ();
-//		}
-		
-		if (! posicionHasta.esAdyacenteA(posicionDesde)) {
-			
-			throw new PosicionNoAdyacenteError();
-		}
-		
-		this.mapa.put(posicionHasta, posicionable);
-		
-		Posicionable vacio = new Vacio(desdeX, desdeY);
-		this.mapa.put(posicionDesde, vacio);
-		
-	}
 
 	public void desplazarFilaColumnaHaciaLaIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
@@ -302,6 +267,46 @@ public class Mapa {
 	
 	public Posicionable obtenerPosicionableEn(Posicion posicion) {
 		return (this.mapa.get(posicion));
+	}
+
+	public int getFilas() {
+		return this.filas;
+	}
+
+	public int getColumnas() {
+		return this.columnas;
+	}
+
+	public void ponerEdificioDesdeHasta(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionOcupadaError, PosicionFueraDelMapaError{
+
+		if (this.hayPosicionOcupadaEnElRango(desdeX, desdeY, hastaX, hastaY)){
+			throw new PosicionOcupadaError();
+		}
+
+		for (int i = desdeX; i <= hastaX; i++){
+			for (int j = desdeY; j <= hastaY; j++){
+				this.posicionarEnFilaColumna(edificio, i, j);
+			}
+		}
+	}
+
+	private boolean hayPosicionOcupadaEnElRango(int desdeX, int desdeY, int hastaX, int hastaY){
+
+		Posicionable vacio = new Vacio(-2,-2);
+
+		for (int i = desdeX; i <= hastaX; i++){
+			for (int j = desdeY; j <= hastaY; j++){
+				
+				Posicion posicion = new Posicion(i,j);
+				if (this.mapa.get(posicion).getClass() != vacio.getClass()){
+					return true;
+				}
+			}
+		}
+
+		return false;
+
+
 	}
 	
 	

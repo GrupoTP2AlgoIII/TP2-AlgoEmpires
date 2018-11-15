@@ -7,6 +7,7 @@ import modelo.mapa.Mapa;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Unidad;
+import modelo.edificio.TamanioIncorrectoError;
 
 public class Juego {
 	
@@ -16,7 +17,7 @@ public class Juego {
 	public Juego () {
 		
 		this.mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
+        this.mapa.iniciarMapaVacio();
 		this.jugadorActual = new Jugador (mapa);
 	}
 
@@ -34,10 +35,12 @@ public class Juego {
 		
 	}
 
-	public void iniciarJuego() {
+	public void iniciarJuego() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
 		
-		//inicializa todo lo del juego
-		//deja preparado el turno para que arranque alguno de los jugadores
+		//this.mapa.iniciarMapaVacio();
+		this.jugadorActual.iniciarUnidades();
+		//this.jugadorActual.iniciarEdificios();
+
 		
 	}
 

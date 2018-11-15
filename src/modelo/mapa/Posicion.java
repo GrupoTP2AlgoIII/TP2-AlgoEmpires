@@ -5,7 +5,6 @@ public class Posicion {
 	private int x;
 	private int y;
 	
-	//Para que este constructor?
 	public Posicion () {
 		
 		//posiciones invalidas
@@ -35,9 +34,6 @@ public class Posicion {
 		return esAdyacente;
 	}
 
-	// La posicion es inmutable por ser clave de un diccionario
-	// Si usamos el constructor con parametros, este metodo no tendria uso
-	// (Se crean todas las posiciones al crear el mapa usando el constructor con parametros)
 	public void posicionarEnFilaColumna(int fila, int columna) {
 		
 		this.x = fila;

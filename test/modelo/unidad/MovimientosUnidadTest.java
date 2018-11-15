@@ -10,6 +10,7 @@ import modelo.jugador.PosicionDesocupadaError;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 import modelo.unidad.arquero.Arquero;
+import modelo.edificio.TamanioIncorrectoError;
 
 public class MovimientosUnidadTest {
 
@@ -190,15 +191,15 @@ public class MovimientosUnidadTest {
 	}
 
 	@Test (expected = MovimientosPorTurnoExcedidosError.class)
-	public void test17moverAldeanoDosVecesEnUnMismoTurno () throws PosicionFueraDelMapaError, MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {
-	
+	public void test17moverAldeanoDosVecesEnUnMismoTurno () throws PosicionFueraDelMapaError, MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, TamanioIncorrectoError {
+		
 		Juego juego = new Juego ();
 		Unidad unidad = new Arquero();
 		juego.iniciarJuego ();
 		juego.agregarUnidadEnFilaColumna (unidad, 10, 10);
 		juego.desplazarFilaColumnaHaciaArriba (10, 10, 1);
 		juego.desplazarFilaColumnaHaciaArriba (10, 10, 1);
-	}
+}
 
 
 }
