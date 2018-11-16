@@ -228,7 +228,7 @@ public class Jugador {
 		//this.crearPlazaCentralDesdeHasta(1,6,2,7);	
 	}
 
-	private void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
 
 		Castillo castillo = new Castillo();
 

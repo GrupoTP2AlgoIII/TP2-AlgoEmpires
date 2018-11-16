@@ -16,7 +16,7 @@ import modelo.edificio.TamanioIncorrectoError;
 public class JugadorTest {
 
 	@Test
-	public void iniciarUnidadesDeUnJugadorCreaAldeanosCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test01IniciarUnidadesDeUnJugadorCreaAldeanosCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -36,13 +36,13 @@ public class JugadorTest {
 		
 	}
 
-		@Test
-	public void iniciarCastilloDeUnJugadorCreaCastilloCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	@Test
+	public void test02IniciarCastilloDeUnJugadorCreaCastilloCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador(mapa);
+		Jugador jugador = new Jugador (mapa);
 		jugador.iniciarEdificios();
 
 		for (int i = 1; i <= 4; i++){
@@ -53,4 +53,52 @@ public class JugadorTest {
 			}
 		}
 	}
+
+	@Test (expected = TamanioIncorrectoError.class)
+	public void test03CrearCastilloDeMayorTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);
+
+		jugador.crearCastilloDesdeHasta(1,1,10,10);
+	}
+
+	@Test (expected = TamanioIncorrectoError.class)
+	public void test04CrearCastilloIndicandoMalElTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);
+
+		// El tamanio es de 4x4, pero se debe indicar de izquierda a derecha y de abajo hacia arriba la ubicacion
+		jugador.crearCastilloDesdeHasta(3,3,1,1);
+	}
+
+	@Test (expected = PosicionFueraDelMapaError.class)
+	public void test05CrearCastilloFueraDelMapaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);
+		
+		jugador.crearCastilloDesdeHasta(-1,-1,2,2);
+	}
+
+	@Test (expected = PosicionOcupadaError.class)
+	public void test06CrearCastilloEnPosicionOcupadaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);		
+		jugador.crearCastilloDesdeHasta(1,1,4,4); // Crea un castillo correctamente
+
+		jugador.crearCastilloDesdeHasta(4,4,7,7); // Intenta colocar un castillo pero (4,4) esta ocupada
+	}
+
+
 }
