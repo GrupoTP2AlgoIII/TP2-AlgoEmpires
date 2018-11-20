@@ -14,4 +14,8 @@ public interface EstadoEdificio {
 
 	public int getTurnosOcupado();
 
+	public Unidad crearArmaAsedio();
+
+	public Unidad crearEspadachin();
+
 }

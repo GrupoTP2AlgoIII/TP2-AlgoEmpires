@@ -1,6 +1,7 @@
 package modelo.edificio.cuartel;
 
 import modelo.unidad.Unidad;
+import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
 import org.junit.Test;
@@ -9,7 +10,7 @@ import static org.junit.Assert.*;
 public class CuartelTest {
 
     @Test
-    public void test01CuartelEsCreadoYCreaArquero() {
+    public void test01CuartelEsCreadoYCreaArqueroQueAtacaAUnAldeanoYLeResta15DeVida() {
         Cuartel cuartel =  new Cuartel();
 
         cuartel.avanzarTurno();
@@ -17,20 +18,25 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         
 		Unidad arquero = cuartel.crearArquero();
-		boolean retorno = false;
+		Aldeano aldeano = new Aldeano();
+		arquero.atacar(aldeano);
 		
-		if(arquero != null) {
-			retorno = true;
-		}	
-		assertEquals (true,retorno);
+		assertEquals (35,aldeano.getVida());
 
     }
 
     @Test
-    public void test02CuartelEsCreadoYCreaEspadachin() {
+    public void test02CuartelEsCreadoYCreaEspadachinQueAtacaAUnAldeanoYLeResta25DeVida() {
         Cuartel cuartel =  new Cuartel();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
 
-        Espadachin soldier = cuartel.crearEspadachin();
-        assertEquals(soldier.getClass(),  (Espadachin.class));
+        Unidad soldier = cuartel.crearEspadachin();
+		Aldeano aldeano = new Aldeano();
+		soldier.atacar(aldeano);
+		
+		assertEquals (25,aldeano.getVida());
+		
     }
 }

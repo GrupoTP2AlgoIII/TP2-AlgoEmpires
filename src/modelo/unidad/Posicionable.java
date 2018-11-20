@@ -77,4 +77,8 @@ public abstract class Posicionable {
 
 	public abstract int avanzarTurno();
 
+	public abstract int getVida();
+
+	public abstract void restarVida(int vidaARestar);
+
 }

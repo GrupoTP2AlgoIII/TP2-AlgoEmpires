@@ -1,5 +1,7 @@
 package modelo.unidad;
 
+import modelo.edificio.Edificio;
+
 public abstract class Unidad extends Posicionable {
 	
 	private int cantidadDeMovimientos;
@@ -21,6 +23,12 @@ public abstract class Unidad extends Posicionable {
 
 
 	public abstract int avanzarTurno();
+	public void atacar(Posicionable posicionable) {
+		this.atacar(posicionable);
+		
+	}
+
+
 	
 //esta bien redefinir los metodos heredados?
 	
@@ -119,5 +127,8 @@ public abstract class Unidad extends Posicionable {
 		
 		this.posicion.desplazarHaciaLaDiagonalInferiorIzquierda (cantidadDePosiciones);
 	}
+
+
+
 
 }

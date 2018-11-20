@@ -1,7 +1,7 @@
 package modelo.edificio.castillo;
 
 import modelo.edificio.Edificio;
-import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
+import modelo.unidad.Unidad;
 
 public class Castillo extends Edificio {
 
@@ -9,11 +9,12 @@ public class Castillo extends Edificio {
         this.vida = 1000;
         this.tamanio = 16;
         this.velocidadReparacion = 15;
+	    this.costo = 50;
+        this.vidaFull = vida;
     }
 
-    public ArmaDeAsedio crearArmaAsedio(){
-        ArmaDeAsedio nuevaArmaAsedio = new ArmaDeAsedio();
-            return nuevaArmaAsedio;
+    public Unidad crearArmaAsedio(){
+    	return estado.crearArmaAsedio();
     }
 
     public boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY){
@@ -27,48 +28,48 @@ public class Castillo extends Edificio {
 
     	return tamanioCorrecto;
     }
-
-	@Override
-	public void reparar() {
-		// TODO Auto-generated method stub
-		
+	
+    
+    public int avanzarTurno() {
+    	estado = estado.avanzarTurno(this);
+    	return 0;
+    }
+    
+	public void reparar() {		
+		estado = estado.reparar(this);	
 	}
-
+    
 	@Override
 	public int getVida() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 	@Override
 	protected int getVidaFull() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vidaFull;
 	}
 
 	@Override
 	protected void sumarVida() {
-		// TODO Auto-generated method stub
-		
+		if(this.vida < this.vidaFull) {
+			this.vida += this.velocidadReparacion;
+		}
+		if(this.vida > this.vidaFull) {
+			this.vida = this.vidaFull;
+		}
 	}
+	
+	
 
 	@Override
 	public int getTurnosConstruccion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int avanzarTurno() {
-		// TODO Auto-generated method stub
-		return 0;
-		
+		return estado.getTurnosOcupado();
 	}
 
 	@Override
 	public void restarVida(int vidaARestar) {
-		// TODO Auto-generated method stub
-		
+		this.vida -= vidaARestar;
 	}
+
 
 }

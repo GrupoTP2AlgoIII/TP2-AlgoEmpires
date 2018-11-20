@@ -9,7 +9,7 @@ import modelo.unidad.espadachin.Espadachin;
 public class Cuartel extends Edificio{
 
 	   public Cuartel() {
-	   	    this.vida = 450;
+	   	    this.vida = 250;
 		    this.costo = 50;
 	        this.tamanio = 4;
 	        this.velocidadReparacion = 50;
@@ -21,10 +21,8 @@ public class Cuartel extends Edificio{
 		}
 
 
-		public Espadachin crearEspadachin() {
-			Espadachin espadachin = new Espadachin();
-
-			return espadachin;
+		public Unidad crearEspadachin() {
+			return estado.crearEspadachin();
 		}
 		
 	    
@@ -49,9 +47,11 @@ public class Cuartel extends Edificio{
 
 		@Override
 		protected void sumarVida() {
-			int vidaRepararPorTurno = 25;
 			if(this.vida < this.vidaFull) {
-				this.vida += vidaRepararPorTurno;
+				this.vida += this.velocidadReparacion;
+			}
+			if(this.vida > this.vidaFull) {
+				this.vida = this.vidaFull;
 			}
 		}
 		

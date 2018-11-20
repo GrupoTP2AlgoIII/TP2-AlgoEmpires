@@ -39,4 +39,15 @@ public class Aldeano extends Unidad {
 
 		}
 
+		@Override
+		public int getVida() {
+			return this.vida;
+		}
+
+		@Override
+		public void restarVida(int vidaARestar) {
+			this.vida -= vidaARestar;
+			
+		}
+
 }

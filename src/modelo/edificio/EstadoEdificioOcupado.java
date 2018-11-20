@@ -42,4 +42,14 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 	public int getTurnosOcupado() {
 		return this.turnosOcupado;
 	}
+
+	@Override
+	public Unidad crearArmaAsedio() {
+		throw new EdificioOcupadoException();
+	}
+
+	@Override
+	public Unidad crearEspadachin() {
+		throw new EdificioOcupadoException();
+	}
 }

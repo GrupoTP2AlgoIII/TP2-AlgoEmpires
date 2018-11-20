@@ -1,5 +1,6 @@
 package modelo.edificio.castillo;
 
+import modelo.unidad.Unidad;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import org.junit.Test;
 
@@ -10,7 +11,16 @@ public class CastilloTest {
     @Test
     public void test01CrearCastilloYCreoArmaAsedio() {
         Castillo sanJorge = new Castillo();
-        ArmaDeAsedio escorpion = sanJorge.crearArmaAsedio();
-        assertEquals(escorpion.getClass(),  (ArmaDeAsedio.class));
+        sanJorge.avanzarTurno();
+        sanJorge.avanzarTurno();
+        sanJorge.avanzarTurno();
+        
+        Unidad escorpion = sanJorge.crearArmaAsedio();
+		boolean retorno = false;
+		
+		if(escorpion != null) {
+			retorno = true;
+		}	
+		assertEquals (true,retorno);
     }
 }

@@ -55,7 +55,7 @@ public class PlazaCentral extends Edificio {
 
 			@Override
 			public void restarVida(int vidaARestar) {
-				// TODO Auto-generated method stub
+				this.vida -= vidaARestar;
 				
 			}
 		    

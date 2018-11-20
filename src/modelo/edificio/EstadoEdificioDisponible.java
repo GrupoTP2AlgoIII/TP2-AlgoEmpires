@@ -2,7 +2,9 @@ package modelo.edificio;
 
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import modelo.unidad.arquero.Arquero;
+import modelo.unidad.espadachin.Espadachin;
 
 public class EstadoEdificioDisponible implements EstadoEdificio {
 
@@ -35,6 +37,18 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 	@Override
 	public int getTurnosOcupado() {
 		return 0;
+	}
+
+	@Override
+	public Unidad crearArmaAsedio() {
+		Unidad armaDeAsedio = new ArmaDeAsedio();
+		return armaDeAsedio;
+	}
+
+	@Override
+	public Unidad crearEspadachin() {
+		Unidad espadachin = new Espadachin();
+		return espadachin;
 	}
 	
 	

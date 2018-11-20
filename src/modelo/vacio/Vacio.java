@@ -14,4 +14,15 @@ public class Vacio extends Posicionable{
 		return 0;
 	}
 
+	@Override
+	public int getVida() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public void restarVida(int vidaARestar) {
+		
+	}
+
 }
