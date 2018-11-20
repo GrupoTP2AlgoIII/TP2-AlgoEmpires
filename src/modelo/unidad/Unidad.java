@@ -1,6 +1,6 @@
 package modelo.unidad;
 
-import modelo.edificio.Edificio;
+import modelo.ataque.Ataque;
 
 public abstract class Unidad extends Posicionable {
 	
@@ -8,6 +8,7 @@ public abstract class Unidad extends Posicionable {
 	private int movimientosPermitidos;
 	protected int vida;
 	protected int costo;
+	protected Ataque ataque;
 	
 	public Unidad () {
 		

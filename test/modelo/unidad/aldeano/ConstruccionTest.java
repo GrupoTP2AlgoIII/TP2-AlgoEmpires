@@ -12,6 +12,7 @@ import modelo.jugador.Jugador;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
+import modelo.unidad.arquero.Arquero;
 
 public class ConstruccionTest {
 
@@ -22,7 +23,7 @@ public class ConstruccionTest {
 	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveException() throws EdificioOcupadoException {
 		Cuartel cuartel = new Cuartel();
 		
-		Unidad arquero = cuartel.crearArquero();
+		cuartel.crearArquero();
 	}
 	
 	@Test
@@ -45,7 +46,7 @@ public class ConstruccionTest {
 	public void test03CreoUnaPlazaCentralYComoEstaEnConstruccionCrearAldeanoDevuelveException() throws EdificioOcupadoException {
 		PlazaCentral plaza = new PlazaCentral();
 		
-		Unidad aldeano = plaza.crearAldeano();
+		plaza.crearAldeano();
 
 	}
 	
@@ -54,11 +55,13 @@ public class ConstruccionTest {
 		
 		PlazaCentral plaza = new PlazaCentral();
 		Edificio cuartel = new Cuartel();
+		Arquero arquero = new Arquero();
+		
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		cuartel.restarVida(50);
+		arquero.atacar(cuartel);	//le resta 10 de vida
 		
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -75,7 +78,7 @@ public class ConstruccionTest {
 	@Test
 	public void test05CreoUnAldeanoYComoEstaConstruyendoAvanzarTurnoDevuelveCero() {
 		Aldeano aldeano = new Aldeano();
-		Edificio cuartel = aldeano.construirCuartel();
+		aldeano.construirCuartel();
 		int cero = 0;
 		int oroGenerado = 0;
 		
@@ -90,7 +93,7 @@ public class ConstruccionTest {
 		Jugador jugador2 = new Jugador();
 		
 		Edificio cuartel1 = jugador1.construirCuartel(1,1);
-		Edificio cuartel2 = jugador2.construirCuartel(1,1);
+		jugador2.construirCuartel(1,1);
 		
 		jugador1.avanzarTurno();
 		
@@ -103,7 +106,7 @@ public class ConstruccionTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
-		Edificio cuartel1 = jugador1.construirCuartel(1,1);
+		jugador1.construirCuartel(1,1);
 		Edificio cuartel2 = jugador2.construirCuartel(1,1);
 		
 		jugador2.avanzarTurno();
@@ -124,6 +127,7 @@ public class ConstruccionTest {
 	@Test
 	public void test09CreoUnAldeanoQueConstruyaUnaPlazaCentralYComoEstaConstruidaCreoUnAldeanoQueReparaUnCuartelDaniadoRestaurandoSuVidaA250() {
 		Aldeano aldeano = new Aldeano();
+		Arquero arquero = new Arquero();
 		PlazaCentral plaza = (PlazaCentral) aldeano.construirPlazaCentral();
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -136,7 +140,7 @@ public class ConstruccionTest {
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
-		cuartelDaniado.restarVida(50);
+		arquero.atacar(cuartelDaniado);
 		
 		otroAldeano.reparar(cuartelDaniado);
 		cuartelDaniado.avanzarTurno();
@@ -151,6 +155,7 @@ public class ConstruccionTest {
 		
 		
 		Aldeano aldeano = new Aldeano();
+		Arquero arquero = new Arquero();
 		Edificio cuartel = new Cuartel();
 		int oroGenerado;
 		
@@ -158,7 +163,7 @@ public class ConstruccionTest {
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		cuartel.restarVida(50);
+		arquero.atacar(cuartel);
 		aldeano.reparar(cuartel);
 		aldeano.avanzarTurno();
 
@@ -173,12 +178,13 @@ public class ConstruccionTest {
 		
 		Aldeano aldeano = new Aldeano();
 		Edificio cuartel = new Cuartel();
+		Arquero arquero = new Arquero();
 		
 		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
 		cuartel.avanzarTurno();	    //construccion cuartel - 3 turnos	
 		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
 		
-		cuartel.restarVida(50);
+		arquero.atacar(cuartel);
 		aldeano.reparar(cuartel);
 		cuartel.avanzarTurno();
 		
@@ -205,7 +211,7 @@ public class ConstruccionTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		
-		Edificio cuartel1 = jugador1.construirCuartel(1,1);
+		jugador1.construirCuartel(1,1);
 		Edificio cuartel2 = jugador2.construirCuartel(1,1);
 		
 		jugador1.avanzarTurno();
@@ -217,12 +223,14 @@ public class ConstruccionTest {
 	public void test14CreoUnAldeanoYComoEstaOcupadoConstruirCuartelDevuelveException() throws AldeanoOcupadoException {
 		Aldeano aldeano = new Aldeano();
 		Edificio cuartelDaniado = new Cuartel();
+		Arquero arquero = new Arquero();
 		
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
 		
-		cuartelDaniado.restarVida(50);
+		
+		arquero.atacar(cuartelDaniado);
 		aldeano.reparar(cuartelDaniado);
 		aldeano.construirCuartel();
 	}
@@ -232,6 +240,7 @@ public class ConstruccionTest {
 		Aldeano aldeano = new Aldeano();
 		Edificio cuartelDaniado = new Cuartel();
 		Edificio otroCuartelDaniado = new Cuartel();
+		Arquero arquero = new Arquero();
 		
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
@@ -240,8 +249,9 @@ public class ConstruccionTest {
 		otroCuartelDaniado.avanzarTurno();
 		otroCuartelDaniado.avanzarTurno();
 		
-		cuartelDaniado.restarVida(50);
-		otroCuartelDaniado.restarVida(50);
+		arquero.atacar(cuartelDaniado);
+		arquero.atacar(otroCuartelDaniado);
+
 		aldeano.reparar(cuartelDaniado);
 		aldeano.reparar(otroCuartelDaniado);
 	}

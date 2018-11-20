@@ -1,13 +1,19 @@
 package modelo.unidad.armaDeAsedio;
 
-import modelo.edificio.Edificio;
+import modelo.ataque.Ataque;
 import modelo.unidad.Unidad;
 
 public class ArmaDeAsedio extends Unidad {
 
+	
+	public ArmaDeAsedio() {
+		this.vida = 150;
+		this.costo = 200;
+		this.ataque = new Ataque(75,0);
+		
+	}
 	@Override
 	public int avanzarTurno() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -15,12 +21,14 @@ public class ArmaDeAsedio extends Unidad {
 	public int getVida() {
 		return this.vida;
 	}
-	
+
 	@Override
-	public void restarVida(int vidaARestar) {
-		this.vida -= vidaARestar;
+	public void atacado(Ataque ataque) {
+		this.vida -= ataque.getAtaqueUnidad();
 		
 	}
+	
+
 
 
 }

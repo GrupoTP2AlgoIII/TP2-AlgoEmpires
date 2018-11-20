@@ -1,17 +1,20 @@
 package modelo.unidad.arquero;
 
+import modelo.ataque.Ataque;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class Arquero extends Unidad {
 
-	private int vida = 75;
-	private int costo = 75;
 	
+	public Arquero() {
+		this.vida = 75;
+		this.costo = 75;
+		this.ataque = new Ataque(10,15);
+	}
 	
 	@Override
 	public int avanzarTurno() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -21,12 +24,14 @@ public class Arquero extends Unidad {
 	}
 	
 	public void atacar(Posicionable posicionable) {
-		posicionable.restarVida(15);
+		posicionable.atacado(ataque);
 	}
-	
+
 	@Override
-	public void restarVida(int vidaARestar) {
-		this.vida -= vidaARestar;
+	public void atacado(Ataque ataque) {
+		this.vida -= ataque.getAtaqueUnidad();
 		
 	}
+	
+
 }

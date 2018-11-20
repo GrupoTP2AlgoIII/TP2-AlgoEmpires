@@ -8,7 +8,6 @@ import modelo.unidad.espadachin.Espadachin;
 
 public class EstadoEdificioDisponible implements EstadoEdificio {
 
-	private int	vidaRepararPorTurno = 25;
 	
 	@Override
 	public Unidad crearArquero() {
@@ -23,7 +22,10 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 
 	@Override
 	public EstadoEdificio reparar(Edificio edificio) {
-		int turnosEnReparacion = ((edificio.getVidaFull()-edificio.getVida())/vidaRepararPorTurno);
+		int turnosEnReparacion = ((edificio.getVidaFull()-edificio.getVida())/edificio.getVelocidadDeReparacion());
+		if(turnosEnReparacion < 1) {
+			turnosEnReparacion = 1;
+		}
 		return (new EstadoEdificioOcupado(turnosEnReparacion));
 		
 	}

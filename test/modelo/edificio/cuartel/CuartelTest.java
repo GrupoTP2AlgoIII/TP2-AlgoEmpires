@@ -2,8 +2,6 @@ package modelo.edificio.cuartel;
 
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
-import modelo.unidad.arquero.Arquero;
-import modelo.unidad.espadachin.Espadachin;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

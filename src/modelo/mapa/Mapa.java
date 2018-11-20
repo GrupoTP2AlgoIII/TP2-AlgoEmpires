@@ -7,7 +7,6 @@ import java.util.Map;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
-import modelo.unidad.Unidad;
 import modelo.vacio.Vacio;
 
 

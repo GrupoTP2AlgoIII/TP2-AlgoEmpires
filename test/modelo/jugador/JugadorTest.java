@@ -28,7 +28,7 @@ public class JugadorTest {
 		Posicion posicion2 = new Posicion (5,6);
 		Posicion posicion3 = new Posicion (5,7);
 		
-		Aldeano aldeano = new Aldeano();
+		//Aldeano aldeano = new Aldeano();
 
 		assertEquals(Aldeano.class, mapa.obtenerPosicionableEn(posicion1).getClass());
 		assertEquals(Aldeano.class, mapa.obtenerPosicionableEn(posicion2).getClass());

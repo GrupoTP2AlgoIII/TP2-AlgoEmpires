@@ -1,10 +1,9 @@
 package modelo.edificio.cuartel;
 
 
+import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
-
 import modelo.unidad.Unidad;
-import modelo.unidad.espadachin.Espadachin;
 
 public class Cuartel extends Edificio{
 
@@ -62,9 +61,17 @@ public class Cuartel extends Edificio{
 			return estado.getTurnosOcupado();
 		}
 
+		
 		@Override
-		public void restarVida(int vidaARestar) {
-			this.vida -= vidaARestar;
+		public int getVelocidadDeReparacion() {
+			return this.velocidadReparacion;
+		}
+		
+
+
+		@Override
+		public void atacado(Ataque ataque) {
+			this.vida -= ataque.getAtaqueEdificio();		
 		}
 
 	    

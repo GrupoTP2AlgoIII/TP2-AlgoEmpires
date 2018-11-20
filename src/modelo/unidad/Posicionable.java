@@ -1,5 +1,6 @@
 package modelo.unidad;
 
+import modelo.ataque.Ataque;
 import modelo.mapa.Posicion;
 
 public abstract class Posicionable {
@@ -79,6 +80,6 @@ public abstract class Posicionable {
 
 	public abstract int getVida();
 
-	public abstract void restarVida(int vidaARestar);
+	public abstract void atacado(Ataque ataque);
 
 }

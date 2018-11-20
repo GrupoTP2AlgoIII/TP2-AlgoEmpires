@@ -9,7 +9,9 @@ public abstract class Edificio extends Posicionable{
     protected int velocidadReparacion;
     protected int vidaFull;
     protected EstadoEdificio estado;
+	
     
+    public abstract int getVelocidadDeReparacion();
 	public abstract void reparar();
 	public abstract int getVida();
 	protected abstract int getVidaFull();
@@ -21,6 +23,5 @@ public abstract class Edificio extends Posicionable{
 		int turnosEnConstruccionInicial = 3;
 		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);
 	}
-	public abstract void restarVida(int vidaARestar);
 
 }

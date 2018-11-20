@@ -1,13 +1,19 @@
 package modelo.unidad.espadachin;
 
+import modelo.ataque.Ataque;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class Espadachin extends Unidad {
 
+	public Espadachin() {
+		this.vida = 100;
+		this.costo = 50;
+		this.ataque = new Ataque(15,25);
+	}
+	
 	@Override
 	public int avanzarTurno() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -15,16 +21,17 @@ public class Espadachin extends Unidad {
 	public int getVida() {
 		return this.vida;
 	}
+	
+	
+	public void atacar(Posicionable posicionable) {
+		posicionable.atacado(ataque);
+	}
 
 	@Override
-	public void restarVida(int vidaARestar) {
-		this.vida -= vidaARestar;
+	public void atacado(Ataque ataque) {
+		this.vida -= ataque.getAtaqueUnidad();
 		
 	}
 	
-	@Override
-	public void atacar(Posicionable posicionable) {
-		posicionable.restarVida(25);
-		
-	}
+
 }

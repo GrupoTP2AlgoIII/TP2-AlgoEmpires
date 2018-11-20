@@ -1,7 +1,6 @@
 package modelo.edificio.castillo;
 
 import modelo.unidad.Unidad;
-import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

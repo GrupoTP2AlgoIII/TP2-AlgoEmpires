@@ -1,5 +1,6 @@
 package modelo.edificio.castillo;
 
+import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.unidad.Unidad;
 
@@ -66,10 +67,19 @@ public class Castillo extends Edificio {
 		return estado.getTurnosOcupado();
 	}
 
+
 	@Override
-	public void restarVida(int vidaARestar) {
-		this.vida -= vidaARestar;
+	public int getVelocidadDeReparacion() {
+		return this.velocidadReparacion;
 	}
+
+	@Override
+	public void atacado(Ataque ataque) {
+		this.vida -= ataque.getAtaqueEdificio();
+		
+	}
+
+
 
 
 }
