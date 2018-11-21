@@ -8,6 +8,10 @@ public class Vacio extends Posicionable{
 	public Vacio(int i, int j) {
 		super(i, j);
 	}
+	
+	public Vacio() {
+		
+	}
 
 	@Override
 	public int avanzarTurno() {

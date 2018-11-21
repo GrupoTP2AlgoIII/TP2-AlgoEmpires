@@ -1,6 +1,5 @@
 package modelo.unidad.aldeano;
 
-import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
@@ -39,21 +38,5 @@ public class Aldeano extends Unidad {
 			estado = estado.reparar(cuartel);
 
 		}
-
-		@Override
-		public int getVida() {
-			return this.vida;
-		}
-
-		@Override
-		public void atacado(Ataque ataque) {
-			this.vida -= ataque.getAtaqueUnidad();
-			
-		}
-
-
-
-		
-
 
 }

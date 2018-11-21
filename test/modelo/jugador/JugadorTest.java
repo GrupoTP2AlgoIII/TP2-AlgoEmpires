@@ -20,7 +20,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador(mapa);
+		Jugador jugador = new Jugador(mapa,"Jorge");
 		jugador.iniciarUnidades();
 
 		Posicion posicion1 = new Posicion (5,5);
@@ -42,7 +42,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);
+		Jugador jugador = new Jugador (mapa,"Jorge");
 		jugador.crearCastilloDesdeHasta(1, 1, 4, 4);
 
 		for (int i = 1; i <= 4; i++){
@@ -60,7 +60,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);
+		Jugador jugador = new Jugador (mapa,"Jorge");
 
 		jugador.crearCastilloDesdeHasta(1,1,10,10);
 	}
@@ -71,7 +71,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);
+		Jugador jugador = new Jugador (mapa,"Jorge");
 
 		// El tamanio es de 4x4, pero se debe indicar de izquierda a derecha y de abajo hacia arriba la ubicacion
 		jugador.crearCastilloDesdeHasta(3,3,1,1);
@@ -83,7 +83,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);
+		Jugador jugador = new Jugador (mapa,"Jorge");
 		
 		jugador.crearCastilloDesdeHasta(-1,-1,2,2);
 	}
@@ -94,7 +94,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);		
+		Jugador jugador = new Jugador (mapa,"Jorge");		
 		jugador.crearCastilloDesdeHasta(1,1,4,4); // Crea un castillo correctamente
 
 		jugador.crearCastilloDesdeHasta(4,4,7,7); // Intenta colocar un castillo pero (4,4) esta ocupada
@@ -108,7 +108,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);
+		Jugador jugador = new Jugador (mapa,"Jorge");
 		jugador.crearPlazaCentralDesdeHasta(1, 8, 2, 9);
 
 		for (int i = 1; i <= 2; i++){
@@ -129,7 +129,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);
+		Jugador jugador = new Jugador (mapa,"Jorge");
 
 		jugador.crearPlazaCentralDesdeHasta(5,5,9,9);
 	}
@@ -140,7 +140,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);
+		Jugador jugador = new Jugador (mapa,"Jorge");
 
 		// El tamanio es de 2x2, pero se debe indicar de izquierda a derecha y de abajo hacia arriba la ubicacion
 		jugador.crearCastilloDesdeHasta(10,10,9,9);
@@ -152,7 +152,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);
+		Jugador jugador = new Jugador (mapa,"Jorge");
 		
 		jugador.crearPlazaCentralDesdeHasta(-1,-1,0,0);
 	}
@@ -163,7 +163,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 
-		Jugador jugador = new Jugador (mapa);		
+		Jugador jugador = new Jugador (mapa,"Jorge");		
 		jugador.crearPlazaCentralDesdeHasta(1,1,2,2); // Crea una plaza central correctamente
 
 		jugador.crearPlazaCentralDesdeHasta(2,2,3,3); // Intenta colocar una plaza central pero (2,2) esta ocupada

@@ -23,13 +23,23 @@ public abstract class Unidad extends Posicionable {
 	}
 
 
-	public abstract int avanzarTurno();
 	public void atacar(Posicionable posicionable) {
 		this.atacar(posicionable);
 		
 	}
+	
+	public void atacado(Ataque ataque) {
+		this.vida -= ataque.getAtaqueUnidad();
+		
+	}
 
-
+	public int getVida() {
+		return this.vida;
+	}
+	
+	public int avanzarTurno() {
+		return 0;
+	}
 	
 //esta bien redefinir los metodos heredados?
 	

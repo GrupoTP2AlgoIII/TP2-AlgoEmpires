@@ -1,6 +1,8 @@
 package modelo.juego;
 
 import modelo.jugador.Jugador;
+import modelo.mapa.Mapa;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,8 +11,9 @@ public class ListaCircularTest {
 
     @Test
     public void ListaCircularInsertaJugadoresEnPrimerPosicionCorrectamente() {
-        Jugador Pocho =  new Jugador("pocho");
-        Jugador Mario = new Jugador("mario");
+        
+    	Jugador Pocho =  new Jugador(new Mapa(),"pocho");
+        Jugador Mario = new Jugador(new Mapa(),"mario");
         ListaCircular<Jugador> listacircular = new ListaCircular<Jugador>();
         listacircular.insertarPrimero(Pocho);
         listacircular.insertarPrimero(Mario);
@@ -25,8 +28,8 @@ public class ListaCircularTest {
 
     public void ListaCircularCirculaCorrectamente(){
 
-        Jugador Pocho =  new Jugador("pocho");
-        Jugador Mario = new Jugador("mario");
+        Jugador Pocho =  new Jugador(new Mapa(),"pocho");
+        Jugador Mario = new Jugador(new Mapa(),"mario");
 
         ListaCircular<Jugador> listacircular = new ListaCircular<Jugador>();
 

@@ -9,6 +9,7 @@ import modelo.edificio.EdificioOcupadoException;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
+import modelo.mapa.Mapa;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
@@ -89,8 +90,8 @@ public class ConstruccionTest {
 	
 	@Test
 	public void test06CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel1Devuelve2(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+		Jugador jugador1 = new Jugador(new Mapa(),"Jorge");
+		Jugador jugador2 = new Jugador(new Mapa(),"Jorge");
 		
 		Edificio cuartel1 = jugador1.construirCuartel(1,1);
 		jugador2.construirCuartel(1,1);
@@ -103,8 +104,8 @@ public class ConstruccionTest {
 
 	@Test
 	public void test07CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador2YGetTurnosConstruccionDeCuartel2Devuelve2(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+		Jugador jugador1 = new Jugador(new Mapa(),"Jorge");
+		Jugador jugador2 = new Jugador(new Mapa(),"Jorge");
 		
 		jugador1.construirCuartel(1,1);
 		Edificio cuartel2 = jugador2.construirCuartel(1,1);
@@ -208,8 +209,8 @@ public class ConstruccionTest {
 	
 	@Test
 	public void test13CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel2Devuelve3(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+		Jugador jugador1 = new Jugador(new Mapa(),"Jorge");
+		Jugador jugador2 = new Jugador(new Mapa(),"Jorge");
 		
 		jugador1.construirCuartel(1,1);
 		Edificio cuartel2 = jugador2.construirCuartel(1,1);
