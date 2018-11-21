@@ -21,9 +21,22 @@ import java.util.Map;
 public class Jugador {
 	private Map  <Posicion, Posicionable> posicionables;
 	private Mapa mapa;
+	private String nombre;
+
 
 	public Jugador () {
 		this.posicionables = new HashMap <Posicion, Posicionable> ();
+	}
+
+
+
+	public Jugador (String nombre) {
+		this.posicionables = new HashMap <Posicion, Posicionable> ();
+		this.nombre = nombre;
+	}
+
+	public String getNombre(){
+		return this.nombre;
 	}
 	public Jugador(Mapa mapa) {
 
