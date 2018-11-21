@@ -12,6 +12,7 @@ import modelo.jugador.PosicionOcupadaError;
 import modelo.edificio.TamanioIncorrectoError;
 
 public class JugadorTest {
+	
 
 	@Test
 	public void test01IniciarUnidadesDeUnJugadorCreaAldeanosCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError {
@@ -32,6 +33,8 @@ public class JugadorTest {
 		assertSame(20, mapa.obtenerPosicionableEn(posicion3).avanzarTurno());
 		
 	}
+	
+	// Tests para poner un castillo
 
 	@Test
 	public void test02IniciarCastilloDeUnJugadorCreaCastilloCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
@@ -40,7 +43,7 @@ public class JugadorTest {
 		mapa.iniciarMapaVacio();
 
 		Jugador jugador = new Jugador (mapa);
-		jugador.iniciarEdificios();
+		jugador.crearCastilloDesdeHasta(1, 1, 4, 4);
 
 		for (int i = 1; i <= 4; i++){
 			for (int j = 1; j <= 4; j++){
@@ -96,6 +99,76 @@ public class JugadorTest {
 
 		jugador.crearCastilloDesdeHasta(4,4,7,7); // Intenta colocar un castillo pero (4,4) esta ocupada
 	}
+	
+	// Tests para poner una plaza central
+	
+	@Test
+	public void test07IniciarPlazaCentralDeUnJugadorLaCreaCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);
+		jugador.crearPlazaCentralDesdeHasta(1, 8, 2, 9);
+
+		for (int i = 1; i <= 2; i++){
+			for (int j = 8; j <= 9; j++){
+				Posicion posicion = new Posicion (i,j);
+				assertTrue(mapa.obtenerPosicionableEn(posicion).estaOcupado());
+
+			}
+		}
+		
+		Posicion posicion2 = new Posicion (20, 20);
+		assertFalse(mapa.obtenerPosicionableEn(posicion2).estaOcupado());
+	}
+
+	@Test (expected = TamanioIncorrectoError.class)
+	public void test08CrearPlazaCentralDeMayorTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);
+
+		jugador.crearPlazaCentralDesdeHasta(5,5,9,9);
+	}
+
+	@Test (expected = TamanioIncorrectoError.class)
+	public void test09CrearPlazaCentralIndicandoMalElTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);
+
+		// El tamanio es de 2x2, pero se debe indicar de izquierda a derecha y de abajo hacia arriba la ubicacion
+		jugador.crearCastilloDesdeHasta(10,10,9,9);
+	}
+
+	@Test (expected = PosicionFueraDelMapaError.class)
+	public void test10CrearPlazaCentralFueraDelMapaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);
+		
+		jugador.crearPlazaCentralDesdeHasta(-1,-1,0,0);
+	}
+
+	@Test (expected = PosicionOcupadaError.class)
+	public void test11CrearPlazaCentralEnPosicionOcupadaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa);		
+		jugador.crearPlazaCentralDesdeHasta(1,1,2,2); // Crea una plaza central correctamente
+
+		jugador.crearPlazaCentralDesdeHasta(2,2,3,3); // Intenta colocar una plaza central pero (2,2) esta ocupada
+	}
+
 
 
 }
