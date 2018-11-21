@@ -18,22 +18,6 @@ public class Posicion {
 		this.y = columna;
 	}
 
-	// Agrego este metodo	
-	public boolean esAdyacenteA(Posicion otraPosicion) {
-		
-		boolean esAdyacente = true;
-		
-		if (this.x > (otraPosicion.getFila() + 1) || this.x < (otraPosicion.getFila() - 1)){
-			esAdyacente = false;
-		}
-		
-		if (this.y > (otraPosicion.getColumna() + 1) || this.y < (otraPosicion.getColumna() - 1)){
-			esAdyacente = false;
-		}
-		
-		return esAdyacente;
-	}
-
 	public void posicionarEnFilaColumna(int fila, int columna) {
 		
 		this.x = fila;

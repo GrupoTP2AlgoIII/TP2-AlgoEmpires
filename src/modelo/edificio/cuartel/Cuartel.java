@@ -74,6 +74,12 @@ public class Cuartel extends Edificio{
 			this.vida -= ataque.getAtaqueEdificio();		
 		}
 
+		@Override
+		public boolean tieneTamanioCorrecto(int desdeX, int desdeY, int hastaX, int hastaY) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
 	    
 	
 }

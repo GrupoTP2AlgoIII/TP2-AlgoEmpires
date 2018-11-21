@@ -41,11 +41,6 @@ public class Mapa {
 
 	public boolean estaOcupado(Posicion posicion) {
 
-//		if (this.mapa.get(posicion).getClass() != Vacio.class){
-//					return true;
-//		}
-//
-//		return false;
 		return (this.mapa.get(posicion).estaOcupado());
 
 	}
@@ -291,21 +286,7 @@ public class Mapa {
 	}
 
 	private boolean hayPosicionOcupadaEnElRango(int desdeX, int desdeY, int hastaX, int hastaY){
-
-//		Posicionable vacio = new Vacio(-2,-2);
-//
-//		for (int i = desdeX; i <= hastaX; i++){
-//			for (int j = desdeY; j <= hastaY; j++){
-//				
-//				Posicion posicion = new Posicion(i,j);
-//				if (this.mapa.get(posicion).getClass() != vacio.getClass()){
-//					return true;
-//				}
-//			}
-//		}
-//
-//		return false;
-		
+	
 		for (int i = desdeX; i <= hastaX; i++){
 			for (int j = desdeY; j <= hastaY; j++){
 				
