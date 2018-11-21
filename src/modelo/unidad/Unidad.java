@@ -128,6 +128,11 @@ public abstract class Unidad extends Posicionable {
 		
 		this.posicion.desplazarHaciaLaDiagonalInferiorIzquierda (cantidadDePosiciones);
 	}
+	
+	@Override
+	public boolean estaOcupado() {
+		return true;		
+	}
 
 
 

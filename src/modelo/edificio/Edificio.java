@@ -23,5 +23,10 @@ public abstract class Edificio extends Posicionable{
 		int turnosEnConstruccionInicial = 3;
 		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);
 	}
+	
+	@Override
+	public boolean estaOcupado() {
+		return true;		
+	}
 
 }

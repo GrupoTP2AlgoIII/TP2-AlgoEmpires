@@ -7,10 +7,8 @@ import org.junit.Test;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.jugador.PosicionOcupadaError;
-import modelo.edificio.castillo.Castillo;
 import modelo.edificio.TamanioIncorrectoError;
 
 public class JugadorTest {
@@ -28,11 +26,10 @@ public class JugadorTest {
 		Posicion posicion2 = new Posicion (5,6);
 		Posicion posicion3 = new Posicion (5,7);
 		
-		//Aldeano aldeano = new Aldeano();
-
-		assertEquals(Aldeano.class, mapa.obtenerPosicionableEn(posicion1).getClass());
-		assertEquals(Aldeano.class, mapa.obtenerPosicionableEn(posicion2).getClass());
-		assertEquals(Aldeano.class, mapa.obtenerPosicionableEn(posicion3).getClass());
+		// Devuelve 20 de oro al avanzar turno
+		assertSame(20, mapa.obtenerPosicionableEn(posicion1).avanzarTurno());
+		assertSame(20, mapa.obtenerPosicionableEn(posicion2).avanzarTurno());
+		assertSame(20, mapa.obtenerPosicionableEn(posicion3).avanzarTurno());
 		
 	}
 
@@ -48,7 +45,7 @@ public class JugadorTest {
 		for (int i = 1; i <= 4; i++){
 			for (int j = 1; j <= 4; j++){
 				Posicion posicion = new Posicion (i,j);
-				assertEquals(Castillo.class, mapa.obtenerPosicionableEn(posicion).getClass());
+				assertTrue(mapa.obtenerPosicionableEn(posicion).estaOcupado());
 
 			}
 		}

@@ -1,5 +1,3 @@
-//prueba
-
 package modelo.mapa;
 
 import static org.junit.Assert.*;
@@ -13,7 +11,6 @@ import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
-import modelo.vacio.Vacio;
 
 public class MapaTest {
 
@@ -222,12 +219,11 @@ public class MapaTest {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
-		Vacio vacio = new Vacio (-2,-2);
-
+		
 		for (int i = 1; i <= mapa.getFilas(); i++){
 			for (int j = 1; j <= mapa.getColumnas(); j++){
 				Posicion posicion = new Posicion(i,j);
-				assertEquals(vacio.getClass(), mapa.obtenerPosicionableEn(posicion).getClass());
+				assertFalse(mapa.obtenerPosicionableEn(posicion).estaOcupado());
 			}
 		}
 	}

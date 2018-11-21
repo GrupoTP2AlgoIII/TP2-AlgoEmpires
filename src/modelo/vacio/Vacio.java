@@ -27,5 +27,10 @@ public class Vacio extends Posicionable{
 		
 	}
 	
+	@Override
+	public boolean estaOcupado() {
+		return false;		
+	}
+	
 
 }
