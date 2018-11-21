@@ -14,7 +14,7 @@ public class ListaCircular<Jugador> {
             nuevo.anterior=nuevo;
             this.primero=nuevo;
         } else {
-            Nodo<Jugador> ultimo=this.primero.anterior;
+            Nodo<Jugador> ultimo = this.primero.anterior;
             nuevo.siguiente=this.primero;
             nuevo.anterior=ultimo;
             this.primero.anterior=nuevo;
