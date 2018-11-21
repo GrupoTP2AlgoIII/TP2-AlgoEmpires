@@ -1,6 +1,7 @@
 package modelo.unidad;
 
 import modelo.ataque.Ataque;
+import modelo.jugador.PlazaCentralCrearAldeanoException;
 import modelo.mapa.Posicion;
 
 public abstract class Posicionable {
@@ -82,5 +83,9 @@ public abstract class Posicionable {
 	public abstract void atacado(Ataque ataque);
 	
 	public abstract boolean estaOcupado();
+	
+    public Unidad crearAldeano() {
+    	throw new PlazaCentralCrearAldeanoException();
+    }
 
 }

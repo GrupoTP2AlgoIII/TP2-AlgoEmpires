@@ -1,7 +1,9 @@
 package modelo.edificio;
 
 import modelo.ataque.Ataque;
+import modelo.jugador.PlazaCentralCrearAldeanoException;
 import modelo.unidad.Posicionable;
+import modelo.unidad.Unidad;
 
 public abstract class Edificio extends Posicionable{
     protected int vida;
@@ -49,6 +51,7 @@ public abstract class Edificio extends Posicionable{
 				this.vida = this.vidaFull;
 			}
 		}
+		
 		
 		
 		public int getTurnosConstruccion() {

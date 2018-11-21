@@ -27,6 +27,7 @@ public class Jugador {
 	private String nombre;
 	private int poblacion;
 	private int oro;
+	private int produccionDeOro;
 
 	public Jugador(Mapa mapa,String nombre) {
 
@@ -35,6 +36,7 @@ public class Jugador {
 		this.nombre = nombre;
 		this.poblacion = 0;
 		this.oro = 200;
+		this.produccionDeOro = 0;
 	}
 
 
@@ -52,50 +54,60 @@ public class Jugador {
 	}
 	
 	public Unidad crearAldeano(Posicion plazaCentral) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+		int produccionOroAldeano = 20;
 		int costoAldeano = 25;
 		int topePoblacional = 50;
 		Unidad aldeano = null;
-		PlazaCentral plaza = (PlazaCentral)this.posicionables.get(plazaCentral);
+		Posicionable plaza = this.posicionables.get(plazaCentral);
 		
-		if(this.oro >= costoAldeano && this.poblacion < topePoblacional) {
-			aldeano = plaza.crearAldeano();
-			
-			if(aldeano == null) {
-				throw new PlazaCentralCrearAldeanoException();
+		if(this.oro >= costoAldeano) {
+			if(this.poblacion < topePoblacional) {
+				aldeano = plaza.crearAldeano();
+				
+				this.poblacion++;
+				this.produccionDeOro += produccionOroAldeano;
+				this.oro -= costoAldeano;
+				
+				//busco la posicion desocupada para crear el aldeano
+				int fila  = plazaCentral.getFila()+3;
+				int columna = plazaCentral.getColumna()+3;
+				Posicion posicionAux = new Posicion(fila,columna);
+				while (this.mapa.estaOcupado(posicionAux)) {
+					fila++;
+					columna++;
+					posicionAux.posicionarEnFilaColumna(fila, columna);
+				}
+				aldeano.posicionarEnFilaColumna(posicionAux.getFila(), posicionAux.getColumna());
+				
+				//actualizo mapa y posicionables de jugador
+				this.agregarPosicionableEnFilaColumna(aldeano,aldeano.getPosicion().getFila(), aldeano.getPosicion().getColumna());
+				this.mapa.posicionarEnFilaColumna(aldeano, aldeano.getPosicion().getFila(),aldeano.getPosicion().getColumna());
+				return aldeano;
 			}
-			this.poblacion++;
-			this.oro -= costoAldeano;
-			
-			//busco la posicion desocupada para crear el aldeano
-			int fila  = plazaCentral.getFila()+3;
-			int columna = plazaCentral.getColumna()+3;
-			Posicion posicionAux = new Posicion(fila,columna);
-			while (this.mapa.estaOcupado(posicionAux)) {
-				fila++;
-				columna++;
-				posicionAux.posicionarEnFilaColumna(fila, columna);
-			}
-			aldeano.posicionarEnFilaColumna(posicionAux.getFila(), posicionAux.getColumna());
-			
-			//actualizo mapa y posicionables de jugador
-			this.agregarPosicionableEnFilaColumna(aldeano,aldeano.getPosicion().getFila(), aldeano.getPosicion().getColumna());
-			this.mapa.posicionarEnFilaColumna(aldeano, aldeano.getPosicion().getFila(),aldeano.getPosicion().getColumna());
-			return aldeano;
+			throw new JugadorSuperaTopePoblacionalException();
 		}	
 		throw new JugadorSinOroException();			
 	}
 	
 	public void avanzarTurno() {
-		//lo que deberia hacer es recorrer el diccionario y avanzar el turno de cada posicionable
-		//Posicion posicionDelPosicionable = new Posicion (1,1);	//temporal
-		//this.posicionables.get(posicionDelPosicionable).avanzarTurno();
 		
+		posicionables.forEach((k,v) -> {
+			this.oro += v.avanzarTurno();
+		});
+	}
+	
+	//elimina a los posicionables con vida cero y lo pone en vacio
+	public void actualizarPosicionables() {
+		int produccionOroAldeano = 20;
 		Posicionable vacio = new Vacio();
 		posicionables.forEach((k,v) -> {
-			if(v.getVida() == 0) {
+			if(v.getVida() <= 0) {
+				if(v.avanzarTurno() == produccionOroAldeano) {
+					this.produccionDeOro -= produccionOroAldeano;
+				}
 				posicionables.replace(k,v, vacio);
+				this.poblacion--;
 			}
-			this.oro += v.avanzarTurno();
 		});
 	}
 
@@ -333,5 +345,22 @@ public class Jugador {
 
 	public Object getOro() {
 		return this.oro;
+	}
+
+
+	public Object getProduccionOro() {
+		return this.produccionDeOro;
+	}
+
+
+	public void setPoblacion(int poblacion) {
+		this.poblacion = poblacion;
+		
+	}
+
+
+	public void setOro(int oro) {
+		this.oro = oro;
+		
 	}
 }
