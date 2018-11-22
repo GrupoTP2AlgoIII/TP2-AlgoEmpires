@@ -25,6 +25,8 @@ public abstract class Unidad extends Posicionable {
 	// Agrego este constructor
 	public Unidad(int x, int y) {
 		super (x, y);
+		this.cantidadDeMovimientos = 0;
+		this.movimientosPermitidos = 1;
 	}
 	
 	public abstract void atacar (Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError;
