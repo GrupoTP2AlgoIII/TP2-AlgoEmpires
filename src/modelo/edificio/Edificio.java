@@ -1,17 +1,19 @@
 package modelo.edificio;
 
-import modelo.ataque.Ataque;
-import modelo.jugador.PlazaCentralCrearAldeanoException;
-import modelo.unidad.Posicionable;
-import modelo.unidad.Unidad;
 
-public abstract class Edificio extends Posicionable{
+import modelo.ataque.Ataque;
+import modelo.mapa.Posicion;
+import modelo.unidad.Posicionable;
+
+public abstract class Edificio extends Posicionable {
     protected int vida;
     protected int costo;
     protected int tamanio;
     protected int velocidadReparacion;
     protected int vidaFull;
     protected EstadoEdificio estado;
+    protected Posicion posicionDesde;
+    protected Posicion posicionHasta;
 	
    
 	public abstract boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY);
@@ -19,8 +21,16 @@ public abstract class Edificio extends Posicionable{
 	public Edificio(){
 		int turnosEnConstruccionInicial = 3;
 		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);
+		
 	}
 	
+	public Edificio(int desdeX, int desdeY, int hastaX, int hastaY){
+		this.posicionDesde = new Posicion (desdeX, desdeY);
+		this.posicionHasta = new Posicion (hastaX, hastaY);
+		int turnosEnConstruccionInicial = 3;
+		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);
+		
+	}
 
 	   public boolean estaOcupado() {
 		   return true;		
@@ -67,5 +77,6 @@ public abstract class Edificio extends Posicionable{
 			this.vida -= ataque.getAtaqueEdificio();
 			
 		}
+		
 
 }

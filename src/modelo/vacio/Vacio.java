@@ -1,6 +1,7 @@
 package modelo.vacio;
 
 import modelo.ataque.Ataque;
+import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 
 public class Vacio extends Posicionable{
@@ -34,6 +35,11 @@ public class Vacio extends Posicionable{
 	@Override
 	public boolean estaOcupado() {
 		return false;		
+	}
+	
+	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
+		
+		return false;
 	}
 	
 

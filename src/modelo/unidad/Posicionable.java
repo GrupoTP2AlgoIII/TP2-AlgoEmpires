@@ -88,4 +88,6 @@ public abstract class Posicionable {
     	throw new PlazaCentralCrearAldeanoException();
     }
 
+	public abstract boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna);
+
 }

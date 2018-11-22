@@ -7,6 +7,7 @@ import modelo.mapa.Mapa;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Unidad;
+import modelo.edificio.Edificio;
 import modelo.edificio.TamanioIncorrectoError;
 
 public class Juego {
@@ -27,6 +28,11 @@ public class Juego {
 		this.mapa.posicionarEnFilaColumna(unidad, fila, columna);
 		this.jugadorActual.agregarPosicionableEnFilaColumna (unidad, fila, columna);
 		
+	}
+	
+	public void agregarEdifcioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionOcupadaError, PosicionFueraDelMapaError {
+		
+		this.mapa.ponerEdificioDesdeHasta(edificio, desdeX, desdeY, hastaX, hastaY);
 	}
 
 	public void desplazarFilaColumnaHaciaArriba(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError {

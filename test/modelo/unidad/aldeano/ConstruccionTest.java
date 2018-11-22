@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.edificio.Edificio;
 import modelo.edificio.EdificioOcupadoException;
 import modelo.edificio.cuartel.Cuartel;
@@ -28,7 +29,7 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveElArqueroCreadoYAtacarAldeanoLeResta15DeVida() {
+	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveElArqueroCreadoYAtacarAldeanoLeResta15DeVida() throws AldeanoNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError {
 		Cuartel cuartel = new Cuartel();
 		Posicionable aldeano = new Aldeano();
 		
@@ -52,11 +53,11 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test04CreoUnaPlazaCentralYComoEstaConstruidaCrearAldeanoDevuelveElAdeanoCreadoYRepararCuartelDaniadoLoRepara() {
+	public void test04CreoUnaPlazaCentralYComoEstaConstruidaCrearAldeanoDevuelveElAdeanoCreadoYRepararCuartelDaniadoLoRepara() throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		
 		PlazaCentral plaza = new PlazaCentral();
-		Edificio cuartel = new Cuartel();
-		Arquero arquero = new Arquero();
+		Edificio cuartel = new Cuartel(7,4,8,5);
+		Arquero arquero = new Arquero(5,5);
 		
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
@@ -126,9 +127,9 @@ public class ConstruccionTest {
 	}
 
 	@Test
-	public void test09CreoUnAldeanoQueConstruyaUnaPlazaCentralYComoEstaConstruidaCreoUnAldeanoQueReparaUnCuartelDaniadoRestaurandoSuVidaA250() {
+	public void test09CreoUnAldeanoQueConstruyaUnaPlazaCentralYComoEstaConstruidaCreoUnAldeanoQueReparaUnCuartelDaniadoRestaurandoSuVidaA250() throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		Aldeano aldeano = new Aldeano();
-		Arquero arquero = new Arquero();
+		Arquero arquero = new Arquero(5,5);
 		PlazaCentral plaza = (PlazaCentral) aldeano.construirPlazaCentral();
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -137,7 +138,7 @@ public class ConstruccionTest {
 		Aldeano otroAldeano = (Aldeano)plaza.crearAldeano();
 		
 		
-		Edificio cuartelDaniado = new Cuartel();
+		Edificio cuartelDaniado = new Cuartel(7,4,8,5);
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
@@ -152,12 +153,12 @@ public class ConstruccionTest {
 	
 	
 	@Test
-	public void test10CreoUnAldeanoYComoTerminoDeRepararDevuelve20() {
+	public void test10CreoUnAldeanoYComoTerminoDeRepararDevuelve20() throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		
 		
 		Aldeano aldeano = new Aldeano();
-		Arquero arquero = new Arquero();
-		Edificio cuartel = new Cuartel();
+		Arquero arquero = new Arquero(5,5);
+		Edificio cuartel = new Cuartel(7,4,8,5);
 		int oroGenerado;
 		
 		cuartel.avanzarTurno();
@@ -175,11 +176,11 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test11CreoUnCuartelCon200DeVidaYComoEstaReparadoGetVidaDevuelve250() {
+	public void test11CreoUnCuartelCon200DeVidaYComoEstaReparadoGetVidaDevuelve250() throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		
 		Aldeano aldeano = new Aldeano();
-		Edificio cuartel = new Cuartel();
-		Arquero arquero = new Arquero();
+		Edificio cuartel = new Cuartel(7,4,8,5);
+		Arquero arquero = new Arquero(5,5);
 		
 		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
 		cuartel.avanzarTurno();	    //construccion cuartel - 3 turnos	
@@ -194,7 +195,7 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test12CreoUnAldeanoQueConstruyaUnCuartelYComoEstaConstruidoCreaUnArqueroQueAtacaUnAldeanoRestandole15DeVida() {
+	public void test12CreoUnAldeanoQueConstruyaUnCuartelYComoEstaConstruidoCreaUnArqueroQueAtacaUnAldeanoRestandole15DeVida() throws AldeanoNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError {
 		Aldeano aldeano = new Aldeano();
 		Cuartel cuartel = (Cuartel)aldeano.construirCuartel();	
 		
@@ -221,10 +222,10 @@ public class ConstruccionTest {
 	}
 	
 	@Test(expected=AldeanoOcupadoException.class)
-	public void test14CreoUnAldeanoYComoEstaOcupadoConstruirCuartelDevuelveException() throws AldeanoOcupadoException {
+	public void test14CreoUnAldeanoYComoEstaOcupadoConstruirCuartelDevuelveException() throws AldeanoOcupadoException, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		Aldeano aldeano = new Aldeano();
-		Edificio cuartelDaniado = new Cuartel();
-		Arquero arquero = new Arquero();
+		Edificio cuartelDaniado = new Cuartel(7,4,8,5);
+		Arquero arquero = new Arquero(5,5);
 		
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
@@ -237,11 +238,11 @@ public class ConstruccionTest {
 	}
 	
 	@Test(expected=AldeanoOcupadoException.class)
-	public void test15CreoUnAldeanoYComoEstaOcupadoRepararCuartelDevuelveException() throws AldeanoOcupadoException {
+	public void test15CreoUnAldeanoYComoEstaOcupadoRepararCuartelDevuelveException() throws AldeanoOcupadoException, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		Aldeano aldeano = new Aldeano();
-		Edificio cuartelDaniado = new Cuartel();
-		Edificio otroCuartelDaniado = new Cuartel();
-		Arquero arquero = new Arquero();
+		Edificio cuartelDaniado = new Cuartel(7,4,8,5);
+		Edificio otroCuartelDaniado = new Cuartel(2,7,3,8);
+		Arquero arquero = new Arquero(5,5);
 		
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();

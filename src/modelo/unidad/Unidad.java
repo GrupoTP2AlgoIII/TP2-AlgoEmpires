@@ -1,14 +1,18 @@
 package modelo.unidad;
 
+import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
+import modelo.mapa.Posicion;
+import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 
 public abstract class Unidad extends Posicionable {
 	
-	private int cantidadDeMovimientos;
-	private int movimientosPermitidos;
+	protected int cantidadDeMovimientos;
+	protected int movimientosPermitidos;
 	protected int vida;
 	protected int costo;
 	protected Ataque ataque;
+	protected int alcance;
 	
 	public Unidad () {
 		
@@ -21,11 +25,17 @@ public abstract class Unidad extends Posicionable {
 	public Unidad(int x, int y) {
 		super (x, y);
 	}
+	
+	public abstract void atacar (Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError;
+	
+	/*
+     * devuelve si el posicionable se encuentra dentro de la cuadricula formada por el alcanceEnFila y alcanceEnColumna
+     * a partri de la posicion.
+     */
 
-
-	public void atacar(Posicionable posicionable) {
-		this.atacar(posicionable);
+	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 		
+		return this.posicion.perteneceALaCuadricula(posicion, alcanceEnFila, alcanceEnColumna);
 	}
 	
 	public void atacado(Ataque ataque) {

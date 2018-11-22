@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
@@ -12,6 +13,7 @@ import modelo.jugador.JugadorSuperaTopePoblacionalException;
 import modelo.jugador.PlazaCentralCrearAldeanoException;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
+import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 import modelo.unidad.espadachin.Espadachin;
 
 public class PoblacionTest {
@@ -41,12 +43,12 @@ public class PoblacionTest {
 	}
 	
 	@Test
-	public void test02CreoUnJugadorCon3AldeanosMatoAUnAldeanoYGetPoblacionDevuelve2() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test02CreoUnJugadorCon3AldeanosMatoAUnAldeanoYGetPoblacionDevuelve2() throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
-		Espadachin espadachin = new Espadachin();
+		Espadachin espadachin = new Espadachin(5,5);
 		Jugador jugador = new Jugador(mapa,"Pablo");
-		Posicionable plaza = new PlazaCentral();
+		Posicionable plaza = new PlazaCentral(1,1,2,2);
 		
 		//construccion plaza 3 turnos
 		plaza.avanzarTurno();
@@ -69,12 +71,12 @@ public class PoblacionTest {
 	}
 	
 	@Test
-	public void test03CreoUnJugadorCon3AldeanosMatoAUnAldeanoYGetProduccionOroDevuelve40() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test03CreoUnJugadorCon3AldeanosMatoAUnAldeanoYGetProduccionOroDevuelve40() throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
-		Espadachin espadachin = new Espadachin();
+		Espadachin espadachin = new Espadachin(5,5);
 		Jugador jugador = new Jugador(mapa,"Pablo");
-		Posicionable plaza = new PlazaCentral();
+		Posicionable plaza = new PlazaCentral(1,1,2,2);
 		
 		//construccion plaza 3 turnos
 		plaza.avanzarTurno();

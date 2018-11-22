@@ -127,6 +127,12 @@ public class Posicion {
 		return resultado;		
 	}
 
+	public boolean perteneceALaCuadricula(Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
+		
+		return ((this.x >= posicion.getFila() - alcanceEnFila) && (this.x <= posicion.getFila() + alcanceEnFila) &&
+					(this.y >= posicion.getColumna() - alcanceEnColumna) && (this.y <= posicion.getColumna() + alcanceEnColumna));
+	}
+
 
 
 }

@@ -3,6 +3,7 @@ package modelo.unidad.aldeano;
 import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
+import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class Aldeano extends Unidad {
@@ -37,6 +38,12 @@ public class Aldeano extends Unidad {
 			cuartel.reparar();
 			estado = estado.reparar(cuartel);
 
+		}
+		
+		@Override
+		public void atacar (Posicionable posicionable) throws AldeanoNoPuedeAtacarError {
+			
+			throw new AldeanoNoPuedeAtacarError ();
 		}
 
 }
