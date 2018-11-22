@@ -7,6 +7,7 @@ import org.junit.Test;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
+import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.edificio.TamanioIncorrectoError;
@@ -21,7 +22,7 @@ public class JugadorTest {
 		mapa.iniciarMapaVacio();
 
 		Jugador jugador = new Jugador(mapa,"Jorge");
-		jugador.iniciarUnidades();
+		jugador.iniciarAldeanosDesde(5,5);
 
 		Posicion posicion1 = new Posicion (5,5);
 		Posicion posicion2 = new Posicion (5,6);
@@ -168,7 +169,18 @@ public class JugadorTest {
 
 		jugador.crearPlazaCentralDesdeHasta(2,2,3,3); // Intenta colocar una plaza central pero (2,2) esta ocupada
 	}
-
-
+	
+	@Test (expected = PosicionDesocupadaError.class)
+	public void test12DesplazarHaciaArribaPosicionDesocupadaArrojaError() throws MovimientosPorTurnoExcedidosError, PosicionDesocupadaError, PosicionOcupadaError {
+		
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+		
+		Jugador jugador = new Jugador(mapa, "nombre");
+				
+		jugador.desplazarFilaColumnaHaciaArriba(10, 10, 1);
+		
+	}
+	
 
 }

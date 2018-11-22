@@ -264,25 +264,20 @@ public class Jugador {
 		
 	}
 
-	public void iniciarUnidades() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void iniciarAldeanosDesde(int x, int y) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 	
-		for (int i = 5; i <= 7; i++ ) {
+		for (int i = y; i <= (y + 2); i++ ) {
 		    Posicionable aldeano = new Aldeano();
-		    this.agregarPosicionableEnFilaColumna(aldeano, 5, i);
-		    this.mapa.posicionarEnFilaColumna(aldeano, 5, i);
+		    this.agregarPosicionableEnFilaColumna(aldeano, x, i);
+		    this.mapa.posicionarEnFilaColumna(aldeano, x, i);
         }
 		
 	}
 
-	public void iniciarEdificios() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError {
-
-		this.crearCastilloDesdeHasta(1,1,4,4);
-		this.crearPlazaCentralDesdeHasta(1,8,2,9);	
-	}
 
 	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
 
-		Edificio castillo = new Castillo();
+		Edificio castillo = new Castillo(0);
 
 		if (! castillo.tieneTamanioCorrecto(desdeX, desdeY, hastaX, hastaY)){
 			throw new TamanioIncorrectoError();
@@ -306,7 +301,7 @@ public class Jugador {
 	
 	public void crearPlazaCentralDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
 		
-		Edificio plazaCentral = new PlazaCentral();
+		Edificio plazaCentral = new PlazaCentral(0);
 
 		if (! plazaCentral.tieneTamanioCorrecto(desdeX, desdeY, hastaX, hastaY)){
 			throw new TamanioIncorrectoError();

@@ -23,6 +23,15 @@ public class Castillo extends Edificio {
         this.ataque = new Ataque (20, 20, this.alcance);
         
     }
+    
+    public Castillo(int turnos) {
+        super(turnos);
+    	this.vida = 1000;
+        this.tamanio = 16;
+        this.velocidadReparacion = 15;
+	    this.costo = 50;
+        this.vidaFull = vida;
+    }
 
     public Unidad crearArmaAsedio(){
     	return estado.crearArmaAsedio();

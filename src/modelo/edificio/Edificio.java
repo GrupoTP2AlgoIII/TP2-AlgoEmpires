@@ -32,7 +32,14 @@ public abstract class Edificio extends Posicionable {
 		
 	}
 
-	   public boolean estaOcupado() {
+	 // Constructor que reciba 0 por parametro, para inicializar el juego
+	 public Edificio(int turnos) {
+		if (turnos == 0) {
+			estado = new EstadoEdificioDisponible();
+		}		
+	}
+
+	public boolean estaOcupado() {
 		   return true;		
 	   }
 	

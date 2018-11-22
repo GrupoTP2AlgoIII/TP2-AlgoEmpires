@@ -30,7 +30,16 @@ public class PlazaCentral extends Edificio {
 		    	
 		    }
 
-			public Unidad crearAldeano() {
+		   public PlazaCentral(int turnos) {
+			   super(turnos);
+			   this.vida = 450;
+			   this.costo = 100;
+			   this.tamanio = 4;
+			   this.velocidadReparacion = 25;
+			   this.vidaFull = 450;
+		   }
+		   
+		    public Unidad crearAldeano() {
 		    	return estado.crearAldeano();
 		    }
 
