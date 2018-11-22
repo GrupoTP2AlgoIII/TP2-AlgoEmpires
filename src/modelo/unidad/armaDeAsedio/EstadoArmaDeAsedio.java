@@ -4,10 +4,21 @@ import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.mapa.Posicion;
+import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.Posicionable;
 
 public interface EstadoArmaDeAsedio {
 
 	public void avanzarTurno ();
 	void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque) throws ArmaDeAsedioDesmontadaNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError;
+	public void desplazarHaciaLaDerecha (int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+	public void desplazarHaciaLaIzquierda (int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError,ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+	public void desplazarHaciaArriba (int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+	public void desplazarHaciaAbajo (int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+	public void desplazarHaciaLaDiagonalSuperiorDerecha (int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+	public void desplazarHaciaLaDiagonalSuperiorIzquierda (int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+	public void desplazarHaciaLaDiagonalInferiorDerecha (int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+	public void desplazarHaciaLaDiagonalInferiorIzquierda (int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+
+		
 }

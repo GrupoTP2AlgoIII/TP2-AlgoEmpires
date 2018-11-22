@@ -5,6 +5,7 @@ import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.mapa.Posicion;
 import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 
 public abstract class Unidad extends Posicionable {
 	
@@ -54,7 +55,7 @@ public abstract class Unidad extends Posicionable {
 	
 //esta bien redefinir los metodos heredados?
 	
-	public void desplazarHaciaLaDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarHaciaLaDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			
@@ -66,7 +67,7 @@ public abstract class Unidad extends Posicionable {
 		
 	}
 
-	public void desplazarHaciaLaIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarHaciaLaIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			
@@ -78,7 +79,7 @@ public abstract class Unidad extends Posicionable {
 		
 	}
 
-	public void desplazarHaciaArriba(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarHaciaArriba(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			
@@ -91,7 +92,7 @@ public abstract class Unidad extends Posicionable {
 		
 	}
 
-	public void desplazarHaciaAbajo(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarHaciaAbajo(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			
@@ -103,7 +104,7 @@ public abstract class Unidad extends Posicionable {
 		
 	}
 
-	public void desplazarHaciaLaDiagonalSuperiorDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarHaciaLaDiagonalSuperiorDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			
@@ -115,7 +116,7 @@ public abstract class Unidad extends Posicionable {
 		
 	}
 
-	public void desplazarHaciaLaDiagonalSuperiorIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarHaciaLaDiagonalSuperiorIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError{
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			
@@ -127,7 +128,7 @@ public abstract class Unidad extends Posicionable {
 		
 	}
 
-	public void desplazarHaciaLaDiagonalInferiorDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarHaciaLaDiagonalInferiorDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			
@@ -139,7 +140,7 @@ public abstract class Unidad extends Posicionable {
 		
 	}
 
-	public void desplazarHaciaLaDiagonalInferiorIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError {
+	public void desplazarHaciaLaDiagonalInferiorIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			

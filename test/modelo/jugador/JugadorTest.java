@@ -9,7 +9,9 @@ import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.jugador.PosicionOcupadaError;
+import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.edificio.TamanioIncorrectoError;
 
 public class JugadorTest {
@@ -171,7 +173,7 @@ public class JugadorTest {
 	}
 	
 	@Test (expected = PosicionDesocupadaError.class)
-	public void test12DesplazarHaciaArribaPosicionDesocupadaArrojaError() throws MovimientosPorTurnoExcedidosError, PosicionDesocupadaError, PosicionOcupadaError {
+	public void test12DesplazarHaciaArribaPosicionDesocupadaArrojaError() throws MovimientosPorTurnoExcedidosError, PosicionDesocupadaError, PosicionOcupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();

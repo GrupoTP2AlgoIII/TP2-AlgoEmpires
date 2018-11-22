@@ -12,6 +12,7 @@ import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
 
@@ -127,14 +128,24 @@ public class AtaqueTest {
 		arma.montar ();
 		arma.atacar(cuartel);
 	}
-	/*
+	
 	@Test
-	public void test10MoverArmaDeAsedioDesmontadaHaciaLaDerecha () throws MovimientosPorTurnoExcedidosError {
+	public void test10MoverArmaDeAsedioDesmontadaHaciaLaDerecha () throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		arma.avanzarTurno();
 		//arma desmontada
 		arma.desplazarHaciaLaDerecha(1);
 	
 	}
-	*/
+	
+	@Test (expected = ArmaDeAsedioMontadaNoPuedeDesplazarseError.class)
+	public void test11MoverArmaDeAsedioMontadaHaciaDebeLanzarExcepcion () throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+		
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		arma.montar();
+		arma.avanzarTurno();
+		arma.desplazarHaciaLaDerecha(1);
+		
+	}
 }
