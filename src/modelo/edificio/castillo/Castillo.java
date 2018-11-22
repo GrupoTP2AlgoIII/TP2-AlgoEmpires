@@ -2,9 +2,11 @@ package modelo.edificio.castillo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
+import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -31,7 +33,20 @@ public class Castillo extends Edificio {
         this.velocidadReparacion = 15;
 	    this.costo = 50;
         this.vidaFull = vida;
+        this.ataque = new Ataque (20, 20, this.alcance);
     }
+    
+	  public Castillo(int desdeX, int desdeY, int hastaX, int hastaY) {
+		   
+		   this.posicionDesde = new Posicion (desdeX, desdeY);
+		   this.posicionHasta = new Posicion (hastaX, hastaY);
+	   	   this.vida = 1000;
+	   	   this.tamanio = 16;
+	   	   this.velocidadReparacion = 15;
+		   this.costo = 50;	       
+	       this.vidaFull = vida;	       
+	       this.ataque = new Ataque (20, 20, this.alcance);
+	    }
 
     public Unidad crearArmaAsedio(){
     	return estado.crearArmaAsedio();
@@ -79,25 +94,22 @@ public class Castillo extends Edificio {
 		return posicionesQueOcupa;
 	}
 	
-	public void atacarEnemigosAlAlcance () {
+	public void atacarEnemigosAlAlcance (Mapa mapa, Map  <Posicion, Posicionable> posicionables) {
 		
-		//FALTA RESOLVER ESTO
-		
-		//estas posiciones serian todo el rango de alcance del castillo. Ademas, incluye las posiciones donde esta el castillo
 		Posicion desdeAlcance = new Posicion (this.posicionDesde.getFila() - 3, this.posicionDesde.getColumna() - 3);
 		Posicion hastaAlcance = new Posicion (this.posicionHasta.getFila() + 3, this.posicionHasta.getColumna() + 3);
 		ArrayList <Posicion> posicionesAlcanzables = crearListaConPosicionesQueOcupa (desdeAlcance, hastaAlcance);
 		
 		Iterator<Posicion> iterador = posicionesAlcanzables.iterator();
 		while (iterador.hasNext()) {
-			// if (iterador.hasNext () != vacio) {
-			//		atacar(posicionable que se encuentra en la posicion iterador.next());
-			//}
+			
+			Posicionable posicionableEnRango = mapa.obtenerPosicionableEn(iterador.next());
+			if (posicionableEnRango.estaOcupado() && (!posicionables.containsValue(posicionableEnRango))) {
+				this.atacar(posicionableEnRango);
+				
+			}
 		}
-		
-		
-		//para hacer esto de atacar, el catillo necesita conocer al mapa así puede saber si en las posiciones que estan a su
-		//alcance hay algun posicionable o esta vacio. Entonces va a atacar solo a los vacios.
+
 	}
 	
 }

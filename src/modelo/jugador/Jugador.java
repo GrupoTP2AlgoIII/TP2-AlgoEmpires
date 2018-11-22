@@ -96,7 +96,14 @@ public class Jugador {
 		posicionables.forEach((k,v) -> {
 			this.oro += v.avanzarTurno();
 		});
+		
+		//this.CastilloAtacarEnSuRango();
 	}
+	
+//	public void CastilloAtacarEnSuRango(){
+//		
+//		
+//	}
 	
 	//elimina a los posicionables con vida cero y lo pone en vacio
 	public void actualizarPosicionables() {
@@ -118,6 +125,19 @@ public class Jugador {
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
 		
 		this.posicionables.put(posicionDelPosicionable, posicionable);
+		
+	}
+	
+	// Borrar el metodo agregar edificio a posicionables y agregarle la linea del mapa al metodo de arriba
+	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+		
+		for (int i = desdeX; i <= hastaX; i++) {
+			for (int j = desdeY; j <= hastaY; j++) {
+				Posicion posicion = new Posicion (i,j);
+				this.posicionables.put(posicion, edificio);
+				this.mapa.posicionarEnFilaColumna(edificio, i, j);
+			}
+		}
 		
 	}
 	
@@ -280,7 +300,7 @@ public class Jugador {
 	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
 
 		Edificio castillo = new Castillo(0);
-
+		
 		if (! castillo.tieneTamanioCorrecto(desdeX, desdeY, hastaX, hastaY)){
 			throw new TamanioIncorrectoError();
 		}
@@ -324,7 +344,7 @@ public class Jugador {
 		this.agregarEdificioAPosicionables(plazaCentral, desdeX, desdeY, hastaX, hastaY);
 	}
 
-	private void agregarEdificioAPosicionables(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY){
+	private void agregarEdificioAPosicionables(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionFueraDelMapaError, PosicionOcupadaError{
 
 		for (int i = desdeX; i <= hastaX; i++){
 			for (int j = desdeY; j <= hastaY; j++){
@@ -359,5 +379,9 @@ public class Jugador {
 	public void setOro(int oro) {
 		this.oro = oro;
 		
+	}
+	
+	public Map <Posicion, Posicionable> getPosicionables() {
+		return this.posicionables;
 	}
 }
