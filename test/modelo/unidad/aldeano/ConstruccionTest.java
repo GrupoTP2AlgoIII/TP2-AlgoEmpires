@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.edificio.Edificio;
 import modelo.edificio.EdificioOcupadoException;
@@ -29,7 +30,7 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveElArqueroCreadoYAtacarAldeanoLeResta15DeVida() throws AldeanoNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError {
+	public void test02CreoUnCuartelYComoEstaConstruidoCrearArqueroDevuelveElArqueroCreadoYAtacarAldeanoLeResta15DeVida() throws AldeanoNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
 		Cuartel cuartel = new Cuartel();
 		Posicionable aldeano = new Aldeano();
 		
@@ -195,7 +196,7 @@ public class ConstruccionTest {
 	}
 	
 	@Test
-	public void test12CreoUnAldeanoQueConstruyaUnCuartelYComoEstaConstruidoCreaUnArqueroQueAtacaUnAldeanoRestandole15DeVida() throws AldeanoNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError {
+	public void test12CreoUnAldeanoQueConstruyaUnCuartelYComoEstaConstruidoCreaUnArqueroQueAtacaUnAldeanoRestandole15DeVida() throws AldeanoNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
 		Aldeano aldeano = new Aldeano();
 		Cuartel cuartel = (Cuartel)aldeano.construirCuartel();	
 		

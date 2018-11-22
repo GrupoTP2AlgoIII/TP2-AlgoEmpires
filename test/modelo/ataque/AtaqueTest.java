@@ -8,6 +8,7 @@ import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.jugador.PosicionOcupadaError;
+import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
@@ -45,9 +46,11 @@ public class AtaqueTest {
 	}
 	
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
-	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
 		
 		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio (5, 5);
+		armaDeAsedio.montar();
+		armaDeAsedio.avanzarTurno();
 		Arquero arquero = new Arquero (30, 30);
 		Juego juego = new Juego ();
 		juego.agregarUnidadEnFilaColumna(arquero, 30, 30);
@@ -91,7 +94,47 @@ public class AtaqueTest {
 		arquero.atacar(plaza);
 	}
 	
+	@Test
+	public void test07AtacarConArmaDeAsedioMontadaUnEdificio () throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+		
+		Cuartel cuartel = new Cuartel (5,5,6,6);
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		arma.montar ();
+		arma.avanzarTurno();
+		arma.atacar(cuartel);
+		
+		//cuartel inicia con vida = 250
+		//arma le resta 75 de vida
+		assertEquals (cuartel.getVida(), 175);
+		
+		
+	}
 	
+	@Test (expected = ArmaDeAsedioDesmontadaNoPuedeAtacarError.class)
+	public void test08AtacarConArmaDeAsedioDesmontadaDebeLanzarExcepcion () throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+		
+		Cuartel cuartel = new Cuartel (5,5,6,6);
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		//el arma inicia desmontada
+		arma.atacar(cuartel);
+	}
 	
+	@Test (expected = ArmaDeAsedioDesmontadaNoPuedeAtacarError.class)
+	public void test09MontarArmaDeAsedioYAtacarEnElMismoTurnoDebeLanzarExcepcion () throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+		
+		Cuartel cuartel = new Cuartel (5,5,6,6);
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		arma.montar ();
+		arma.atacar(cuartel);
+	}
+	/*
+	@Test
+	public void test10MoverArmaDeAsedioDesmontadaHaciaLaDerecha () throws MovimientosPorTurnoExcedidosError {
+		
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		//arma desmontada
+		arma.desplazarHaciaLaDerecha(1);
 	
+	}
+	*/
 }

@@ -1,5 +1,6 @@
 package modelo.unidad;
 
+import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.mapa.Posicion;
@@ -26,7 +27,7 @@ public abstract class Unidad extends Posicionable {
 		super (x, y);
 	}
 	
-	public abstract void atacar (Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError;
+	public abstract void atacar (Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 	
 	/*
      * devuelve si el posicionable se encuentra dentro de la cuadricula formada por el alcanceEnFila y alcanceEnColumna

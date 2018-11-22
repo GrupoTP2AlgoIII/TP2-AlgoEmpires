@@ -82,6 +82,8 @@ public class Castillo extends Edificio {
 	public void atacarEnemigosAlAlcance () {
 		
 		//FALTA RESOLVER ESTO
+		
+		//estas posiciones serian todo el rango de alcance del castillo. Ademas, incluye las posiciones donde esta el castillo
 		Posicion desdeAlcance = new Posicion (this.posicionDesde.getFila() - 3, this.posicionDesde.getColumna() - 3);
 		Posicion hastaAlcance = new Posicion (this.posicionHasta.getFila() + 3, this.posicionHasta.getColumna() + 3);
 		ArrayList <Posicion> posicionesAlcanzables = crearListaConPosicionesQueOcupa (desdeAlcance, hastaAlcance);
@@ -92,6 +94,7 @@ public class Castillo extends Edificio {
 			//		atacar(posicionable que se encuentra en la posicion iterador.next());
 			//}
 		}
+		
 		
 		//para hacer esto de atacar, el catillo necesita conocer al mapa así puede saber si en las posiciones que estan a su
 		//alcance hay algun posicionable o esta vacio. Entonces va a atacar solo a los vacios.
