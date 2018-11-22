@@ -66,12 +66,7 @@ public class Juego {
 		//jugadorActual.crearPlazaCentralDesdeHasta(49, 42, 50, 43);
 		jugadorActual.crearPlazaCentralDesdeHasta(this.mapa.getFilas() - 1, this.mapa.getColumnas() - 8, this.mapa.getFilas(), this.mapa.getColumnas() - 7);
 		//jugadorActual.iniciarAldeanosDesde(46, 44);
-		jugadorActual.iniciarAldeanosDesde(this.mapa.getFilas() - 4, this.mapa.getColumnas() - 6);
-		
-//		jugadorActual.crearCastilloDesdeHasta(this.mapa.getColumnas() - 3, this.mapa.getFilas() - 3 , this.mapa.getColumnas() , this.mapa.getFilas());
-//		jugadorActual.crearPlazaCentralDesdeHasta(this.mapa.getColumnas() - 8,this.mapa.getFilas() - 1, this.mapa.getColumnas() - 7, this.mapa.getFilas());
-//		jugadorActual.iniciarAldeanosDesde(this.mapa.getColumnas() - 6,this.mapa.getFilas() - 4);
-		
+		jugadorActual.iniciarAldeanosDesde(this.mapa.getFilas() - 4, this.mapa.getColumnas() - 6);		
 						
 	}
 	
