@@ -257,20 +257,36 @@ public class ConstruccionTest {
 		arquero.atacar(aldeano);
 		assertEquals (35,aldeano.getVida());
 	}
-/*
+
 	@Test
 	public void test13CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel2Devuelve3(){
-		Jugador jugador1 = new Jugador(new Mapa(),"Jorge");
-		Jugador jugador2 = new Jugador(new Mapa(),"Jorge");
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+		Jugador jugador1 = new Jugador(mapa,"Jorge");
+		Jugador jugador2 = new Jugador(mapa,"Pablo");
+			
 		
-		jugador1.construirCuartel(1,1);
-		Edificio cuartel2 = jugador2.construirCuartel(1,1);
+		Posicionable aldeano1 = new Aldeano();
+		Posicionable aldeano2 = new Aldeano();
+		aldeano1.posicionarEnFilaColumna(15,15);
+		aldeano2.posicionarEnFilaColumna(5,5);
+		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 15, 15);
+		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 5, 5);
+		mapa.posicionarEnFilaColumna(aldeano1, 15, 15);
+		mapa.posicionarEnFilaColumna(aldeano2, 5, 5);
 		
-		jugador1.avanzarTurno();
+		Posicion posicionAldeano = new Posicion(15,15);
+		Posicion posicionConstruccion = new Posicion(16,16);
+				
+		jugador1.construirEdificio(posicionAldeano,posicionConstruccion,'C');
+			
+		Edificio cuartel = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
+		jugador2.avanzarTurno();
 		
-		assertEquals (3,cuartel2.getTurnosConstruccion());
+		assertEquals (3,(cuartel.getTurnosConstruccion()));
+		
 	}
-*/	
+	
 	@Test(expected=AldeanoOcupadoException.class)
 	public void test14CreoUnAldeanoYComoEstaOcupadoConstruirCuartelDevuelveException() {
 		Aldeano aldeano = new Aldeano();

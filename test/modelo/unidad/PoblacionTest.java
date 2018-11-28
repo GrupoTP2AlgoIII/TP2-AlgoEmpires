@@ -9,7 +9,6 @@ import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
 import modelo.jugador.JugadorSinOroException;
 import modelo.jugador.JugadorSuperaTopePoblacionalException;
-import modelo.jugador.PlazaCentralCrearAldeanoException;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
@@ -148,7 +147,7 @@ public class PoblacionTest {
 	}
 	
 
-	@Test(expected=UnidadCreaUnidadException.class)
+	@Test(expected=CrearUnidadException.class)
 	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();

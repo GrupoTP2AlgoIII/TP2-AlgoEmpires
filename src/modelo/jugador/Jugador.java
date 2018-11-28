@@ -43,7 +43,7 @@ public class Jugador {
 	}
 
 	
-	public void construirEdificio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void construirEdificio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
 		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
 		Posicionable aldeano = this.posicionables.get(posicionAldeano);
 		Edificio edificio = aldeano.construir(tipoConstruccion);
@@ -187,6 +187,14 @@ public class Jugador {
 		return this.posicionables;
 	}
 
+	public void posicionarDesdeEnHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
+		
+		if (hastaX > desdeX + 1 || hastaX < desdeX - 1 || hastaY > desdeY + 1 || hastaY < desdeY - 1) {
+			throw new PosicionNoAdyacenteError ();
+		}
+		this.mapa.posicionarDesdeEnHasta (new Posicion (desdeX, desdeY),new Posicion (hastaX, hastaY));
+		
+	}
 	
 //METODOS PARA PRUEBAS
 
@@ -196,14 +204,7 @@ public class Jugador {
 	}
 
 
-	public void posicionarDesdeEnHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
-		
-		if (hastaX > desdeX + 1 || hastaX < desdeX - 1 || hastaY > desdeY + 1 || hastaY < desdeY - 1) {
-			throw new PosicionNoAdyacenteError ();
-		}
-		this.mapa.posicionarDesdeEnHasta (new Posicion (desdeX, desdeY),new Posicion (hastaX, hastaY));
-		
-	}
+
 	
 	
 	

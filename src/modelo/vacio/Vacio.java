@@ -5,7 +5,7 @@ import modelo.jugador.PosicionDesocupadaError;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
-import modelo.unidad.UnidadCreaUnidadException;
+import modelo.unidad.CrearUnidadException;
 
 public class Vacio extends Posicionable{
 
@@ -46,7 +46,7 @@ public class Vacio extends Posicionable{
 
 	@Override
 	public Unidad crearUnidad(char tipo) {
-		throw new UnidadCreaUnidadException();
+		throw new CrearUnidadException();
 	}
 
 	@Override

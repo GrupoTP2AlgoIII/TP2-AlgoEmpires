@@ -38,8 +38,6 @@ public class InventarioJugador {
 	}
 	
 	public void decrementarProduccionDeOro(Posicionable unidad) {
-		/*int produccionOroAldeano = 20;
-		this.produccionDeOro -= produccionOroAldeano;*/
 		unidad.decrementarProduccion(this.produccionDeOro);
 	}
 	

@@ -1,6 +1,6 @@
 package modelo.unidad;
 
-public class UnidadCreaUnidadException extends  RuntimeException {
+public class ConstruccionEdificioException extends RuntimeException {
 
 	/**
 	 * 

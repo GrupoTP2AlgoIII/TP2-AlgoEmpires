@@ -51,9 +51,9 @@ public abstract class Posicionable {
 	public abstract void desplazarHasta(Posicion hasta);
 
 	public abstract void recibirPosicionable();
+	
 	public  Unidad crearUnidad(char tipo) {
-		throw new UnidadCreaUnidadException();
-		//cambiar nombre excepciones
+		throw new CrearUnidadException();
 	}
 
 	public abstract int descontarOro(int oro);
@@ -63,8 +63,7 @@ public abstract class Posicionable {
 	public abstract int aumentarProduccionDeOro(int produccionDeOro);
 
 	public Edificio construir(char tipoConstruccion) {
-		throw new ConstruccionPlazaCentralException();
-		//cambiar nombre excepciones
+		throw new ConstruccionEdificioException();
 	}
 
 }
