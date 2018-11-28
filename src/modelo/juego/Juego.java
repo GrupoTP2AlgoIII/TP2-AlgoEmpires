@@ -1,14 +1,11 @@
 package modelo.juego;
 
 import modelo.jugador.Jugador;
-import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.edificio.Edificio;
-import modelo.edificio.TamanioIncorrectoError;
 
 public class Juego {
 	
@@ -29,19 +26,19 @@ public class Juego {
 		this.jugadorActual = new Jugador (mapa,"Pepito");
 	}
 
-	public void agregarUnidadEnFilaColumna(Unidad unidad, int fila, int columna) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void agregarUnidadEnFilaColumna(Unidad unidad, int fila, int columna) {
 		
 		this.mapa.posicionarEnFilaColumna(unidad, fila, columna);
 		this.jugadorActual.agregarPosicionableEnFilaColumna (unidad, fila, columna);
 		
 	}
 	
-	public void agregarEdifcioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void agregarEdifcioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY)  {
 		
 		this.mapa.ponerEdificioDesdeHasta(edificio, desdeX, desdeY, hastaX, hastaY);
 	}
 
-	public void iniciarJuego() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void iniciarJuego() {
 		
 		Jugador jugadorActual = this.jugadores.devolverPrimero();
 		

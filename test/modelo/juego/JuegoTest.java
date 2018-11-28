@@ -4,23 +4,18 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
-import modelo.edificio.TamanioIncorrectoError;
 //import modelo.edificio.castillo.Castillo;
 import modelo.edificio.cuartel.Cuartel;
 //import modelo.edificio.plazaCentral.PlazaCentral;
-import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Posicion;
-import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.aldeano.Aldeano;
-import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 //import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import modelo.unidad.arquero.Arquero;
 
 public class JuegoTest {
 
 	@Test // Como son inicializados sin estar ocupados devuelven 20 de oro
-	public void test01IniciarJuegoInicializaAldeanosJugador1() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void test01IniciarJuegoInicializaAldeanosJugador1()  {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
@@ -33,7 +28,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void test02IniciarJuegoInicializaAldeanosJugador2() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void test02IniciarJuegoInicializaAldeanosJugador2()  {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
@@ -45,7 +40,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void test03IniciarJuegoInicializaCastilloJugador1() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void test03IniciarJuegoInicializaCastilloJugador1() {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
@@ -60,7 +55,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void test04IniciarJuegoInicializaCastilloJugador2() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void test04IniciarJuegoInicializaCastilloJugador2() {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
@@ -75,7 +70,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void test05IniciarJuegoInicializaPlazaCentralJugador1() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void test05IniciarJuegoInicializaPlazaCentralJugador1() {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
@@ -91,7 +86,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void test06IniciarJuegoInicializaPlazaCentralJugador2() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void test06IniciarJuegoInicializaPlazaCentralJugador2() {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
@@ -107,7 +102,7 @@ public class JuegoTest {
 	}
 	
 	@Test //Verifica que no hay que pasar de turno para crear aldeano
-	public void test07IniciarJuegoInicializaPlazaCentralConstruidaJugador1() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void test07IniciarJuegoInicializaPlazaCentralConstruidaJugador1()  {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
@@ -131,7 +126,7 @@ public class JuegoTest {
 	}
 	
 	@Test 
-	public void test08IniciarJuegoInicializaPlazaCentralConstruidaJugador2() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void test08IniciarJuegoInicializaPlazaCentralConstruidaJugador2() {
 		
 		
 		Juego juego = new Juego();

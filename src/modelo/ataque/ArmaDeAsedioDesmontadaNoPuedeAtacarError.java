@@ -1,6 +1,6 @@
 package modelo.ataque;
 
-public class ArmaDeAsedioDesmontadaNoPuedeAtacarError extends Exception {
+public class ArmaDeAsedioDesmontadaNoPuedeAtacarError extends RuntimeException {
 
 	/**
 	 * 

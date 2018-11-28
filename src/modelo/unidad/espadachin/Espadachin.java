@@ -4,7 +4,6 @@ import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
-import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 
 public class Espadachin extends Unidad {
 
@@ -24,7 +23,7 @@ public class Espadachin extends Unidad {
 		this.ataque = new Ataque(15,25, this.alcance);
 	}
 	
-	public void atacar(Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void atacar(Posicionable posicionable)  {
 		if (!posicionable.estaEnRangoDePosicion (this.posicion, this.alcance, this.alcance)) {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}

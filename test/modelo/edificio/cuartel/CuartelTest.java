@@ -1,10 +1,7 @@
 package modelo.edificio.cuartel;
 
-import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
-import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -12,7 +9,7 @@ import static org.junit.Assert.*;
 public class CuartelTest {
 
     @Test
-    public void test01CuartelEsCreadoYCreaArqueroQueAtacaAUnAldeanoYLeResta15DeVida() throws AldeanoNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+    public void test01CuartelEsCreadoYCreaArqueroQueAtacaAUnAldeanoYLeResta15DeVida(){
         Cuartel cuartel =  new Cuartel();
 
         cuartel.avanzarTurno();
@@ -28,7 +25,7 @@ public class CuartelTest {
     }
 
     @Test
-    public void test02CuartelEsCreadoYCreaEspadachinQueAtacaAUnAldeanoYLeResta25DeVida() throws AldeanoNoPuedeAtacarError, AtacandoEnPosicionFueraDelAlcanceError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+    public void test02CuartelEsCreadoYCreaEspadachinQueAtacaAUnAldeanoYLeResta25DeVida() {
         Cuartel cuartel =  new Cuartel();
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();

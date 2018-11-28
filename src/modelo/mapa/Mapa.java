@@ -46,7 +46,7 @@ public class Mapa {
 
 	}
 	
-	public void buscarPosicionYUbicar(Unidad unidad,Posicion posicion) throws PosicionOcupadaError {
+	public void buscarPosicionYUbicar(Unidad unidad,Posicion posicion) {
 		
 		//busco la posicion desocupada para crear una unidad
 		Posicion posicionAux = new Posicion(posicion.getFila(), posicion.getColumna());
@@ -67,7 +67,7 @@ public class Mapa {
 	}
 
 
-	public void posicionarEnFilaColumna(Posicionable posicionable, int fila, int columna) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void posicionarEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 		
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
 		
@@ -81,7 +81,7 @@ public class Mapa {
 		
 	}
 	
-	public void posicionarPosicionableEnPosicion(Posicionable posicionable, Posicion posicion) throws PosicionOcupadaError {
+	public void posicionarPosicionableEnPosicion(Posicionable posicionable, Posicion posicion)  {
 		
 		if (this.estaOcupado(posicion)) {
 			
@@ -104,7 +104,7 @@ public class Mapa {
 		return this.columnas;
 	}
 
-	public void ponerEdificioDesdeHasta(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionOcupadaError, PosicionFueraDelMapaError{
+	public void ponerEdificioDesdeHasta(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
 
 		if (this.hayPosicionOcupadaEnElRango(desdeX, desdeY, hastaX, hastaY)){
 			throw new PosicionOcupadaError();

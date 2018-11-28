@@ -7,18 +7,15 @@ import org.junit.Test;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
-import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.jugador.PosicionOcupadaError;
-import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.edificio.TamanioIncorrectoError;
 
 public class JugadorTest {
 	
 
 	@Test
-	public void test01IniciarUnidadesDeUnJugadorCreaAldeanosCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test01IniciarUnidadesDeUnJugadorCreaAldeanosCorrectamente () {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -40,7 +37,7 @@ public class JugadorTest {
 	// Tests para poner un castillo
 
 	@Test
-	public void test02IniciarCastilloDeUnJugadorCreaCastilloCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void test02IniciarCastilloDeUnJugadorCreaCastilloCorrectamente () {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -58,7 +55,7 @@ public class JugadorTest {
 	}
 
 	@Test (expected = TamanioIncorrectoError.class)
-	public void test03CrearCastilloDeMayorTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void test03CrearCastilloDeMayorTamanioArrojaError() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -69,7 +66,7 @@ public class JugadorTest {
 	}
 
 	@Test (expected = TamanioIncorrectoError.class)
-	public void test04CrearCastilloIndicandoMalElTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void test04CrearCastilloIndicandoMalElTamanioArrojaError() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -81,7 +78,7 @@ public class JugadorTest {
 	}
 
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test05CrearCastilloFueraDelMapaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void test05CrearCastilloFueraDelMapaArrojaError() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -92,7 +89,7 @@ public class JugadorTest {
 	}
 
 	@Test (expected = PosicionOcupadaError.class)
-	public void test06CrearCastilloEnPosicionOcupadaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void test06CrearCastilloEnPosicionOcupadaArrojaError() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -106,7 +103,7 @@ public class JugadorTest {
 	// Tests para poner una plaza central
 	
 	@Test
-	public void test07IniciarPlazaCentralDeUnJugadorLaCreaCorrectamente () throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void test07IniciarPlazaCentralDeUnJugadorLaCreaCorrectamente (){
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -127,7 +124,7 @@ public class JugadorTest {
 	}
 
 	@Test (expected = TamanioIncorrectoError.class)
-	public void test08CrearPlazaCentralDeMayorTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void test08CrearPlazaCentralDeMayorTamanioArrojaError(){
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -138,7 +135,7 @@ public class JugadorTest {
 	}
 
 	@Test (expected = TamanioIncorrectoError.class)
-	public void test09CrearPlazaCentralIndicandoMalElTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void test09CrearPlazaCentralIndicandoMalElTamanioArrojaError() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -150,7 +147,7 @@ public class JugadorTest {
 	}
 
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test10CrearPlazaCentralFueraDelMapaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void test10CrearPlazaCentralFueraDelMapaArrojaError(){
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -161,7 +158,7 @@ public class JugadorTest {
 	}
 
 	@Test (expected = PosicionOcupadaError.class)
-	public void test11CrearPlazaCentralEnPosicionOcupadaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void test11CrearPlazaCentralEnPosicionOcupadaArrojaError() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -173,7 +170,7 @@ public class JugadorTest {
 	}
 	
 	@Test (expected = PosicionDesocupadaError.class)
-	public void test12DesplazarHaciaArribaPosicionDesocupadaArrojaError() throws MovimientosPorTurnoExcedidosError, PosicionDesocupadaError, PosicionOcupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test12DesplazarHaciaArribaPosicionDesocupadaArrojaError() {
 		
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();

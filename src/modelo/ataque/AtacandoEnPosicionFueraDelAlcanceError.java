@@ -1,6 +1,6 @@
 package modelo.ataque;
 
-public class AtacandoEnPosicionFueraDelAlcanceError extends Exception {
+public class AtacandoEnPosicionFueraDelAlcanceError extends RuntimeException {
 
 	/**
 	 * 

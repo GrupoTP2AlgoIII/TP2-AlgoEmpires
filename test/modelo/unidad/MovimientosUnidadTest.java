@@ -6,19 +6,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import modelo.juego.Juego;
-import modelo.jugador.PosicionDesocupadaError;
-import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.unidad.arquero.Arquero;
-import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
-import modelo.edificio.TamanioIncorrectoError;
 
 public class MovimientosUnidadTest {
 
 	@Test
-	public void test01moverUnidadUnaPosicionHaciaLaDerecha() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test01moverUnidadUnaPosicionHaciaLaDerecha()  {
 		
 		Unidad unidad = new Arquero(4,5);
 		unidad.desplazarHasta (new Posicion (4,6));
@@ -28,7 +23,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void test02moverUnidadUnaPosicionHaciaLaIzquierda() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test02moverUnidadUnaPosicionHaciaLaIzquierda()  {
 		
 		Unidad unidad = new Arquero(4,5);
 		unidad.desplazarHasta (new Posicion (4,4));
@@ -38,7 +33,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void test03moverUnidadUnaPosicionHaciaArriba() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test03moverUnidadUnaPosicionHaciaArriba() {
 		
 		Unidad unidad = new Arquero(4,5);
 		unidad.desplazarHasta (new Posicion (3,5));
@@ -48,7 +43,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void test04moverArqueroUnaPosicionHaciaAbajo() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test04moverArqueroUnaPosicionHaciaAbajo() {
 		
 	 Unidad unidad = new Arquero(4,5);
 	 unidad.desplazarHasta (new Posicion (5,5));
@@ -58,7 +53,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void test05moverArqueroUnaPosicionHaciaDiagonalSuperiorDerecha() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test05moverArqueroUnaPosicionHaciaDiagonalSuperiorDerecha()  {
 		
 	 Unidad unidad = new Arquero(4,5);
 	 unidad.desplazarHasta (new Posicion (3,6));
@@ -68,7 +63,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void test06moverArqueroUnaPosicionHaciaDiagonalSuperiorIzquierda() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test06moverArqueroUnaPosicionHaciaDiagonalSuperiorIzquierda() {
 		
 	 Unidad unidad = new Arquero(4,5);
 	 unidad.desplazarHasta (new Posicion (3,4));
@@ -78,7 +73,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void test07moverArqueroUnaPosicionHaciaDiagonalInferiorDerecha() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test07moverArqueroUnaPosicionHaciaDiagonalInferiorDerecha()  {
 		
 	 Unidad unidad = new Arquero(4,5);
 	 unidad.desplazarHasta (new Posicion (5,6));
@@ -88,7 +83,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test
-	public void test08moverArqueroUnaPosicionHaciaDiagonalInferiorIzquierda() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test08moverArqueroUnaPosicionHaciaDiagonalInferiorIzquierda() {
 		
 	 Unidad unidad = new Arquero(4,5);
 	 unidad.desplazarHasta (new Posicion (5,4));
@@ -98,7 +93,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test10moverArqueroFueraDelLimiteDerechoDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test10moverArqueroFueraDelLimiteDerechoDelMapa (){
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -108,7 +103,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test11moverAldeanoFueraDelLimiteSuperiorDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test11moverAldeanoFueraDelLimiteSuperiorDelMapa ()  {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -119,7 +114,7 @@ public class MovimientosUnidadTest {
 	}
 	
 	@Test (expected = MovimientosPorTurnoExcedidosError.class)
-	public void test17moverAldeanoDosVecesEnUnMismoTurno () throws PosicionFueraDelMapaError, MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, TamanioIncorrectoError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test17moverAldeanoDosVecesEnUnMismoTurno ()  {
 		
 		Juego juego = new Juego ();
 		Arquero arquero = new Arquero(10,10);

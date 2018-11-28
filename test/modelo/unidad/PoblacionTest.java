@@ -10,13 +10,12 @@ import modelo.jugador.Jugador;
 import modelo.jugador.JugadorSinOroException;
 import modelo.jugador.JugadorSuperaTopePoblacionalException;
 import modelo.jugador.PlazaCentralCrearAldeanoException;
-import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 
 public class PoblacionTest {
 
 	@Test
-	public void test01CreoUnJugadorCon3AldeanosYAgregoTresAldeanosYGetPoblacionDevuelve6() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test01CreoUnJugadorCon3AldeanosYAgregoTresAldeanosYGetPoblacionDevuelve6()  {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 		Jugador jugador = new Jugador(mapa,"Pablo");
@@ -102,7 +101,7 @@ public class PoblacionTest {
 	
 */
 	@Test(expected=JugadorSuperaTopePoblacionalException.class)
-	public void test04CreoUnJugadorConMasDe50UnidadesYComoSuperaElTopePoblacionDevuelveException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test04CreoUnJugadorConMasDe50UnidadesYComoSuperaElTopePoblacionDevuelveException()  {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 		Jugador jugador = new Jugador(mapa,"Pablo");
@@ -128,7 +127,7 @@ public class PoblacionTest {
 	}
 	
 	@Test(expected=JugadorSinOroException.class)
-	public void test05CreoUnJugadorYCreoAldeanosHastaQueArrojeException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test05CreoUnJugadorYCreoAldeanosHastaQueArrojeException()  {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 		Jugador jugador = new Jugador(mapa,"Pablo");
@@ -147,7 +146,7 @@ public class PoblacionTest {
 	}
 	
 	@Test(expected=PlazaCentralCrearAldeanoException.class)
-	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException()  {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 		Jugador jugador = new Jugador(mapa,"Pablo");

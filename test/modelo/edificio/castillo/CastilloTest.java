@@ -1,11 +1,8 @@
 package modelo.edificio.castillo;
 
-import modelo.edificio.TamanioIncorrectoError;
 import modelo.jugador.Jugador;
-import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 
@@ -32,7 +29,7 @@ public class CastilloTest {
     }
     
     @Test
-    public void test02CastilloAtacaSoloEnemigos() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError {
+    public void test02CastilloAtacaSoloEnemigos(){
     	
     	Mapa mapa = new Mapa();
     	mapa.iniciarMapaVacio();

@@ -54,7 +54,7 @@ public class Jugador {
 		
 	}
 	
-	public void crearAldeano(Posicion plazaCentral) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void crearAldeano(Posicion plazaCentral){
 		Posicionable plaza = this.posicionables.get(plazaCentral);
 
 		Unidad aldeano =  plaza.crearAldeano();
@@ -105,7 +105,7 @@ public class Jugador {
 	}
 	
 	// Borrar el metodo agregar edificio a posicionables y agregarle la linea del mapa al metodo de arriba
-	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
 		
 		for (int i = desdeX; i <= hastaX; i++) {
 			for (int j = desdeY; j <= hastaY; j++) {
@@ -117,7 +117,7 @@ public class Jugador {
 		
 	}
 
-	public void iniciarAldeanosDesde(int x, int y) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void iniciarAldeanosDesde(int x, int y)  {
 	
 		for (int i = y; i <= (y + 2); i++ ) {
 		    Posicionable aldeano = new Aldeano();
@@ -128,7 +128,7 @@ public class Jugador {
 	}
 
 
-	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
 
 		Edificio castillo = new Castillo(0);
 		
@@ -152,7 +152,7 @@ public class Jugador {
 
 	}
 	
-	public void crearPlazaCentralDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void crearPlazaCentralDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
 		
 		Edificio plazaCentral = new PlazaCentral(0);
 
@@ -175,7 +175,7 @@ public class Jugador {
 		this.agregarEdificioAPosicionables(plazaCentral, desdeX, desdeY, hastaX, hastaY);
 	}
 
-	private void agregarEdificioAPosicionables(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionFueraDelMapaError, PosicionOcupadaError{
+	private void agregarEdificioAPosicionables(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
 
 		for (int i = desdeX; i <= hastaX; i++){
 			for (int j = desdeY; j <= hastaY; j++){

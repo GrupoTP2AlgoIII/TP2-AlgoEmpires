@@ -16,7 +16,7 @@ public class ArmaDeAsedioDesmontada implements EstadoArmaDeAsedio {
 	}
 
 	@Override
-	public void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque) throws ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+	public void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque)  {
 		
 		throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
 
@@ -38,119 +38,5 @@ public class ArmaDeAsedioDesmontada implements EstadoArmaDeAsedio {
 		posicionActual = hasta;
 		
 	}
-/*		
-	public void desplazarHaciaLaDerecha(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();
-		}
-		if (cantidadDeMovimientos >= movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}
-		
-		posicion.desplazarHaciaLaDerecha (cantidadDePosiciones);
-		
-	}
-
-	public void desplazarHaciaLaIzquierda(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();		}
-		if (cantidadDeMovimientos >= movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}
-
-		posicion.desplazarHaciaLaIzquierda (cantidadDePosiciones);
-		
-	}
-
-	public void desplazarHaciaArriba(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();		}
-		if (cantidadDeMovimientos >= movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}
-		
-		cantidadDeMovimientos ++;
-		posicion.desplazarHaciaArriba (cantidadDePosiciones);
-		
-	}
-
-	public void desplazarHaciaAbajo(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();		}
-		if (cantidadDeMovimientos >= movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}
-
-		posicion.desplazarHaciaAbajo (cantidadDePosiciones);
-		
-	}
-
-	public void desplazarHaciaLaDiagonalSuperiorDerecha(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();		}
-		if (cantidadDeMovimientos >= movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}
-		
-		posicion.desplazarHaciaLaDiagonalSuperiorDerecha (cantidadDePosiciones);
-		
-	}
-
-	public void desplazarHaciaLaDiagonalSuperiorIzquierda(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();		}
-		if (cantidadDeMovimientos >= movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}
-		
-		posicion.desplazarHaciaLaDiagonalSuperiorIzquierda (cantidadDePosiciones);
-		
-	}
-
-	public void desplazarHaciaLaDiagonalInferiorDerecha(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();		}
-		if (cantidadDeMovimientos >= movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}
-
-		posicion.desplazarHaciaLaDiagonalInferiorDerecha (cantidadDePosiciones);
-		
-	}
-
-	public void desplazarHaciaLaDiagonalInferiorIzquierda(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();		}
-		if (cantidadDeMovimientos >= movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}
-		
-		posicion.desplazarHaciaLaDiagonalInferiorIzquierda (cantidadDePosiciones);
-	}
-	*/
 
 }

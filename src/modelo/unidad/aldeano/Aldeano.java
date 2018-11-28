@@ -42,7 +42,7 @@ public class Aldeano extends Unidad {
 		}
 		
 		@Override
-		public void atacar (Posicionable posicionable) throws AldeanoNoPuedeAtacarError {
+		public void atacar (Posicionable posicionable) {
 			
 			throw new AldeanoNoPuedeAtacarError ();
 		}
