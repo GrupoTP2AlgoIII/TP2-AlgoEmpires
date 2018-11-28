@@ -1,6 +1,7 @@
 package modelo.vacio;
 
 import modelo.ataque.Ataque;
+import modelo.jugador.PosicionDesocupadaError;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 
@@ -8,6 +9,10 @@ public class Vacio extends Posicionable{
 
 	public Vacio(int i, int j) {
 		super(i, j);
+	}
+	
+	public Vacio (Posicion posicion) {
+		super (posicion);
 	}
 	
 	public Vacio() {
@@ -42,5 +47,12 @@ public class Vacio extends Posicionable{
 		return false;
 	}
 	
-
+	public void desplazarHasta (Posicion hasta) {
+		
+		throw new PosicionDesocupadaError ();
+	}
+	
+	public void recibirPosicionable () {
+		
+	}
 }

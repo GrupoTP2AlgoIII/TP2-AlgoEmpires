@@ -1,16 +1,12 @@
 package modelo.juego;
 
 import modelo.jugador.Jugador;
-import modelo.jugador.PosicionDesocupadaError;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
-import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
-import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.edificio.Edificio;
 import modelo.edificio.TamanioIncorrectoError;
 
@@ -18,7 +14,7 @@ public class Juego {
 	
 	private Mapa mapa;
 	private ListaCircular<Jugador> jugadores;
-	private Jugador jugadorActual;	
+	private Jugador jugadorActual;
 	
 	public Juego () {
 		
@@ -45,13 +41,6 @@ public class Juego {
 		this.mapa.ponerEdificioDesdeHasta(edificio, desdeX, desdeY, hastaX, hastaY);
 	}
 
-	public void desplazarFilaColumnaHaciaArriba(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		
-		this.jugadorActual.desplazarFilaColumnaHaciaArriba (fila, columna, cantidadDePosiciones);
-		
-	}
-
 	public void iniciarJuego() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
 		
 		Jugador jugadorActual = this.jugadores.devolverPrimero();
@@ -75,57 +64,12 @@ public class Juego {
 	public Posicionable obtenerPosicionableEn(Posicion posicion) {
 		return this.mapa.obtenerPosicionableEn(posicion);
 	}
-	
-	public void desplazarFilaColumnaHaciaAbajo(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		
-		this.jugadorActual.desplazarFilaColumnaHaciaAbajo(fila, columna, cantidadDePosiciones);
-		
-	}
 
-	public void desplazarFilaColumnaHaciaLaDerecha(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-	
-	
-		this.jugadorActual.desplazarFilaColumnaHaciaLaDerecha (fila, columna, cantidadDePosiciones);
-	
-	}
-
-	public void desplazarFilaColumnaHaciaLaIzquierda(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-	
-	
-		this.jugadorActual.desplazarFilaColumnaHaciaLaIzquierda (fila, columna, cantidadDePosiciones);
-	
-	}
-
-	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorDerecha(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-	
-	
-		this.jugadorActual.desplazarFilaColumnaHaciaLaDiagonalSuperiorDerecha (fila, columna, cantidadDePosiciones);
-	
-	}
-
-	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-	
-	
-		this.jugadorActual.desplazarFilaColumnaHaciaLaDiagonalSuperiorIzquierda(fila, columna, cantidadDePosiciones);
-	
-	}
-
-	public void desplazarFilaColumnaHaciaLaDiagionalInferiorDerecha(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-	
-	
-		this.jugadorActual.desplazarFilaColumnaHaciaLaDiagonalInferiorDerecha(fila, columna, cantidadDePosiciones);
-	
-	}
-	
-	public void desplazarFilaColumnaHaciaLaDiagionalInferiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void desplazarUnidadDesdeHasta (int desdeX, int desdeY, int hastaX, int hastaY) {
 		
-		
-		this.jugadorActual.desplazarFilaColumnaHaciaLaDiagonalInferiorIzquierda (fila, columna, cantidadDePosiciones);
-		
+		this.jugadorActual.posicionarDesdeEnHasta (desdeX, desdeY, hastaX, hastaY);
 	}
-
-		
+	
 	
 
 }

@@ -50,14 +50,14 @@ public class Mapa {
 		
 		//busco la posicion desocupada para crear una unidad
 		Posicion posicionAux = new Posicion(posicion.getFila(), posicion.getColumna());
-		posicionAux.desplazarHaciaAbajo(1);
+		posicionAux.posicionarEnFilaColumna(posicionAux.getFila() + 1, posicionAux.getColumna());
 		int contador = 1;
 		while(this.estaOcupado(posicionAux)) {
-			posicionAux.desplazarHaciaLaDerecha(1);
+			posicionAux.posicionarEnFilaColumna(posicionAux.getFila(), posicionAux.getColumna() + 1);
 			contador++;
 			if(contador > 5) {
-				posicionAux.desplazarHaciaLaIzquierda(5);
-				posicionAux.desplazarHaciaAbajo(1);
+				posicionAux.posicionarEnFilaColumna(posicionAux.getFila(), posicionAux.getColumna() - 5);
+				posicionAux.posicionarEnFilaColumna(posicionAux.getFila() + 1, posicionAux.getColumna());
 				contador = 1;
 			}
 		}		
@@ -71,93 +71,16 @@ public class Mapa {
 		
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
 		
-		if (posicionDelPosicionable.noPerteneceAlRango(this.filas, this.columnas)) {
+		if (!this.mapa.containsKey(posicionDelPosicionable)) {
 			
 			throw new PosicionFueraDelMapaError ();
 		}
 		
-		if (this.estaOcupado(posicionDelPosicionable)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-		
+		this.mapa.get(posicionDelPosicionable).recibirPosicionable();
 		this.mapa.put(posicionDelPosicionable, posicionable);
 		
 	}
 	
-
-	public void desplazarFilaColumnaHaciaLaIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Posicion posicionInicial = new Posicion (fila, columna);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		posicionInicial.desplazarHaciaLaIzquierda(cantidadDePosiciones);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		if (this.estaOcupado(posicionInicial)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-		 
-	}
-
-	public void desplazarFilaColumnaHaciaLaDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Posicion posicionInicial = new Posicion (fila, columna);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		posicionInicial.desplazarHaciaLaDerecha(cantidadDePosiciones);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-			
-		}
-		
-		if (this.estaOcupado(posicionInicial)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-		
-	}
-	
-
-	public void desplazarFilaColumnaHaciaArriba(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
-
-		Posicion posicionInicial = new Posicion (fila, columna);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		posicionInicial.desplazarHaciaArriba(cantidadDePosiciones);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		if (this.estaOcupado(posicionInicial)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-		
-		
-	}
-
 	public void posicionarPosicionableEnPosicion(Posicionable posicionable, Posicion posicion) throws PosicionOcupadaError {
 		
 		if (this.estaOcupado(posicion)) {
@@ -169,122 +92,10 @@ public class Mapa {
 		
 	}
 
-	public void desplazarFilaColumnaHaciaAbajo(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
-		Posicion posicionInicial = new Posicion (fila, columna);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		posicionInicial.desplazarHaciaAbajo(cantidadDePosiciones);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		if (this.estaOcupado(posicionInicial)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-	}
-
-	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Posicion posicionInicial = new Posicion (fila, columna);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		posicionInicial.desplazarHaciaLaDiagonalSuperiorDerecha(cantidadDePosiciones);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		if (this.estaOcupado(posicionInicial)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-	}
-
-	public void desplazarFilaColumnaHaciaLaDiagonalSuperiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
-
-		Posicion posicionInicial = new Posicion (fila, columna);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		posicionInicial.desplazarHaciaLaDiagonalSuperiorIzquierda(cantidadDePosiciones);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		if (this.estaOcupado(posicionInicial)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-	}
-
-	public void desplazarFilaColumnaHaciaLaDiagonalInferiorDerecha(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
-
-		Posicion posicionInicial = new Posicion (fila, columna);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		posicionInicial.desplazarHaciaLaDiagonalInferiorDerecha(cantidadDePosiciones);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		if (this.estaOcupado(posicionInicial)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-		
-	}
-
-	public void desplazarFilaColumnaHaciaLaDiagonalInferiorIzquierda(int fila, int columna, int cantidadDePosiciones) throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Posicion posicionInicial = new Posicion (fila, columna);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		posicionInicial.desplazarHaciaLaDiagonalInferiorIzquierda(cantidadDePosiciones);
-		
-		if (posicionInicial.noPerteneceAlRango (this.filas, this.columnas)) {
-			
-			throw new PosicionFueraDelMapaError ();
-		}
-		
-		if (this.estaOcupado(posicionInicial)) {
-			
-			throw new PosicionOcupadaError ();
-		}
-		
-	}
-	
 	public Posicionable obtenerPosicionableEn(Posicion posicion) {
 		return (this.mapa.get(posicion));
 	}
-
 	public int getFilas() {
 		return this.filas;
 	}
@@ -322,8 +133,20 @@ public class Mapa {
 
 
 	}
-	
-	
-	
+
+	public void posicionarDesdeEnHasta(Posicion desde, Posicion hasta) {
+		
+		if (!this.mapa.containsKey(desde) || !this.mapa.containsKey(hasta)) {
+			throw new PosicionFueraDelMapaError ();
+		}
+		
+		Posicionable posicionableADesplazar = this.mapa.get(desde);
+		Posicionable posicionableEnPosicionHasta = this.mapa.get(hasta);
+		posicionableADesplazar.desplazarHasta (hasta);
+		posicionableEnPosicionHasta.recibirPosicionable();
+		this.mapa.put(hasta, posicionableADesplazar);
+		this.mapa.put(desde, new Vacio ());
+		
+	}
 }
 

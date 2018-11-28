@@ -1,6 +1,6 @@
 package modelo.jugador;
 
-public class PosicionDesocupadaError extends Exception {
+public class PosicionDesocupadaError extends RuntimeException {
 
 	/**
 	 * 

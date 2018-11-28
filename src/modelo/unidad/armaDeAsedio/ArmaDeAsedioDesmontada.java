@@ -3,7 +3,6 @@ package modelo.unidad.armaDeAsedio;
 import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.ataque.Ataque;
 import modelo.mapa.Posicion;
-import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.Posicionable;
 
 public class ArmaDeAsedioDesmontada implements EstadoArmaDeAsedio {
@@ -29,7 +28,17 @@ public class ArmaDeAsedioDesmontada implements EstadoArmaDeAsedio {
 		this.turnosDesmontada --;
 		
 	}
+	
+	public void desplazarPosicionHasta (Posicion hasta, Posicion posicionActual) {
 		
+		if (this.turnosDesmontada > 0) {
+			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();
+		}
+		
+		posicionActual = hasta;
+		
+	}
+/*		
 	public void desplazarHaciaLaDerecha(int cantidadDePosiciones, int cantidadDeMovimientos, int movimientosPermitidos, Posicion posicion) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		if (this.turnosDesmontada > 0) {
@@ -142,5 +151,6 @@ public class ArmaDeAsedioDesmontada implements EstadoArmaDeAsedio {
 		
 		posicion.desplazarHaciaLaDiagonalInferiorIzquierda (cantidadDePosiciones);
 	}
+	*/
 
 }

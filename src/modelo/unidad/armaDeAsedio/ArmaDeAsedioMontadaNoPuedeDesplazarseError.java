@@ -1,6 +1,6 @@
 package modelo.unidad.armaDeAsedio;
 
-public class ArmaDeAsedioMontadaNoPuedeDesplazarseError extends Exception {
+public class ArmaDeAsedioMontadaNoPuedeDesplazarseError extends RuntimeException {
 
 	/**
 	 * 

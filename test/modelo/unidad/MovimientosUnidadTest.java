@@ -9,6 +9,7 @@ import modelo.juego.Juego;
 import modelo.jugador.PosicionDesocupadaError;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.unidad.arquero.Arquero;
 import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
@@ -19,9 +20,8 @@ public class MovimientosUnidadTest {
 	@Test
 	public void test01moverUnidadUnaPosicionHaciaLaDerecha() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
-		Unidad unidad = new Arquero();
-		unidad.posicionarEnFilaColumna (4, 5);
-		unidad.desplazarHaciaLaDerecha(1);
+		Unidad unidad = new Arquero(4,5);
+		unidad.desplazarHasta (new Posicion (4,6));
 		assertEquals (unidad.getPosicion().getFila(), 4);
 		assertEquals (unidad.getPosicion().getColumna(), 6);
 	 
@@ -30,9 +30,8 @@ public class MovimientosUnidadTest {
 	@Test
 	public void test02moverUnidadUnaPosicionHaciaLaIzquierda() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
-		Unidad unidad = new Arquero();
-		unidad.posicionarEnFilaColumna (4, 5);
-		unidad.desplazarHaciaLaIzquierda(1);
+		Unidad unidad = new Arquero(4,5);
+		unidad.desplazarHasta (new Posicion (4,4));
 		assertEquals (unidad.getPosicion().getFila(), 4);
 		assertEquals (unidad.getPosicion().getColumna(), 4);
 	 
@@ -41,89 +40,71 @@ public class MovimientosUnidadTest {
 	@Test
 	public void test03moverUnidadUnaPosicionHaciaArriba() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
-		Unidad unidad = new Arquero();
-		unidad.posicionarEnFilaColumna (4, 5);
-		unidad.desplazarHaciaArriba(1);
+		Unidad unidad = new Arquero(4,5);
+		unidad.desplazarHasta (new Posicion (3,5));
 		assertEquals (unidad.getPosicion().getFila(), 3);
 		assertEquals (unidad.getPosicion().getColumna(), 5);
 	 
 	}
 	
 	@Test
-	public void test04moverAldeanoUnaPosicionHaciaAbajo() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test04moverArqueroUnaPosicionHaciaAbajo() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
-	 Unidad unidad = new Arquero();
-	 unidad.posicionarEnFilaColumna (4, 5);
-	 unidad.desplazarHaciaAbajo(1);
+	 Unidad unidad = new Arquero(4,5);
+	 unidad.desplazarHasta (new Posicion (5,5));
 	 assertEquals (unidad.getPosicion().getFila(), 5);
 	 assertEquals (unidad.getPosicion().getColumna(), 5);
 	 
 	}
 	
 	@Test
-	public void test05moverAldeanoUnaPosicionHaciaDiagonalSuperiorDerecha() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test05moverArqueroUnaPosicionHaciaDiagonalSuperiorDerecha() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
-	 Unidad unidad = new Arquero();
-	 unidad.posicionarEnFilaColumna (4, 5);
-	 unidad.desplazarHaciaLaDiagonalSuperiorDerecha(1);
+	 Unidad unidad = new Arquero(4,5);
+	 unidad.desplazarHasta (new Posicion (3,6));
 	 assertEquals (unidad.getPosicion().getFila(), 3);
 	 assertEquals (unidad.getPosicion().getColumna(), 6);
 	 
 	}
 	
 	@Test
-	public void test06moverAldeanoUnaPosicionHaciaDiagonalSuperiorIzquierda() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test06moverArqueroUnaPosicionHaciaDiagonalSuperiorIzquierda() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
-	 Unidad unidad = new Arquero();
-	 unidad.posicionarEnFilaColumna (4, 5);
-	 unidad.desplazarHaciaLaDiagonalSuperiorIzquierda(1);
+	 Unidad unidad = new Arquero(4,5);
+	 unidad.desplazarHasta (new Posicion (3,4));
 	 assertEquals (unidad.getPosicion().getFila(), 3);
 	 assertEquals (unidad.getPosicion().getColumna(), 4);
 	 
 	}
 	
 	@Test
-	public void test07moverAldeanoUnaPosicionHaciaDiagonalInferiorDerecha() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test07moverArqueroUnaPosicionHaciaDiagonalInferiorDerecha() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
-	 Unidad unidad = new Arquero();
-	 unidad.posicionarEnFilaColumna (4, 5);
-	 unidad.desplazarHaciaLaDiagonalInferiorDerecha(1);
+	 Unidad unidad = new Arquero(4,5);
+	 unidad.desplazarHasta (new Posicion (5,6));
 	 assertEquals (unidad.getPosicion().getFila(), 5);
 	 assertEquals (unidad.getPosicion().getColumna(), 6);
 	 
 	}
 	
 	@Test
-	public void test08moverAldeanoUnaPosicionHaciaDiagonalInferiorIzquierda() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test08moverArqueroUnaPosicionHaciaDiagonalInferiorIzquierda() throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
-	 Unidad unidad = new Arquero();
-	 unidad.posicionarEnFilaColumna (4, 5);
-	 unidad.desplazarHaciaLaDiagonalInferiorIzquierda(1);
+	 Unidad unidad = new Arquero(4,5);
+	 unidad.desplazarHasta (new Posicion (5,4));
 	 assertEquals (unidad.getPosicion().getFila(), 5);
 	 assertEquals (unidad.getPosicion().getColumna(), 4);
 	 
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test09moverAldeanoFueraDelLimiteIzquierdoDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test10moverArqueroFueraDelLimiteDerechoDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
-		Unidad unidad = new Arquero();
-		
-		mapa.posicionarEnFilaColumna(unidad, 2, 1);
-		mapa.desplazarFilaColumnaHaciaLaIzquierda (2, 1, 1);
-	}
-	
-	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test10moverAldeanoFueraDelLimiteDerechoDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Mapa mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
-		Unidad unidad = new Arquero();
-		
-		mapa.posicionarEnFilaColumna (unidad, 2, 50);
-		mapa.desplazarFilaColumnaHaciaLaDerecha (2, 50, 1);
+		Arquero arquero = new Arquero(2,50);
+		mapa.posicionarEnFilaColumna (arquero, 2, 50);
+		mapa.posicionarDesdeEnHasta (new Posicion (2, 50), new Posicion (2,56));
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
@@ -131,77 +112,24 @@ public class MovimientosUnidadTest {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
-		Unidad unidad = new Arquero();
+		Arquero arquero = new Arquero(1,10);
 		
-		mapa.posicionarEnFilaColumna (unidad, 1, 10);
-		mapa.desplazarFilaColumnaHaciaArriba (1, 10, 1);
+		mapa.posicionarEnFilaColumna (arquero, 1, 10);
+		mapa.posicionarDesdeEnHasta (new Posicion (1, 10), new Posicion (55,5));
 	}
 	
-	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test12moverAldeanoFueraDelLimiteInferiorDelMapa () throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Mapa mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
-		Unidad unidad = new Arquero();
-		
-		mapa.posicionarEnFilaColumna (unidad, 50, 10);
-		mapa.desplazarFilaColumnaHaciaAbajo (50, 10, 1);
-	}
-	
-	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test13moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorDerecho () throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Mapa mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
-		Unidad unidad = new Arquero();
-		
-		mapa.posicionarEnFilaColumna (unidad, 1, 50);
-		mapa.desplazarFilaColumnaHaciaLaDiagonalSuperiorDerecha (1, 50, 1);
-	}
-	
-	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test14moverAldeanoFueraDelMapaConMovimientoDiagonalSuperiorIzquierdo () throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Mapa mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
-		Unidad unidad = new Arquero();
-		
-		mapa.posicionarEnFilaColumna (unidad, 1, 1);
-		mapa.desplazarFilaColumnaHaciaLaDiagonalSuperiorIzquierda (1, 1, 1);
-	}
-	
-	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test15moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorDerecho () throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Mapa mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
-		Unidad unidad = new Arquero();
-		
-		mapa.posicionarEnFilaColumna (unidad, 50, 50);
-		mapa.desplazarFilaColumnaHaciaLaDiagonalInferiorDerecha (50, 50, 1);
-	}
-	
-	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test16moverAldeanoFueraDelMapaConMovimientoDiagonalInferiorIzquierdo () throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		
-		Mapa mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
-		Unidad unidad = new Arquero();
-		
-		mapa.posicionarEnFilaColumna (unidad, 50, 1);
-		mapa.desplazarFilaColumnaHaciaLaDiagonalInferiorIzquierda (50, 1, 1);
-	}
-
 	@Test (expected = MovimientosPorTurnoExcedidosError.class)
 	public void test17moverAldeanoDosVecesEnUnMismoTurno () throws PosicionFueraDelMapaError, MovimientosPorTurnoExcedidosError, PosicionOcupadaError, PosicionDesocupadaError, TamanioIncorrectoError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
 		Juego juego = new Juego ();
-		Unidad unidad = new Arquero();
+		Arquero arquero = new Arquero(10,10);
 		juego.iniciarJuego ();
-		juego.agregarUnidadEnFilaColumna (unidad, 10, 10);
-		juego.desplazarFilaColumnaHaciaArriba (10, 10, 1);
-		juego.desplazarFilaColumnaHaciaArriba (10, 10, 1);
-}
+		juego.agregarUnidadEnFilaColumna (arquero, 10, 10);
+		juego.desplazarUnidadDesdeHasta (10, 10, 11, 10);
+		juego.desplazarUnidadDesdeHasta (11, 10, 11, 11);
+	}
+	
+	//agregar test para mover desde una posicion vacia y mover hacia una posicion ocupada
 
 
 }

@@ -8,6 +8,7 @@ import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.jugador.PosicionOcupadaError;
+import modelo.mapa.Posicion;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
@@ -135,7 +136,7 @@ public class AtaqueTest {
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
 		arma.avanzarTurno();
 		//arma desmontada
-		arma.desplazarHaciaLaDerecha(1);
+		arma.desplazarHasta(new Posicion (6,9));
 	
 	}
 	
@@ -145,7 +146,7 @@ public class AtaqueTest {
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
 		arma.montar();
 		arma.avanzarTurno();
-		arma.desplazarHaciaLaDerecha(1);
+		arma.desplazarHasta(new Posicion (6,9));
 		
 	}
 }

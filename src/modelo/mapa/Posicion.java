@@ -25,12 +25,6 @@ public class Posicion {
 		
 	}
 
-	public void desplazarHaciaLaDerecha(int cantidadDePosiciones) {
-		
-		this.y += cantidadDePosiciones;
-		
-	}
-
 	public int getFila() {
 		
 		return this.x;
@@ -39,50 +33,6 @@ public class Posicion {
 	public int getColumna() {
 		
 		return this.y;
-	}
-
-	public void desplazarHaciaLaIzquierda(int cantidadDePosiciones) {
-		
-		this.y -= cantidadDePosiciones;
-		
-	}
-
-	public void desplazarHaciaArriba(int cantidadDePosiciones) {
-		
-		this.x -= cantidadDePosiciones;
-		
-	}
-
-	public void desplazarHaciaAbajo(int cantidadDePosiciones) {
-
-		this.x += cantidadDePosiciones;
-		
-	}
-
-	public void desplazarHaciaLaDiagonalSuperiorDerecha(int cantidadDePosiciones) {
-
-		this.x -= cantidadDePosiciones;
-		this.y += cantidadDePosiciones;
-		
-	}
-
-	public void desplazarHaciaLaDiagonalSuperiorIzquierda(int cantidadDePosiciones) {
-		
-		this.x -= cantidadDePosiciones;
-		this.y -= cantidadDePosiciones;
-		
-	}
-
-	public void desplazarHaciaLaDiagonalInferiorDerecha(int cantidadDePosiciones) {
-
-		this.x += cantidadDePosiciones;
-		this.y += cantidadDePosiciones;
-	}
-
-	public void desplazarHaciaLaDiagonalInferiorIzquierda(int cantidadDePosiciones) {
-
-		this.x += cantidadDePosiciones;
-		this.y -= cantidadDePosiciones;
 	}
 
 	public boolean noPerteneceAlRango(int filas, int columnas) {

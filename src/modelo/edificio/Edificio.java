@@ -3,6 +3,7 @@ package modelo.edificio;
 
 import modelo.ataque.Ataque;
 import modelo.mapa.Posicion;
+import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.Posicionable;
 
 public abstract class Edificio extends Posicionable {
@@ -38,6 +39,10 @@ public abstract class Edificio extends Posicionable {
 			estado = new EstadoEdificioDisponible();
 		}		
 	}
+	 
+	 public void recibirPosicionable () {
+		throw new DesplazarAPosicionOcupadaError ();
+	}
 
 	public boolean estaOcupado() {
 		   return true;		
@@ -69,8 +74,6 @@ public abstract class Edificio extends Posicionable {
 			}
 		}
 		
-		
-		
 		public int getTurnosConstruccion() {
 			return estado.getTurnosOcupado();
 		}
@@ -83,6 +86,11 @@ public abstract class Edificio extends Posicionable {
 		public void atacado(Ataque ataque) {
 			this.vida -= ataque.getAtaqueEdificio();
 			
+		}
+		
+		public void desplazarHasta (Posicion hasta) {
+			
+			throw new EdificiosNoSePuedenDesplazarError ();
 		}
 		
 

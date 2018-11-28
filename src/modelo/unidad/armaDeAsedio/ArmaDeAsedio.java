@@ -3,6 +3,7 @@ package modelo.unidad.armaDeAsedio;
 import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
+import modelo.mapa.Posicion;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -50,56 +51,18 @@ public class ArmaDeAsedio extends Unidad {
 		return 0;
 	}
 	
-	public void desplazarHaciaLaDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	@Override
+	public void desplazarHasta (Posicion hasta) {
+		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
+			
+			throw new MovimientosPorTurnoExcedidosError ();
+			
+		}
 		
-		estado.desplazarHaciaLaDerecha (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
-				
-	}
-
-	public void desplazarHaciaLaIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+		this.cantidadDeMovimientos ++;
 		
-		estado.desplazarHaciaLaIzquierda (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
-
+		estado.desplazarPosicionHasta (hasta, this.posicion);
 		
-	}
-
-	public void desplazarHaciaArriba(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		estado.desplazarHaciaArriba (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
-		
-	}
-
-	public void desplazarHaciaAbajo(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		estado.desplazarHaciaAbajo (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
-
-		
-	}
-
-	public void desplazarHaciaLaDiagonalSuperiorDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		estado.desplazarHaciaLaDiagonalSuperiorDerecha (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
-
-		
-	}
-
-	public void desplazarHaciaLaDiagonalSuperiorIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		estado.desplazarHaciaLaDiagonalSuperiorIzquierda (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
-
-		
-	}
-
-	public void desplazarHaciaLaDiagonalInferiorDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		estado.desplazarHaciaLaDiagonalInferiorDerecha (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
-		
-	}
-
-	public void desplazarHaciaLaDiagonalInferiorIzquierda(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
-		
-		estado.desplazarHaciaLaDiagonalInferiorIzquierda (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
-
 	}
 
 	@Override

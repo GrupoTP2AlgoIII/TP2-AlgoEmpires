@@ -23,4 +23,5 @@ public class Ataque {
 		
 		return this.distancia;
 	}
+	
 }

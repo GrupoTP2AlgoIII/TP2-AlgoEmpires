@@ -179,8 +179,7 @@ public class JugadorTest {
 		mapa.iniciarMapaVacio();
 		
 		Jugador jugador = new Jugador(mapa, "nombre");
-				
-		jugador.desplazarFilaColumnaHaciaArriba(10, 10, 1);
+		jugador.posicionarDesdeEnHasta(10, 10, 11, 10);
 		
 	}
 	

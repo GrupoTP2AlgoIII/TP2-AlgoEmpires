@@ -83,6 +83,7 @@ public class Castillo extends Edificio {
 		
 	}
 	
+	
 	private ArrayList <Posicion> crearListaConPosicionesQueOcupa (Posicion desde, Posicion hasta) {
 		ArrayList <Posicion> posicionesQueOcupa = new ArrayList <Posicion> ();
 		for (int i = desde.getFila(); i < hasta.getFila(); i++) {

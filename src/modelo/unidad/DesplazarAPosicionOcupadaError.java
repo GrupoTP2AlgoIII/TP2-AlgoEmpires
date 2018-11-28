@@ -1,11 +1,10 @@
 package modelo.unidad;
 
-public class PosicionFueraDelMapaError extends RuntimeException {
+public class DesplazarAPosicionOcupadaError extends RuntimeException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 
 }
