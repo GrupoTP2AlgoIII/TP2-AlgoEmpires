@@ -1,0 +1,10 @@
+package modelo.unidad;
+
+public class ConstruccionPlazaCentralException extends RuntimeException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+}

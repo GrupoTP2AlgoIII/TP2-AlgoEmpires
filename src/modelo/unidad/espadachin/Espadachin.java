@@ -31,10 +31,5 @@ public class Espadachin extends Unidad {
 		posicionable.atacado(this.ataque);
 	}
 
-	@Override
-	public int descontarOro(int oro) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

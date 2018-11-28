@@ -16,7 +16,7 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
         
-		Unidad arquero = cuartel.crearArquero();
+		Unidad arquero = cuartel.crearUnidad('A');
 		Aldeano aldeano = new Aldeano();
 		arquero.atacar(aldeano);
 		
@@ -31,7 +31,7 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
 
-        Unidad soldier = cuartel.crearEspadachin();
+        Unidad soldier = cuartel.crearUnidad('S');
 		Aldeano aldeano = new Aldeano();
 		soldier.atacar(aldeano);
 		

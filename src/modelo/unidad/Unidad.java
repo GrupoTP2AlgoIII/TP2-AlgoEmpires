@@ -1,6 +1,7 @@
 package modelo.unidad;
 
 import modelo.ataque.Ataque;
+import modelo.jugador.JugadorSinOroException;
 import modelo.mapa.Posicion;
 
 public abstract class Unidad extends Posicionable {
@@ -69,12 +70,31 @@ public abstract class Unidad extends Posicionable {
 	}
 	
 	@Override
+	public int descontarOro(int oro) {
+		if(oro >= this.costo) {
+			oro -= this.costo;
+			return oro;
+	}else {
+		throw new JugadorSinOroException();	
+	}
+	}
+	
+	@Override
+	public int decrementarProduccion(int oro) {
+		return oro;
+	}
+	
+	@Override
+	public int aumentarProduccionDeOro(int produccionDeOro) {
+		return produccionDeOro;	
+	}
+
+	@Override
 	public boolean estaOcupado() {
 		return true;		
 	}
 
 
-	public abstract int descontarOro(int oro);
 
 
 

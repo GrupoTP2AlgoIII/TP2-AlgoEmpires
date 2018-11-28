@@ -1,5 +1,6 @@
 package modelo.jugador;
 
+import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class InventarioJugador {
@@ -13,7 +14,7 @@ public class InventarioJugador {
 		this.produccionDeOro = produccionOroInicial;
 	}
 	
-	public void descontarOro(Unidad unidad) {
+	public void descontarOro(Posicionable unidad) {
 		this.oro=unidad.descontarOro(this.oro);
 	}
 	
@@ -21,10 +22,11 @@ public class InventarioJugador {
 		this.oro += oroAIncrementar;
 	}
 	
-	public void aumentarPoblacion() {
+	public void aumentarPoblacion(Unidad unidad) {
 		int topePoblacional =50;
 		if(this.poblacion < topePoblacional) {		
 			this.poblacion++;
+			this.produccionDeOro = unidad.aumentarProduccionDeOro(this.produccionDeOro);
 		}else {
 			throw new JugadorSuperaTopePoblacionalException();
 		}
@@ -35,14 +37,10 @@ public class InventarioJugador {
 		this.poblacion--;
 	}
 	
-	public void aumentarProduccionDeOro() {
-		int produccionOroAldeano = 20;
-		this.produccionDeOro += produccionOroAldeano;
-	}
-	
-	public void decrementarProduccionDeOro() {
-		int produccionOroAldeano = 20;
-		this.produccionDeOro -= produccionOroAldeano;
+	public void decrementarProduccionDeOro(Posicionable unidad) {
+		/*int produccionOroAldeano = 20;
+		this.produccionDeOro -= produccionOroAldeano;*/
+		unidad.decrementarProduccion(this.produccionDeOro);
 	}
 	
 	public int getPoblacion() {

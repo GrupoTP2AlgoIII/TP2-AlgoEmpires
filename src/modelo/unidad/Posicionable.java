@@ -1,7 +1,7 @@
 package modelo.unidad;
 
 import modelo.ataque.Ataque;
-import modelo.jugador.PlazaCentralCrearAldeanoException;
+import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
 
 public abstract class Posicionable {
@@ -46,14 +46,25 @@ public abstract class Posicionable {
 	
 	public abstract boolean estaOcupado();
 	
-    public Unidad crearAldeano() {
-    	throw new PlazaCentralCrearAldeanoException();
-    }
-
 	public abstract boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna);
 
 	public abstract void desplazarHasta(Posicion hasta);
 
 	public abstract void recibirPosicionable();
+	public  Unidad crearUnidad(char tipo) {
+		throw new UnidadCreaUnidadException();
+		//cambiar nombre excepciones
+	}
+
+	public abstract int descontarOro(int oro);
+
+	public abstract int decrementarProduccion(int produccionDeOro);
+	
+	public abstract int aumentarProduccionDeOro(int produccionDeOro);
+
+	public Edificio construir(char tipoConstruccion) {
+		throw new ConstruccionPlazaCentralException();
+		//cambiar nombre excepciones
+	}
 
 }

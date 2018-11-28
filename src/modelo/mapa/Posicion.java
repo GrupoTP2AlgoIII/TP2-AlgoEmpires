@@ -83,6 +83,16 @@ public class Posicion {
 					(this.y >= posicion.getColumna() - alcanceEnColumna) && (this.y <= posicion.getColumna() + alcanceEnColumna));
 	}
 
+	public void comprobarAdyacencia(Posicion otraPosicion) {
+		if(this.x > (otraPosicion.getFila())+1 || this.x < (otraPosicion.getFila() -1)) {
+			throw new PosicionNoAdyacenteError();
+		}
+		
+		if(this.y > (otraPosicion.getColumna())+1 || this.y < (otraPosicion.getColumna() -1)) {
+			throw new PosicionNoAdyacenteError();
+		}	
+	}
+
 
 
 }

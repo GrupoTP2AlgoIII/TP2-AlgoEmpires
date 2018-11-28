@@ -39,11 +39,12 @@ public class PlazaCentral extends Edificio {
 			   this.vidaFull = 450;
 		   }
 		   
-		    public Unidad crearAldeano() {
+			@Override
+		    public Unidad crearUnidad(char tipo) {
 		    	return estado.crearAldeano();
 		    }
-
-		    
+			
+	    
 		    public boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY){
 
 		    	boolean tamanioCorrecto = true;

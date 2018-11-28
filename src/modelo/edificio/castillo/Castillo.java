@@ -47,10 +47,13 @@ public class Castillo extends Edificio {
 	       this.vidaFull = vida;	       
 	       this.ataque = new Ataque (20, 20, this.alcance);
 	    }
+	  
+	  @Override
+	  public Unidad crearUnidad(char tipo) {
+		  return estado.crearArmaAsedio();
+	  }
+		
 
-    public Unidad crearArmaAsedio(){
-    	return estado.crearArmaAsedio();
-    }
 
     public boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY){
 
@@ -112,5 +115,8 @@ public class Castillo extends Edificio {
 		}
 
 	}
+
+
+
 	
 }

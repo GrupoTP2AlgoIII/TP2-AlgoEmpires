@@ -19,7 +19,7 @@ public class CastilloTest {
         sanJorge.avanzarTurno();
         sanJorge.avanzarTurno();
         
-        Unidad escorpion = sanJorge.crearArmaAsedio();
+        Unidad escorpion = sanJorge.crearUnidad('A');
 		boolean retorno = false;
 		
 		if(escorpion != null) {

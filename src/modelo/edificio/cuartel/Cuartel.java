@@ -29,14 +29,14 @@ public class Cuartel extends Edificio{
 	       this.vidaFull = vida;
 	    }
 	   
-	    public Unidad crearArquero() {
-	    	return estado.crearArquero();
+	   	@Override
+	    public Unidad crearUnidad(char tipo) {
+	    	if(tipo == 'A')
+	    		return estado.crearArquero();
+	    	else
+	    		return estado.crearEspadachin();
 		}
 
-
-		public Unidad crearEspadachin() {
-			return estado.crearEspadachin();
-		}
 
 		@Override
 		public boolean tieneTamanioCorrecto(int desdeX, int desdeY, int hastaX, int hastaY) {
@@ -65,6 +65,7 @@ public class Cuartel extends Edificio{
 			
 			return false;
 		}
+
 
 	    
 	

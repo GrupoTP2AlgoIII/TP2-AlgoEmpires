@@ -4,6 +4,8 @@ import modelo.ataque.Ataque;
 import modelo.jugador.PosicionDesocupadaError;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
+import modelo.unidad.Unidad;
+import modelo.unidad.UnidadCreaUnidadException;
 
 public class Vacio extends Posicionable{
 
@@ -21,20 +23,16 @@ public class Vacio extends Posicionable{
 
 	@Override
 	public int avanzarTurno() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getVida() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void atacado(Ataque ataque) {
-		// TODO Auto-generated method stub
-		
+	public void atacado(Ataque ataque) {	
 	}
 	
 	@Override
@@ -42,11 +40,31 @@ public class Vacio extends Posicionable{
 		return false;		
 	}
 	
-	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
-		
+	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {	
 		return false;
 	}
+
+	@Override
+	public Unidad crearUnidad(char tipo) {
+		throw new UnidadCreaUnidadException();
+	}
+
+	@Override
+	public int descontarOro(int oro) {
+		return oro;
+	}
 	
+	@Override
+	public int decrementarProduccion(int oro) {
+		return oro;
+	}
+
+	@Override
+	public int aumentarProduccionDeOro(int produccionDeOro) {
+		return produccionDeOro;
+	}
+	
+
 	public void desplazarHasta (Posicion hasta) {
 		
 		throw new PosicionDesocupadaError ();
@@ -55,4 +73,5 @@ public class Vacio extends Posicionable{
 	public void recibirPosicionable () {
 		
 	}
+
 }

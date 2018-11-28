@@ -10,7 +10,9 @@ import modelo.jugador.Jugador;
 import modelo.jugador.JugadorSinOroException;
 import modelo.jugador.JugadorSuperaTopePoblacionalException;
 import modelo.jugador.PlazaCentralCrearAldeanoException;
+import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
+import modelo.mapa.Posicion;
 
 public class PoblacionTest {
 
@@ -31,9 +33,9 @@ public class PoblacionTest {
 		
 		
 		//creo 3 aldeanos
-		jugador.crearAldeano(plaza.getPosicion());
-		jugador.crearAldeano(plaza.getPosicion());
-		jugador.crearAldeano(plaza.getPosicion());
+		jugador.crearUnidad(plaza.getPosicion(),'A');
+		jugador.crearUnidad(plaza.getPosicion(),'A');
+		jugador.crearUnidad(plaza.getPosicion(),'A');
 		
 		assertEquals (6,jugador.getPoblacion());
 		
@@ -115,14 +117,14 @@ public class PoblacionTest {
 		plaza.posicionarEnFilaColumna(25,25);
 		jugador.agregarPosicionableEnFilaColumna(plaza,25,25);
 		
-		jugador.crearAldeano(plaza.getPosicion());		//creo un aldeano para que produzca oro
+		jugador.crearUnidad(plaza.getPosicion(),'A');		//creo un aldeano para que produzca oro
 		
 		for(int i=0;i<100;i++)//produsco oro suficiente para crear mas de 50 aldeanos
 			jugador.avanzarTurno();
 		
 		//jugador.getInventario().setPoblacion(50);
 		while(1>0)
-			jugador.crearAldeano(plaza.getPosicion());
+			jugador.crearUnidad(plaza.getPosicion(),'A');
 			
 	}
 	
@@ -142,11 +144,12 @@ public class PoblacionTest {
 		jugador.agregarPosicionableEnFilaColumna(plaza,25,25);
 		
 		while(1>0)//creo aldeanos hasta que el jugador se quede sin oro y arroje excepcion
-		jugador.crearAldeano(plaza.getPosicion());
+		jugador.crearUnidad(plaza.getPosicion(),'A');
 	}
 	
-	@Test(expected=PlazaCentralCrearAldeanoException.class)
-	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException()  {
+
+	@Test(expected=UnidadCreaUnidadException.class)
+	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 		Jugador jugador = new Jugador(mapa,"Pablo");
@@ -157,10 +160,12 @@ public class PoblacionTest {
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 
-		cuartel.posicionarEnFilaColumna(1,1);
-		jugador.agregarPosicionableEnFilaColumna(cuartel,1,1);
+		cuartel.posicionarEnFilaColumna(25,25);
+		jugador.agregarPosicionableEnFilaColumna(cuartel,25,25);
 		
-		jugador.crearAldeano(cuartel.getPosicion());
+		jugador.crearUnidad(cuartel.getPosicion(),'A');
+		Posicion posicionArquero = new Posicion(26,25);
+		jugador.crearUnidad(posicionArquero,'A');
 	}
 
 
