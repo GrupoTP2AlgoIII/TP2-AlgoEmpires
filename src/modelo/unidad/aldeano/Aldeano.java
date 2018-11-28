@@ -3,6 +3,7 @@ package modelo.unidad.aldeano;
 import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
+import modelo.jugador.JugadorSinOroException;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
@@ -44,6 +45,17 @@ public class Aldeano extends Unidad {
 		public void atacar (Posicionable posicionable) throws AldeanoNoPuedeAtacarError {
 			
 			throw new AldeanoNoPuedeAtacarError ();
+		}
+
+		@Override
+		public int descontarOro(int oro) {
+			if(oro >= 25) {
+				oro -= 25;
+				return oro;
+		}else {
+			throw new JugadorSinOroException();	
+		}
+			
 		}
 
 }

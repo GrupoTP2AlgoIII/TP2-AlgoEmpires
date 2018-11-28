@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
@@ -13,13 +12,11 @@ import modelo.jugador.JugadorSuperaTopePoblacionalException;
 import modelo.jugador.PlazaCentralCrearAldeanoException;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
-import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
-import modelo.unidad.espadachin.Espadachin;
 
 public class PoblacionTest {
 
 	@Test
-	public void test01CreoUnJugadorYAgregoTresAldeanosYGetPoblacionDevuelve3() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test01CreoUnJugadorCon3AldeanosYAgregoTresAldeanosYGetPoblacionDevuelve6() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 		Jugador jugador = new Jugador(mapa,"Pablo");
@@ -33,15 +30,16 @@ public class PoblacionTest {
 		plaza.posicionarEnFilaColumna(1,1);
 		jugador.agregarPosicionableEnFilaColumna(plaza,1,1);
 		
+		
 		//creo 3 aldeanos
 		jugador.crearAldeano(plaza.getPosicion());
 		jugador.crearAldeano(plaza.getPosicion());
 		jugador.crearAldeano(plaza.getPosicion());
 		
-		assertEquals (3,jugador.getPoblacion());
+		assertEquals (6,jugador.getPoblacion());
 		
 	}
-	
+/*	PRUEBAS A CAMBIAR CUANDO ESTE IMPLEMENTADO EL PATRON DOUBLE DISPATCH PARA ATAQUES
 	@Test
 	public void test02CreoUnJugadorCon3AldeanosMatoAUnAldeanoYGetPoblacionDevuelve2() throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		Mapa mapa = new Mapa();
@@ -60,14 +58,18 @@ public class PoblacionTest {
 		
 		//creo 3 aldeanos
 		jugador.crearAldeano(plaza.getPosicion());
-		Posicionable aldeano2 = jugador.crearAldeano(plaza.getPosicion());
+        jugador.crearAldeano(plaza.getPosicion());
 		jugador.crearAldeano(plaza.getPosicion());
 		
-		espadachin.atacar(aldeano2);
-		espadachin.atacar(aldeano2);
+		//espadachin.atacar(aldeano2);
+		//espadachin.atacar(aldeano2);
+		
+		jugador.atacar(posicionEspadachin,posicionAldeano);
+		jugador.atacar(posicionEspadachin,posicionAldeano);
+
 		jugador.actualizarPosicionables();
 		
-		assertEquals (2,jugador.getPoblacion());		
+		assertEquals (5,jugador.getInventario().getPoblacion());		
 	}
 	
 	@Test
@@ -95,9 +97,10 @@ public class PoblacionTest {
 		espadachin.atacar(aldeano2);
 		jugador.actualizarPosicionables();
 		
-		assertEquals (40,jugador.getProduccionOro());
+		assertEquals (100,jugador.getInventario().getProduccionOro());
 	}
 	
+*/
 	@Test(expected=JugadorSuperaTopePoblacionalException.class)
 	public void test04CreoUnJugadorConMasDe50UnidadesYComoSuperaElTopePoblacionDevuelveException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		Mapa mapa = new Mapa();
@@ -110,16 +113,22 @@ public class PoblacionTest {
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 
-		plaza.posicionarEnFilaColumna(1,1);
-		jugador.agregarPosicionableEnFilaColumna(plaza,1,1);
+		plaza.posicionarEnFilaColumna(25,25);
+		jugador.agregarPosicionableEnFilaColumna(plaza,25,25);
 		
-		jugador.setPoblacion(50);
-		jugador.crearAldeano(plaza.getPosicion());
+		jugador.crearAldeano(plaza.getPosicion());		//creo un aldeano para que produzca oro
+		
+		for(int i=0;i<100;i++)//produsco oro suficiente para crear mas de 50 aldeanos
+			jugador.avanzarTurno();
+		
+		//jugador.getInventario().setPoblacion(50);
+		while(1>0)
+			jugador.crearAldeano(plaza.getPosicion());
 			
 	}
 	
 	@Test(expected=JugadorSinOroException.class)
-	public void test05CreoUnJugadorSinOroYAlCrearUnAldeanoDevuelveException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test05CreoUnJugadorYCreoAldeanosHastaQueArrojeException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 		Jugador jugador = new Jugador(mapa,"Pablo");
@@ -130,10 +139,10 @@ public class PoblacionTest {
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 
-		plaza.posicionarEnFilaColumna(1,1);
-		jugador.agregarPosicionableEnFilaColumna(plaza,1,1);
+		plaza.posicionarEnFilaColumna(25,25);
+		jugador.agregarPosicionableEnFilaColumna(plaza,25,25);
 		
-		jugador.setOro(0);
+		while(1>0)//creo aldeanos hasta que el jugador se quede sin oro y arroje excepcion
 		jugador.crearAldeano(plaza.getPosicion());
 	}
 	

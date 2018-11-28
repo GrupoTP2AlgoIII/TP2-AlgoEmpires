@@ -100,6 +100,14 @@ public class ArmaDeAsedio extends Unidad {
 		
 		estado.desplazarHaciaLaDiagonalInferiorIzquierda (cantidadDePosiciones, this.cantidadDeMovimientos, this.movimientosPermitidos, this.posicion);
 
-	}	
+	}
+
+	@Override
+	public int descontarOro(int oro) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
 
 }

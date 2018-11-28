@@ -159,6 +159,9 @@ public abstract class Unidad extends Posicionable {
 	}
 
 
+	public abstract int descontarOro(int oro);
+
+
 
 
 }

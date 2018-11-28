@@ -7,6 +7,7 @@ import java.util.Map;
 import modelo.jugador.PosicionOcupadaError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
+import modelo.unidad.Unidad;
 import modelo.vacio.Vacio;
 
 
@@ -43,6 +44,26 @@ public class Mapa {
 
 		return (this.mapa.get(posicion).estaOcupado());
 
+	}
+	
+	public void buscarPosicionYUbicar(Unidad unidad,Posicion posicion) throws PosicionOcupadaError {
+		
+		//busco la posicion desocupada para crear una unidad
+		Posicion posicionAux = new Posicion(posicion.getFila(), posicion.getColumna());
+		posicionAux.desplazarHaciaAbajo(1);
+		int contador = 1;
+		while(this.estaOcupado(posicionAux)) {
+			posicionAux.desplazarHaciaLaDerecha(1);
+			contador++;
+			if(contador > 5) {
+				posicionAux.desplazarHaciaLaIzquierda(5);
+				posicionAux.desplazarHaciaAbajo(1);
+				contador = 1;
+			}
+		}		
+		this.posicionarPosicionableEnPosicion(unidad, posicionAux);
+		unidad.posicionarEnPosicion(posicionAux);
+		
 	}
 
 

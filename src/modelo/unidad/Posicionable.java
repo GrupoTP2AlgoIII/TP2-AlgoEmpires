@@ -24,6 +24,10 @@ public abstract class Posicionable {
 		this.posicion.posicionarEnFilaColumna (fila, columna);
 		
 	}
+	
+	public void posicionarEnPosicion (Posicion otraPosicion) {
+		this.posicion = otraPosicion;
+	}
 
 	public void desplazarHaciaLaDerecha(int cantidadDePosiciones) throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 		
