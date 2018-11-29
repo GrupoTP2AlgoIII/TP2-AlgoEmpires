@@ -6,6 +6,8 @@ import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
+import java.util.ArrayList;
+
 public abstract class Edificio extends Posicionable {
     protected int tamanio;
     protected int velocidadReparacion;
@@ -101,5 +103,5 @@ public abstract class Edificio extends Posicionable {
 	}
 
 
-	
+    public abstract ArrayList<Posicion> calcularPosiciones(Posicion posicionDeConstruccion);
 }
