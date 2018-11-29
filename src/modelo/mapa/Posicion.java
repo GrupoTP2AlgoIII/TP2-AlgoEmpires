@@ -1,5 +1,7 @@
 package modelo.mapa;
 
+import java.util.ArrayList;
+
 public class Posicion {
 	
 	private int x;
@@ -91,6 +93,21 @@ public class Posicion {
 		if(this.y > (otraPosicion.getColumna())+1 || this.y < (otraPosicion.getColumna() -1)) {
 			throw new PosicionNoAdyacenteError();
 		}	
+	}
+
+	public ArrayList<Posicion> generarPosicionesDeSpawn() {
+		int areaDeSpawn = 64;	//numero con raiz cuadrada
+		int tamanioLado = (int) Math.sqrt(areaDeSpawn);
+		ArrayList<Posicion> posicionesSpawn = new ArrayList<Posicion>();
+		
+		int filaAuxiliar = this.x +1;//me posiciono arriba del edificio donde se generan las unidades
+		for (int i=0;i<tamanioLado;i++) {
+			for (int j=0;j<tamanioLado;j++) {
+				Posicion posicionSpawn = new Posicion(filaAuxiliar+i,this.y+j);
+				posicionesSpawn.add(posicionSpawn);
+			}
+		}
+		return posicionesSpawn;	
 	}
 
 

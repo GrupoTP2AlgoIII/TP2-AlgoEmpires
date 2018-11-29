@@ -113,15 +113,14 @@ public class PoblacionTest {
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 
-		plaza.posicionarEnFilaColumna(25,25);
-		jugador.agregarPosicionableEnFilaColumna(plaza,25,25);
+		plaza.posicionarEnFilaColumna(1,1);
+		jugador.agregarPosicionableEnFilaColumna(plaza,1,1);
 		
 		jugador.crearUnidad(plaza.getPosicion(),'A');		//creo un aldeano para que produzca oro
 		
 		for(int i=0;i<100;i++)//produsco oro suficiente para crear mas de 50 aldeanos
 			jugador.avanzarTurno();
 		
-		//jugador.getInventario().setPoblacion(50);
 		while(1>0)
 			jugador.crearUnidad(plaza.getPosicion(),'A');
 			

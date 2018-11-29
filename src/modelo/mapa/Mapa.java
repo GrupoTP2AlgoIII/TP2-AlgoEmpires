@@ -1,11 +1,13 @@
 package modelo.mapa;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.Map;
 
 import modelo.edificio.Edificio;
 import modelo.jugador.PosicionOcupadaError;
+import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -51,22 +53,18 @@ public class Mapa {
 	
 	public void buscarPosicionYUbicar(Unidad unidad,Posicion posicion) {
 		
-		//busco la posicion desocupada para crear una unidad
-		Posicion posicionAux = new Posicion(posicion.getFila(), posicion.getColumna());
-		posicionAux.posicionarEnFilaColumna(posicionAux.getFila() + 1, posicionAux.getColumna());
-		int contador = 1;
-		while(this.estaOcupado(posicionAux)) {
-			posicionAux.posicionarEnFilaColumna(posicionAux.getFila(), posicionAux.getColumna() + 1);
-			contador++;
-			if(contador > 5) {
-				posicionAux.posicionarEnFilaColumna(posicionAux.getFila(), posicionAux.getColumna() - 5);
-				posicionAux.posicionarEnFilaColumna(posicionAux.getFila() + 1, posicionAux.getColumna());
-				contador = 1;
-			}
-		}		
-		this.posicionarPosicionableEnPosicion(unidad, posicionAux);
-		unidad.posicionarEnPosicion(posicionAux);
-		
+		 ArrayList <Posicion> posicionesDeSpawn = posicion.generarPosicionesDeSpawn();		 	 
+		 boolean repetir = true;
+		   while(repetir){	   
+			   try {
+				Posicion posicionActual =  posicionesDeSpawn.remove(0);
+		    	this.posicionarPosicionableEnPosicion(unidad,posicionActual);
+		   		unidad.posicionarEnPosicion(posicionActual);
+		    	repetir = false;
+		       } catch(DesplazarAPosicionOcupadaError e){
+		    	   
+		       }
+		   }	
 	}
 
 

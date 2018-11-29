@@ -60,9 +60,8 @@ public class Jugador {
 		this.posicionables.putAll(edificioAgregado);
 	}
 	
-	public void crearUnidad(Posicion posicionEdificio,char tipoUnidad) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void crearUnidad(Posicion posicionEdificio,char tipoUnidad){
 		Posicionable edificio = this.posicionables.get(posicionEdificio);
-
 		Unidad unidad =  edificio.crearUnidad(tipoUnidad);
 		this.inventario.descontarOro(unidad);
 		this.inventario.aumentarPoblacion(unidad);
