@@ -2,11 +2,8 @@ package modelo.edificio.castillo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
-import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -93,7 +90,7 @@ public class Castillo extends Edificio {
 		}
 		return posicionesQueOcupa;
 	}
-	
+/*	
 	public void atacarEnemigosAlAlcance (Mapa mapa, Map  <Posicion, Posicionable> posicionables) {
 		
 		Posicion desdeAlcance = new Posicion (this.posicionDesde.getFila() - 3, this.posicionDesde.getColumna() - 3);
@@ -110,7 +107,8 @@ public class Castillo extends Edificio {
 			}
 		}
 
-	}
+	}*/
+
 
 
 	

@@ -204,18 +204,4 @@ public class MapaTest {
 		mapa.posicionarDesdeEnHasta(new Posicion (1, 1), new Posicion (0,0));
 	}
 
-	@Test
-	public void test20IniciarMapaVacioYTodoEstaVacio(){
-
-		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-		
-		for (int i = 1; i <= mapa.getFilas(); i++){
-			for (int j = 1; j <= mapa.getColumnas(); j++){
-				Posicion posicion = new Posicion(i,j);
-				assertFalse(mapa.obtenerPosicionableEn(posicion).estaOcupado());
-			}
-		}
-	}
-
 }

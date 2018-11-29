@@ -16,10 +16,8 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 
 	@Override
 	public EstadoEdificio avanzarTurno(Edificio edificio) {
-		
-		if(this.turnosOcupado > 0) {
-			edificio.sumarVida();
-		}
+
+		edificio.sumarVida();
 		this.turnosOcupado--;
 		if(this.turnosOcupado==0) {
 			return new EstadoEdificioDisponible();

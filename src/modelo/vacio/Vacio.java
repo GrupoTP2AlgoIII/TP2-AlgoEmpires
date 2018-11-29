@@ -19,23 +19,6 @@ public class Vacio extends Posicionable{
 	public Vacio() {
 		
 	}
-
-	@Override
-	public int avanzarTurno() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getVida() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public boolean estaOcupado() {
-		return false;		
-	}
 	
 	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 		
@@ -49,22 +32,6 @@ public class Vacio extends Posicionable{
 	
 	public void recibirPosicionable () {
 		
-	}
-
-	@Override
-	public int descontarOro(int oro) {
-		return oro;
-	}
-
-
-	@Override
-	public int decrementarProduccion(int oro) {
-		return oro;
-	}
-
-	@Override
-	public int aumentarProduccionDeOro(int produccionDeOro) {
-		return produccionDeOro;
 	}
 	
 	public void recibirDanio (int danio) {

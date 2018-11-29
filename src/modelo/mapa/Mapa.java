@@ -45,12 +45,6 @@ public class Mapa {
 		return this.mapa.size();
 	}
 
-	public boolean estaOcupado(Posicion posicion) {
-
-		return (this.mapa.get(posicion).estaOcupado());
-
-	}
-	
 	public void buscarPosicionYUbicar(Unidad unidad,Posicion posicion) {
 		
 		 ArrayList <Posicion> posicionesDeSpawn = posicion.generarPosicionesDeSpawn();		 	 
@@ -143,11 +137,12 @@ public class Mapa {
 
 	public Map <Posicion, Posicionable> ponerEdificio(Edificio cuartel, Posicion posicionDeConstruccion) throws PosicionOcupadaError, PosicionFueraDelMapaError {
 
-		int tamanioLado = (int) Math.sqrt(cuartel.getTamanio());
+		int tamanioLado = cuartel.calcularLado();
 		tamanioLado --;
 		
 		this.mapaAux = new HashMap <Posicion, Posicionable>();
 
+		
 		this.ponerEdificioDesdeHasta(cuartel, posicionDeConstruccion.getFila(), posicionDeConstruccion.getColumna(),
 				posicionDeConstruccion.getFila()+tamanioLado, posicionDeConstruccion.getColumna()+tamanioLado);
 		

@@ -11,7 +11,6 @@ import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.vacio.Vacio;
-import modelo.unidad.PosicionFueraDelMapaError;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,8 +71,7 @@ public class Jugador {
 	public void avanzarTurno() {		
 		this.quitarPosicionablesDestruidos();
 		Posicionable anterior = null;
-        for (Posicion posicion : posicionables.keySet()){
-            Posicionable actual = posicionables.get(posicion);
+        for (Posicionable actual : posicionables.values()){
             if(anterior != actual) {  	
 				int produccionRecursoUnidad =actual.avanzarTurno();
 				this.inventario.aumentarOro(produccionRecursoUnidad);
@@ -95,6 +93,7 @@ public class Jugador {
 		}
 	}
 
+	
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 		
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);

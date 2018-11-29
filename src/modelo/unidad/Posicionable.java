@@ -1,12 +1,14 @@
 package modelo.unidad;
 
 import modelo.edificio.Edificio;
+import modelo.jugador.JugadorSinOroException;
 import modelo.mapa.Posicion;
 
 public abstract class Posicionable {
 	
 	protected Posicion posicion;
 	protected int vida;
+	protected int costo;
 	
 	public Posicionable () {
 		
@@ -41,15 +43,14 @@ public abstract class Posicionable {
 	}
 
 
-	public abstract int avanzarTurno();
+	public int avanzarTurno() {
+		return 0;
+	}
 
-	public abstract int getVida();
 
 	public Posicion getPosicion(){
 		return this.posicion;
 	}
-	
-	public abstract boolean estaOcupado();
 	
 	public abstract boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna);
 
@@ -61,14 +62,30 @@ public abstract class Posicionable {
 		throw new CrearUnidadException();
 	}
 
-	public abstract int descontarOro(int oro);
+	public int descontarOro(int oro) {
+		if(oro >= this.costo) {
+			oro -= this.costo;
+			return oro;
+		}else
+			throw new JugadorSinOroException();	
+	}
 
-	public abstract int decrementarProduccion(int produccionDeOro);
+	public int decrementarProduccion(int produccionDeOro) {
+		return produccionDeOro;
+	}
 	
-	public abstract int aumentarProduccionDeOro(int produccionDeOro);
+	public int aumentarProduccionDeOro(int produccionDeOro) {
+		return produccionDeOro;
+	}
 
 	public Edificio construir(char tipoConstruccion) {
 		throw new ConstruccionEdificioException();
+	}
+	
+	//METODOS DE PRUEBAS
+	
+	public int getVida() {
+		return this.vida;
 	}
 
 

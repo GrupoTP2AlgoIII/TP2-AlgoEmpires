@@ -22,10 +22,8 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 
 	@Override
 	public EstadoEdificio reparar(Edificio edificio) {
-		int turnosEnReparacion = ((edificio.getVidaFull()-edificio.getVida())/edificio.getVelocidadDeReparacion());
-		if(turnosEnReparacion < 1) {
-			turnosEnReparacion = 1;
-		}
+		
+		int turnosEnReparacion = edificio.calcularTurnos();
 		return (new EstadoEdificioOcupado(turnosEnReparacion));
 		
 	}

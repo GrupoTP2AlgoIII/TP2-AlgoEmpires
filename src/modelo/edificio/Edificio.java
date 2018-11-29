@@ -1,15 +1,12 @@
 package modelo.edificio;
 
 
-import modelo.jugador.JugadorSinOroException;
 import modelo.mapa.Posicion;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public abstract class Edificio extends Posicionable {
-    //protected int vida;
-    protected int costo;
     protected int tamanio;
     protected int velocidadReparacion;
     protected int vidaFull;
@@ -59,11 +56,6 @@ public abstract class Edificio extends Posicionable {
 	 public void recibirPosicionable () {
 		throw new DesplazarAPosicionOcupadaError ();
 	}
-
-
-	 public boolean estaOcupado() {
-		return true;		
-	}
 	
 	 public int avanzarTurno() {
 		 estado = estado.avanzarTurno(this);
@@ -73,15 +65,8 @@ public abstract class Edificio extends Posicionable {
 	public void reparar() {		
 		estado = estado.reparar(this);	
 	}
-	    
-	public int getVida() {
-		return this.vida;
-	}
-
-	protected int getVidaFull() {
-		return this.vidaFull;
-	}
-
+	 
+	
 	protected void sumarVida() {
 		if(this.vida < this.vidaFull) {
 			this.vida += this.velocidadReparacion;
@@ -90,42 +75,31 @@ public abstract class Edificio extends Posicionable {
 			this.vida = this.vidaFull;
 		}
 	}
-		
-	public int getTurnosConstruccion() {
-		return estado.getTurnosOcupado();
-	}
 
-
-	public int getVelocidadDeReparacion() {
-		return this.velocidadReparacion;
-	}
-		
+	
 	public void desplazarHasta (Posicion hasta) {
 			
 		throw new EdificiosNoSePuedenDesplazarError ();
 	}
 		
-	@Override
-	public int descontarOro(int oro) {
-		if(oro >= this.costo) {
-			oro -= this.costo;
-			return oro;
-		}else {
-			throw new JugadorSinOroException();	
+				
+	public int calcularTurnos() {
+		int turnosEnReparacion=((this.vidaFull - this.vida )/this.velocidadReparacion);
+		if(turnosEnReparacion < 1) {
+			turnosEnReparacion = 1;
 		}
+		return turnosEnReparacion;
 	}
-		
-	@Override
-	public int decrementarProduccion(int oro) {
-		return oro;
+	
+	public int calcularLado() {
+		return ((int) Math.sqrt(this.tamanio));
 	}
-		
-	public int getTamanio() {
-		return this.tamanio;
+	
+	//METODOS DE PRUEBAS
+	public int getTurnosConstruccion() {
+		return estado.getTurnosOcupado();
 	}
-		
-	@Override
-	public int aumentarProduccionDeOro(int produccionDeOro) {
-		return produccionDeOro;	
-	}
+
+
+	
 }

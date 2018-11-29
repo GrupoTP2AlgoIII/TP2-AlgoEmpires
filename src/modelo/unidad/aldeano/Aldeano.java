@@ -31,6 +31,7 @@ public class Aldeano extends Unidad {
 		    return plaza;
 	    }   
 	    
+	    @Override
 	    public int avanzarTurno() {
 	    	estado = estado.avanzarTurno();
 	    	return estado.obtenerOro();
@@ -39,10 +40,9 @@ public class Aldeano extends Unidad {
 
 
 
-	public void reparar(Edificio cuartel) {
-			cuartel.reparar();
-			estado = estado.reparar(cuartel);
-
+	public void reparar(Edificio edificio) {
+		edificio.reparar();	
+		estado = estado.reparar(edificio);
 		}
 		
 		@Override

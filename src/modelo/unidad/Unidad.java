@@ -2,15 +2,12 @@ package modelo.unidad;
 
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
-import modelo.jugador.JugadorSinOroException;
 import modelo.mapa.Posicion;
 
 public abstract class Unidad extends Posicionable {
 	
 	protected int cantidadDeMovimientos;
 	protected int movimientosPermitidos;
-	//protected int vida;
-	protected int costo;
 	protected Ataque ataque;
 	protected int alcance;
 	
@@ -87,34 +84,7 @@ public abstract class Unidad extends Posicionable {
 		return this.vida;
 	}
 	
-	public int avanzarTurno() {
-		return 0;
-	}
-	
-	@Override
-	public int descontarOro(int oro) {
-		if(oro >= this.costo) {
-			oro -= this.costo;
-			return oro;
-	}else {
-		throw new JugadorSinOroException();	
-	}
-	}
-	
-	@Override
-	public int decrementarProduccion(int oro) {
-		return oro;
-	}
-	
-	@Override
-	public int aumentarProduccionDeOro(int produccionDeOro) {
-		return produccionDeOro;	
-	}
 
-	@Override
-	public boolean estaOcupado() {
-		return true;		
-	}
 
 
 
