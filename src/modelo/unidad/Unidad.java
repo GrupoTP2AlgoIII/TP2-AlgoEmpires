@@ -2,6 +2,8 @@ package modelo.unidad;
 
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
+import modelo.jugador.Jugador;
+import modelo.jugador.Poblacion;
 import modelo.mapa.Posicion;
 
 public abstract class Unidad extends Posicionable {
@@ -10,12 +12,28 @@ public abstract class Unidad extends Posicionable {
 	protected int movimientosPermitidos;
 	protected Ataque ataque;
 	protected int alcance;
+	protected Jugador propietario;
 	
 	public Unidad () {
 		
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
 	}
+
+
+	public boolean posicionableEstaEnPropietario(Posicionable posicionable){
+		Poblacion poblacionPropietaraio = this.propietario.obtenerPoblacion();
+		return poblacionPropietaraio.PosicionableEstaEnPoblacion(posicionable);
+	}
+
+	public void atacar(Posicionable posicionable) throws RuntimeException {
+		if  (posicionableEstaEnPropietario(posicionable)) {
+			throw new RuntimeException();
+		}
+
+		posicionable.recibirDanioDe(this);
+	}
+
 
 
 	// Agrego este constructor
@@ -41,9 +59,9 @@ public abstract class Unidad extends Posicionable {
 		edificio.atacar(this);
 	}
 	
-	public void atacar (Posicionable posicionable) {
+	/*public void atacar (Posicionable posicionable) {
 		posicionable.recibirDanioDe(this);
-	}
+	}*/
 	
 	public void atacar (Unidad unidad) {
 		this.ataque.atacar(unidad);

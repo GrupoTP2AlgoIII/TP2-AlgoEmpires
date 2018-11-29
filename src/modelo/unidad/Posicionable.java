@@ -1,6 +1,7 @@
 package modelo.unidad;
 
 import modelo.edificio.Edificio;
+import modelo.jugador.Jugador;
 import modelo.jugador.JugadorSinOroException;
 import modelo.mapa.Posicion;
 
@@ -62,6 +63,13 @@ public abstract class Posicionable {
 		throw new CrearUnidadException();
 	}
 
+//Para que funcione ataque
+	public  Unidad crearUnidadPropia(char tipo, Jugador jugador)
+	{
+		throw new CrearUnidadException();
+	}
+
+
 	public int descontarOro(int oro) {
 		if(oro >= this.costo) {
 			oro -= this.costo;
@@ -81,7 +89,12 @@ public abstract class Posicionable {
 	public Edificio construir(char tipoConstruccion) {
 		throw new ConstruccionEdificioException();
 	}
-	
+
+	public Edificio construirPropio(char tipoConstruccion, Jugador jugador) {
+		throw new ConstruccionEdificioException();
+	}
+
+
 	//METODOS DE PRUEBAS
 	
 	public int getVida() {

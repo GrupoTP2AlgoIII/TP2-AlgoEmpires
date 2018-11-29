@@ -1,6 +1,7 @@
 package modelo.edificio;
 
 
+import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.Posicionable;
@@ -13,6 +14,7 @@ public abstract class Edificio extends Posicionable {
     protected EstadoEdificio estado;
     protected Posicion posicionDesde;
     protected Posicion posicionHasta;
+    protected Jugador propietario;
 	
    
 
@@ -27,8 +29,21 @@ public abstract class Edificio extends Posicionable {
 		this.posicionHasta = new Posicion (hastaX, hastaY);
 		int turnosEnConstruccionInicial = 3;
 		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);
-		
+
 	}
+
+
+	//Metodo que hereda y todos los edificios asignan un propietario en un futuro
+
+	public Edificio(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugadorDado){
+		this.posicionDesde = new Posicion (desdeX, desdeY);
+		this.posicionHasta = new Posicion (hastaX, hastaY);
+		int turnosEnConstruccionInicial = 3;
+		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);
+		this.propietario = jugadorDado;
+
+	}
+
 
 	 // Constructor que reciba 0 por parametro, para inicializar el juego
 	 public Edificio(int turnos) {
@@ -36,6 +51,8 @@ public abstract class Edificio extends Posicionable {
 			estado = new EstadoEdificioDisponible();
 		}		
 	}
+
+
 	 
 	public void recibirDanio (int danio) {
 		this.vida -= danio;
@@ -101,5 +118,4 @@ public abstract class Edificio extends Posicionable {
 	}
 
 
-	
 }

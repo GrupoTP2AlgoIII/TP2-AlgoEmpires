@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import modelo.edificio.Edificio;
+import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -18,8 +19,19 @@ public class Cuartel extends Edificio{
 	        this.velocidadReparacion = 50;
 	        this.vidaFull = vida;
 	    }
-	   
-	   public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY) {
+
+
+		public Cuartel(Jugador jugador) {
+			this.vida = 250;
+			this.costo = 50;
+			this.tamanio = 4;
+			this.velocidadReparacion = 50;
+			this.vidaFull = vida;
+			this.propietario = jugador;
+		}
+
+
+	public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY) {
 		   
 		   this.posicionDesde = new Posicion (desdeX, desdeY);
 		   this.posicionHasta = new Posicion (hastaX, hastaY);
@@ -29,8 +41,21 @@ public class Cuartel extends Edificio{
 	       this.velocidadReparacion = 50;
 	       this.vidaFull = vida;
 	    }
-	   
-	   public void atacar (Posicionable posicionable) {
+
+		public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugadorDado) {
+
+			this.posicionDesde = new Posicion (desdeX, desdeY);
+			this.posicionHasta = new Posicion (hastaX, hastaY);
+			this.vida = 250;
+			this.costo = 50;
+			this.tamanio = 4;
+			this.velocidadReparacion = 50;
+			this.vidaFull = vida;
+			this.propietario = jugadorDado;
+		}
+
+
+	public void atacar (Posicionable posicionable) {
 		   throw new CuartelNoPuedeAtacarError ();
 	   }
 	   
@@ -49,6 +74,16 @@ public class Cuartel extends Edificio{
 	    	else
 	    		return estado.crearEspadachin();
 		}
+
+
+		@Override
+		public Unidad crearUnidadPropia(char tipo, Jugador jugador) {
+			if(tipo == 'A')
+				return estado.crearArqueroDeJugador(this.propietario);
+			else
+				return estado.crearEspadachinDeJugador(this.propietario);
+		}
+
 
 
 

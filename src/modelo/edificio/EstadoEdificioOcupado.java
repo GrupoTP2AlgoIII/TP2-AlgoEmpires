@@ -1,5 +1,6 @@
 package modelo.edificio;
 
+import modelo.jugador.Jugador;
 import modelo.unidad.Unidad;
 
 public class EstadoEdificioOcupado implements EstadoEdificio{
@@ -9,10 +10,7 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 		this.turnosOcupado = turnosOcupado;
 	}
 
-	@Override
-	public Unidad crearArquero() {
-		throw new EdificioOcupadoException();
-	}
+
 
 	@Override
 	public EstadoEdificio avanzarTurno(Edificio edificio) {
@@ -32,7 +30,12 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 	}
 
 	@Override
-	public Unidad crearAldeano() {
+	public Unidad crearAldeano()  {
+		throw new EdificioOcupadoException();
+	}
+
+	@Override
+	public Unidad crearAldeanoDeJugador(Jugador propietario) {
 		throw new EdificioOcupadoException();
 	}
 
@@ -48,6 +51,21 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 
 	@Override
 	public Unidad crearEspadachin() {
+		throw new EdificioOcupadoException();
+	}
+
+	@Override
+	public Unidad crearEspadachinDeJugador(Jugador jugador) {
+		throw new EdificioOcupadoException();
+	}
+
+	@Override
+	public Unidad crearArquero() {
+		throw new EdificioOcupadoException();
+	}
+
+	@Override
+	public Unidad crearArqueroDeJugador(Jugador jugador)  {
 		throw new EdificioOcupadoException();
 	}
 }

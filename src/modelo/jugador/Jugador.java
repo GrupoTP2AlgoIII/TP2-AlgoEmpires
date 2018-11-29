@@ -22,6 +22,7 @@ public class Jugador {
 	private String nombre;
 	private InventarioJugador inventario;
 	private Jugador enemigo;
+	private Poblacion poblacion;
 
 	public Jugador(Mapa mapa,String nombre) {
 
@@ -34,8 +35,17 @@ public class Jugador {
 		int produccionOroInicial = 60; //3 aldeanos
 		
 		this.inventario = new InventarioJugador(oroInicial,poblacionInicial,produccionOroInicial);
+
+		this.poblacion = new Poblacion(this.posicionables);
+
+
 	}
-	
+
+
+	public Poblacion obtenerPoblacion(){
+		return this.poblacion;
+	}
+
 	public void setEnemigo (Jugador jugador) {
 		this.enemigo = jugador;
 	}
@@ -58,6 +68,17 @@ public class Jugador {
 		Map <Posicion, Posicionable> edificioAgregado = this.mapa.ponerEdificio(edificio,posicionDeConstruccion);
 		this.posicionables.putAll(edificioAgregado);
 	}
+
+
+	//PARA QUE ANDE ATAQUE
+	public void construirEdificioPropio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
+		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
+		Posicionable aldeano = this.posicionables.get(posicionAldeano);
+		Edificio edificio = aldeano.construirPropio(tipoConstruccion, this);
+		this.inventario.descontarOro(edificio);
+		Map <Posicion, Posicionable> edificioAgregado = this.mapa.ponerEdificio(edificio,posicionDeConstruccion);
+		this.posicionables.putAll(edificioAgregado);
+	}
 	
 	public void crearUnidad(Posicion posicionEdificio,char tipoUnidad){
 		Posicionable edificio = this.posicionables.get(posicionEdificio);
@@ -67,7 +88,18 @@ public class Jugador {
 		this.mapa.buscarPosicionYUbicar(unidad,posicionEdificio);
 		this.posicionables.put(unidad.getPosicion(),unidad);
 	}
-	
+
+
+
+	public void crearUnidadPropia(Posicion posicionEdificio,char tipoUnidad){
+		Posicionable edificio = this.posicionables.get(posicionEdificio);
+		Unidad unidad =  edificio.crearUnidadPropia(tipoUnidad, this);
+		this.inventario.descontarOro(unidad);
+		this.inventario.aumentarPoblacion(unidad);
+		this.mapa.buscarPosicionYUbicar(unidad,posicionEdificio);
+		this.posicionables.put(unidad.getPosicion(),unidad);
+	}
+
 	public void avanzarTurno() {		
 		this.quitarPosicionablesDestruidos();
 		Posicionable anterior = null;
@@ -117,7 +149,7 @@ public class Jugador {
 
 	public void iniciarAldeanosDesde(int x, int y)  {
 	
-		for (int i = y; i <= (y + 2); i++ ) {
+		for (int i = y; i <= (y +2); i++ ) {
 		    Unidad aldeano = new Aldeano();
 		    this.agregarPosicionableEnFilaColumna(aldeano, x, i);
 		    this.mapa.posicionarEnFilaColumna(aldeano, x, i);
@@ -126,6 +158,16 @@ public class Jugador {
 		
 	}
 
+	public void iniciarAldeanosPropiosDesde(int x, int y)  {
+
+		for (int i = y; i <= (y +2); i++ ) {
+			Unidad aldeano = new Aldeano(this);
+			this.agregarPosicionableEnFilaColumna(aldeano, x, i);
+			this.mapa.posicionarEnFilaColumna(aldeano, x, i);
+			//this.inventario.aumentarPoblacion(aldeano);
+		}
+
+	}
 
 	public void crearCastilloDesde(int desdeX, int desdeY) {
 
@@ -143,7 +185,18 @@ public class Jugador {
 		Map <Posicion, Posicionable> plazaConstruida = this.mapa.ponerEdificio(plazaCentral, posicionDesde);
 		this.posicionables.putAll(plazaConstruida);
 	}
-			
+
+
+
+	public void crearPlazaCentralPropiaDesde(int desdeX, int desdeY) {
+
+		Edificio plazaCentral = new PlazaCentral(0,this);
+		Posicion posicionDesde = new Posicion (desdeX, desdeY);
+		Map <Posicion, Posicionable> plazaConstruida = this.mapa.ponerEdificio(plazaCentral, posicionDesde);
+		this.posicionables.putAll(plazaConstruida);
+	}
+
+
 	public Map <Posicion, Posicionable> getPosicionables() {
 		return this.posicionables;
 	}
