@@ -60,19 +60,7 @@ public class PlazaCentral extends Edificio {
 			public Unidad crearUnidad(char tipo) {
 				return estado.crearAldeano();
 			}
-		    
-		    public boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY){
-
-		    	boolean tamanioCorrecto = true;
-
-		    	// Se pasan coordeanadas de izquierda a derecha y de abajo hacia arriba
-		    	if ( hastaX != (desdeX + 1) || hastaY != (desdeY + 1)){
-		    		tamanioCorrecto = false;
-		    	}
-
-		    	return tamanioCorrecto;
-		    }  
-		    
+		    	    
 			public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 				
 				ArrayList <Posicion> posicionesQueOcupaEdificio = new ArrayList <Posicion> ();

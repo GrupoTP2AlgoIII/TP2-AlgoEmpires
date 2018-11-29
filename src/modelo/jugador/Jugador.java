@@ -22,6 +22,7 @@ public class Jugador {
 	private Mapa mapa;
 	private String nombre;
 	private InventarioJugador inventario;
+	private Jugador enemigo;
 
 	public Jugador(Mapa mapa,String nombre) {
 
@@ -34,6 +35,14 @@ public class Jugador {
 		int produccionOroInicial = 60; //3 aldeanos
 		
 		this.inventario = new InventarioJugador(oroInicial,poblacionInicial,produccionOroInicial);
+	}
+	
+	public void setEnemigo (Jugador jugador) {
+		this.enemigo = jugador;
+	}
+	
+	public Jugador jugadorSiguiente() {
+		return this.enemigo;
 	}
 
 

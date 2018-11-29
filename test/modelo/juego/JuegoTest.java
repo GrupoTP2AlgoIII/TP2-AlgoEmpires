@@ -4,12 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-//import modelo.edificio.castillo.Castillo;
 import modelo.edificio.cuartel.Cuartel;
-//import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.mapa.Posicion;
+import modelo.unidad.Posicionable;
+import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
-//import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import modelo.unidad.arquero.Arquero;
 
 public class JuegoTest {
@@ -20,8 +19,8 @@ public class JuegoTest {
 		Juego juego = new Juego();
 		juego.iniciarJuego();
 		
-		for (int i = 5; i <= 7; i++) {
-			Posicion posicion = new Posicion (5, i);
+		for (int i = 6; i <= 8; i++) {
+			Posicion posicion = new Posicion (8, i);
 			assertEquals(20, juego.obtenerPosicionableEn(posicion).avanzarTurno());
 		}
 		
@@ -33,8 +32,8 @@ public class JuegoTest {
 		Juego juego = new Juego();
 		juego.iniciarJuego();
 		
-		for (int i = 44; i <= 46; i++) {
-			Posicion posicion = new Posicion (46, i);
+		for (int j = 43; j <= 45; j++) {
+			Posicion posicion = new Posicion (43, j);
 			assertEquals(20, juego.obtenerPosicionableEn(posicion).avanzarTurno());
 		}
 	}
@@ -44,14 +43,14 @@ public class JuegoTest {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
+			
+		Posicion posicionCastillo = new Posicion (4,4);
+		Posicionable castillo = juego.obtenerPosicionableEn(posicionCastillo);
+		
+		Unidad armaAsedio = castillo.crearUnidad('A');
+		
+		assertEquals(150, armaAsedio.getVida());		
 
-		for (int i = 1; i <= 4; i++){
-			for (int j = 1; j <= 4; j++){
-				Posicion posicion = new Posicion (i,j);
-				assertTrue(juego.obtenerPosicionableEn(posicion).estaOcupado());
-
-			}
-		}
 	}
 	
 	@Test
@@ -60,13 +59,12 @@ public class JuegoTest {
 		Juego juego = new Juego();
 		juego.iniciarJuego();
 
-		for (int i = 47; i <= 50; i++){
-			for (int j = 47; j <= 50; j++){
-				Posicion posicion = new Posicion (i,j);
-				assertTrue(juego.obtenerPosicionableEn(posicion).estaOcupado());
-
-			}
-		}
+		Posicion posicionCastillo = new Posicion (44,44);
+		Posicionable castillo = juego.obtenerPosicionableEn(posicionCastillo);
+		
+		Unidad armaAsedio = castillo.crearUnidad('A');
+		
+		assertEquals(150, armaAsedio.getVida());
 	}
 	
 	@Test
@@ -75,13 +73,12 @@ public class JuegoTest {
 		Juego juego = new Juego();
 		juego.iniciarJuego();
 
-		for (int i = 1; i <= 2; i++){
-			for (int j = 8; j <= 9; j++){
-				Posicion posicion = new Posicion (i,j);
-				assertTrue(juego.obtenerPosicionableEn(posicion).estaOcupado());
-
-			}
-		}
+		Posicion posicionPlaza = new Posicion (2,8);
+		Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
+		
+		Unidad aldeano = plazaCentral.crearUnidad('A');
+		
+		assertEquals(50, aldeano.getVida());
 		
 	}
 	
@@ -91,13 +88,12 @@ public class JuegoTest {
 		Juego juego = new Juego();
 		juego.iniciarJuego();
 
-		for (int i = 49; i <= 50; i++){
-			for (int j = 42; j <= 43; j++){
-				Posicion posicion = new Posicion (i,j);
-				assertTrue(juego.obtenerPosicionableEn(posicion).estaOcupado());
-
-			}
-		}
+		Posicion posicionPlaza = new Posicion (2,8);
+		Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
+		
+		Unidad aldeano = plazaCentral.crearUnidad('A');
+		
+		assertEquals(50, aldeano.getVida());
 		
 	}
 	
@@ -150,41 +146,4 @@ public class JuegoTest {
 		
 	}
 	
-//	@Test 
-//	public void test09IniciarJuegoInicializaCastilloConstruidoJugador1() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
-//		
-//		
-//		Juego juego = new Juego();
-//		juego.iniciarJuego();
-//		
-//		PlazaCentral plazaCentral = new PlazaCentral();
-//		Posicion posicionCastillo = new Posicion (2,2);
-//				
-//		Castillo castillo = (Castillo)juego.obtenerPosicionableEn(posicionCastillo);
-//		ArmaDeAsedio armaDeAsedio = (ArmaDeAsedio) castillo.crearArmaAsedio();
-//		
-//		armaDeAsedio.atacar(plazaCentral); // le resta 75 de vida y por defecto tiene 450
-//		
-//		assertEquals(375, plazaCentral.getVida());	
-//		
-//	}
-//	
-//	@Test 
-//	public void test10IniciarJuegoInicializaCastilloConstruidoJugador2() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
-//		
-//		
-//		Juego juego = new Juego();
-//		juego.iniciarJuego();
-//		
-//		PlazaCentral plazaCentral = new PlazaCentral();
-//		Posicion posicionCastillo = new Posicion (49,49);
-//				
-//		Castillo castillo = (Castillo)juego.obtenerPosicionableEn(posicionCastillo);
-//		ArmaDeAsedio armaDeAsedio = (ArmaDeAsedio) castillo.crearArmaAsedio();
-//		
-//		armaDeAsedio.atacar(plazaCentral); // le resta 75 de vida y por defecto tiene 450
-//		
-//		assertEquals(375, plazaCentral.getVida());	
-//		
-//	}
 }
