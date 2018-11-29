@@ -77,12 +77,6 @@ public class Castillo extends Edificio {
 
 
 
-	@Override
-	public void recibirDanio(int ataque) {
-
-	}
-
-
 	private ArrayList <Posicion> crearListaConPosicionesQueOcupa (Posicion desde, Posicion hasta) {
 		ArrayList <Posicion> posicionesQueOcupa = new ArrayList <Posicion> ();
 		for (int i = desde.getFila(); i < hasta.getFila(); i++) {

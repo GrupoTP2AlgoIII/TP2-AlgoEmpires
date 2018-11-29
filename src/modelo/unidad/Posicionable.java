@@ -65,6 +65,5 @@ public abstract class Posicionable {
 	}
 
 
-	public abstract void recibirDanio(int ataque);
 
 }

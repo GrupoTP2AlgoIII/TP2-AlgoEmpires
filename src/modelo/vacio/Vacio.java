@@ -55,4 +55,21 @@ public class Vacio extends Posicionable{
 	public void recibirPosicionable () {
 		
 	}
+
+	@Override
+	public int descontarOro(int oro) {
+		return oro;
+	}
+
+
+	@Override
+	public int decrementarProduccion(int oro) {
+		return oro;
+	}
+
+	@Override
+	public int aumentarProduccionDeOro(int produccionDeOro) {
+		return produccionDeOro;
+	}
+
 }

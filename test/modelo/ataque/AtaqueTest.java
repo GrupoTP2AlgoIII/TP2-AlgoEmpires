@@ -64,7 +64,6 @@ public class AtaqueTest {
 		Cuartel cuartel = new Cuartel(7, 4, 8, 5);
 		Juego juego = new Juego ();
 		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
-		juego.agregarEdificioDesdeHasta(cuartel, 7, 4, 8, 5);
 		arquero.atacar(cuartel);
 		
 		//el cuartel inicialmente tiene 240 de vida

@@ -43,6 +43,10 @@ public class PlazaCentral extends Edificio {
 		    	return estado.crearAldeano();
 		    }
 
+
+			public Unidad crearUnidad(char tipo) {
+				return estado.crearAldeano();
+			}
 		    
 		    public boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY){
 

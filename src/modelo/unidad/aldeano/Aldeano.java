@@ -37,10 +37,6 @@ public class Aldeano extends Unidad {
 	    }
 
 
-	@Override
-	public void recibirDanio(int ataque) {
-
-	}
 
 
 	public void reparar(Edificio cuartel) {

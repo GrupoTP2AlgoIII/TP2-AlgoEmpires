@@ -38,13 +38,9 @@ public class Cuartel extends Edificio{
 		}
 
 
-		@Override
-		public boolean tieneTamanioCorrecto(int desdeX, int desdeY, int hastaX, int hastaY) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-		
-		public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
+
+
+	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 			
 			
 			ArrayList <Posicion> posicionesQueOcupaEdificio = new ArrayList <Posicion> ();
