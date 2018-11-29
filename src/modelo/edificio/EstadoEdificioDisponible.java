@@ -9,7 +9,7 @@ import modelo.unidad.espadachin.Espadachin;
 
 public class EstadoEdificioDisponible implements EstadoEdificio {
 
-	
+
 	@Override
 	public Unidad crearArquero() {
 		Unidad arquero = new Arquero();
@@ -29,10 +29,10 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 
 	@Override
 	public EstadoEdificio reparar(Edificio edificio) {
-		
+
 		int turnosEnReparacion = edificio.calcularTurnos();
 		return (new EstadoEdificioOcupado(turnosEnReparacion));
-		
+
 	}
 
 	@Override
@@ -68,7 +68,8 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 
 	@Override
 	public Unidad crearEspadachinDeJugador(Jugador jugador) {
-		return null;
+		Unidad espadachin = new Espadachin(jugador);
+		return espadachin;
 	}
 
 

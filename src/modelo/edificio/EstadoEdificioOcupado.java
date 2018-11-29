@@ -5,7 +5,7 @@ import modelo.unidad.Unidad;
 
 public class EstadoEdificioOcupado implements EstadoEdificio{
 	private int turnosOcupado;
-	
+
 	public EstadoEdificioOcupado(int turnosOcupado) {
 		this.turnosOcupado = turnosOcupado;
 	}
@@ -21,7 +21,7 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 			return new EstadoEdificioDisponible();
 		}
 		return this;
-		
+
 	}
 
 	@Override

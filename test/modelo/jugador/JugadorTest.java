@@ -142,7 +142,7 @@ public class JugadorTest {
 
 		jugador.iniciarAldeanosPropiosDesde(5, 5);
 
-		jugador2.iniciarAldeanosPropiosDesde(10, 10 );
+		jugador2.iniciarAldeanosPropiosDesde(10, 10);
 
 
 		Posicion posicion1 = new Posicion(5, 5);
@@ -151,12 +151,12 @@ public class JugadorTest {
 		Posicion posicion4 = new Posicion(6, 6);
 
 
-		Posicion posicionDelAldeanoDeJugador2 = new Posicion(10, 12);
+		Posicion posicionDelAldeanoDeJugador2 = new Posicion(10, 10);
 
 
 		jugador.crearPlazaCentralPropiaDesde(1, 8);
 
-		jugador.construirEdificioPropio(posicion1 ,posicion4, 'C');
+		jugador.construirEdificioPropio(posicion1, posicion4, 'C');
 
 
 		Posicion posicionPlaza = new Posicion(2, 9);
@@ -179,34 +179,6 @@ public class JugadorTest {
 
 
 		assertEquals(aldeanoDeJugador2.getVida(), 35);
-		// Son 8 porque son 3 aldeanos + 1 creado despues + 4 de la plaza
-
-
-
-
-
-
-
-
-
-
-	//	Posicionable aldeano = mapa.obtenerPosicionableEn(posicion1);
-
-
-	//	Arquero lord = new Arquero(jugador);
-
-	//	lord.posicionableEstaEnPropietario(aldeano);
-
-	//	lord.atacar(aldeano);
-
-		//assertTrue(lord.posicionableEstaEnPropietario(aldeano)
-
-
-
-		// Devuelve 20 de oro al avanzar turno
-		//assertSame(20, mapa.obtenerPosicionableEn(posicion1).avanzarTurno());
-		//assertSame(20, mapa.obtenerPosicionableEn(posicion2).avanzarTurno());
-		//assertSame(20, mapa.obtenerPosicionableEn(posicion3).avanzarTurno());
 
 	}
 }

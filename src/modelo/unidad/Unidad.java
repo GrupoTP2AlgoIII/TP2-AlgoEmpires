@@ -21,21 +21,6 @@ public abstract class Unidad extends Posicionable {
 	}
 
 
-	public boolean posicionableEstaEnPropietario(Posicionable posicionable){
-		Poblacion poblacionPropietaraio = this.propietario.obtenerPoblacion();
-		return poblacionPropietaraio.PosicionableEstaEnPoblacion(posicionable);
-	}
-
-	public void atacar(Posicionable posicionable) throws RuntimeException {
-		if  (posicionableEstaEnPropietario(posicionable)) {
-			throw new RuntimeException();
-		}
-
-		posicionable.recibirDanioDe(this);
-	}
-
-
-
 	// Agrego este constructor
 	public Unidad(int x, int y) {
 		super (x, y);
@@ -59,10 +44,7 @@ public abstract class Unidad extends Posicionable {
 		edificio.atacar(this);
 	}
 	
-	/*public void atacar (Posicionable posicionable) {
-		posicionable.recibirDanioDe(this);
-	}*/
-	
+
 	public void atacar (Unidad unidad) {
 		this.ataque.atacar(unidad);
 	}
@@ -70,8 +52,21 @@ public abstract class Unidad extends Posicionable {
 	public void atacar (Edificio edificio) {
 		this.ataque.atacar(edificio);
 	}
-	
-	
+
+
+	public boolean posicionableEstaEnPropietario(Posicionable posicionable){
+		Poblacion poblacionPropietaraio = this.propietario.obtenerPoblacion();
+		return poblacionPropietaraio.PosicionableEstaEnPoblacion(posicionable);
+	}
+
+	public void atacar(Posicionable posicionable) throws RuntimeException {
+		if  (posicionableEstaEnPropietario(posicionable)) {
+			throw new RuntimeException();
+		}
+
+		posicionable.recibirDanioDe(this);
+	}
+
 	public void desplazarHasta (Posicion hasta) {
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			

@@ -29,11 +29,11 @@ public class Jugador {
 		this.posicionables = new HashMap <Posicion, Posicionable> ();
 		this.mapa = mapa;
 		this.nombre = nombre;
-		
+
 		int oroInicial = 200;
 		int poblacionInicial = 3; //3 aldeanos
 		int produccionOroInicial = 60; //3 aldeanos
-		
+
 		this.inventario = new InventarioJugador(oroInicial,poblacionInicial,produccionOroInicial);
 
 		this.poblacion = new Poblacion(this.posicionables);
@@ -49,7 +49,7 @@ public class Jugador {
 	public void setEnemigo (Jugador jugador) {
 		this.enemigo = jugador;
 	}
-	
+
 	public Jugador jugadorSiguiente() {
 		return this.enemigo;
 	}
@@ -59,7 +59,7 @@ public class Jugador {
 		return this.nombre;
 	}
 
-	
+
 	public void construirEdificio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
 		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
 		Posicionable aldeano = this.posicionables.get(posicionAldeano);
@@ -79,7 +79,7 @@ public class Jugador {
 		Map <Posicion, Posicionable> edificioAgregado = this.mapa.ponerEdificio(edificio,posicionDeConstruccion);
 		this.posicionables.putAll(edificioAgregado);
 	}
-	
+
 	public void crearUnidad(Posicion posicionEdificio,char tipoUnidad){
 		Posicionable edificio = this.posicionables.get(posicionEdificio);
 		Unidad unidad =  edificio.crearUnidad(tipoUnidad);
@@ -100,19 +100,19 @@ public class Jugador {
 		this.posicionables.put(unidad.getPosicion(),unidad);
 	}
 
-	public void avanzarTurno() {		
+	public void avanzarTurno() {
 		this.quitarPosicionablesDestruidos();
 		Posicionable anterior = null;
-        for (Posicionable actual : posicionables.values()){
-            if(anterior != actual) {  	
+		for (Posicionable actual : posicionables.values()){
+			if(anterior != actual) {
 				int produccionRecursoUnidad =actual.avanzarTurno();
 				this.inventario.aumentarOro(produccionRecursoUnidad);
 			}
-			anterior = actual;        
-        }		
+			anterior = actual;
+		}
 		//this.CastilloAtacarEnSuRango();
 	}
-	
+
 	private void quitarPosicionablesDestruidos() {
 		Posicionable vacio = new Vacio();
 		for (Posicion posicion : posicionables.keySet()){
@@ -125,18 +125,18 @@ public class Jugador {
 		}
 	}
 
-	
+
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
-		
+
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
-		
+
 		this.posicionables.put(posicionDelPosicionable, posicionable);
-		
+
 	}
-	
+
 	// Borrar el metodo agregar edificio a posicionables y agregarle la linea del mapa al metodo de arriba
 	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
-		
+
 		for (int i = desdeX; i <= hastaX; i++) {
 			for (int j = desdeY; j <= hastaY; j++) {
 				Posicion posicion = new Posicion (i,j);
@@ -144,18 +144,18 @@ public class Jugador {
 				this.mapa.posicionarEnFilaColumna(edificio, i, j);
 			}
 		}
-		
+
 	}
 
 	public void iniciarAldeanosDesde(int x, int y)  {
-	
+
 		for (int i = y; i <= (y +2); i++ ) {
-		    Unidad aldeano = new Aldeano();
-		    this.agregarPosicionableEnFilaColumna(aldeano, x, i);
-		    this.mapa.posicionarEnFilaColumna(aldeano, x, i);
-		    //this.inventario.aumentarPoblacion(aldeano);
-        }
-		
+			Unidad aldeano = new Aldeano();
+			this.agregarPosicionableEnFilaColumna(aldeano, x, i);
+			this.mapa.posicionarEnFilaColumna(aldeano, x, i);
+			//this.inventario.aumentarPoblacion(aldeano);
+		}
+
 	}
 
 	public void iniciarAldeanosPropiosDesde(int x, int y)  {
@@ -177,9 +177,9 @@ public class Jugador {
 		this.posicionables.putAll(castilloConstruido);
 
 	}
-	
+
 	public void crearPlazaCentralDesde(int desdeX, int desdeY) {
-		
+
 		Edificio plazaCentral = new PlazaCentral(0);
 		Posicion posicionDesde = new Posicion (desdeX, desdeY);
 		Map <Posicion, Posicionable> plazaConstruida = this.mapa.ponerEdificio(plazaCentral, posicionDesde);
@@ -202,14 +202,14 @@ public class Jugador {
 	}
 
 	public void posicionarDesdeEnHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
-		
+
 		if (hastaX > desdeX + 1 || hastaX < desdeX - 1 || hastaY > desdeY + 1 || hastaY < desdeY - 1) {
 			throw new PosicionNoAdyacenteError ();
 		}
 		this.mapa.posicionarDesdeEnHasta (new Posicion (desdeX, desdeY),new Posicion (hastaX, hastaY));
-		
+
 	}
-	
+
 
 	//METODOS PARA PRUEBAS
 
@@ -219,7 +219,7 @@ public class Jugador {
 
 
 
-	
-	
-	
+
+
+
 }

@@ -18,7 +18,7 @@ public class JuegoTest {
 		
 		Juego juego = new Juego();
 		juego.iniciarJuego();
-		
+
 		for (int i = 6; i <= 8; i++) {
 			Posicion posicion = new Posicion (8, i);
 			assertEquals(20, juego.obtenerPosicionableEn(posicion).avanzarTurno());

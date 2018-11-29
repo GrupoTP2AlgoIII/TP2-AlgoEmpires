@@ -2,16 +2,20 @@ package modelo.unidad.espadachin;
 
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
-import modelo.jugador.Poblacion;
+import modelo.jugador.Jugador;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
-import modelo.jugador.Jugador;
-
 import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 
 public class Espadachin extends Unidad {
 
 	private int alcance = 1;
+	
+	public Espadachin() {
+		this.vida = 100;
+		this.costo = 50;
+		this.ataque = new Ataque(15,25, this.alcance);
+	}
 
 	public Espadachin(Jugador jugadorDado) {
 		this.vida = 100;
@@ -21,14 +25,6 @@ public class Espadachin extends Unidad {
 	}
 
 
-	public Espadachin() {
-		this.vida = 100;
-		this.costo = 50;
-		this.ataque = new Ataque(15,25, this.alcance);
-
-	}
-
-		
 	public Espadachin(int fila, int columna) {
 		
 		super (fila, columna);
@@ -37,6 +33,13 @@ public class Espadachin extends Unidad {
 		this.ataque = new Ataque(15,25, this.alcance);
 	}
 	
+	public void atacar(Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+		if (!posicionable.estaEnRangoDePosicion (this.posicion, this.alcance, this.alcance)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
+		
+		posicionable.recibirDanioDe(this);
+	}
 
 	@Override
 	public int descontarOro(int oro) {

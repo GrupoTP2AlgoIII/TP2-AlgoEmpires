@@ -117,9 +117,9 @@ public class ConstruccionTest {
 		
 		Posicion posicionAldeano = new Posicion(15,15);
 		Posicion posicionConstruccion = new Posicion(16,16);
-				
+
 		jugador1.construirEdificio(posicionAldeano,posicionConstruccion,'C');
-			
+
 		Edificio cuartel = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		jugador1.avanzarTurno();
 		

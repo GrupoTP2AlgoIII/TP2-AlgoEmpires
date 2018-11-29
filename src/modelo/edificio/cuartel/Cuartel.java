@@ -20,7 +20,6 @@ public class Cuartel extends Edificio{
 	        this.vidaFull = vida;
 	    }
 
-
 		public Cuartel(Jugador jugador) {
 			this.vida = 250;
 			this.costo = 50;
@@ -29,9 +28,8 @@ public class Cuartel extends Edificio{
 			this.vidaFull = vida;
 			this.propietario = jugador;
 		}
-
-
-	public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY) {
+	   
+	   public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY) {
 		   
 		   this.posicionDesde = new Posicion (desdeX, desdeY);
 		   this.posicionHasta = new Posicion (hastaX, hastaY);
@@ -41,21 +39,8 @@ public class Cuartel extends Edificio{
 	       this.velocidadReparacion = 50;
 	       this.vidaFull = vida;
 	    }
-
-		public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugadorDado) {
-
-			this.posicionDesde = new Posicion (desdeX, desdeY);
-			this.posicionHasta = new Posicion (hastaX, hastaY);
-			this.vida = 250;
-			this.costo = 50;
-			this.tamanio = 4;
-			this.velocidadReparacion = 50;
-			this.vidaFull = vida;
-			this.propietario = jugadorDado;
-		}
-
-
-	public void atacar (Posicionable posicionable) {
+	   
+	   public void atacar (Posicionable posicionable) {
 		   throw new CuartelNoPuedeAtacarError ();
 	   }
 	   
@@ -75,7 +60,6 @@ public class Cuartel extends Edificio{
 	    		return estado.crearEspadachin();
 		}
 
-
 		@Override
 		public Unidad crearUnidadPropia(char tipo, Jugador jugador) {
 			if(tipo == 'A')
@@ -83,7 +67,6 @@ public class Cuartel extends Edificio{
 			else
 				return estado.crearEspadachinDeJugador(this.propietario);
 		}
-
 
 
 
