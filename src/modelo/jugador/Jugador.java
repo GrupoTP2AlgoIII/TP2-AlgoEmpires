@@ -2,7 +2,6 @@ package modelo.jugador;
 
 import modelo.edificio.Edificio;
 
-import modelo.edificio.TamanioIncorrectoError;
 import modelo.edificio.castillo.Castillo;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.mapa.Mapa;
@@ -88,11 +87,6 @@ public class Jugador {
 		}
 	}
 
-
-//	public void CastilloAtacarEnSuRango(){
-//		
-//		
-//	}
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 		
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
@@ -117,67 +111,32 @@ public class Jugador {
 	public void iniciarAldeanosDesde(int x, int y)  {
 	
 		for (int i = y; i <= (y + 2); i++ ) {
-		    Posicionable aldeano = new Aldeano();
+		    Unidad aldeano = new Aldeano();
 		    this.agregarPosicionableEnFilaColumna(aldeano, x, i);
 		    this.mapa.posicionarEnFilaColumna(aldeano, x, i);
+		    //this.inventario.aumentarPoblacion(aldeano);
         }
 		
 	}
 
 
-	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
+	public void crearCastilloDesde(int desdeX, int desdeY) {
 
 		Edificio castillo = new Castillo(0);
-
-
-
 		Posicion posicionDesde = new Posicion (desdeX, desdeY);
-		Posicion posicionHasta = new Posicion (hastaX, hastaY);
-
-		if (posicionDesde.noPerteneceAlRango(this.mapa.getFilas(), this.mapa.getColumnas())){
-			throw new PosicionFueraDelMapaError ();
-		}
-
-		if (posicionHasta.noPerteneceAlRango(this.mapa.getFilas(), this.mapa.getColumnas())){
-			throw new PosicionFueraDelMapaError ();
-		}
-
-		this.mapa.ponerEdificioDesdeHasta(castillo, desdeX, desdeY, hastaX, hastaY);
-		this.agregarEdificioAPosicionables(castillo, desdeX, desdeY, hastaX, hastaY);
+		Map <Posicion, Posicionable> castilloConstruido = this.mapa.ponerEdificio(castillo, posicionDesde);
+		this.posicionables.putAll(castilloConstruido);
 
 	}
 	
-	public void crearPlazaCentralDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
+	public void crearPlazaCentralDesde(int desdeX, int desdeY) {
 		
 		Edificio plazaCentral = new PlazaCentral(0);
-
-
 		Posicion posicionDesde = new Posicion (desdeX, desdeY);
-		Posicion posicionHasta = new Posicion (hastaX, hastaY);
-
-		if (posicionDesde.noPerteneceAlRango(this.mapa.getFilas(), this.mapa.getColumnas())){
-			throw new PosicionFueraDelMapaError ();
-		}
-
-		if (posicionHasta.noPerteneceAlRango(this.mapa.getFilas(), this.mapa.getColumnas())){
-			throw new PosicionFueraDelMapaError ();
-		}
-
-		this.mapa.ponerEdificioDesdeHasta(plazaCentral, desdeX, desdeY, hastaX, hastaY);
-		this.agregarEdificioAPosicionables(plazaCentral, desdeX, desdeY, hastaX, hastaY);
+		Map <Posicion, Posicionable> plazaConstruida = this.mapa.ponerEdificio(plazaCentral, posicionDesde);
+		this.posicionables.putAll(plazaConstruida);
 	}
-
-	private void agregarEdificioAPosicionables(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
-
-		for (int i = desdeX; i <= hastaX; i++){
-			for (int j = desdeY; j <= hastaY; j++){
-				this.agregarPosicionableEnFilaColumna(edificio, i, j);
-			}
-		}
-
-	}
-
-	
+			
 	public Map <Posicion, Posicionable> getPosicionables() {
 		return this.posicionables;
 	}
@@ -191,8 +150,8 @@ public class Jugador {
 		
 	}
 	
-//METODOS PARA PRUEBAS
 
+	//METODOS PARA PRUEBAS
 
 	public int getPoblacion() {
 		return this.inventario.getPoblacion();

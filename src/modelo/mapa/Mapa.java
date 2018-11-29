@@ -89,16 +89,16 @@ public class Mapa {
 	
 	public void posicionarPosicionableEnPosicion(Posicionable posicionable, Posicion posicion)  {
 		
-		if (this.estaOcupado(posicion)) {
-			
-			throw new PosicionOcupadaError ();
+		if (!this.mapa.containsKey(posicion)) {
+			throw new PosicionFueraDelMapaError();
 		}
-
+		
+		this.mapa.get(posicion).recibirPosicionable();
 		this.mapa.put(posicion,  posicionable);
 		
 	}
 
-
+	
 	public Posicionable obtenerPosicionableEn(Posicion posicion) {
 		return (this.mapa.get(posicion));
 	}
@@ -112,8 +112,12 @@ public class Mapa {
 
 	public void ponerEdificioDesdeHasta(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
 
-		if (this.hayPosicionOcupadaEnElRango(desdeX, desdeY, hastaX, hastaY)){
-			throw new PosicionOcupadaError();
+		// Si hay posicion ocupada, arroja error
+		for (int i = desdeX; i <= hastaX; i++) {
+			for (int j = desdeY; j <= hastaY; j++) {
+				Posicion posicion = new Posicion(i,j);
+				this.mapa.get(posicion).recibirPosicionable();				
+			}
 		}
 
 		for (int i = desdeX; i <= hastaX; i++){
@@ -122,24 +126,6 @@ public class Mapa {
 			}
 		}
 	}
-
-	private boolean hayPosicionOcupadaEnElRango(int desdeX, int desdeY, int hastaX, int hastaY){
-	
-		for (int i = desdeX; i <= hastaX; i++){
-			for (int j = desdeY; j <= hastaY; j++){
-				
-				Posicion posicion = new Posicion(i,j);
-				if (this.mapa.get(posicion).estaOcupado()){
-					return true;
-				}
-			}
-		}
-
-		return false;
-
-
-	}
-
 
 	public void posicionarDesdeEnHasta(Posicion desde, Posicion hasta) {
 		

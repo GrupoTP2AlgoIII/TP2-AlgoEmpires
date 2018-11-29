@@ -3,7 +3,6 @@ package modelo.mapa;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import modelo.jugador.PosicionOcupadaError;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
@@ -23,7 +22,7 @@ public class MapaTest {
 		assertEquals (2500, cantidadCasilleros);
 	}
 	
-	@Test (expected = PosicionOcupadaError.class)
+	@Test (expected = DesplazarAPosicionOcupadaError.class)
 	public void test02PosicionarPosicionableEnPosicionOcupadaErrorEnviandoPosicion () {
 		
 		Mapa mapa = new Mapa ();
