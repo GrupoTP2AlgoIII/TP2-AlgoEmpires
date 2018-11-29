@@ -8,7 +8,6 @@ import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.edificio.Edificio;
-import modelo.edificio.TamanioIncorrectoError;
 
 public class Juego {
 	
@@ -44,7 +43,7 @@ public class Juego {
 		this.mapa.ponerEdificioDesdeHasta(edificio, desdeX, desdeY, hastaX, hastaY);
 	}
 
-	public void iniciarJuego() throws PosicionFueraDelMapaError, PosicionOcupadaError, TamanioIncorrectoError {
+	public void iniciarJuego() {
 		
 		//Jugador jugadorActual = this.jugadores.devolverPrimero();
 		

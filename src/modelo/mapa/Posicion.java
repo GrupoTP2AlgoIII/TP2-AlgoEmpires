@@ -20,6 +20,11 @@ public class Posicion {
 		this.y = columna;
 	}
 
+	public Posicion(Posicion posicionACopiar) {
+		this.x = posicionACopiar.getFila();
+		this.y = posicionACopiar.getColumna();
+	}
+
 	public void posicionarEnFilaColumna(int fila, int columna) {
 		
 		this.x = fila;
@@ -108,6 +113,12 @@ public class Posicion {
 			}
 		}
 		return posicionesSpawn;	
+	}
+
+	public void sumarDesplazamiento(int unDesplazamiento,int otroDesplazamiento) {
+		this.x += unDesplazamiento;
+		this.y += otroDesplazamiento;
+		
 	}
 
 

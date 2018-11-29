@@ -1,6 +1,8 @@
 package modelo.edificio;
 
 
+import java.util.ArrayList;
+
 import modelo.mapa.Posicion;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.Posicionable;
@@ -91,14 +93,30 @@ public abstract class Edificio extends Posicionable {
 		return turnosEnReparacion;
 	}
 	
-	public int calcularLado() {
+	public ArrayList<Posicion> calcularPosiciones(Posicion posicionDeConstruccion) {
+		
+		ArrayList<Posicion> posicionesEdificio = new ArrayList<Posicion>();
+		
+		for(int i=0;i< this.calcularLado();i++){
+			for(int j=0;j< this.calcularLado() ;j++){	
+				Posicion posicionAux = new Posicion(posicionDeConstruccion);
+				posicionAux.sumarDesplazamiento(i,j);		
+				posicionesEdificio.add(posicionAux);		
+			}
+		}
+		return posicionesEdificio;
+	}
+
+	private int calcularLado() {
 		return ((int) Math.sqrt(this.tamanio));
 	}
+	
 	
 	//METODOS DE PRUEBAS
 	public int getTurnosConstruccion() {
 		return estado.getTurnosOcupado();
 	}
+
 
 
 	
