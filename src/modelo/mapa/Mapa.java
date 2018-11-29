@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import modelo.edificio.Edificio;
-import modelo.jugador.PosicionOcupadaError;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
@@ -23,7 +22,7 @@ public class Mapa {
 	
 	public Mapa () {
 		this.mapa = new HashMap <Posicion, Posicionable>();
-		this.mapaAux = null;
+		this.mapaAux = new HashMap <Posicion, Posicionable>();
 		this.filas = 50;
 		this.columnas = 50;
 	}
@@ -73,10 +72,7 @@ public class Mapa {
 		
 		this.mapa.get(posicionDelPosicionable).recibirPosicionable();
 		this.mapa.put(posicionDelPosicionable, posicionable);
-		
-		if(this.mapaAux != null) {
-			this.mapaAux.put(posicionDelPosicionable, posicionable);
-		}
+		this.mapaAux.put(posicionDelPosicionable, posicionable);
 	}
 	
 	public void posicionarPosicionableEnPosicion(Posicionable posicionable, Posicion posicion)  {
@@ -87,6 +83,7 @@ public class Mapa {
 		
 		this.mapa.get(posicion).recibirPosicionable();
 		this.mapa.put(posicion,  posicionable);
+		this.mapaAux.put(posicion, posicionable);
 		
 	}
 
@@ -135,22 +132,25 @@ public class Mapa {
 	}
 
 
-	public Map <Posicion, Posicionable> ponerEdificio(Edificio cuartel, Posicion posicionDeConstruccion) throws PosicionOcupadaError, PosicionFueraDelMapaError {
-
-		int tamanioLado = cuartel.calcularLado();
-		tamanioLado --;
-		
-		this.mapaAux = new HashMap <Posicion, Posicionable>();
-
-		
-		this.ponerEdificioDesdeHasta(cuartel, posicionDeConstruccion.getFila(), posicionDeConstruccion.getColumna(),
-				posicionDeConstruccion.getFila()+tamanioLado, posicionDeConstruccion.getColumna()+tamanioLado);
-		
-		
-		return this.mapaAux;
-		
-		
+	public Map <Posicion, Posicionable> ponerEdificio(Edificio edificio, Posicion posicionDeConstruccion) {
+	
+		this.mapaAux.clear();
+	
+		ArrayList<Posicion> posicionesDelEdificio = edificio.calcularPosiciones(posicionDeConstruccion);
+		 
+		  while(!posicionesDelEdificio.isEmpty()){	   
+			   try {
+				Posicion posicionActual = posicionesDelEdificio.remove(0);
+		    	this.posicionarPosicionableEnPosicion(edificio,posicionActual);
+		   		edificio.posicionarEnPosicion(posicionActual);
+		       } catch(DesplazarAPosicionOcupadaError e){
+		    	   
+		       }
+		   }
+		  
+		return this.mapaAux;		
 	}
+
 
 }
 
