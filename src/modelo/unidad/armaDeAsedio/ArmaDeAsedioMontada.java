@@ -16,7 +16,7 @@ public class ArmaDeAsedioMontada implements EstadoArmaDeAsedio {
 	}
 
 	@Override
-	public void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque) throws AtacandoEnPosicionFueraDelAlcanceError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+	public void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque)  {
 		
 		if (this.turnosMontar > 0) {
 			throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();

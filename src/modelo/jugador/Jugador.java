@@ -2,7 +2,6 @@ package modelo.jugador;
 
 import modelo.edificio.Edificio;
 
-import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.TamanioIncorrectoError;
 import modelo.edificio.castillo.Castillo;
 import modelo.edificio.plazaCentral.PlazaCentral;
@@ -14,8 +13,6 @@ import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.vacio.Vacio;
 import modelo.unidad.PosicionFueraDelMapaError;
-
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,58 +41,58 @@ public class Jugador {
 	public String getNombre(){
 		return this.nombre;
 	}
-	
-	public Edificio construirCuartel(int fila,int columna) {
-		//se debe pasar el aldeano que construye
-		Edificio cuartel = new Cuartel();
-		Posicionable posicionable = cuartel;
-		this.agregarPosicionableEnFilaColumna(posicionable, fila, columna);
-		return cuartel;
-		
-	}
-	
-	public void crearAldeano(Posicion plazaCentral) throws PosicionFueraDelMapaError, PosicionOcupadaError {
-		Posicionable plaza = this.posicionables.get(plazaCentral);
 
-		Unidad aldeano =  plaza.crearAldeano();
-		this.inventario.descontarOro(aldeano);
-		this.inventario.aumentarPoblacion();
-		this.inventario.aumentarProduccionDeOro();
 	
-		this.mapa.buscarPosicionYUbicar(aldeano,plazaCentral);
-		this.posicionables.put(aldeano.getPosicion(),aldeano);
+	public void construirEdificio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
+		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
+		Posicionable aldeano = this.posicionables.get(posicionAldeano);
+		Edificio edificio = aldeano.construir(tipoConstruccion);
+		this.inventario.descontarOro(edificio);
+		Map <Posicion, Posicionable> edificioAgregado = this.mapa.ponerEdificio(edificio,posicionDeConstruccion);
+		this.posicionables.putAll(edificioAgregado);
 	}
 	
-	public void avanzarTurno() {
-		
-		this.actualizarPosicionables();
-		posicionables.forEach((k,v) -> {
-			this.inventario.aumentarOro(v.avanzarTurno());
-		});
-		
+	public void crearUnidad(Posicion posicionEdificio,char tipoUnidad) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+		Posicionable edificio = this.posicionables.get(posicionEdificio);
+
+		Unidad unidad =  edificio.crearUnidad(tipoUnidad);
+		this.inventario.descontarOro(unidad);
+		this.inventario.aumentarPoblacion(unidad);
+		this.mapa.buscarPosicionYUbicar(unidad,posicionEdificio);
+		this.posicionables.put(unidad.getPosicion(),unidad);
+	}
+	
+	public void avanzarTurno() {		
+		this.quitarPosicionablesDestruidos();
+		Posicionable anterior = null;
+        for (Posicion posicion : posicionables.keySet()){
+            Posicionable actual = posicionables.get(posicion);
+            if(anterior != actual) {  	
+				int produccionRecursoUnidad =actual.avanzarTurno();
+				this.inventario.aumentarOro(produccionRecursoUnidad);
+			}
+			anterior = actual;        
+        }		
 		//this.CastilloAtacarEnSuRango();
 	}
 	
+	private void quitarPosicionablesDestruidos() {
+		Posicionable vacio = new Vacio();
+		for (Posicion posicion : posicionables.keySet()){
+			Posicionable actual = posicionables.get(posicion);
+			if(actual.getVida() <= 0) {
+				this.inventario.decrementarProduccionDeOro(actual);
+				posicionables.replace(posicion,actual, vacio);
+				this.inventario.decrementarPoblacion();
+			}
+		}
+	}
+
+
 //	public void CastilloAtacarEnSuRango(){
 //		
 //		
 //	}
-	
-	//elimina a los posicionables con vida cero y lo pone en vacio
-	private void actualizarPosicionables() {
-		int produccionOroAldeano = 20;
-		Posicionable vacio = new Vacio();
-		posicionables.forEach((k,v) -> {
-			if(v.getVida() <= 0) {
-				if(v.avanzarTurno() == produccionOroAldeano) {
-					this.inventario.decrementarProduccionDeOro();
-				}
-				posicionables.replace(k,v, vacio);
-				this.inventario.decrementarPoblacion();
-			}
-		});
-	}
-
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 		
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
@@ -105,7 +102,7 @@ public class Jugador {
 	}
 	
 	// Borrar el metodo agregar edificio a posicionables y agregarle la linea del mapa al metodo de arriba
-	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
 		
 		for (int i = desdeX; i <= hastaX; i++) {
 			for (int j = desdeY; j <= hastaY; j++) {
@@ -117,7 +114,7 @@ public class Jugador {
 		
 	}
 
-	public void iniciarAldeanosDesde(int x, int y) throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void iniciarAldeanosDesde(int x, int y)  {
 	
 		for (int i = y; i <= (y + 2); i++ ) {
 		    Posicionable aldeano = new Aldeano();
@@ -128,7 +125,7 @@ public class Jugador {
 	}
 
 
-	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
 
 		Edificio castillo = new Castillo(0);
 
@@ -150,7 +147,7 @@ public class Jugador {
 
 	}
 	
-	public void crearPlazaCentralDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+	public void crearPlazaCentralDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
 		
 		Edificio plazaCentral = new PlazaCentral(0);
 
@@ -170,7 +167,7 @@ public class Jugador {
 		this.agregarEdificioAPosicionables(plazaCentral, desdeX, desdeY, hastaX, hastaY);
 	}
 
-	private void agregarEdificioAPosicionables(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) throws PosicionFueraDelMapaError, PosicionOcupadaError{
+	private void agregarEdificioAPosicionables(Posicionable edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
 
 		for (int i = desdeX; i <= hastaX; i++){
 			for (int j = desdeY; j <= hastaY; j++){
@@ -185,6 +182,14 @@ public class Jugador {
 		return this.posicionables;
 	}
 
+	public void posicionarDesdeEnHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
+		
+		if (hastaX > desdeX + 1 || hastaX < desdeX - 1 || hastaY > desdeY + 1 || hastaY < desdeY - 1) {
+			throw new PosicionNoAdyacenteError ();
+		}
+		this.mapa.posicionarDesdeEnHasta (new Posicion (desdeX, desdeY),new Posicion (hastaX, hastaY));
+		
+	}
 	
 //METODOS PARA PRUEBAS
 
@@ -194,14 +199,7 @@ public class Jugador {
 	}
 
 
-	public void posicionarDesdeEnHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
-		
-		if (hastaX > desdeX + 1 || hastaX < desdeX - 1 || hastaY > desdeY + 1 || hastaY < desdeY - 1) {
-			throw new PosicionNoAdyacenteError ();
-		}
-		this.mapa.posicionarDesdeEnHasta (new Posicion (desdeX, desdeY),new Posicion (hastaX, hastaY));
-		
-	}
+
 	
 	
 	

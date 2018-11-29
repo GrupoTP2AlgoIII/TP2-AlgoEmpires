@@ -24,7 +24,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = PosicionOcupadaError.class)
-	public void test02PosicionarPosicionableEnPosicionOcupadaErrorEnviandoPosicion () throws PosicionOcupadaError {
+	public void test02PosicionarPosicionableEnPosicionOcupadaErrorEnviandoPosicion () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -35,7 +35,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test03PosicionarPosicionableEnPosicionOcupadaErrorEnviandoFilaYColumna () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test03PosicionarPosicionableEnPosicionOcupadaErrorEnviandoFilaYColumna ()  {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -45,7 +45,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test04DesplazarHaciaLaDerechaEnPosicionOcupadaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test04DesplazarHaciaLaDerechaEnPosicionOcupadaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -55,7 +55,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test05DesplazarHaciaLaIzquierdaEnPosicionOcupadaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test05DesplazarHaciaLaIzquierdaEnPosicionOcupadaError (){
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -65,7 +65,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test06DesplazarHaciaAbajoEnPosicionOcupadaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test06DesplazarHaciaAbajoEnPosicionOcupadaError ()  {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -76,7 +76,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test07DesplazarHaciaArribaEnPosicionOcupadaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test07DesplazarHaciaArribaEnPosicionOcupadaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -86,7 +86,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test08DesplazarHaciaDiagonalInferiorDerechaEnPosicionOcupadaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test08DesplazarHaciaDiagonalInferiorDerechaEnPosicionOcupadaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -96,7 +96,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test09DesplazarHaciaDiagonalInferiorIzquierdaEnPosicionOcupadaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test09DesplazarHaciaDiagonalInferiorIzquierdaEnPosicionOcupadaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -106,7 +106,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test10DesplazarHaciaDiagonalSuperiorDerechaEnPosicionOcupadaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test10DesplazarHaciaDiagonalSuperiorDerechaEnPosicionOcupadaError ()  {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -116,7 +116,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
-	public void test11DesplazarDigonalSuperiorIzquierdaEnPosicionOcupadaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test11DesplazarDigonalSuperiorIzquierdaEnPosicionOcupadaError ()  {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -126,7 +126,7 @@ public class MapaTest {
 	}
 
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test12DesplazarHaciaLaDerechaEnPosicionFueraDelMapaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test12DesplazarHaciaLaDerechaEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -136,7 +136,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test13DesplazarHaciaLaIzquierdaEnPosicionFueraDelMapaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test13DesplazarHaciaLaIzquierdaEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -146,7 +146,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test14DesplazarHaciaAbajoEnPosicionFueraDelMapaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test14DesplazarHaciaAbajoEnPosicionFueraDelMapaError (){
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -156,7 +156,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test15DesplazarHaciaArribaEnPosicionFueraDelMapaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test15DesplazarHaciaArribaEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -166,7 +166,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test16DesplazarHaciaLaDerechaEnPosicionFueraDelMapaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test16DesplazarHaciaLaDerechaEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -176,7 +176,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test17DesplazarHaciaLaIzquierdaEnPosicionFueraDelMapaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test17DesplazarHaciaLaIzquierdaEnPosicionFueraDelMapaError (){
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -186,7 +186,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test18DesplazarEnPosicionFueraDelMapaError () throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test18DesplazarEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();
@@ -196,7 +196,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
-	public void test19DesplazarHaciaDiagonalInferiorIzquierdaEnPosicionFueraDelMapaError() throws PosicionOcupadaError, PosicionFueraDelMapaError {
+	public void test19DesplazarHaciaDiagonalInferiorIzquierdaEnPosicionFueraDelMapaError()  {
 		
 		Mapa mapa = new Mapa ();
 		mapa.iniciarMapaVacio();

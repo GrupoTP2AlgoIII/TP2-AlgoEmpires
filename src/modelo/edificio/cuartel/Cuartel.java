@@ -6,7 +6,6 @@ import java.util.Iterator;
 
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
-import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class Cuartel extends Edificio{
@@ -30,16 +29,21 @@ public class Cuartel extends Edificio{
 	       this.vidaFull = vida;
 	    }
 	   
-	    public Unidad crearArquero() {
-	    	return estado.crearArquero();
+	   	@Override
+	    public Unidad crearUnidad(char tipo) {
+	    	if(tipo == 'A')
+	    		return estado.crearArquero();
+	    	else
+	    		return estado.crearEspadachin();
 		}
 
 
-		public Unidad crearEspadachin() {
-			return estado.crearEspadachin();
+		@Override
+		public boolean tieneTamanioCorrecto(int desdeX, int desdeY, int hastaX, int hastaY) {
+			// TODO Auto-generated method stub
+			return false;
 		}
-
-
+		
 		public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 			
 			
@@ -63,10 +67,6 @@ public class Cuartel extends Edificio{
 		}
 
 
-	@Override
-	public void recibirDanio(int ataque) {
-
-	}
-
-
+	    
+	
 }

@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
-import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class PlazaCentral extends Edificio {
@@ -31,7 +30,7 @@ public class PlazaCentral extends Edificio {
 		    	
 		    }
 
-		    public PlazaCentral(int turnos) {
+		   public PlazaCentral(int turnos) {
 			   super(turnos);
 			   this.vida = 450;
 			   this.costo = 100;
@@ -45,7 +44,18 @@ public class PlazaCentral extends Edificio {
 		    }
 
 		    
+		    public boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY){
 
+		    	boolean tamanioCorrecto = true;
+
+		    	// Se pasan coordeanadas de izquierda a derecha y de abajo hacia arriba
+		    	if ( hastaX != (desdeX + 1) || hastaY != (desdeY + 1)){
+		    		tamanioCorrecto = false;
+		    	}
+
+		    	return tamanioCorrecto;
+		    }  
+		    
 			public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 				
 				ArrayList <Posicion> posicionesQueOcupaEdificio = new ArrayList <Posicion> ();
@@ -66,11 +76,5 @@ public class PlazaCentral extends Edificio {
 				return false;
 				
 			}
-
-	@Override
-	public void recibirDanio(int ataque) {
-
-	}
-
 
 }

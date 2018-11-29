@@ -1,10 +1,8 @@
 package modelo.unidad;
 
-import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
+import modelo.jugador.JugadorSinOroException;
 import modelo.mapa.Posicion;
-import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 
 public abstract class Unidad extends Posicionable {
 	
@@ -46,7 +44,7 @@ public abstract class Unidad extends Posicionable {
 		throw new DesplazarAPosicionOcupadaError ();
 	}
 	
-	public abstract void atacar (Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError;
+	public abstract void atacar (Posicionable posicionable);
 	
 	/*
      * devuelve si el posicionable se encuentra dentro de la cuadricula formada por el alcanceEnFila y alcanceEnColumna
@@ -72,12 +70,31 @@ public abstract class Unidad extends Posicionable {
 	}
 	
 	@Override
+	public int descontarOro(int oro) {
+		if(oro >= this.costo) {
+			oro -= this.costo;
+			return oro;
+	}else {
+		throw new JugadorSinOroException();	
+	}
+	}
+	
+	@Override
+	public int decrementarProduccion(int oro) {
+		return oro;
+	}
+	
+	@Override
+	public int aumentarProduccionDeOro(int produccionDeOro) {
+		return produccionDeOro;	
+	}
+
+	@Override
 	public boolean estaOcupado() {
 		return true;		
 	}
 
 
-	public abstract int descontarOro(int oro);
 
 
 

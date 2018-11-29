@@ -57,7 +57,28 @@ public class JugadorTest {
 		}
 	}
 
+	@Test (expected = TamanioIncorrectoError.class)
+	public void test03CrearCastilloDeMayorTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
 
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa,"Jorge");
+
+		jugador.crearCastilloDesdeHasta(1,1,10,10);
+	}
+
+	@Test (expected = TamanioIncorrectoError.class)
+	public void test04CrearCastilloIndicandoMalElTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa,"Jorge");
+
+		// El tamanio es de 4x4, pero se debe indicar de izquierda a derecha y de abajo hacia arriba la ubicacion
+		jugador.crearCastilloDesdeHasta(3,3,1,1);
+	}
 
 	@Test (expected = PosicionFueraDelMapaError.class)
 	public void test05CrearCastilloFueraDelMapaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
@@ -105,7 +126,28 @@ public class JugadorTest {
 		assertFalse(mapa.obtenerPosicionableEn(posicion2).estaOcupado());
 	}
 
+	@Test (expected = TamanioIncorrectoError.class)
+	public void test08CrearPlazaCentralDeMayorTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
 
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa,"Jorge");
+
+		jugador.crearPlazaCentralDesdeHasta(5,5,9,9);
+	}
+
+	@Test (expected = TamanioIncorrectoError.class)
+	public void test09CrearPlazaCentralIndicandoMalElTamanioArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador (mapa,"Jorge");
+
+		// El tamanio es de 2x2, pero se debe indicar de izquierda a derecha y de abajo hacia arriba la ubicacion
+		jugador.crearCastilloDesdeHasta(10,10,9,9);
+	}
 
 	@Test (expected = PosicionFueraDelMapaError.class)
 	public void test10CrearPlazaCentralFueraDelMapaArrojaError() throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{

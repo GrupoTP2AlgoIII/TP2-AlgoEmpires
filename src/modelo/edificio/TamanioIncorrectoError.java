@@ -1,6 +1,6 @@
 package modelo.edificio;
 
-public class TamanioIncorrectoError extends Exception {
+public class TamanioIncorrectoError extends RuntimeException {
 
 	/**
 	 * 

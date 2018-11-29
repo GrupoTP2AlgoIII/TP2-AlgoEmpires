@@ -1,6 +1,6 @@
 package modelo.unidad.aldeano;
 
-public class AldeanoNoPuedeAtacarError extends Exception {
+public class AldeanoNoPuedeAtacarError extends RuntimeException {
 
 	/**
 	 * 

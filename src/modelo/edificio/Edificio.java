@@ -2,6 +2,7 @@ package modelo.edificio;
 
 
 import modelo.ataque.Ataque;
+import modelo.jugador.JugadorSinOroException;
 import modelo.mapa.Posicion;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.Posicionable;
@@ -43,12 +44,13 @@ public abstract class Edificio extends Posicionable {
 		throw new DesplazarAPosicionOcupadaError ();
 	}
 
+
 	public boolean estaOcupado() {
 		   return true;		
 	   }
 	
 	   public int avanzarTurno() {
-	    	estado = estado.avanzarTurno(this);
+		   	estado = estado.avanzarTurno(this);
 	    	return 0;
 	    }
 	    
@@ -92,5 +94,27 @@ public abstract class Edificio extends Posicionable {
 			throw new EdificiosNoSePuedenDesplazarError ();
 		}
 		
-
+		@Override
+		public int descontarOro(int oro) {
+			if(oro >= this.costo) {
+				oro -= this.costo;
+				return oro;
+		}else {
+			throw new JugadorSinOroException();	
+		}
+		}
+		
+		@Override
+		public int decrementarProduccion(int oro) {
+			return oro;
+		}
+		
+		public int getTamanio() {
+			return this.tamanio;
+		}
+		
+		@Override
+		public int aumentarProduccionDeOro(int produccionDeOro) {
+			return produccionDeOro;	
+		}
 }

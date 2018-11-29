@@ -7,11 +7,7 @@ import org.junit.Test;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.juego.Juego;
-import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Posicion;
-import modelo.unidad.MovimientosPorTurnoExcedidosError;
-import modelo.unidad.PosicionFueraDelMapaError;
-import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.unidad.arquero.Arquero;
@@ -20,7 +16,7 @@ import modelo.unidad.espadachin.Espadachin;
 public class AtaqueTest {
 
 	@Test
-	public void test01AtacarUnaUnidadDentroDelRangoDeAlcance () throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void test01AtacarUnaUnidadDentroDelRangoDeAlcance () {
 		
 		Arquero arquero = new Arquero (5, 5);
 		Espadachin espadachin = new Espadachin (7,7);
@@ -36,7 +32,7 @@ public class AtaqueTest {
 	}
 	
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
-	public void test02AtacarUnaUnidadFueraDelRangoDeAlcanceLanzaExcepcion () throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void test02AtacarUnaUnidadFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
 		Arquero arquero = new Arquero (5, 5);
 		Espadachin espadachin = new Espadachin (15,15);
@@ -48,7 +44,7 @@ public class AtaqueTest {
 	}
 	
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
-	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
 		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio (5, 5);
 		armaDeAsedio.montar();
@@ -62,7 +58,7 @@ public class AtaqueTest {
 	}
 	
 	@Test
-	public void test04ArqueroAtacaACuartelYTodoElCuartelPerteneceAlRangoDeAlcanceDelArquero () throws PosicionFueraDelMapaError, PosicionOcupadaError, AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void test04ArqueroAtacaACuartelYTodoElCuartelPerteneceAlRangoDeAlcanceDelArquero ()  {
 		
 		Arquero arquero = new Arquero (5, 5);
 		Cuartel cuartel = new Cuartel(7, 4, 8, 5);
@@ -77,7 +73,7 @@ public class AtaqueTest {
 	}
 	
 	@Test
-	public void test05EspadachinAtacaAPlazaCentralQueSoloDosPosicionesPertenecesAlRangoDeAlcanceDelEspadachin () throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void test05EspadachinAtacaAPlazaCentralQueSoloDosPosicionesPertenecesAlRangoDeAlcanceDelEspadachin () {
 		
 		Espadachin espadachin = new Espadachin (5, 5);
 		PlazaCentral plaza = new PlazaCentral (5, 6, 6, 7);
@@ -89,7 +85,7 @@ public class AtaqueTest {
 	}
 	
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
-	public void test06ArqueroAtacaAPlazaCentralFueraDelRangoDeAlcance () throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+	public void test06ArqueroAtacaAPlazaCentralFueraDelRangoDeAlcance ()  {
 		
 		Arquero arquero = new Arquero (5, 5);
 		PlazaCentral plaza = new PlazaCentral (10, 4, 11, 5);
@@ -97,7 +93,7 @@ public class AtaqueTest {
 	}
 	
 	@Test
-	public void test07AtacarConArmaDeAsedioMontadaUnEdificio () throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+	public void test07AtacarConArmaDeAsedioMontadaUnEdificio (){
 		
 		Cuartel cuartel = new Cuartel (5,5,6,6);
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
@@ -113,7 +109,7 @@ public class AtaqueTest {
 	}
 	
 	@Test (expected = ArmaDeAsedioDesmontadaNoPuedeAtacarError.class)
-	public void test08AtacarConArmaDeAsedioDesmontadaDebeLanzarExcepcion () throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+	public void test08AtacarConArmaDeAsedioDesmontadaDebeLanzarExcepcion ()  {
 		
 		Cuartel cuartel = new Cuartel (5,5,6,6);
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
@@ -122,7 +118,7 @@ public class AtaqueTest {
 	}
 	
 	@Test (expected = ArmaDeAsedioDesmontadaNoPuedeAtacarError.class)
-	public void test09MontarArmaDeAsedioYAtacarEnElMismoTurnoDebeLanzarExcepcion () throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+	public void test09MontarArmaDeAsedioYAtacarEnElMismoTurnoDebeLanzarExcepcion () {
 		
 		Cuartel cuartel = new Cuartel (5,5,6,6);
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
@@ -131,7 +127,7 @@ public class AtaqueTest {
 	}
 	
 	@Test
-	public void test10MoverArmaDeAsedioDesmontadaHaciaLaDerecha () throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test10MoverArmaDeAsedioDesmontadaHaciaLaDerecha () {
 		
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
 		arma.avanzarTurno();
@@ -141,7 +137,7 @@ public class AtaqueTest {
 	}
 	
 	@Test (expected = ArmaDeAsedioMontadaNoPuedeDesplazarseError.class)
-	public void test11MoverArmaDeAsedioMontadaHaciaDebeLanzarExcepcion () throws MovimientosPorTurnoExcedidosError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test11MoverArmaDeAsedioMontadaHaciaDebeLanzarExcepcion () {
 		
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
 		arma.montar();

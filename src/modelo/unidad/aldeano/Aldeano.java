@@ -3,32 +3,33 @@ package modelo.unidad.aldeano;
 import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
-import modelo.jugador.JugadorSinOroException;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class Aldeano extends Unidad {
 	
 	private EstadoAldeano estado = new EstadoAldeanoDisponible();
-
+	
+	private int produccionOro;
 	
 	   public Aldeano() {
 	        this.vida = 50;
 	        this.costo = 25;
+	        this.produccionOro = 20;
 	    }
 	   
-	    public Edificio construirCuartel() {
-	    	Edificio cuartel = new Cuartel();
-	    	estado = estado.construir(cuartel);
-	    	return cuartel;
-	    }
-	    
-	    public Edificio construirPlazaCentral() {
-	    	Edificio plaza = new PlazaCentral();
-	    	estado = estado.construir(plaza);
-	    	return plaza;
-	    }
-	    
+	   @Override
+	    public Edificio construir(char tipo) {
+	    	if(tipo == 'C') {
+	    		Edificio cuartel = new Cuartel();
+	    		estado = estado.construir(cuartel);
+	    		return cuartel;
+	    	}
+	    	
+		    Edificio plaza = new PlazaCentral();
+		    estado = estado.construir(plaza);
+		    return plaza;
+	    }   
 	    
 	    public int avanzarTurno() {
 	    	estado = estado.avanzarTurno();
@@ -49,20 +50,23 @@ public class Aldeano extends Unidad {
 		}
 		
 		@Override
-		public void atacar (Posicionable posicionable) throws AldeanoNoPuedeAtacarError {
+		public void atacar (Posicionable posicionable) {
 			
 			throw new AldeanoNoPuedeAtacarError ();
 		}
 
 		@Override
-		public int descontarOro(int oro) {
-			if(oro >= 25) {
-				oro -= 25;
-				return oro;
-		}else {
-			throw new JugadorSinOroException();	
+		public int decrementarProduccion(int oro) {
+			oro -= this.produccionOro;
+			return oro;
 		}
+
+		@Override
+		public int aumentarProduccionDeOro(int produccionDeOro) {
+			produccionDeOro += estado.obtenerOro();
+			return produccionDeOro;
 			
 		}
+
 
 }
