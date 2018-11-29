@@ -1,9 +1,10 @@
 package modelo.vacio;
 
-import modelo.ataque.Ataque;
+import modelo.edificio.Edificio;
 import modelo.jugador.PosicionDesocupadaError;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
+import modelo.unidad.Unidad;
 
 public class Vacio extends Posicionable{
 
@@ -29,12 +30,6 @@ public class Vacio extends Posicionable{
 	public int getVida() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public void atacado(Ataque ataque) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
@@ -70,6 +65,34 @@ public class Vacio extends Posicionable{
 	@Override
 	public int aumentarProduccionDeOro(int produccionDeOro) {
 		return produccionDeOro;
+	}
+	
+	public void recibirDanio (int danio) {
+		throw new PosicionDesocupadaError ();
+	}
+	
+	public void recibirDanioDe (Posicionable posicionable) {
+		throw new PosicionDesocupadaError ();
+	}
+	
+	public void recibirDanioDe (Unidad unidad) {
+		throw new PosicionDesocupadaError ();
+	}
+	
+	public void recibirDanioDe (Edificio edificio) {
+		throw new PosicionDesocupadaError ();
+	}
+	
+	public void atacar (Posicionable posicionable) {
+		throw new PosicionDesocupadaError ();
+	}
+	
+	public void atacar (Unidad unidad) {
+		throw new PosicionDesocupadaError ();
+	}
+	
+	public void atacar (Edificio edificio) {
+		throw new PosicionDesocupadaError ();
 	}
 
 }

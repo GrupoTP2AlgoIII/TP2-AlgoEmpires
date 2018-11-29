@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
+import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class Cuartel extends Edificio{
@@ -28,6 +29,18 @@ public class Cuartel extends Edificio{
 	       this.velocidadReparacion = 50;
 	       this.vidaFull = vida;
 	    }
+	   
+	   public void atacar (Posicionable posicionable) {
+		   throw new CuartelNoPuedeAtacarError ();
+	   }
+	   
+	   public void atacar (Unidad unidad) {
+		   throw new CuartelNoPuedeAtacarError ();		   
+	   }
+	   
+	   public void atacar (Edificio edificion) {
+		   throw new CuartelNoPuedeAtacarError ();
+	   }
 	   
 	   	@Override
 	    public Unidad crearUnidad(char tipo) {

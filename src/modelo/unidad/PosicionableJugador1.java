@@ -1,7 +1,6 @@
 package modelo.unidad;
 
 
-import modelo.mapa.Posicion;
 
 public interface PosicionableJugador1 {
 

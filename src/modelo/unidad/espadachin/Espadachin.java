@@ -29,7 +29,7 @@ public class Espadachin extends Unidad {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
 		
-		posicionable.atacado(this.ataque);
+		posicionable.recibirDanioDe(this);
 	}
 
 	@Override

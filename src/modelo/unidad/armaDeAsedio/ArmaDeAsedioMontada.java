@@ -3,10 +3,12 @@ package modelo.unidad.armaDeAsedio;
 import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
+import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
+import modelo.unidad.Unidad;
 
-public class ArmaDeAsedioMontada implements EstadoArmaDeAsedio {
+public class ArmaDeAsedioMontada extends EstadoArmaDeAsedio {
 	
 	private int turnosMontar;
 	
@@ -14,7 +16,7 @@ public class ArmaDeAsedioMontada implements EstadoArmaDeAsedio {
 		
 		this.turnosMontar = turnosMontar;
 	}
-
+	
 	@Override
 	public void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque)  {
 		
@@ -25,16 +27,43 @@ public class ArmaDeAsedioMontada implements EstadoArmaDeAsedio {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
 		
-		posicionable.atacado(ataque);
+		posicionable.recibirDanioDe (this);
 	}
-
+	
 	@Override
-	public void avanzarTurno() {
+	public void atacar (Edificio edificio, Posicion posicion, int alcance, Ataque ataque) {
+		if (this.turnosMontar > 0) {
+			throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
+		}
+		if (!edificio.estaEnRangoDePosicion (posicion, alcance, alcance)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
 		
-		this.turnosMontar --;
+		edificio.recibirDanioDe (this);
+	}
+	
+	@Override
+	public void atacar (Unidad unidad, Posicion posicion, int alcance, Ataque ataque) {
+		if (this.turnosMontar > 0) {
+			throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
+		}
+		if (!unidad.estaEnRangoDePosicion (posicion, alcance, alcance)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
+		
+		unidad.recibirDanioDe (this);
 		
 	}
 	
+	@Override
+	public int avanzarTurno() {
+		
+		this.turnosMontar --;
+		return 0;
+		
+	}
+	
+	@Override
 	public void desplazarPosicionHasta (Posicion hasta, Posicion posicionActual) {
 		
 		throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();

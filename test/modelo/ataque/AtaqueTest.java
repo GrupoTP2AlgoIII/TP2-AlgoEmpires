@@ -31,6 +31,7 @@ public class AtaqueTest {
 		
 	}
 	
+/*
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test02AtacarUnaUnidadFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
@@ -42,6 +43,7 @@ public class AtaqueTest {
 		arquero.atacar(espadachin);
 		
 	}
+*/
 	
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () {
@@ -82,7 +84,8 @@ public class AtaqueTest {
 		//espadachin resta 15 de vida
 		assertEquals (plaza.getVida(), 435);
 	}
-	
+
+/*
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test06ArqueroAtacaAPlazaCentralFueraDelRangoDeAlcance ()  {
 		
@@ -106,6 +109,7 @@ public class AtaqueTest {
 		
 		
 	}
+*/
 	
 	@Test (expected = ArmaDeAsedioDesmontadaNoPuedeAtacarError.class)
 	public void test08AtacarConArmaDeAsedioDesmontadaDebeLanzarExcepcion ()  {

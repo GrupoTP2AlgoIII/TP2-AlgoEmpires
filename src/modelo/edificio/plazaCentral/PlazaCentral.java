@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
+import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class PlazaCentral extends Edificio {
@@ -37,6 +38,18 @@ public class PlazaCentral extends Edificio {
 			   this.tamanio = 4;
 			   this.velocidadReparacion = 25;
 			   this.vidaFull = 450;
+		   }
+		   
+		   public void atacar (Posicionable posicionable) {
+			   throw new PlazaCentralNoPuedeAtacarError ();
+		   }
+		   
+		   public void atacar (Unidad unidad) {
+			   throw new PlazaCentralNoPuedeAtacarError ();		   
+		   }
+		   
+		   public void atacar (Edificio edificion) {
+			   throw new PlazaCentralNoPuedeAtacarError ();
 		   }
 		   
 		    public Unidad crearAldeano() {

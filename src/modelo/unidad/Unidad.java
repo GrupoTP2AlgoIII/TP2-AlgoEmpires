@@ -1,6 +1,7 @@
 package modelo.unidad;
 
 import modelo.ataque.Ataque;
+import modelo.edificio.Edificio;
 import modelo.jugador.JugadorSinOroException;
 import modelo.mapa.Posicion;
 
@@ -8,7 +9,7 @@ public abstract class Unidad extends Posicionable {
 	
 	protected int cantidadDeMovimientos;
 	protected int movimientosPermitidos;
-	protected int vida;
+	//protected int vida;
 	protected int costo;
 	protected Ataque ataque;
 	protected int alcance;
@@ -25,6 +26,34 @@ public abstract class Unidad extends Posicionable {
 		super (x, y);
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
+	}
+	
+	public void recibirDanio (int danio) {
+		this.vida -= danio;
+	}
+	
+	public void recibirDanioDe (Posicionable posicionable) {
+		posicionable.atacar(this);
+	}
+	
+	public void recibirDanioDe (Unidad unidad) {
+		unidad.atacar(this);
+	}
+	
+	public void recibirDanioDe (Edificio edificio) {
+		edificio.atacar(this);
+	}
+	
+	public void atacar (Posicionable posicionable) {
+		posicionable.recibirDanioDe(this);
+	}
+	
+	public void atacar (Unidad unidad) {
+		this.ataque.atacar(unidad);
+	}
+	
+	public void atacar (Edificio edificio) {
+		this.ataque.atacar(edificio);
 	}
 	
 	
@@ -44,8 +73,6 @@ public abstract class Unidad extends Posicionable {
 		throw new DesplazarAPosicionOcupadaError ();
 	}
 	
-	public abstract void atacar (Posicionable posicionable);
-	
 	/*
      * devuelve si el posicionable se encuentra dentro de la cuadricula formada por el alcanceEnFila y alcanceEnColumna
      * a partri de la posicion.
@@ -54,11 +81,6 @@ public abstract class Unidad extends Posicionable {
 	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 		
 		return this.posicion.perteneceALaCuadricula(posicion, alcanceEnFila, alcanceEnColumna);
-	}
-	
-	public void atacado(Ataque ataque) {
-		this.vida -= ataque.getAtaqueUnidad();
-		
 	}
 
 	public int getVida() {

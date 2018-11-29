@@ -1,5 +1,7 @@
 package modelo.edificio.cuartel;
 
+import modelo.edificio.EdificiosNoSePuedenDesplazarError;
+import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 
@@ -37,5 +39,12 @@ public class CuartelTest {
 		
 		assertEquals (25,aldeano.getVida());
 		
+    }
+    
+    @Test (expected = EdificiosNoSePuedenDesplazarError.class)
+    public void test03DesplazarUnCuartelDebeLanzarExcepcion () {
+    	
+    	Cuartel cuartel = new Cuartel ();
+    	cuartel.desplazarHasta(new Posicion (5,5));
     }
 }

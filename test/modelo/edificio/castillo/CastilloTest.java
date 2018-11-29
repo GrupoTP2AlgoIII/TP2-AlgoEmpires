@@ -1,5 +1,6 @@
 package modelo.edificio.castillo;
 
+import modelo.edificio.EdificiosNoSePuedenDesplazarError;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
@@ -54,8 +55,15 @@ public class CastilloTest {
     	castillo.atacarEnemigosAlAlcance(mapa, jugador1.getPosicionables());
     	
     	assertEquals(50, aldeano.getVida());
-    	assertEquals(30, aldeanoEnemigo.getVida());
+    	assertEquals(30, aldeanoEnemigo.getVida());		
+    }
+    
+    @Test (expected = EdificiosNoSePuedenDesplazarError.class )
+    public void test03DesplazarCastilloDebeLanzarExcepcion () {
     	
+    	Castillo castillo = new Castillo ();
+    	castillo.desplazarHasta(new Posicion (5,5));
     	
     }
+    
 }

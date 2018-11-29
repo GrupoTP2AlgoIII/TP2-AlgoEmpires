@@ -52,14 +52,20 @@ public class Castillo extends Edificio {
 	  public Unidad crearUnidad(char tipo) {
 		  return estado.crearArmaAsedio();
 	  }
-		
-
-
-
-    public void atacar(Posicionable posicionable) {
-		posicionable.atacado(this.ataque);
+	  
+	public void atacar (Posicionable posicionable) {
+		posicionable.recibirDanioDe(this);
 	}
-    
+		
+	public void atacar (Unidad unidad) {
+		this.ataque.atacar(unidad);
+	}
+		
+	public void atacar (Edificio edificio) {
+		this.ataque.atacar(edificio);
+	}
+	  
+	  
 	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 		
 		ArrayList <Posicion> posicionesQueOcupaEdificio = crearListaConPosicionesQueOcupa(this.posicionDesde, this.posicionHasta);
@@ -105,7 +111,6 @@ public class Castillo extends Edificio {
 		}
 
 	}
-
 
 
 	

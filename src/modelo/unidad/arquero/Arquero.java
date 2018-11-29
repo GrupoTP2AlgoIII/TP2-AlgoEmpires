@@ -23,12 +23,13 @@ public class Arquero extends Unidad {
 		this.ataque = new Ataque(10,15, this.alcance);
 	}
 	
+	@Override
 	public void atacar(Posicionable posicionable)  {
 		if (!posicionable.estaEnRangoDePosicion (this.posicion, this.alcance, this.alcance)) {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
 		
-		posicionable.atacado(this.ataque);
+		posicionable.recibirDanioDe(this);
 	}
 
 

@@ -3,6 +3,7 @@ package modelo.unidad.armaDeAsedio;
 import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
+import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.Posicionable;
@@ -33,10 +34,21 @@ public class ArmaDeAsedio extends Unidad {
 		
 	}
 	
-	public void atacar(Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError, ArmaDeAsedioDesmontadaNoPuedeAtacarError {
+	@Override
+	public void atacar(Posicionable posicionable) {
 		
 		estado.atacar(posicionable, this.posicion, this.alcance, this.ataque);
 
+	}
+	
+	@Override
+	public void atacar (Edificio edificio) {
+		estado.atacar(edificio, this.posicion, this.alcance, this.ataque);
+	}
+	
+	@Override
+	public void atacar (Unidad unidad) {
+		estado.atacar(unidad, this.posicion, this.alcance, this.ataque);
 	}
 
 	public void montar() {

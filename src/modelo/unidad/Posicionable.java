@@ -1,12 +1,12 @@
 package modelo.unidad;
 
-import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
 
 public abstract class Posicionable {
 	
 	protected Posicion posicion;
+	protected int vida;
 	
 	public Posicionable () {
 		
@@ -20,6 +20,15 @@ public abstract class Posicionable {
 	public Posicionable(Posicion posicion) {
 		this.posicion = posicion;
 	}
+	
+	public abstract void recibirDanio (int danio);
+	public abstract void recibirDanioDe (Posicionable posicionable);
+	public abstract void recibirDanioDe (Unidad unidad);
+	public abstract void recibirDanioDe (Edificio edificio);
+	
+	public abstract void atacar (Posicionable posicionable);
+	public abstract void atacar (Unidad unidad);
+	public abstract void atacar (Edificio edificio);
 
 	public void posicionarEnFilaColumna(int fila, int columna) {
 		
@@ -35,8 +44,6 @@ public abstract class Posicionable {
 	public abstract int avanzarTurno();
 
 	public abstract int getVida();
-
-	public abstract void atacado(Ataque ataque);
 
 	public Posicion getPosicion(){
 		return this.posicion;
