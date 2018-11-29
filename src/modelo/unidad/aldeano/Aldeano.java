@@ -35,7 +35,14 @@ public class Aldeano extends Unidad {
 	    	return estado.obtenerOro();
 	    }
 
-		public void reparar(Edificio cuartel) {
+
+	@Override
+	public void recibirDanio(int ataque) {
+
+	}
+
+
+	public void reparar(Edificio cuartel) {
 			cuartel.reparar();
 			estado = estado.reparar(cuartel);
 

@@ -32,17 +32,15 @@ public abstract class Posicionable {
 	}
 
 
-	public Posicion getPosicion() {
-		
-		return this.posicion;
-		
-	}
-
 	public abstract int avanzarTurno();
 
 	public abstract int getVida();
 
 	public abstract void atacado(Ataque ataque);
+
+	public Posicion getPosicion(){
+		return this.posicion;
+	}
 	
 	public abstract boolean estaOcupado();
 	
@@ -55,5 +53,8 @@ public abstract class Posicionable {
 	public abstract void desplazarHasta(Posicion hasta);
 
 	public abstract void recibirPosicionable();
+
+
+	public abstract void recibirDanio(int ataque);
 
 }

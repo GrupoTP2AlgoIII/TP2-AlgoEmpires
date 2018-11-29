@@ -52,17 +52,6 @@ public class Castillo extends Edificio {
     	return estado.crearArmaAsedio();
     }
 
-    public boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY){
-
-    	boolean tamanioCorrecto = true;
-
-    	// Se pasan coordeanadas de izquierda a derecha y de abajo hacia arriba
-    	if ( hastaX != (desdeX + 3) || hastaY != (desdeY + 3)){
-    		tamanioCorrecto = false;
-    	}
-
-    	return tamanioCorrecto;
-    }
 
     public void atacar(Posicionable posicionable) {
 		posicionable.atacado(this.ataque);
@@ -82,8 +71,15 @@ public class Castillo extends Edificio {
 		return false;
 		
 	}
-	
-	
+
+
+
+	@Override
+	public void recibirDanio(int ataque) {
+
+	}
+
+
 	private ArrayList <Posicion> crearListaConPosicionesQueOcupa (Posicion desde, Posicion hasta) {
 		ArrayList <Posicion> posicionesQueOcupa = new ArrayList <Posicion> ();
 		for (int i = desde.getFila(); i < hasta.getFila(); i++) {

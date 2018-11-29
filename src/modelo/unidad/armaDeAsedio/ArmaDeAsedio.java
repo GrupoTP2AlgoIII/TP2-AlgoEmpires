@@ -66,6 +66,11 @@ public class ArmaDeAsedio extends Unidad {
 	}
 
 	@Override
+	public void recibirDanio(int ataque) {
+
+	}
+
+	@Override
 	public int descontarOro(int oro) {
 		// TODO Auto-generated method stub
 		return 0;

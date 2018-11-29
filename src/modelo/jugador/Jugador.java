@@ -131,10 +131,8 @@ public class Jugador {
 	public void crearCastilloDesdeHasta(int desdeX, int desdeY, int hastaX, int hastaY) throws TamanioIncorrectoError, PosicionFueraDelMapaError, PosicionOcupadaError{
 
 		Edificio castillo = new Castillo(0);
-		
-		if (! castillo.tieneTamanioCorrecto(desdeX, desdeY, hastaX, hastaY)){
-			throw new TamanioIncorrectoError();
-		}
+
+
 
 		Posicion posicionDesde = new Posicion (desdeX, desdeY);
 		Posicion posicionHasta = new Posicion (hastaX, hastaY);
@@ -156,9 +154,6 @@ public class Jugador {
 		
 		Edificio plazaCentral = new PlazaCentral(0);
 
-		if (! plazaCentral.tieneTamanioCorrecto(desdeX, desdeY, hastaX, hastaY)){
-			throw new TamanioIncorrectoError();
-		}
 
 		Posicion posicionDesde = new Posicion (desdeX, desdeY);
 		Posicion posicionHasta = new Posicion (hastaX, hastaY);

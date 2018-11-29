@@ -55,4 +55,10 @@ public class Vacio extends Posicionable{
 	public void recibirPosicionable () {
 		
 	}
+
+
+	@Override
+	public void recibirDanio(int ataque) {
+
+	}
 }

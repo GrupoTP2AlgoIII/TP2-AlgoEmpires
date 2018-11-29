@@ -17,8 +17,7 @@ public abstract class Edificio extends Posicionable {
     protected Posicion posicionHasta;
 	
    
-	public abstract boolean tieneTamanioCorrecto (int desdeX, int desdeY, int hastaX, int hastaY);
-	
+
 	public Edificio(){
 		int turnosEnConstruccionInicial = 3;
 		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);

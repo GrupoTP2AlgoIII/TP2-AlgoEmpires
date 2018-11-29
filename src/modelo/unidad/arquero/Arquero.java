@@ -6,7 +6,7 @@ import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 
-public class Arquero extends Unidad {
+public class Arquero extends Unidad{
 
 	private int alcance = 3;
 	
@@ -23,7 +23,14 @@ public class Arquero extends Unidad {
 		this.costo = 75;
 		this.ataque = new Ataque(10,15, this.alcance);
 	}
-	
+
+
+	@Override
+	public void recibirDanio(int ataque) {
+
+	}
+
+
 	public void atacar(Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
 		if (!posicionable.estaEnRangoDePosicion (this.posicion, this.alcance, this.alcance)) {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
@@ -37,6 +44,7 @@ public class Arquero extends Unidad {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 
 
