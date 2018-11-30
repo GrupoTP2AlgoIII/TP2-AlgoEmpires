@@ -53,6 +53,10 @@ public class ArmaDeAsedio extends Unidad {
 		
 	}
 	
+	public void desarmar () {
+		this.estado = new ArmaDeAsedioDesmontada (1);
+	}
+	
 	public int avanzarTurno () {	
 		estado.avanzarTurno();
 		return 0;
