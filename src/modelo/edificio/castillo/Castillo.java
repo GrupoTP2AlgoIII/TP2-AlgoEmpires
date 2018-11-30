@@ -54,11 +54,11 @@ public class Castillo extends Edificio {
 		posicionable.recibirDanioDe(this);
 	}
 		
-	public void atacar (Unidad unidad) {
+	public void atacar (Unidad unidad, Posicion posicionAtacado) {
 		this.ataque.atacar(unidad);
 	}
 		
-	public void atacar (Edificio edificio) {
+	public void atacar (Edificio edificio, Posicion posicionAtacado) {
 		this.ataque.atacar(edificio);
 	}
 	  

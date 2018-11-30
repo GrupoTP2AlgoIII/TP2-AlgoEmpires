@@ -2,7 +2,9 @@ package modelo.edificio;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
@@ -107,6 +109,20 @@ public abstract class Edificio extends Posicionable {
 			}
 		}
 		return posicionesEdificio;
+	}
+	
+	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceFila, int alcanceColumna) {
+		ArrayList <Posicion> posicionesEdificio = this.calcularPosiciones(this.posicionDesde);
+		Iterator<Posicion> iteradorPosiciones = posicionesEdificio.iterator();
+		while (iteradorPosiciones.hasNext()) {
+			Posicion posicionActual = iteradorPosiciones.next();
+			if (posicionActual.perteneceALaCuadricula(posicion, alcanceFila, alcanceColumna)) {
+				return true;
+			}
+		}
+		
+		return false;
+	
 	}
 
 	private int calcularLado() {

@@ -44,11 +44,11 @@ public class Cuartel extends Edificio{
 		   throw new CuartelNoPuedeAtacarError ();
 	   }
 	   
-	   public void atacar (Unidad unidad) {
+	   public void atacar (Unidad unidad, Posicion posicionAtacado) {
 		   throw new CuartelNoPuedeAtacarError ();		   
 	   }
 	   
-	   public void atacar (Edificio edificion) {
+	   public void atacar (Edificio edificion, Posicion posicionAtacado) {
 		   throw new CuartelNoPuedeAtacarError ();
 	   }
 	   

@@ -4,6 +4,7 @@ import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
+import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
@@ -70,6 +71,16 @@ public class Aldeano extends Unidad {
 		@Override
 		public void atacar (Posicionable posicionable) {
 
+			throw new AldeanoNoPuedeAtacarError ();
+		}
+		
+		@Override
+		public void atacar (Unidad unidad, Posicion posicionAtacado) {
+			throw new AldeanoNoPuedeAtacarError ();
+		}
+		
+		@Override
+		public void atacar (Edificio edificio, Posicion posicionAtacado) {
 			throw new AldeanoNoPuedeAtacarError ();
 		}
 

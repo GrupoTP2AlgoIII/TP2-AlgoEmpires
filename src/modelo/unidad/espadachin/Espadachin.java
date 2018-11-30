@@ -32,15 +32,15 @@ public class Espadachin extends Unidad {
 		this.costo = 50;
 		this.ataque = new Ataque(15,25, this.alcance);
 	}
-	
-	public void atacar(Posicionable posicionable) throws AtacandoEnPosicionFueraDelAlcanceError, AldeanoNoPuedeAtacarError {
+/*	
+	public void atacar(Posicionable posicionable) {
 		if (!posicionable.estaEnRangoDePosicion (this.posicion, this.alcance, this.alcance)) {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
 		
 		posicionable.recibirDanioDe(this);
 	}
-
+*/
 	@Override
 	public int descontarOro(int oro) {
 		// TODO Auto-generated method stub

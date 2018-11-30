@@ -30,8 +30,8 @@ public abstract class Posicionable {
 	public abstract void recibirDanioDe (Edificio edificio);
 
 	public abstract void atacar (Posicionable posicionable);
-	public abstract void atacar (Unidad unidad);
-	public abstract void atacar (Edificio edificio);
+	public abstract void atacar (Unidad unidad, Posicion posicionAtacado);
+	public abstract void atacar (Edificio edificio, Posicion posicionAtacado);
 
 	public void posicionarEnFilaColumna(int fila, int columna) {
 

@@ -1,5 +1,6 @@
 package modelo.unidad;
 
+import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.jugador.Jugador;
@@ -33,23 +34,29 @@ public abstract class Unidad extends Posicionable {
 	}
 	
 	public void recibirDanioDe (Posicionable posicionable) {
-		posicionable.atacar(this);
+		posicionable.atacar(this, this.posicion);
 	}
 	
 	public void recibirDanioDe (Unidad unidad) {
-		unidad.atacar(this);
+		unidad.atacar(this, this.posicion);
 	}
 	
 	public void recibirDanioDe (Edificio edificio) {
-		edificio.atacar(this);
+		edificio.atacar(this, this.posicion);
 	}
 	
 
-	public void atacar (Unidad unidad) {
+	public void atacar (Unidad unidad, Posicion posicionAtacado) {
+		if (!unidad.estaEnRangoDePosicion(this.posicion, this.alcance, this.alcance)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
 		this.ataque.atacar(unidad);
 	}
 	
-	public void atacar (Edificio edificio) {
+	public void atacar (Edificio edificio, Posicion posicionAtacado) {
+		if (!this.posicion.perteneceALaCuadricula(posicionAtacado, this.alcance, this.alcance)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
 		this.ataque.atacar(edificio);
 	}
 
@@ -64,7 +71,7 @@ public abstract class Unidad extends Posicionable {
 			throw new RuntimeException();
 		}
 
-		posicionable.recibirDanioDe(this);
+		posicionable.recibirDanioDe (this);
 	}
 
 	public void desplazarHasta (Posicion hasta) {

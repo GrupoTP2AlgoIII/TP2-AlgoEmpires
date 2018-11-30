@@ -24,17 +24,4 @@ public class Ataque {
 		
 	}
 	
-//	public int getAtaqueEdificio() {
-//		return this.ataqueEdificio;
-//	}
-	
-//	public int getAtaqueUnidad() {
-//		return this.ataqueUnidad;
-//	}
-	
-//	public int getDistancia () {
-		
-//		return this.distancia;
-//	}
-	
 }

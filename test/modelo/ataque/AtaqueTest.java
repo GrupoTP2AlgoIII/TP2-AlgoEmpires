@@ -8,13 +8,14 @@ import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.mapa.Posicion;
+import modelo.unidad.Posicionable;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
 
 public class AtaqueTest {
-
+/*
 	@Test
 	public void test01AtacarUnaUnidadDentroDelRangoDeAlcance () {
 		
@@ -23,15 +24,14 @@ public class AtaqueTest {
 		Juego juego = new Juego ();
 		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
 		juego.agregarUnidadEnFilaColumna(espadachin, 7, 7);
-		arquero.atacar(espadachin);
+		arquero.atacar(espadachin, new Posicion (7,7));
 		
 		//el espadachin inicia con vida = 100
 		//el ataque del arquero le resta 15 a la vida del espadachin
 		assertEquals (espadachin.getVida(), 85);
 		
 	}
-	
-/*
+*/
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test02AtacarUnaUnidadFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
@@ -40,10 +40,10 @@ public class AtaqueTest {
 		Juego juego = new Juego ();
 		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
 		juego.agregarUnidadEnFilaColumna(espadachin, 15, 15);
-		arquero.atacar(espadachin);
+		arquero.atacar(espadachin, new Posicion (15,15));
 		
 	}
-*/
+
 	
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () {
@@ -55,10 +55,10 @@ public class AtaqueTest {
 		Juego juego = new Juego ();
 		juego.agregarUnidadEnFilaColumna(arquero, 30, 30);
 		juego.agregarUnidadEnFilaColumna(armaDeAsedio, 5, 5);
-		armaDeAsedio.atacar(arquero);
+		armaDeAsedio.atacar(arquero, new Posicion (30,30));
 		
 	}
-	
+/*	
 	@Test
 	public void test04ArqueroAtacaACuartelYTodoElCuartelPerteneceAlRangoDeAlcanceDelArquero ()  {
 		
@@ -85,7 +85,6 @@ public class AtaqueTest {
 		assertEquals (plaza.getVida(), 435);
 	}
 
-/*
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test06ArqueroAtacaAPlazaCentralFueraDelRangoDeAlcance ()  {
 		

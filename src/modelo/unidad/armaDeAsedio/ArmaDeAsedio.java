@@ -39,12 +39,12 @@ public class ArmaDeAsedio extends Unidad {
 	}
 	
 	@Override
-	public void atacar (Edificio edificio) {
+	public void atacar (Edificio edificio, Posicion posicionAtacado) {
 		estado.atacar(edificio, this.posicion, this.alcance, this.ataque);
 	}
 	
 	@Override
-	public void atacar (Unidad unidad) {
+	public void atacar (Unidad unidad, Posicion posicionAtacado) {
 		estado.atacar(unidad, this.posicion, this.alcance, this.ataque);
 	}
 
