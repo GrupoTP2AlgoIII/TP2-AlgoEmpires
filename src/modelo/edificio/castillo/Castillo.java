@@ -103,30 +103,4 @@ public class Castillo extends Edificio {
 
 	}
 	  
-	  
-//	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
-//		
-//		ArrayList <Posicion> posicionesQueOcupaEdificio = crearListaConPosicionesQueOcupa(this.posicionDesde, this.posicionHasta);
-//		
-//		Iterator<Posicion> iterador = posicionesQueOcupaEdificio.iterator();
-//		while (iterador.hasNext ()) {
-//			if (iterador.next().perteneceALaCuadricula(posicion, alcanceEnFila, alcanceEnColumna)) {
-//				return true;
-//			}
-//		}
-//		
-//		return false;
-//		
-//	}
-//
-//	private ArrayList <Posicion> crearListaConPosicionesQueOcupa (Posicion desde, Posicion hasta) {
-//		ArrayList <Posicion> posicionesQueOcupa = new ArrayList <Posicion> ();
-//		for (int i = desde.getFila(); i < hasta.getFila(); i++) {
-//			for (int j = desde.getColumna(); j < hasta.getColumna(); j++) {
-//				Posicion posicionActual = new Posicion (i, j);
-//				posicionesQueOcupa.add(posicionActual);
-//			}
-//		}
-//		return posicionesQueOcupa;
-//	}	
 }

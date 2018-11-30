@@ -1,14 +1,12 @@
 package modelo.jugador;
 
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 import modelo.edificio.castillo.Castillo;
-import modelo.edificio.cuartel.Cuartel;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.espadachin.Espadachin;
-import org.junit.Test;
-
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
@@ -16,7 +14,6 @@ import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.jugador.PosicionOcupadaError;
-import modelo.unidad.arquero.Arquero;
 import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 
 public class JugadorTest {
@@ -52,7 +49,7 @@ public class JugadorTest {
 		jugador.crearCastilloDesde(1, 1);
 
 		Posicion posicionCastillo = new Posicion(4, 4);
-		jugador.crearUnidad(posicionCastillo, 'A');
+		jugador.crearUnidadPropia(posicionCastillo, 'A');
 
 		assertSame(4, jugador.getPoblacion());
 
@@ -69,7 +66,7 @@ public class JugadorTest {
 
 
 		Posicion posicionPlaza = new Posicion(2, 9);
-		jugador.crearUnidad(posicionPlaza, 'A');
+		jugador.crearUnidadPropia(posicionPlaza, 'A');
 
 		assertSame(4, jugador.getPoblacion());
 	}

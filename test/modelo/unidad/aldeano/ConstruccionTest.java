@@ -118,7 +118,7 @@ public class ConstruccionTest {
 		Posicion posicionAldeano = new Posicion(15,15);
 		Posicion posicionConstruccion = new Posicion(16,16);
 
-		jugador1.construirEdificio(posicionAldeano,posicionConstruccion,'C');
+		jugador1.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 
 		Edificio cuartel = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		jugador1.avanzarTurno();
@@ -127,7 +127,7 @@ public class ConstruccionTest {
 		
 		posicionAldeano = new Posicion(25,25);
 		posicionConstruccion = new Posicion(26,26);
-		jugador2.construirEdificio(posicionAldeano,posicionConstruccion,'C');
+		jugador2.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 		Edificio cuartel2 = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		
 		assertEquals (3,(cuartel2.getTurnosConstruccion()));
@@ -155,7 +155,7 @@ public class ConstruccionTest {
 		Posicion posicionAldeano = new Posicion(15,15);
 		Posicion posicionConstruccion = new Posicion(16,16);
 				
-		jugador1.construirEdificio(posicionAldeano,posicionConstruccion,'C');
+		jugador1.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 			
 		Edificio cuartel = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		jugador1.avanzarTurno();
@@ -164,7 +164,7 @@ public class ConstruccionTest {
 		
 		posicionAldeano = new Posicion(5,5);
 		posicionConstruccion = new Posicion(6,6);
-		jugador2.construirEdificio(posicionAldeano,posicionConstruccion,'C');
+		jugador2.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 		Edificio cuartel2 = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		jugador2.avanzarTurno();
 		
@@ -284,7 +284,7 @@ public class ConstruccionTest {
 		Posicion posicionAldeano = new Posicion(15,15);
 		Posicion posicionConstruccion = new Posicion(16,16);
 				
-		jugador1.construirEdificio(posicionAldeano,posicionConstruccion,'C');
+		jugador1.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 			
 		Edificio cuartel = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		jugador2.avanzarTurno();

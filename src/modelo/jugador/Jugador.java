@@ -41,7 +41,7 @@ public class Jugador {
 
 		this.poblacion = new Poblacion(this.posicionables);
 		
-		this.castillo = null;
+		this.castillo = new Castillo(0);
 
 
 	}
@@ -63,17 +63,6 @@ public class Jugador {
 		return this.nombre;
 	}
 
-
-	public void construirEdificio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
-		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
-		Posicionable aldeano = this.posicionables.get(posicionAldeano);
-		Edificio edificio = aldeano.construir(tipoConstruccion);
-		this.inventario.descontarOro(edificio);
-		Map <Posicion, Posicionable> edificioAgregado = this.mapa.ponerEdificio(edificio,posicionDeConstruccion);
-		this.posicionables.putAll(edificioAgregado);
-	}
-
-
 	//PARA QUE ANDE ATAQUE
 	public void construirEdificioPropio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
 		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
@@ -83,17 +72,6 @@ public class Jugador {
 		Map <Posicion, Posicionable> edificioAgregado = this.mapa.ponerEdificio(edificio,posicionDeConstruccion);
 		this.posicionables.putAll(edificioAgregado);
 	}
-
-	public void crearUnidad(Posicion posicionEdificio,char tipoUnidad){
-		Posicionable edificio = this.posicionables.get(posicionEdificio);
-		Unidad unidad =  edificio.crearUnidad(tipoUnidad);
-		this.inventario.descontarOro(unidad);
-		this.inventario.aumentarPoblacion(unidad);
-		this.mapa.buscarPosicionYUbicar(unidad,posicionEdificio);
-		this.posicionables.put(unidad.getPosicion(),unidad);
-	}
-
-
 
 	public void crearUnidadPropia(Posicion posicionEdificio,char tipoUnidad){
 		Posicionable edificio = this.posicionables.get(posicionEdificio);
@@ -114,9 +92,8 @@ public class Jugador {
 			}
 			anterior = actual;
 		}
-        if (this.castillo != null) {
-        	this.castillo.atacarEnemigosAlAlcance();
-        }
+
+		this.castillo.atacarEnemigosAlAlcance();
 	}
 
 	private void quitarPosicionablesDestruidos() {
@@ -184,8 +161,6 @@ public class Jugador {
 		this.posicionables.putAll(plazaConstruida);
 	}
 
-
-
 	public void crearPlazaCentralPropiaDesde(int desdeX, int desdeY) {
 
 		Edificio plazaCentral = new PlazaCentral(0,this);
@@ -222,17 +197,7 @@ public class Jugador {
 
 	}
 	
-	public Map <Posicion, Posicionable> getPosicionables() {
-		return this.posicionables;
-	}
-	
 	public Posicionable getPosicionable (Posicion posicion) {
 		return this.posicionables.get(posicion);
 	}
-
-
-
-
-
-
 }

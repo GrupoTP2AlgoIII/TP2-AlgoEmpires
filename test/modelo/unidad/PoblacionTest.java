@@ -32,9 +32,9 @@ public class PoblacionTest {
 		
 		
 		//creo 3 aldeanos
-		jugador.crearUnidad(plaza.getPosicion(),'A');
-		jugador.crearUnidad(plaza.getPosicion(),'A');
-		jugador.crearUnidad(plaza.getPosicion(),'A');
+		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
+		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
+		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
 		
 		assertEquals (6,jugador.getPoblacion());
 		
@@ -116,13 +116,13 @@ public class PoblacionTest {
 		plaza.posicionarEnFilaColumna(1,1);
 		jugador.agregarPosicionableEnFilaColumna(plaza,1,1);
 		
-		jugador.crearUnidad(plaza.getPosicion(),'A');		//creo un aldeano para que produzca oro
+		jugador.crearUnidadPropia(plaza.getPosicion(),'A');		//creo un aldeano para que produzca oro
 		
 		for(int i=0;i<100;i++)//produsco oro suficiente para crear mas de 50 aldeanos
 			jugador.avanzarTurno();
 		
 		while(1>0)
-			jugador.crearUnidad(plaza.getPosicion(),'A');
+			jugador.crearUnidadPropia(plaza.getPosicion(),'A');
 			
 	}
 	
@@ -142,7 +142,7 @@ public class PoblacionTest {
 		jugador.agregarPosicionableEnFilaColumna(plaza,25,25);
 		
 		while(1>0)//creo aldeanos hasta que el jugador se quede sin oro y arroje excepcion
-		jugador.crearUnidad(plaza.getPosicion(),'A');
+		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
 	}
 	
 
@@ -161,9 +161,9 @@ public class PoblacionTest {
 		cuartel.posicionarEnFilaColumna(25,25);
 		jugador.agregarPosicionableEnFilaColumna(cuartel,25,25);
 		
-		jugador.crearUnidad(cuartel.getPosicion(),'A');
+		jugador.crearUnidadPropia(cuartel.getPosicion(),'A');
 		Posicion posicionArquero = new Posicion(26,25);
-		jugador.crearUnidad(posicionArquero,'A');
+		jugador.crearUnidadPropia(posicionArquero,'A');
 	}
 
 
