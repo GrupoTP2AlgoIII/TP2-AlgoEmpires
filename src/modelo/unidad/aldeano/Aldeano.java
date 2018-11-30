@@ -80,7 +80,7 @@ public class Aldeano extends Unidad {
 		}
 		
 		@Override
-		public void atacar (Edificio edificio) {
+		public void atacar (Edificio edificio, Posicion posicionAtacado) {
 			throw new AldeanoNoPuedeAtacarError ();
 		}
 

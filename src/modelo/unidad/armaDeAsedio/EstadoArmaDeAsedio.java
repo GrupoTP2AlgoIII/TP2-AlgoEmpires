@@ -12,7 +12,7 @@ public abstract class EstadoArmaDeAsedio extends Unidad {
 	public abstract int avanzarTurno ();
 	public abstract void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque);
 	public abstract void desplazarPosicionHasta (Posicion hasta, Posicion posicionActual);
-	public abstract void atacar (Edificio edificio, Posicion posicion, int alcance, Ataque ataque);
-	public abstract void atacar (Unidad unidad, Posicion posicion, int alcance, Ataque ataque);
+	public abstract void atacar (Edificio edificio, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque);
+	public abstract void atacar (Unidad unidad, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque);
 		
 }

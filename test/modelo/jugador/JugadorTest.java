@@ -132,7 +132,7 @@ public class JugadorTest {
 
 
 	@Test
-	public void test05InicioElJuegoCreoDosJugadoresYCreoBatalla() {
+	public void test06InicioElJuegoCreoDosJugadoresYCreoBatalla() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();

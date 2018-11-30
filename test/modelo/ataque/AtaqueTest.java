@@ -4,9 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import modelo.edificio.castillo.Castillo;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.juego.Juego;
+import modelo.jugador.Jugador;
+import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
@@ -15,7 +18,7 @@ import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
 
 public class AtaqueTest {
-/*
+
 	@Test
 	public void test01AtacarUnaUnidadDentroDelRangoDeAlcance () {
 		
@@ -43,7 +46,6 @@ public class AtaqueTest {
 		arquero.atacar(espadachin, new Posicion (15,15));
 		
 	}
-*/
 	
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () {
@@ -58,7 +60,7 @@ public class AtaqueTest {
 		armaDeAsedio.atacar(arquero, new Posicion (30,30));
 		
 	}
-/*	
+
 	@Test
 	public void test04ArqueroAtacaACuartelYTodoElCuartelPerteneceAlRangoDeAlcanceDelArquero ()  {
 		
@@ -66,7 +68,7 @@ public class AtaqueTest {
 		Cuartel cuartel = new Cuartel(7, 4, 8, 5);
 		Juego juego = new Juego ();
 		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
-		arquero.atacar(cuartel);
+		arquero.atacar(cuartel, new Posicion (7,4));
 		
 		//el cuartel inicialmente tiene 240 de vida
 		//el arquero le resta 10 de vida
@@ -78,7 +80,7 @@ public class AtaqueTest {
 		
 		Espadachin espadachin = new Espadachin (5, 5);
 		PlazaCentral plaza = new PlazaCentral (5, 6, 6, 7);
-		espadachin.atacar(plaza);
+		espadachin.atacar(plaza, new Posicion (5,6));
 		
 		//la plaza inicia con vida = 450
 		//espadachin resta 15 de vida
@@ -90,25 +92,8 @@ public class AtaqueTest {
 		
 		Arquero arquero = new Arquero (5, 5);
 		PlazaCentral plaza = new PlazaCentral (10, 4, 11, 5);
-		arquero.atacar(plaza);
+		arquero.atacar(plaza, new Posicion (10,4));
 	}
-	
-	@Test
-	public void test07AtacarConArmaDeAsedioMontadaUnEdificio (){
-		
-		Cuartel cuartel = new Cuartel (5,5,6,6);
-		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
-		arma.montar ();
-		arma.avanzarTurno();
-		arma.atacar(cuartel);
-		
-		//cuartel inicia con vida = 250
-		//arma le resta 75 de vida
-		assertEquals (cuartel.getVida(), 175);
-		
-		
-	}
-*/
 	
 	@Test (expected = ArmaDeAsedioDesmontadaNoPuedeAtacarError.class)
 	public void test08AtacarConArmaDeAsedioDesmontadaDebeLanzarExcepcion ()  {

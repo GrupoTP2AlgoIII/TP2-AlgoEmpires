@@ -58,7 +58,7 @@ public class Vacio extends Posicionable{
 		throw new PosicionDesocupadaError ();
 	}
 	
-	public void atacar (Edificio edificio) {
+	public void atacar (Edificio edificio, Posicion posicionAtacado) {
 		throw new PosicionDesocupadaError ();
 	}
 

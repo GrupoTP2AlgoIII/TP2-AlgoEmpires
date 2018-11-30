@@ -2,8 +2,12 @@ package modelo.edificio.castillo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
+import modelo.edificio.EstadoEdificioDisponible;
+import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -43,10 +47,16 @@ public class Castillo extends Edificio {
 		   this.costo = 50;	       
 	       this.vidaFull = vida;	       
 	       this.ataque = new Ataque (20, 20, this.alcance);
+	       this.estado = new EstadoEdificioDisponible ();
 	    }
 	  
 	  @Override
 	  public Unidad crearUnidad(char tipo) {
+		  return estado.crearArmaAsedio();
+	  }
+	  
+	  @Override
+	  public Unidad crearUnidadPropia (char tipo, Jugador jugador) {
 		  return estado.crearArmaAsedio();
 	  }
 	  
@@ -55,10 +65,16 @@ public class Castillo extends Edificio {
 	}
 		
 	public void atacar (Unidad unidad, Posicion posicionAtacado) {
+		if (!posicionAtacado.perteneceALaCuadricula(this.posicion, this.alcance, this.alcance)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
 		this.ataque.atacar(unidad);
 	}
 		
-	public void atacar (Edificio edificio) {
+	public void atacar (Edificio edificio, Posicion posicionAtacado) {
+		if (!posicionAtacado.perteneceALaCuadricula(this.posicion, this.alcance, this.alcance)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
 		this.ataque.atacar(edificio);
 	}
 	  

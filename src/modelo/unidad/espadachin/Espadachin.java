@@ -2,7 +2,9 @@ package modelo.unidad.espadachin;
 
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
+import modelo.edificio.Edificio;
 import modelo.jugador.Jugador;
+import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
@@ -32,15 +34,23 @@ public class Espadachin extends Unidad {
 		this.costo = 50;
 		this.ataque = new Ataque(15,25, this.alcance);
 	}
-/*	
-	public void atacar(Posicionable posicionable) {
-		if (!posicionable.estaEnRangoDePosicion (this.posicion, this.alcance, this.alcance)) {
+	
+	@Override
+	public void atacar (Unidad unidad, Posicion posicionAtacado) {
+		if (!posicionAtacado.perteneceALaCuadricula(this.posicion, this.alcance, this.alcance)) {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
-		
-		posicionable.recibirDanioDe(this);
+		this.ataque.atacar(unidad);
 	}
-*/
+	
+	@Override
+	public void atacar (Edificio edificio, Posicion posicionAtacado) {
+		if (!posicionAtacado.perteneceALaCuadricula(this.posicion, this.alcance, this.alcance)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
+		this.ataque.atacar(edificio);
+	}
+	
 	@Override
 	public int descontarOro(int oro) {
 		// TODO Auto-generated method stub

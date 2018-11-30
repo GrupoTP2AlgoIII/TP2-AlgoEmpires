@@ -48,7 +48,7 @@ public class Cuartel extends Edificio{
 		   throw new CuartelNoPuedeAtacarError ();		   
 	   }
 	   
-	   public void atacar (Edificio edificion) {
+	   public void atacar (Edificio edificio, Posicion posicionAtacado) {
 		   throw new CuartelNoPuedeAtacarError ();
 	   }
 	   

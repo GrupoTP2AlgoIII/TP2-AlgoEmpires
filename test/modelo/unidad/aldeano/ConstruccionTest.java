@@ -71,7 +71,7 @@ public class ConstruccionTest {
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		arquero.atacar(cuartel);	//le resta 10 de vida
+		arquero.atacar(cuartel,new Posicion (7,4));	//le resta 10 de vida
 		
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
@@ -198,7 +198,7 @@ public class ConstruccionTest {
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
 		cuartelDaniado.avanzarTurno();
-		arquero.atacar(cuartelDaniado);
+		arquero.atacar(cuartelDaniado, new Posicion (7,4));
 		
 		otroAldeano.reparar(cuartelDaniado);
 		cuartelDaniado.avanzarTurno();
@@ -221,7 +221,7 @@ public class ConstruccionTest {
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		arquero.atacar(cuartel);
+		arquero.atacar(cuartel, new Posicion (7,4));
 		aldeano.reparar(cuartel);
 		aldeano.avanzarTurno();
 
@@ -242,7 +242,7 @@ public class ConstruccionTest {
 		cuartel.avanzarTurno();	    //construccion cuartel - 3 turnos	
 		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
 		
-		arquero.atacar(cuartel);
+		arquero.atacar(cuartel, new Posicion (7,4));
 		aldeano.reparar(cuartel);
 		cuartel.avanzarTurno();
 		
@@ -304,7 +304,7 @@ public class ConstruccionTest {
 		cuartelDaniado.avanzarTurno();
 		
 		
-		arquero.atacar(cuartelDaniado);
+		arquero.atacar(cuartelDaniado, new Posicion (7,4));
 		aldeano.reparar(cuartelDaniado);
 		aldeano.construir('C');
 	}
@@ -323,8 +323,8 @@ public class ConstruccionTest {
 		otroCuartelDaniado.avanzarTurno();
 		otroCuartelDaniado.avanzarTurno();
 		
-		arquero.atacar(cuartelDaniado);
-		arquero.atacar(otroCuartelDaniado);
+		arquero.atacar(cuartelDaniado, new Posicion (7,4));
+		arquero.atacar(otroCuartelDaniado, new Posicion (2,7));
 
 		aldeano.reparar(cuartelDaniado);
 		aldeano.reparar(otroCuartelDaniado);

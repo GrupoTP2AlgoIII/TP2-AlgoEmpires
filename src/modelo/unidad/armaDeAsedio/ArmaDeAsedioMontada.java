@@ -31,11 +31,11 @@ public class ArmaDeAsedioMontada extends EstadoArmaDeAsedio {
 	}
 	
 	@Override
-	public void atacar (Edificio edificio, Posicion posicion, int alcance, Ataque ataque) {
+	public void atacar (Edificio edificio, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque) {
 		if (this.turnosMontar > 0) {
 			throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
 		}
-		if (!edificio.estaEnRangoDePosicion (posicion, alcance, alcance)) {
+		if (!posicionAtacado.perteneceALaCuadricula(posicion, alcance, alcance)) {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
 		
@@ -43,11 +43,12 @@ public class ArmaDeAsedioMontada extends EstadoArmaDeAsedio {
 	}
 	
 	@Override
-	public void atacar (Unidad unidad, Posicion posicion, int alcance, Ataque ataque) {
+	public void atacar (Unidad unidad, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque) {
 		if (this.turnosMontar > 0) {
 			throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
 		}
-		if (!unidad.estaEnRangoDePosicion (posicion, alcance, alcance)) {
+		
+		if (!posicionAtacado.perteneceALaCuadricula(posicion, alcance, alcance)) {
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
 		

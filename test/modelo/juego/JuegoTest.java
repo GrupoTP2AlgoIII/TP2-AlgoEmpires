@@ -109,7 +109,7 @@ public class JuegoTest {
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		arquero.atacar(cuartel); // le resta vida
+		arquero.atacar(cuartel, new Posicion (4,4)); // le resta vida
 				
 		Posicion posicionPlaza = new Posicion (2,9);
 		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidad('A'); // se puede crear aldeano
@@ -134,7 +134,7 @@ public class JuegoTest {
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		arquero.atacar(cuartel);
+		arquero.atacar(cuartel, new Posicion (11,11));
 				
 		Posicion posicionPlaza = new Posicion (50,43); //con (fila, columna)
 		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidad('A');

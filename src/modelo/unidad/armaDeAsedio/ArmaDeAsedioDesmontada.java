@@ -25,13 +25,13 @@ public class ArmaDeAsedioDesmontada extends EstadoArmaDeAsedio {
 	}
 	
 	@Override
-	public void atacar (Edificio edificio, Posicion posicion, int alcance, Ataque ataque) {
+	public void atacar (Edificio edificio, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque) {
 		throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
 
 	}
 	
 	@Override
-	public void atacar (Unidad unidad, Posicion posicion, int alcance, Ataque ataque) {
+	public void atacar (Unidad unidad, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque) {
 		throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
 	}
 

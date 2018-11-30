@@ -34,10 +34,11 @@ public class CuartelTest {
         cuartel.avanzarTurno();
 
         Unidad soldier = cuartel.crearUnidad('S');
-		Aldeano aldeano = new Aldeano();
-		soldier.atacar(aldeano, new Posicion (1,1));
-		
-		assertEquals (25,aldeano.getVida());
+        
+        soldier.desplazarHasta(new Posicion (1,1));
+        
+        assertEquals (soldier.getPosicion().getFila(), 1);
+        assertEquals (soldier.getPosicion().getColumna(), 1);
 		
     }
     
