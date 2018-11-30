@@ -48,15 +48,15 @@ public abstract class Edificio extends Posicionable {
 	}
 
 	public void recibirDanioDe (Posicionable posicionable) {
-		posicionable.atacar(this);
+		posicionable.atacar(this, this.posicion);
 	}
 
 	public void recibirDanioDe (Unidad unidad) {
-		unidad.atacar(this);
+		unidad.atacar(this, this.posicion);
 	}
 
 	public void recibirDanioDe (Edificio edificio) {
-		edificio.atacar(this);
+		edificio.atacar(this, this.posicion);
 	}
 
 	 public void recibirPosicionable () {

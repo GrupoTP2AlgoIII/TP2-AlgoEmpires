@@ -11,6 +11,8 @@ import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.vacio.Vacio;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +25,7 @@ public class Jugador {
 	private InventarioJugador inventario;
 	private Jugador enemigo;
 	private Poblacion poblacion;
+	private Castillo castillo;
 
 	public Jugador(Mapa mapa,String nombre) {
 
@@ -37,10 +40,11 @@ public class Jugador {
 		this.inventario = new InventarioJugador(oroInicial,poblacionInicial,produccionOroInicial);
 
 		this.poblacion = new Poblacion(this.posicionables);
+		
+		this.castillo = null;
 
 
 	}
-
 
 	public Poblacion obtenerPoblacion(){
 		return this.poblacion;
@@ -110,7 +114,9 @@ public class Jugador {
 			}
 			anterior = actual;
 		}
-		//this.CastilloAtacarEnSuRango();
+        if (this.castillo != null) {
+        	this.castillo.atacarEnemigosAlAlcance();
+        }
 	}
 
 	private void quitarPosicionablesDestruidos() {
@@ -125,25 +131,11 @@ public class Jugador {
 		}
 	}
 
-
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
 
 		this.posicionables.put(posicionDelPosicionable, posicionable);
-
-	}
-
-	// Borrar el metodo agregar edificio a posicionables y agregarle la linea del mapa al metodo de arriba
-	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
-
-		for (int i = desdeX; i <= hastaX; i++) {
-			for (int j = desdeY; j <= hastaY; j++) {
-				Posicion posicion = new Posicion (i,j);
-				this.posicionables.put(posicion, edificio);
-				this.mapa.posicionarEnFilaColumna(edificio, i, j);
-			}
-		}
 
 	}
 
@@ -171,10 +163,16 @@ public class Jugador {
 
 	public void crearCastilloDesde(int desdeX, int desdeY) {
 
-		Edificio castillo = new Castillo(0);
+		Castillo castillo = new Castillo(0);
 		Posicion posicionDesde = new Posicion (desdeX, desdeY);
+		ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
+		atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo.calcularLado(), castillo.calcularRango());
+		//atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo); le paso el castillo al mapa
+		castillo.setAtacables(atacables);
+		this.castillo = castillo;
 		Map <Posicion, Posicionable> castilloConstruido = this.mapa.ponerEdificio(castillo, posicionDesde);
 		this.posicionables.putAll(castilloConstruido);
+		//this.agregarEdificioDesdeHasta(castillo, desdeX, desdeY, desdeX+castillo.calcularLado(), desdeY+castillo.calcularLado()); no es necesario usar los metodos de arriba
 
 	}
 
@@ -196,11 +194,6 @@ public class Jugador {
 		this.posicionables.putAll(plazaConstruida);
 	}
 
-
-	public Map <Posicion, Posicionable> getPosicionables() {
-		return this.posicionables;
-	}
-
 	public void posicionarDesdeEnHasta(int desdeX, int desdeY, int hastaX, int hastaY) {
 
 		if (hastaX > desdeX + 1 || hastaX < desdeX - 1 || hastaY > desdeY + 1 || hastaY < desdeY - 1) {
@@ -215,6 +208,26 @@ public class Jugador {
 
 	public int getPoblacion() {
 		return this.inventario.getPoblacion();
+	}
+	
+	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
+
+		for (int i = desdeX; i <= hastaX; i++) {
+			for (int j = desdeY; j <= hastaY; j++) {
+				Posicion posicion = new Posicion (i,j);
+				this.posicionables.put(posicion, edificio);
+				this.mapa.posicionarEnFilaColumna(edificio, i, j);
+			}
+		}
+
+	}
+	
+	public Map <Posicion, Posicionable> getPosicionables() {
+		return this.posicionables;
+	}
+	
+	public Posicionable getPosicionable (Posicion posicion) {
+		return this.posicionables.get(posicion);
 	}
 
 

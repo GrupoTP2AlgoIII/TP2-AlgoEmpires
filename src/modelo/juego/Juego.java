@@ -48,16 +48,16 @@ public class Juego {
 		//Jugador jugadorActual = this.jugadores.devolverPrimero();
 		
 		jugadorActual.crearCastilloDesde(4, 4);
-		jugadorActual.crearPlazaCentralDesde(1, 8);
-		jugadorActual.iniciarAldeanosDesde(8, 6);
+		jugadorActual.crearPlazaCentralPropiaDesde(1, 8);
+		jugadorActual.iniciarAldeanosPropiosDesde(8, 6);
 		
 		//this.jugadores.siguiente();
 		//jugadorActual = this.jugadores.devolverPrimero();
 		jugadorActual = this.jugadorActual.jugadorSiguiente();
 		
 		jugadorActual.crearCastilloDesde(this.mapa.getFilas() - 6, this.mapa.getColumnas() - 6);		
-		jugadorActual.crearPlazaCentralDesde(this.mapa.getFilas() - 1, this.mapa.getColumnas() - 8);
-		jugadorActual.iniciarAldeanosDesde(this.mapa.getFilas() - 7, this.mapa.getColumnas() - 7);	
+		jugadorActual.crearPlazaCentralPropiaDesde(this.mapa.getFilas() - 1, this.mapa.getColumnas() - 8);
+		jugadorActual.iniciarAldeanosPropiosDesde(this.mapa.getFilas() - 7, this.mapa.getColumnas() - 7);	
 						
 	}
 	
@@ -74,7 +74,5 @@ public class Juego {
 		this.jugadorActual.avanzarTurno();
 		this.jugadorActual = this.jugadorActual.jugadorSiguiente();
 	}
-	
-	
 
 }

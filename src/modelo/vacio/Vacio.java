@@ -35,19 +35,19 @@ public class Vacio extends Posicionable{
 	}
 	
 	public void recibirDanio (int danio) {
-		throw new PosicionDesocupadaError ();
+		
 	}
 	
 	public void recibirDanioDe (Posicionable posicionable) {
-		throw new PosicionDesocupadaError ();
+		
 	}
 	
 	public void recibirDanioDe (Unidad unidad) {
-		throw new PosicionDesocupadaError ();
+		
 	}
 	
 	public void recibirDanioDe (Edificio edificio) {
-		throw new PosicionDesocupadaError ();
+		
 	}
 	
 	public void atacar (Posicionable posicionable) {

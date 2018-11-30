@@ -3,6 +3,7 @@ package modelo.mapa;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import modelo.jugador.PosicionDesocupadaError;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
@@ -202,6 +203,16 @@ public class MapaTest {
 		Posicionable posicionable = new Arquero(1,1);
 		mapa.posicionarEnFilaColumna(posicionable, 1, 1);
 		mapa.posicionarDesdeEnHasta(new Posicion (1, 1), new Posicion (0,0));
+	}
+	
+	@Test (expected = PosicionDesocupadaError.class)
+	public void test20IniciarMapaVacioYTodoEstaVacio(){
+
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+		
+		Posicion unaPosicion = new Posicion (10,10);
+		mapa.obtenerPosicionableEn(unaPosicion).desplazarHasta(new Posicion (11,11));
 	}
 
 }

@@ -2,6 +2,7 @@ package modelo.jugador;
 
 import static org.junit.Assert.*;
 
+import modelo.edificio.castillo.Castillo;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -99,7 +100,7 @@ public class JugadorTest {
 
 
 	@Test
-	public void test05InicioElJuegoCreoDosJugadoresYCreoPlazaCentral() {
+	public void test06InicioElJuegoCreoDosJugadoresYCreoPlazaCentral() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -132,7 +133,7 @@ public class JugadorTest {
 
 
 	@Test
-	public void test06InicioElJuegoCreoDosJugadoresYCreoBatalla() {
+	public void test07InicioElJuegoCreoDosJugadoresYCreoBatalla() {
 
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
@@ -180,6 +181,46 @@ public class JugadorTest {
 
 		assertEquals(aldeanoDeJugador2.getVida(), 35);
 
+	}
+	
+	@Test
+	public void test08CrearDosJugadoresEnemigosYObtenerSiguiente() {
+		
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+		
+		Jugador jugador1 = new Jugador(mapa, "Pedro");
+		Jugador jugador2 = new Jugador(mapa, "Maria");
+		
+		jugador1.setEnemigo(jugador2);
+		jugador2.setEnemigo(jugador1);
+		
+		assertEquals("Maria", jugador1.jugadorSiguiente().getNombre());
+		assertEquals("Pedro", jugador2.jugadorSiguiente().getNombre());
+	}
+	
+	@Test
+	public void test09CrearDosJugadoresVerificandoAtaqueCastillo() {
+		
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+		
+		Jugador jugador1 = new Jugador(mapa, "Pedro");
+		Jugador jugador2 = new Jugador(mapa, "Maria");
+		
+		jugador1.setEnemigo(jugador2);
+		jugador2.setEnemigo(jugador1);
+		
+		Espadachin espadachin = new Espadachin(8,8);
+		mapa.posicionarEnFilaColumna(espadachin, 8, 8);
+		jugador2.agregarPosicionableEnFilaColumna(espadachin, 8, 8);		
+		jugador1.crearCastilloDesde(4, 4);
+		
+		Castillo castillo = (Castillo) jugador1.getPosicionable(new Posicion(4,4));
+		castillo.atacarEnemigosAlAlcance();
+		
+		assertEquals(80, jugador2.getPosicionable(new Posicion(8,8)).getVida());
+		
 	}
 }
 
