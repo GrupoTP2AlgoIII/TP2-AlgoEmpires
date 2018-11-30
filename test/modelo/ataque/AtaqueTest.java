@@ -31,7 +31,7 @@ public class AtaqueTest {
 		assertEquals (espadachin.getVida(), 85);
 		
 	}
-*/
+
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test02AtacarUnaUnidadFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
@@ -43,7 +43,7 @@ public class AtaqueTest {
 		arquero.atacar(espadachin, new Posicion (15,15));
 		
 	}
-
+*/
 	
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () {

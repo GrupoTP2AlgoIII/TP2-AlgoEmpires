@@ -60,7 +60,7 @@ public class PlazaCentral extends Edificio {
 			   throw new PlazaCentralNoPuedeAtacarError ();
 		   }
 
-		   public void atacar (Edificio edificion, Posicion posicionAtacado) {
+		   public void atacar (Edificio edificio) {
 			   throw new PlazaCentralNoPuedeAtacarError ();
 		   }
 

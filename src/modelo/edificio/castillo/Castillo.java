@@ -58,7 +58,7 @@ public class Castillo extends Edificio {
 		this.ataque.atacar(unidad);
 	}
 		
-	public void atacar (Edificio edificio, Posicion posicionAtacado) {
+	public void atacar (Edificio edificio) {
 		this.ataque.atacar(edificio);
 	}
 	  

@@ -260,7 +260,7 @@ public class ConstruccionTest {
 		cuartel.avanzarTurno();
 		
 		Unidad arquero = cuartel.crearUnidad('A');
-		arquero.atacar(aldeano);
+		arquero.atacar(aldeano, new Posicion (1,1));
 		assertEquals (35,aldeano.getVida());
 	}
 

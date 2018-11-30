@@ -20,7 +20,7 @@ public class CuartelTest {
         
 		Unidad arquero = cuartel.crearUnidad('A');
 		Aldeano aldeano = new Aldeano();
-		arquero.atacar(aldeano);
+		arquero.atacar(aldeano, new Posicion (1,1));
 		
 		assertEquals (35,aldeano.getVida());
 
@@ -35,7 +35,7 @@ public class CuartelTest {
 
         Unidad soldier = cuartel.crearUnidad('S');
 		Aldeano aldeano = new Aldeano();
-		soldier.atacar(aldeano);
+		soldier.atacar(aldeano, new Posicion (1,1));
 		
 		assertEquals (25,aldeano.getVida());
 		

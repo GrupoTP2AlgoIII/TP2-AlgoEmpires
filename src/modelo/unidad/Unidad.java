@@ -47,16 +47,16 @@ public abstract class Unidad extends Posicionable {
 	
 
 	public void atacar (Unidad unidad, Posicion posicionAtacado) {
-		if (!unidad.estaEnRangoDePosicion(this.posicion, this.alcance, this.alcance)) {
-			throw new AtacandoEnPosicionFueraDelAlcanceError ();
-		}
+		//if (!unidad.estaEnRangoDePosicion(this.posicion, this.alcance, this.alcance)) {
+		//	throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		//}
 		this.ataque.atacar(unidad);
 	}
 	
-	public void atacar (Edificio edificio, Posicion posicionAtacado) {
-		if (!this.posicion.perteneceALaCuadricula(posicionAtacado, this.alcance, this.alcance)) {
-			throw new AtacandoEnPosicionFueraDelAlcanceError ();
-		}
+	public void atacar (Edificio edificio) {
+		//if (!this.posicion.perteneceALaCuadricula(posicionAtacado, this.alcance, this.alcance)) {
+		//	throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		//}
 		this.ataque.atacar(edificio);
 	}
 
