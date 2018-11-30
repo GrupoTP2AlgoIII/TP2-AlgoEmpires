@@ -70,4 +70,5 @@ public class ArmaDeAsedioMontada extends EstadoArmaDeAsedio {
 		throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();
 		
 	}
+	
 }
