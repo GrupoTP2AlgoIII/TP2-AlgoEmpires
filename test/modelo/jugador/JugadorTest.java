@@ -10,6 +10,7 @@ import modelo.unidad.espadachin.Espadachin;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
+import modelo.unidad.AtacandoAUnAliadoError;
 import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
@@ -218,6 +219,53 @@ public class JugadorTest {
 		
 		assertEquals(80, jugador2.getPosicionable(new Posicion(8,8)).getVida());
 		
+	}
+	
+	@Test (expected = AtacandoAUnAliadoError.class)
+	public void test10IniciaElJuegoCreoDosJugadoresYHagoQueUnoAtaqueASuMismaUnidadLanzaExcepcion () {
+		
+		Mapa mapa = new Mapa();
+		mapa.iniciarMapaVacio();
+
+		Jugador jugador = new Jugador(mapa, "Jorge");
+		Jugador jugador2 = new Jugador(mapa, "Gaston");
+
+		jugador.iniciarAldeanosPropiosDesde(5, 5);
+
+		jugador2.iniciarAldeanosPropiosDesde(10, 10);
+
+
+		Posicion posicion1 = new Posicion(5, 5);
+		Posicion posicion2 = new Posicion(5, 6);
+		Posicion posicion3 = new Posicion(5, 7);
+		Posicion posicion4 = new Posicion(6, 6);
+
+
+		Posicion posicionDelAldeanoDeJugador = new Posicion(5, 5);
+
+
+		jugador.crearPlazaCentralPropiaDesde(1, 8);
+
+		jugador.construirEdificioPropio(posicion1, posicion4, 'C');
+
+
+		Posicion posicionPlaza = new Posicion(2, 9);
+
+		jugador.crearUnidadPropia(posicionPlaza, 'A');
+
+
+		Posicionable cuartel = mapa.obtenerPosicionableEn(posicion4);
+
+
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno();
+
+
+		Unidad arqueroDeJugador1 = cuartel.crearUnidadPropia('A', jugador);
+		Posicionable aldeanoDeJugador = mapa.obtenerPosicionableEn(posicionDelAldeanoDeJugador);
+
+		arqueroDeJugador1.atacar(aldeanoDeJugador);	
 	}
 }
 

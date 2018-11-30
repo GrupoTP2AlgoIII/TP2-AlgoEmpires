@@ -60,9 +60,9 @@ public abstract class Unidad extends Posicionable {
 		return poblacionPropietaraio.PosicionableEstaEnPoblacion(posicionable);
 	}
 
-	public void atacar(Posicionable posicionable) throws RuntimeException {
+	public void atacar(Posicionable posicionable) {
 		if  (posicionableEstaEnPropietario(posicionable)) {
-			throw new RuntimeException();
+			throw new AtacandoAUnAliadoError ();
 		}
 
 		posicionable.recibirDanioDe (this);

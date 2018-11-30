@@ -147,7 +147,7 @@ public class PoblacionTest {
 	
 
 	@Test(expected=CrearUnidadException.class)
-	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() throws PosicionFueraDelMapaError, PosicionOcupadaError {
+	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() {
 		Mapa mapa = new Mapa();
 		mapa.iniciarMapaVacio();
 		Jugador jugador = new Jugador(mapa,"Pablo");

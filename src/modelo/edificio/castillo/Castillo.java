@@ -7,6 +7,7 @@ import modelo.edificio.Edificio;
 import modelo.edificio.EstadoEdificioDisponible;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
+import modelo.unidad.AtacandoAUnAliadoError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
@@ -63,6 +64,7 @@ public class Castillo extends Edificio {
 	  }
 	  
 	public void atacar (Posicionable posicionable) {
+
 		posicionable.recibirDanioDe(this);
 	}
 		
