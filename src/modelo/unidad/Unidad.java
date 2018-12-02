@@ -26,6 +26,11 @@ public abstract class Unidad extends Posicionable {
 		this.movimientosPermitidos = 1;
 	}
 	
+    @Override
+    public int avanzarTurno() {
+	    this.cantidadDeMovimientos=0;
+	    return 0;
+    }
 	public void recibirDanio (int danio) {
 		this.vida -= danio;
 	}
