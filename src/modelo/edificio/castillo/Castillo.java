@@ -7,7 +7,6 @@ import modelo.edificio.Edificio;
 import modelo.edificio.EstadoEdificioDisponible;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
-import modelo.unidad.AtacandoAUnAliadoError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 

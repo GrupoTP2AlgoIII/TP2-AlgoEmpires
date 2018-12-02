@@ -36,8 +36,7 @@ public class CastilloTest {
     public void test02CastilloAtacaEnemigosEnSuRango(){
     	
     	Mapa mapa = new Mapa();
-    	mapa.iniciarMapaVacio();
-    	
+    	    	
     	mapa.posicionarEnFilaColumna(new Espadachin(), 8, 8);
     	mapa.ponerEdificioDesdeHasta(new PlazaCentral(0), 8, 4, 9, 5);
     	
@@ -51,10 +50,7 @@ public class CastilloTest {
     	castillo.atacarEnemigosAlAlcance();
     	
     	assertEquals(80, mapa.obtenerPosicionableEn(new Posicion(8,8)).getVida());
-    	assertEquals(430, mapa.obtenerPosicionableEn(new Posicion(8,4)).getVida());
-    	
-    	
-    	
+    	assertEquals(430, mapa.obtenerPosicionableEn(new Posicion(8,4)).getVida()); 	
 	    	
     }
     

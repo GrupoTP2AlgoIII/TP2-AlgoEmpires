@@ -25,9 +25,10 @@ public class Mapa {
 		this.mapaAux = new HashMap <Posicion, Posicionable>();
 		this.filas = 50;
 		this.columnas = 50;
+		this.iniciarMapaVacio();
 	}
 	
-	public void iniciarMapaVacio () { 
+	private void iniciarMapaVacio () { 
 		
 		for (int i = 1; i <= this.filas; i++) {
 			for (int j = 1; j <= this.columnas; j++) {

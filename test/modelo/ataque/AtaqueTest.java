@@ -4,14 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import modelo.edificio.castillo.Castillo;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.juego.Juego;
-import modelo.jugador.Jugador;
-import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
-import modelo.unidad.Posicionable;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.unidad.arquero.Arquero;
@@ -24,7 +20,7 @@ public class AtaqueTest {
 		
 		Arquero arquero = new Arquero (5, 5);
 		Espadachin espadachin = new Espadachin (7,7);
-		Juego juego = new Juego ();
+		Juego juego = new Juego ("Pedro", "Maria");
 		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
 		juego.agregarUnidadEnFilaColumna(espadachin, 7, 7);
 		arquero.atacar(espadachin, new Posicion (7,7));
@@ -40,7 +36,7 @@ public class AtaqueTest {
 		
 		Arquero arquero = new Arquero (5, 5);
 		Espadachin espadachin = new Espadachin (15,15);
-		Juego juego = new Juego ();
+		Juego juego = new Juego ("Pedro", "Maria");
 		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
 		juego.agregarUnidadEnFilaColumna(espadachin, 15, 15);
 		arquero.atacar(espadachin, new Posicion (15,15));
@@ -54,7 +50,7 @@ public class AtaqueTest {
 		armaDeAsedio.montar();
 		armaDeAsedio.avanzarTurno();
 		Arquero arquero = new Arquero (30, 30);
-		Juego juego = new Juego ();
+		Juego juego = new Juego ("Pedro", "Maria");
 		juego.agregarUnidadEnFilaColumna(arquero, 30, 30);
 		juego.agregarUnidadEnFilaColumna(armaDeAsedio, 5, 5);
 		armaDeAsedio.atacar(arquero, new Posicion (30,30));
@@ -66,7 +62,7 @@ public class AtaqueTest {
 		
 		Arquero arquero = new Arquero (5, 5);
 		Cuartel cuartel = new Cuartel(7, 4, 8, 5);
-		Juego juego = new Juego ();
+		Juego juego = new Juego ("Pedro", "Maria");
 		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
 		arquero.atacar(cuartel, new Posicion (7,4));
 		

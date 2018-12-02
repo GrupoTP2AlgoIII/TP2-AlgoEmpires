@@ -24,10 +24,9 @@ public class JugadorTest {
 	public void test01IniciarUnidadesDeUnJugadorCreaAldeanosCorrectamente() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-
+		
 		Jugador jugador = new Jugador(mapa, "Jorge");
-		jugador.iniciarAldeanosDesde(5, 5);
+		jugador.iniciarAldeanosPropiosDesde(5, 5);
 
 		Posicion posicion1 = new Posicion(5, 5);
 		Posicion posicion2 = new Posicion(5, 6);
@@ -44,8 +43,7 @@ public class JugadorTest {
 	public void test02IniciarCastilloDeUnJugadorCreaCastilloCorrectamente() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-
+		
 		Jugador jugador = new Jugador(mapa, "Jorge");
 		jugador.crearCastilloDesde(1, 1);
 
@@ -60,11 +58,9 @@ public class JugadorTest {
 	public void test03IniciarPlazaCentralDeUnJugadorLaCreaCorrectamente() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-
+		
 		Jugador jugador = new Jugador(mapa, "Jorge");
-		jugador.crearPlazaCentralDesde(1, 8);
-
+		jugador.crearPlazaCentralPropiaDesde(1, 8);
 
 		Posicion posicionPlaza = new Posicion(2, 9);
 		jugador.crearUnidadPropia(posicionPlaza, 'A');
@@ -76,10 +72,9 @@ public class JugadorTest {
 	public void test04IniciarAldeanosDeUnJugadorLosCreaCorrectamente() throws PosicionFueraDelMapaError, PosicionOcupadaError {
 
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-
+		
 		Jugador jugador = new Jugador(mapa, "Jorge");
-		jugador.iniciarAldeanosDesde(10, 10);
+		jugador.iniciarAldeanosPropiosDesde(10, 10);
 
 		assertSame(3, jugador.getPoblacion());
 	}
@@ -89,8 +84,7 @@ public class JugadorTest {
 	public void test05DesplazarHaciaArribaPosicionDesocupadaArrojaError() throws MovimientosPorTurnoExcedidosError, PosicionDesocupadaError, PosicionOcupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
 
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-
+		
 		Jugador jugador = new Jugador(mapa, "nombre");
 		jugador.posicionarDesdeEnHasta(10, 10, 11, 10);
 
@@ -101,8 +95,7 @@ public class JugadorTest {
 	public void test06InicioElJuegoCreoDosJugadoresYCreoPlazaCentral() {
 
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-
+		
 		Jugador jugador = new Jugador(mapa, "Jorge");
 		Jugador jugador2 = new Jugador(mapa, "Gaston");
 
@@ -111,9 +104,9 @@ public class JugadorTest {
 		jugador2.iniciarAldeanosPropiosDesde(10, 10);
 
 
-		Posicion posicion1 = new Posicion(5, 5);
-		Posicion posicion2 = new Posicion(5, 6);
-		Posicion posicion3 = new Posicion(5, 7);
+//		Posicion posicion1 = new Posicion(5, 5);
+//		Posicion posicion2 = new Posicion(5, 6);
+//		Posicion posicion3 = new Posicion(5, 7);
 
 
 		jugador.crearPlazaCentralPropiaDesde(1, 8);
@@ -134,8 +127,7 @@ public class JugadorTest {
 	public void test07InicioElJuegoCreoDosJugadoresYCreoBatalla() {
 
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-
+		
 		Jugador jugador = new Jugador(mapa, "Jorge");
 		Jugador jugador2 = new Jugador(mapa, "Gaston");
 
@@ -145,8 +137,8 @@ public class JugadorTest {
 
 
 		Posicion posicion1 = new Posicion(5, 5);
-		Posicion posicion2 = new Posicion(5, 6);
-		Posicion posicion3 = new Posicion(5, 7);
+//		Posicion posicion2 = new Posicion(5, 6);
+//		Posicion posicion3 = new Posicion(5, 7);
 		Posicion posicion4 = new Posicion(6, 6);
 
 
@@ -185,8 +177,7 @@ public class JugadorTest {
 	public void test08CrearDosJugadoresEnemigosYObtenerSiguiente() {
 		
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-		
+				
 		Jugador jugador1 = new Jugador(mapa, "Pedro");
 		Jugador jugador2 = new Jugador(mapa, "Maria");
 		
@@ -195,14 +186,14 @@ public class JugadorTest {
 		
 		assertEquals("Maria", jugador1.jugadorSiguiente().getNombre());
 		assertEquals("Pedro", jugador2.jugadorSiguiente().getNombre());
-	}
+		
+		}
 	
 	@Test
 	public void test09CrearDosJugadoresVerificandoAtaqueCastillo() {
 		
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-		
+				
 		Jugador jugador1 = new Jugador(mapa, "Pedro");
 		Jugador jugador2 = new Jugador(mapa, "Maria");
 		
@@ -210,7 +201,6 @@ public class JugadorTest {
 		jugador2.setEnemigo(jugador1);
 		
 		Espadachin espadachin = new Espadachin(8,8);
-		mapa.posicionarEnFilaColumna(espadachin, 8, 8);
 		jugador2.agregarPosicionableEnFilaColumna(espadachin, 8, 8);		
 		jugador1.crearCastilloDesde(4, 4);
 		
@@ -225,8 +215,7 @@ public class JugadorTest {
 	public void test10IniciaElJuegoCreoDosJugadoresYHagoQueUnoAtaqueASuMismaUnidadLanzaExcepcion () {
 		
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-
+		
 		Jugador jugador = new Jugador(mapa, "Jorge");
 		Jugador jugador2 = new Jugador(mapa, "Gaston");
 
@@ -236,8 +225,8 @@ public class JugadorTest {
 
 
 		Posicion posicion1 = new Posicion(5, 5);
-		Posicion posicion2 = new Posicion(5, 6);
-		Posicion posicion3 = new Posicion(5, 7);
+//		Posicion posicion2 = new Posicion(5, 6);
+//		Posicion posicion3 = new Posicion(5, 7);
 		Posicion posicion4 = new Posicion(6, 6);
 
 

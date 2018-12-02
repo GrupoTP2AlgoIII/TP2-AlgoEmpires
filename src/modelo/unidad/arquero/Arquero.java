@@ -5,7 +5,6 @@ import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
-import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class Arquero extends Unidad {

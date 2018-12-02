@@ -101,7 +101,6 @@ public class ConstruccionTest {
 	@Test
 	public void test06CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel1Devuelve2() throws PosicionOcupadaError, PosicionFueraDelMapaError{
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
 		Jugador jugador1 = new Jugador(mapa,"Jorge");
 		Jugador jugador2 = new Jugador(mapa,"Pablo");
 			
@@ -112,8 +111,6 @@ public class ConstruccionTest {
 		aldeano2.posicionarEnFilaColumna(25,25);
 		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 15, 15);
 		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 25, 25);
-		mapa.posicionarEnFilaColumna(aldeano1, 15, 15);
-		mapa.posicionarEnFilaColumna(aldeano2, 25, 25);
 		
 		Posicion posicionAldeano = new Posicion(15,15);
 		Posicion posicionConstruccion = new Posicion(16,16);
@@ -138,7 +135,6 @@ public class ConstruccionTest {
 	@Test
 	public void test07CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador2YGetTurnosConstruccionDeCuartel2Devuelve2() throws PosicionFueraDelMapaError, PosicionOcupadaError{
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
 		Jugador jugador1 = new Jugador(mapa,"Jorge");
 		Jugador jugador2 = new Jugador(mapa,"Pablo");
 			
@@ -149,8 +145,6 @@ public class ConstruccionTest {
 		aldeano2.posicionarEnFilaColumna(5,5);
 		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 15, 15);
 		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 5, 5);
-		mapa.posicionarEnFilaColumna(aldeano1, 15, 15);
-		mapa.posicionarEnFilaColumna(aldeano2, 5, 5);
 		
 		Posicion posicionAldeano = new Posicion(15,15);
 		Posicion posicionConstruccion = new Posicion(16,16);
@@ -267,7 +261,6 @@ public class ConstruccionTest {
 	@Test
 	public void test13CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel2Devuelve3(){
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
 		Jugador jugador1 = new Jugador(mapa,"Jorge");
 		Jugador jugador2 = new Jugador(mapa,"Pablo");
 			
@@ -278,8 +271,6 @@ public class ConstruccionTest {
 		aldeano2.posicionarEnFilaColumna(5,5);
 		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 15, 15);
 		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 5, 5);
-		mapa.posicionarEnFilaColumna(aldeano1, 15, 15);
-		mapa.posicionarEnFilaColumna(aldeano2, 5, 5);
 		
 		Posicion posicionAldeano = new Posicion(15,15);
 		Posicion posicionConstruccion = new Posicion(16,16);
