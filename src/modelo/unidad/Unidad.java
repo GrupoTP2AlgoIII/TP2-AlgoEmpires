@@ -52,7 +52,7 @@ public abstract class Unidad extends Posicionable {
 
 	public boolean posicionableEstaEnPropietario(Posicionable posicionable){
 		Poblacion poblacionPropietaraio = this.propietario.obtenerPoblacion();
-		return poblacionPropietaraio.PosicionableEstaEnPoblacion(posicionable);
+		return poblacionPropietaraio.posicionableEstaEnPoblacion(posicionable);
 	}
 
 	public void atacar(Posicionable posicionable) {

@@ -17,7 +17,7 @@ public class Vacio extends Posicionable{
 	}
 	
 	public Vacio() {
-		
+		// No pasa nada
 	}
 	
 	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
@@ -31,23 +31,23 @@ public class Vacio extends Posicionable{
 	}
 	
 	public void recibirPosicionable () {
-		
+		// No pasa nada
 	}
 	
 	public void recibirDanio (int danio) {
-		
+		// No pasa nada		
 	}
 	
 	public void recibirDanioDe (Posicionable posicionable) {
-		
+		// No pasa nada
 	}
 	
 	public void recibirDanioDe (Unidad unidad) {
-		
+		// No pasa nada
 	}
 	
 	public void recibirDanioDe (Edificio edificio) {
-		
+		// No pasa nada
 	}
 	
 	public void atacar (Posicionable posicionable) {

@@ -14,7 +14,7 @@ public class Castillo extends Edificio {
 	
 	private Ataque ataque;
 	private int alcance = 3;
-	ArrayList<Posicionable> atacables;
+	private ArrayList<Posicionable> atacables;
 
     public Castillo() {
         this.vida = 1000;

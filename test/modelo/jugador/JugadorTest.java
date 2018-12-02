@@ -25,7 +25,7 @@ public class JugadorTest {
 
 		Mapa mapa = new Mapa();
 		
-		Jugador jugador = new Jugador(mapa, "Jorge");
+		Jugador jugador = new Jugador(mapa, "Jorge", "Maria");
 		jugador.iniciarAldeanosPropiosDesde(5, 5);
 
 		Posicion posicion1 = new Posicion(5, 5);
@@ -44,7 +44,7 @@ public class JugadorTest {
 
 		Mapa mapa = new Mapa();
 		
-		Jugador jugador = new Jugador(mapa, "Jorge");
+		Jugador jugador = new Jugador(mapa, "Jorge", "Maria");
 		jugador.crearCastilloDesde(1, 1);
 
 		Posicion posicionCastillo = new Posicion(4, 4);
@@ -59,7 +59,7 @@ public class JugadorTest {
 
 		Mapa mapa = new Mapa();
 		
-		Jugador jugador = new Jugador(mapa, "Jorge");
+		Jugador jugador = new Jugador(mapa, "Jorge", "Maria");
 		jugador.crearPlazaCentralPropiaDesde(1, 8);
 
 		Posicion posicionPlaza = new Posicion(2, 9);
@@ -73,7 +73,7 @@ public class JugadorTest {
 
 		Mapa mapa = new Mapa();
 		
-		Jugador jugador = new Jugador(mapa, "Jorge");
+		Jugador jugador = new Jugador(mapa, "Jorge", "Maria");
 		jugador.iniciarAldeanosPropiosDesde(10, 10);
 
 		assertSame(3, jugador.getPoblacion());
@@ -85,7 +85,7 @@ public class JugadorTest {
 
 		Mapa mapa = new Mapa();
 		
-		Jugador jugador = new Jugador(mapa, "nombre");
+		Jugador jugador = new Jugador(mapa, "nombre", "Maria");
 		jugador.posicionarDesdeEnHasta(10, 10, 11, 10);
 
 	}
@@ -96,11 +96,12 @@ public class JugadorTest {
 
 		Mapa mapa = new Mapa();
 		
-		Jugador jugador = new Jugador(mapa, "Jorge");
-		Jugador jugador2 = new Jugador(mapa, "Gaston");
-
+		Jugador jugador = new Jugador(mapa, "Jorge", "Gaston");
+		
 		jugador.iniciarAldeanosPropiosDesde(5, 5);
 
+		Jugador jugador2 = jugador.jugadorSiguiente();
+		
 		jugador2.iniciarAldeanosPropiosDesde(10, 10);
 
 
@@ -128,11 +129,12 @@ public class JugadorTest {
 
 		Mapa mapa = new Mapa();
 		
-		Jugador jugador = new Jugador(mapa, "Jorge");
-		Jugador jugador2 = new Jugador(mapa, "Gaston");
-
+		Jugador jugador = new Jugador(mapa, "Jorge", "Maria");
+		
 		jugador.iniciarAldeanosPropiosDesde(5, 5);
 
+		Jugador jugador2 = jugador.jugadorSiguiente();
+		
 		jugador2.iniciarAldeanosPropiosDesde(10, 10);
 
 
@@ -178,11 +180,9 @@ public class JugadorTest {
 		
 		Mapa mapa = new Mapa();
 				
-		Jugador jugador1 = new Jugador(mapa, "Pedro");
-		Jugador jugador2 = new Jugador(mapa, "Maria");
+		Jugador jugador1 = new Jugador(mapa, "Pedro", "Maria");		
+		Jugador jugador2 = jugador1.jugadorSiguiente();
 		
-		jugador1.setEnemigo(jugador2);
-		jugador2.setEnemigo(jugador1);
 		
 		assertEquals("Maria", jugador1.jugadorSiguiente().getNombre());
 		assertEquals("Pedro", jugador2.jugadorSiguiente().getNombre());
@@ -194,11 +194,8 @@ public class JugadorTest {
 		
 		Mapa mapa = new Mapa();
 				
-		Jugador jugador1 = new Jugador(mapa, "Pedro");
-		Jugador jugador2 = new Jugador(mapa, "Maria");
-		
-		jugador1.setEnemigo(jugador2);
-		jugador2.setEnemigo(jugador1);
+		Jugador jugador1 = new Jugador(mapa, "Pedro", "Maria");	
+		Jugador jugador2 = jugador1.jugadorSiguiente();
 		
 		Espadachin espadachin = new Espadachin(8,8);
 		jugador2.agregarPosicionableEnFilaColumna(espadachin, 8, 8);		
@@ -216,10 +213,11 @@ public class JugadorTest {
 		
 		Mapa mapa = new Mapa();
 		
-		Jugador jugador = new Jugador(mapa, "Jorge");
-		Jugador jugador2 = new Jugador(mapa, "Gaston");
-
+		Jugador jugador = new Jugador(mapa, "Jorge", "Gaston");
+		
 		jugador.iniciarAldeanosPropiosDesde(5, 5);
+		
+		Jugador jugador2 = jugador.jugadorSiguiente();
 
 		jugador2.iniciarAldeanosPropiosDesde(10, 10);
 

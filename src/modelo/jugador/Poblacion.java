@@ -13,7 +13,7 @@ public class Poblacion {
         this.posicionables = posicionablesJugador;
     }
 
-    public boolean PosicionableEstaEnPoblacion(Posicionable posicionableDado){
+    public boolean posicionableEstaEnPoblacion(Posicionable posicionableDado){
         return posicionables.containsValue(posicionableDado);
     }
 

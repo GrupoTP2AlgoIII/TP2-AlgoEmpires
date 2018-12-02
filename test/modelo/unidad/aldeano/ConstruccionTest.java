@@ -20,8 +20,8 @@ import modelo.unidad.arquero.Arquero;
 
 public class ConstruccionTest {
 
-	int vidaCuartel = 450;
-	int vidaCuartelDaniado = 400;
+//	private int vidaCuartel = 450;
+//	private int vidaCuartelDaniado = 400;
 	
 	@Test(expected=EdificioOcupadoException.class)
 	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveException() {
@@ -101,8 +101,8 @@ public class ConstruccionTest {
 	@Test
 	public void test06CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel1Devuelve2() throws PosicionOcupadaError, PosicionFueraDelMapaError{
 		Mapa mapa = new Mapa();
-		Jugador jugador1 = new Jugador(mapa,"Jorge");
-		Jugador jugador2 = new Jugador(mapa,"Pablo");
+		Jugador jugador1 = new Jugador(mapa,"Jorge", "Pablo");
+		Jugador jugador2 = jugador1.jugadorSiguiente();
 			
 		
 		Posicionable aldeano1 = new Aldeano();
@@ -135,8 +135,8 @@ public class ConstruccionTest {
 	@Test
 	public void test07CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador2YGetTurnosConstruccionDeCuartel2Devuelve2() throws PosicionFueraDelMapaError, PosicionOcupadaError{
 		Mapa mapa = new Mapa();
-		Jugador jugador1 = new Jugador(mapa,"Jorge");
-		Jugador jugador2 = new Jugador(mapa,"Pablo");
+		Jugador jugador1 = new Jugador(mapa,"Jorge", "Pablo");
+		Jugador jugador2 = jugador1.jugadorSiguiente();
 			
 		
 		Posicionable aldeano1 = new Aldeano();
@@ -261,8 +261,8 @@ public class ConstruccionTest {
 	@Test
 	public void test13CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel2Devuelve3(){
 		Mapa mapa = new Mapa();
-		Jugador jugador1 = new Jugador(mapa,"Jorge");
-		Jugador jugador2 = new Jugador(mapa,"Pablo");
+		Jugador jugador1 = new Jugador(mapa,"Jorge", "Pablo");
+		Jugador jugador2 = jugador1.jugadorSiguiente();
 			
 		
 		Posicionable aldeano1 = new Aldeano();

@@ -34,16 +34,18 @@ public class Jugador {
 		
 		this.iniciarAtributos();
 			
-		this.enemigo = new Jugador (mapa, nombreEnemigo);
+		this.enemigo = new Jugador (mapa, nombreEnemigo, this);
 
 	}
 	
-	public Jugador (Mapa mapa, String nombre) {
+	public Jugador (Mapa mapa, String nombre, Jugador jugador) {
 		
 		this.mapa = mapa;
 		this.nombre = nombre;
 		
-		this.iniciarAtributos();	
+		this.iniciarAtributos();
+		
+		this.enemigo = jugador;
 		
 	}
 	
@@ -74,16 +76,6 @@ public class Jugador {
 		this.enemigo.iniciarAldeanosPropiosDesde(this.mapa.getFilas() - 7, this.mapa.getColumnas() - 7);
 	}
 	
-	// ESTE METODO SE TIENE QUE IR, AVANZAR TURNO DELEGA LA LOGICA A POBLACION Y DEVUELVE EL ENEMIGO
-	public Jugador jugadorSiguiente() {
-		return this.enemigo;
-	}
-
-
-	public String getNombre(){
-		return this.nombre;
-	}
-
 	//PARA QUE ANDE ATAQUE
 	public void construirEdificioPropio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
 		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
@@ -200,4 +192,20 @@ public class Jugador {
 		this.enemigo = jugadorEnemigo;
 	}
 	
+	public Jugador jugadorSiguiente() {
+		return this.enemigo;
+	}
+	
+	public String getNombre(){
+		return this.nombre;
+	}
+	
+//	public Jugador (Mapa mapa, String nombre) {
+//		
+//		this.mapa = mapa;
+//		this.nombre = nombre;
+//		
+//		this.iniciarAtributos();
+//		
+//	}
 }
