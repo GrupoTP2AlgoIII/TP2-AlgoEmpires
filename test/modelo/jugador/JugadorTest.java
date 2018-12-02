@@ -11,11 +11,8 @@ import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.AtacandoAUnAliadoError;
-import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.PosicionFueraDelMapaError;
-import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
 import modelo.jugador.PosicionOcupadaError;
-import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 
 public class JugadorTest {
 
@@ -81,7 +78,7 @@ public class JugadorTest {
 
 
 	@Test(expected = PosicionDesocupadaError.class)
-	public void test05DesplazarHaciaArribaPosicionDesocupadaArrojaError() throws MovimientosPorTurnoExcedidosError, PosicionDesocupadaError, PosicionOcupadaError, ArmaDeAsedioDesmontadaNoPuedeAtacarError, ArmaDeAsedioMontadaNoPuedeDesplazarseError {
+	public void test05DesplazarHaciaArribaPosicionDesocupadaArrojaError() {
 
 		Mapa mapa = new Mapa();
 		

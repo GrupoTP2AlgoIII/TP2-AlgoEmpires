@@ -69,7 +69,7 @@ public abstract class Unidad extends Posicionable {
 			throw new MovimientosPorTurnoExcedidosError ();
 			
 		}
-		
+		this.posicion.comprobarAdyacencia(hasta);
 		this.cantidadDeMovimientos ++;
 		this.posicionarEnPosicion(hasta);
 		

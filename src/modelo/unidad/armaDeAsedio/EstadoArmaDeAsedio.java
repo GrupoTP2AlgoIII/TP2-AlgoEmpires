@@ -7,12 +7,11 @@ import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
-public abstract class EstadoArmaDeAsedio extends Unidad {
+public interface EstadoArmaDeAsedio{
 	
-	public abstract int avanzarTurno ();
-	public abstract void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque);
-	public abstract void desplazarPosicionHasta (Posicion hasta, Posicion posicionActual);
-	public abstract void atacar (Edificio edificio, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque);
-	public abstract void atacar (Unidad unidad, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque);
+	public abstract EstadoArmaDeAsedio avanzarTurno ();
+	public abstract void atacar(Unidad atacado,Posicionable atacante, Posicion posicion, int alcance, Ataque ataque);
+	public abstract void atacar(Edificio atacado,Posicionable atacante, Posicion posicion, int alcance, Ataque ataque);
+	public abstract Posicion desplazarPosicionHasta (Posicion hasta, Posicion posicionActual);
 		
 }

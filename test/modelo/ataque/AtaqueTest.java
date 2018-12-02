@@ -9,7 +9,10 @@ import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.mapa.Posicion;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
-import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaNoPuedeDesplazarseError;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioDesmontadaException;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioDesmontandoseException;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaException;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontandoseException;
 import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
 
@@ -43,17 +46,17 @@ public class AtaqueTest {
 		
 	}
 	
-	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
+	@Test(expected = AtacandoEnPosicionFueraDelAlcanceError.class) 
 	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
 		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio (5, 5);
 		armaDeAsedio.montar();
 		armaDeAsedio.avanzarTurno();
-		Arquero arquero = new Arquero (30, 30);
+		Arquero arquero = new Arquero (40, 40);
 		Juego juego = new Juego ("Pedro", "Maria");
-		juego.agregarUnidadEnFilaColumna(arquero, 30, 30);
+		juego.agregarUnidadEnFilaColumna(arquero, 40, 40);
 		juego.agregarUnidadEnFilaColumna(armaDeAsedio, 5, 5);
-		armaDeAsedio.atacar(arquero, new Posicion (30,30));
+		armaDeAsedio.atacar(arquero);
 		
 	}
 
@@ -91,7 +94,7 @@ public class AtaqueTest {
 		arquero.atacar(plaza, new Posicion (10,4));
 	}
 	
-	@Test (expected = ArmaDeAsedioDesmontadaNoPuedeAtacarError.class)
+	@Test (expected = ArmaDeAsedioDesmontadaException.class)
 	public void test08AtacarConArmaDeAsedioDesmontadaDebeLanzarExcepcion ()  {
 		
 		Cuartel cuartel = new Cuartel (5,5,6,6);
@@ -100,7 +103,7 @@ public class AtaqueTest {
 		arma.atacar(cuartel);
 	}
 	
-	@Test (expected = ArmaDeAsedioDesmontadaNoPuedeAtacarError.class)
+	@Test (expected = ArmaDeAsedioMontandoseException.class)
 	public void test09MontarArmaDeAsedioYAtacarEnElMismoTurnoDebeLanzarExcepcion () {
 		
 		Cuartel cuartel = new Cuartel (5,5,6,6);
@@ -116,10 +119,12 @@ public class AtaqueTest {
 		arma.avanzarTurno();
 		//arma desmontada
 		arma.desplazarHasta(new Posicion (6,9));
+		assertEquals (arma.getPosicion().getFila(),6);
+		assertEquals (arma.getPosicion().getColumna(),9);
 	
 	}
 	
-	@Test (expected = ArmaDeAsedioMontadaNoPuedeDesplazarseError.class)
+	@Test (expected = ArmaDeAsedioMontadaException.class)
 	public void test11MoverArmaDeAsedioMontadaHaciaDebeLanzarExcepcion () {
 		
 		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
@@ -128,4 +133,66 @@ public class AtaqueTest {
 		arma.desplazarHasta(new Posicion (6,9));
 		
 	}
+	
+	@Test (expected = ArmaDeAsedioDesmontandoseException.class)
+	public void test12MoverArmaDeAsedioDesmontandoseHaciaDebeLanzarExcepcion () {
+		
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		arma.montar();
+		arma.avanzarTurno();
+		arma.desarmar();
+		arma.desplazarHasta(new Posicion (6,9));
+		
+	}
+	
+	@Test (expected = ArmaDeAsedioDesmontandoseException.class)
+	public void test13AtacarConArmaDeAsedioDesmontandoseDebeLanzarExcepcion () {
+		
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		Cuartel cuartel = new Cuartel (5,5,6,6);
+		arma.montar();
+		arma.avanzarTurno();
+		arma.desarmar();
+		arma.atacar(cuartel);
+		
+	}
+
+	@Test
+	public void test14MoverArmaDeAsedioLuegoDeDesmontarla() {
+		
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		arma.montar();
+		arma.avanzarTurno();
+		arma.desarmar();
+		arma.avanzarTurno();
+		arma.desplazarHasta(new Posicion(6,9));
+		assertEquals (arma.getPosicion().getFila(),6);
+		assertEquals (arma.getPosicion().getColumna(),9);
+
+		
+	}
+	
+	@Test (expected = ArmaDeAsedioMontandoseException.class)
+	public void test15MoverArmaDeAsedioMontandoseHaciaDebeLanzarExcepcion() {
+		
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		arma.montar();
+		arma.desplazarHasta(new Posicion(6,9));
+		
+	}
+	
+	@Test 
+	public void test16AtacarConArmaDeAsedioMontada() {
+		
+		ArmaDeAsedio arma = new ArmaDeAsedio (6,8);
+		Cuartel cuartel = new Cuartel (10,10,11,11);
+		arma.montar();
+		arma.avanzarTurno();
+		arma.atacar(cuartel);
+		
+		assertEquals (cuartel.getVida(),175);
+		
+		
+	}
+	
 }

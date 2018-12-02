@@ -30,8 +30,9 @@ public abstract class Posicionable {
 	public abstract void recibirDanioDe (Edificio edificio);
 
 	public abstract void atacar (Posicionable posicionable);
-	public abstract void atacar (Unidad unidad, Posicion posicionAtacado);
-	public abstract void atacar (Edificio edificio, Posicion posicionAtacado);
+	public abstract void atacar(Edificio edificio, Posicion posicion);
+	public abstract void atacar(Unidad unidad, Posicion posicion2);
+
 
 	public void posicionarEnFilaColumna(int fila, int columna) {
 
@@ -100,6 +101,10 @@ public abstract class Posicionable {
 	public int getVida() {
 		return this.vida;
 	}
+
+
+
+
 
 
 

@@ -49,10 +49,5 @@ public class Espadachin extends Unidad {
 		this.ataque.atacar(edificio);
 	}
 	
-	@Override
-	public int descontarOro(int oro) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }
