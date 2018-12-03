@@ -27,11 +27,31 @@ public class Jugador {
 	private Poblacion poblacion;
 	private Castillo castillo;
 
-	public Jugador(Mapa mapa,String nombre) {
+	public Jugador(Mapa mapa, String nombreJugador, String nombreEnemigo) {
 
-		this.posicionables = new HashMap <Posicion, Posicionable> ();
+		this.mapa = mapa;
+		this.nombre = nombreJugador;
+		
+		this.iniciarAtributos();
+			
+		this.enemigo = new Jugador (mapa, nombreEnemigo, this);
+
+	}
+	
+	public Jugador (Mapa mapa, String nombre, Jugador jugador) {
+		
 		this.mapa = mapa;
 		this.nombre = nombre;
+		
+		this.iniciarAtributos();
+		
+		this.enemigo = jugador;
+		
+	}
+	
+	private void iniciarAtributos () {
+		
+		this.posicionables = new HashMap <Posicion, Posicionable> ();
 
 		int oroInicial = 200;
 		int poblacionInicial = 3; //3 aldeanos
@@ -42,27 +62,20 @@ public class Jugador {
 		this.poblacion = new Poblacion(this.posicionables);
 		
 		this.castillo = new Castillo(0);
-
-
+		
 	}
-
-	public Poblacion obtenerPoblacion(){
-		return this.poblacion;
+	
+	public void iniciarPosicionables () {
+		
+		this.crearCastilloDesde(4, 4);
+		this.crearPlazaCentralPropiaDesde(1, 8);
+		this.iniciarAldeanosPropiosDesde(8, 6);		
+				
+		this.enemigo.crearCastilloDesde(this.mapa.getFilas() - 6, this.mapa.getColumnas() - 6);		
+		this.enemigo.crearPlazaCentralPropiaDesde(this.mapa.getFilas() - 1, this.mapa.getColumnas() - 8);
+		this.enemigo.iniciarAldeanosPropiosDesde(this.mapa.getFilas() - 7, this.mapa.getColumnas() - 7);
 	}
-
-	public void setEnemigo (Jugador jugador) {
-		this.enemigo = jugador;
-	}
-
-	public Jugador jugadorSiguiente() {
-		return this.enemigo;
-	}
-
-
-	public String getNombre(){
-		return this.nombre;
-	}
-
+	
 	//PARA QUE ANDE ATAQUE
 	public void construirEdificioPropio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
 		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
@@ -112,18 +125,9 @@ public class Jugador {
 
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
 
+		this.mapa.posicionarEnFilaColumna(posicionable, fila, columna);
 		this.posicionables.put(posicionDelPosicionable, posicionable);
-
-	}
-
-	public void iniciarAldeanosDesde(int x, int y)  {
-
-		for (int i = y; i <= (y +2); i++ ) {
-			Unidad aldeano = new Aldeano();
-			this.agregarPosicionableEnFilaColumna(aldeano, x, i);
-			this.mapa.posicionarEnFilaColumna(aldeano, x, i);
-			//this.inventario.aumentarPoblacion(aldeano);
-		}
+		
 
 	}
 
@@ -132,7 +136,6 @@ public class Jugador {
 		for (int i = y; i <= (y +2); i++ ) {
 			Unidad aldeano = new Aldeano(this);
 			this.agregarPosicionableEnFilaColumna(aldeano, x, i);
-			this.mapa.posicionarEnFilaColumna(aldeano, x, i);
 			//this.inventario.aumentarPoblacion(aldeano);
 		}
 
@@ -151,14 +154,6 @@ public class Jugador {
 		this.posicionables.putAll(castilloConstruido);
 		//this.agregarEdificioDesdeHasta(castillo, desdeX, desdeY, desdeX+castillo.calcularLado(), desdeY+castillo.calcularLado()); no es necesario usar los metodos de arriba
 
-	}
-
-	public void crearPlazaCentralDesde(int desdeX, int desdeY) {
-
-		Edificio plazaCentral = new PlazaCentral(0);
-		Posicion posicionDesde = new Posicion (desdeX, desdeY);
-		Map <Posicion, Posicionable> plazaConstruida = this.mapa.ponerEdificio(plazaCentral, posicionDesde);
-		this.posicionables.putAll(plazaConstruida);
 	}
 
 	public void crearPlazaCentralPropiaDesde(int desdeX, int desdeY) {
@@ -185,19 +180,32 @@ public class Jugador {
 		return this.inventario.getPoblacion();
 	}
 	
-	public void agregarEdificioDesdeHasta (Edificio edificio, int desdeX, int desdeY, int hastaX, int hastaY) {
-
-		for (int i = desdeX; i <= hastaX; i++) {
-			for (int j = desdeY; j <= hastaY; j++) {
-				Posicion posicion = new Posicion (i,j);
-				this.posicionables.put(posicion, edificio);
-				this.mapa.posicionarEnFilaColumna(edificio, i, j);
-			}
-		}
-
+	public Poblacion obtenerPoblacion(){
+		return this.poblacion;
 	}
 	
 	public Posicionable getPosicionable (Posicion posicion) {
 		return this.posicionables.get(posicion);
 	}
+	
+	public void setEnemigo (Jugador jugadorEnemigo) {
+		this.enemigo = jugadorEnemigo;
+	}
+	
+	public Jugador jugadorSiguiente() {
+		return this.enemigo;
+	}
+	
+	public String getNombre(){
+		return this.nombre;
+	}
+	
+//	public Jugador (Mapa mapa, String nombre) {
+//		
+//		this.mapa = mapa;
+//		this.nombre = nombre;
+//		
+//		this.iniciarAtributos();
+//		
+//	}
 }

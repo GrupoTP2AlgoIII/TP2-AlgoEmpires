@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import modelo.juego.Juego;
+import modelo.jugador.PosicionDesocupadaError;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.arquero.Arquero;
@@ -96,7 +97,6 @@ public class MovimientosUnidadTest {
 	public void test10moverArqueroFueraDelLimiteDerechoDelMapa (){
 		
 		Mapa mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
 		Arquero arquero = new Arquero(2,50);
 		mapa.posicionarEnFilaColumna (arquero, 2, 50);
 		mapa.posicionarDesdeEnHasta (new Posicion (2, 50), new Posicion (2,56));
@@ -106,7 +106,6 @@ public class MovimientosUnidadTest {
 	public void test11moverAldeanoFueraDelLimiteSuperiorDelMapa ()  {
 		
 		Mapa mapa = new Mapa ();
-		mapa.iniciarMapaVacio();
 		Arquero arquero = new Arquero(1,10);
 		
 		mapa.posicionarEnFilaColumna (arquero, 1, 10);
@@ -116,15 +115,31 @@ public class MovimientosUnidadTest {
 	@Test (expected = MovimientosPorTurnoExcedidosError.class)
 	public void test17moverAldeanoDosVecesEnUnMismoTurno ()  {
 		
-		Juego juego = new Juego ();
+		Juego juego = new Juego ("Pedro", "Maria");
 		Arquero arquero = new Arquero(10,10);
-		juego.iniciarJuego ();
 		juego.agregarUnidadEnFilaColumna (arquero, 10, 10);
 		juego.desplazarUnidadDesdeHasta (10, 10, 11, 10);
 		juego.desplazarUnidadDesdeHasta (11, 10, 11, 11);
 	}
 	
-	//agregar test para mover desde una posicion vacia y mover hacia una posicion ocupada
+	@Test (expected = PosicionDesocupadaError.class)
+	public void test18MoverDesdeUnaPosicionVacia ()  {
+		
+		Juego juego = new Juego ("Pedro", "Maria");
+		juego.desplazarUnidadDesdeHasta (11, 10, 11, 11);
+	}
+	
+	@Test (expected = DesplazarAPosicionOcupadaError.class)
+	public void test19MoverAUnaPosicionOcupada() {
+		
+		Juego juego = new Juego ("Pedro", "Maria");
+		Arquero arquero = new Arquero(10,10);
+		Arquero otroArquero = new Arquero(11,10);
+		juego.agregarUnidadEnFilaColumna (arquero, 10, 10);
+		juego.agregarUnidadEnFilaColumna (otroArquero, 11, 10);
+		juego.desplazarUnidadDesdeHasta (10, 10, 11, 10);
+				
+	}
 
 
 }

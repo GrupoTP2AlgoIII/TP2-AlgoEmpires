@@ -7,7 +7,6 @@ import modelo.edificio.Edificio;
 import modelo.edificio.EstadoEdificioDisponible;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
-import modelo.unidad.AtacandoAUnAliadoError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
@@ -15,7 +14,7 @@ public class Castillo extends Edificio {
 	
 	private Ataque ataque;
 	private int alcance = 3;
-	ArrayList<Posicionable> atacables;
+	private ArrayList<Posicionable> atacables;
 
     public Castillo() {
         this.vida = 1000;

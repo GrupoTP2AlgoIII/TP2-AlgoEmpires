@@ -1,56 +1,40 @@
 package modelo.unidad.armaDeAsedio;
 
-import modelo.ataque.ArmaDeAsedioDesmontadaNoPuedeAtacarError;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
-public class ArmaDeAsedioDesmontada extends EstadoArmaDeAsedio {
+public class ArmaDeAsedioDesmontada implements EstadoArmaDeAsedio {
 	
-	private int turnosDesmontada;
-	
-	public ArmaDeAsedioDesmontada (int cantidadDeTurnosParaDesmontar) {
-		
-		this.turnosDesmontada = cantidadDeTurnosParaDesmontar;
-		
-	}
+
 
 	@Override
-	public void atacar(Posicionable posicionable, Posicion posicion, int alcance, Ataque ataque)  {
+	public void atacar(Edificio atacado,Posicionable atacante, Posicion posicion, int alcance, Ataque ataque)  {
 		
-		throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
+		throw new ArmaDeAsedioDesmontadaException ();
 
 	}
 	
 	@Override
-	public void atacar (Edificio edificio, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque) {
-		throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
+	public void atacar(Unidad atacado,Posicionable atacante, Posicion posicion, int alcance, Ataque ataque)  {
+		
+		throw new ArmaDeAsedioDesmontadaException ();
 
 	}
 	
 	@Override
-	public void atacar (Unidad unidad, Posicion posicionAtacado, Posicion posicion, int alcance, Ataque ataque) {
-		throw new ArmaDeAsedioDesmontadaNoPuedeAtacarError ();
+	public EstadoArmaDeAsedio avanzarTurno() {
+		return this;
+		
 	}
 
 	@Override
-	public int avanzarTurno() {
-		
-		this.turnosDesmontada --;
-		return 0;
-		
-	}
-	
-	@Override
-	public void desplazarPosicionHasta (Posicion hasta, Posicion posicionActual) {
-		
-		if (this.turnosDesmontada > 0) {
-			throw new ArmaDeAsedioMontadaNoPuedeDesplazarseError ();
-		}
+	public Posicion desplazarPosicionHasta (Posicion hasta, Posicion posicionActual) {
 		
 		posicionActual = hasta;
+		return posicionActual;
 		
 	}
 

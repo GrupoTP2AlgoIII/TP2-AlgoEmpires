@@ -9,7 +9,6 @@ import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
 import modelo.jugador.JugadorSinOroException;
 import modelo.jugador.JugadorSuperaTopePoblacionalException;
-import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 
@@ -18,8 +17,7 @@ public class PoblacionTest {
 	@Test
 	public void test01CreoUnJugadorCon3AldeanosYAgregoTresAldeanosYGetPoblacionDevuelve6()  {
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-		Jugador jugador = new Jugador(mapa,"Pablo");
+		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
 		Posicionable plaza = new PlazaCentral();
 		
 		//construccion plaza 3 turnos
@@ -104,8 +102,7 @@ public class PoblacionTest {
 	@Test(expected=JugadorSuperaTopePoblacionalException.class)
 	public void test04CreoUnJugadorConMasDe50UnidadesYComoSuperaElTopePoblacionDevuelveException()  {
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-		Jugador jugador = new Jugador(mapa,"Pablo");
+		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
 		Posicionable plaza = new PlazaCentral();
 		
 		//construccion plaza 3 turnos
@@ -129,8 +126,7 @@ public class PoblacionTest {
 	@Test(expected=JugadorSinOroException.class)
 	public void test05CreoUnJugadorYCreoAldeanosHastaQueArrojeException()  {
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-		Jugador jugador = new Jugador(mapa,"Pablo");
+		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
 		Posicionable plaza = new PlazaCentral();
 		
 		//construccion plaza 3 turnos
@@ -149,8 +145,7 @@ public class PoblacionTest {
 	@Test(expected=CrearUnidadException.class)
 	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() {
 		Mapa mapa = new Mapa();
-		mapa.iniciarMapaVacio();
-		Jugador jugador = new Jugador(mapa,"Pablo");
+		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
 		Posicionable cuartel = new Cuartel();
 		
 		//construccion plaza 3 turnos

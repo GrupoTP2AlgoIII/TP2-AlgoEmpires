@@ -5,9 +5,7 @@ import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
-import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
-import modelo.unidad.aldeano.AldeanoNoPuedeAtacarError;
 
 public class Espadachin extends Unidad {
 
@@ -51,10 +49,5 @@ public class Espadachin extends Unidad {
 		this.ataque.atacar(edificio);
 	}
 	
-	@Override
-	public int descontarOro(int oro) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

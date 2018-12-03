@@ -16,7 +16,7 @@ public class JuegoTest {
 	@Test // Como son inicializados sin estar ocupados devuelven 20 de oro
 	public void test01IniciarJuegoInicializaAldeanosJugador1()  {
 		
-		Juego juego = new Juego();
+		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 
 		for (int i = 6; i <= 8; i++) {
@@ -29,7 +29,7 @@ public class JuegoTest {
 	@Test
 	public void test02IniciarJuegoInicializaAldeanosJugador2()  {
 		
-		Juego juego = new Juego();
+		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 		
 		for (int j = 43; j <= 45; j++) {
@@ -41,7 +41,7 @@ public class JuegoTest {
 	@Test
 	public void test03IniciarJuegoInicializaCastilloJugador1() {
 		
-		Juego juego = new Juego();
+		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 			
 		Posicion posicionCastillo = new Posicion (4,4);
@@ -56,7 +56,7 @@ public class JuegoTest {
 	@Test
 	public void test04IniciarJuegoInicializaCastilloJugador2() {
 		
-		Juego juego = new Juego();
+		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 
 		Posicion posicionCastillo = new Posicion (44,44);
@@ -70,7 +70,7 @@ public class JuegoTest {
 	@Test
 	public void test05IniciarJuegoInicializaPlazaCentralJugador1() {
 		
-		Juego juego = new Juego();
+		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 
 		Posicion posicionPlaza = new Posicion (2,8);
@@ -85,7 +85,7 @@ public class JuegoTest {
 	@Test
 	public void test06IniciarJuegoInicializaPlazaCentralJugador2() {
 		
-		Juego juego = new Juego();
+		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 
 		Posicion posicionPlaza = new Posicion (2,8);
@@ -100,7 +100,7 @@ public class JuegoTest {
 	@Test //Verifica que no hay que pasar de turno para crear aldeano
 	public void test07IniciarJuegoInicializaPlazaCentralConstruidaJugador1()  {
 		
-		Juego juego = new Juego();
+		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 		
 		Arquero arquero = new Arquero(5,5);
@@ -125,7 +125,7 @@ public class JuegoTest {
 	public void test08IniciarJuegoInicializaPlazaCentralConstruidaJugador2() {
 		
 		
-		Juego juego = new Juego();
+		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 		
 		Arquero arquero = new Arquero(12, 12);
@@ -136,7 +136,7 @@ public class JuegoTest {
 		
 		arquero.atacar(cuartel, new Posicion (11,11));
 				
-		Posicion posicionPlaza = new Posicion (50,43); //con (fila, columna)
+		Posicion posicionPlaza = new Posicion (50,43);
 		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidad('A');
 		
 		aldeano.reparar(cuartel);

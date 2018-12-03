@@ -1,11 +1,6 @@
 package modelo.unidad.espadachin;
 
-import modelo.unidad.Posicionable;
-import modelo.unidad.PosicionableJugador2;
-import modelo.unidad.PosicionableJugador1;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 /*
 

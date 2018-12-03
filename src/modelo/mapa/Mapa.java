@@ -25,9 +25,10 @@ public class Mapa {
 		this.mapaAux = new HashMap <Posicion, Posicionable>();
 		this.filas = 50;
 		this.columnas = 50;
+		this.iniciarMapaVacio();
 	}
 	
-	public void iniciarMapaVacio () { 
+	private void iniciarMapaVacio () { 
 		
 		for (int i = 1; i <= this.filas; i++) {
 			for (int j = 1; j <= this.columnas; j++) {
@@ -60,7 +61,6 @@ public class Mapa {
 		   }	
 	}
 
-
 	public void posicionarEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 		
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
@@ -86,7 +86,6 @@ public class Mapa {
 		this.mapaAux.put(posicion, posicionable);
 		
 	}
-
 	
 	public Posicionable obtenerPosicionableEn(Posicion posicion) {
 		return (this.mapa.get(posicion));
@@ -131,7 +130,6 @@ public class Mapa {
 		
 	}
 
-
 	public Map <Posicion, Posicionable> ponerEdificio(Edificio edificio, Posicion posicionDeConstruccion) {
 	
 		this.mapaAux.clear();
@@ -150,7 +148,42 @@ public class Mapa {
 		  
 		return this.mapaAux;		
 	}
-
+	
+	public ArrayList<Posicionable> crearRangoDeAtacablesEn(int desdeX, int desdeY, int lado, int rango){
+		
+		ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
+		
+		int hastaX = desdeX + lado;
+		int hastaY = desdeY + lado;
+				
+		for (int i = (desdeX - rango); i <= (hastaX + rango); i++) {
+			for (int j = (desdeY - rango); j <= (hastaY + rango); j++) {
+				Posicion posicion = new Posicion (i,j);
+				atacables.add(this.obtenerPosicionableEn(posicion));
+			}
+		}
+		
+		return atacables;
+		
+	}
+	
+//	public ArrayList<Posicionable> crearRangoDeAtacablesEn(int desdeX, int desdeY, Castillo castillo){
+//		
+//		ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
+//		
+//		int hastaX = desdeX + castillo.calcularLado();
+//		int hastaY = desdeY + castillo.calcularLado();
+//		int rango = castillo.calcularRango();
+//				
+//		for (int i = (desdeX - rango); i <= (hastaX + rango); i++) {
+//			for (int j = (desdeY - rango); j <= (hastaY + rango); j++) {
+//				Posicion posicion = new Posicion (i,j);
+//				atacables.add(this.obtenerPosicionableEn(posicion));
+//			}
+//		}
+//		
+//		return atacables;
+//		
+//	}
 
 }
-

@@ -4,7 +4,6 @@ package modelo.edificio;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
@@ -71,7 +70,7 @@ public abstract class Edificio extends Posicionable {
 	public void reparar() {
 		estado = estado.reparar(this);
 	}
-
+	
 
 	protected void sumarVida() {
 		if(this.vida < this.vidaFull) {
