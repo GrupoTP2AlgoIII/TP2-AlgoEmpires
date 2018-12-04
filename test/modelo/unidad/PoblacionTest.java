@@ -18,23 +18,27 @@ public class PoblacionTest {
 	public void test01CreoUnJugadorCon3AldeanosYAgregoTresAldeanosYGetPoblacionDevuelve6()  {
 		Mapa mapa = new Mapa();
 		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
-		Posicionable plaza = new PlazaCentral();
-		
-		//construccion plaza 3 turnos
-		plaza.avanzarTurno();
-		plaza.avanzarTurno();
-		plaza.avanzarTurno();
 
-		plaza.posicionarEnFilaColumna(1,1);
-		jugador.agregarPosicionableEnFilaColumna(plaza,1,1);
-		
-		
+		jugador.crearPlazaCentralPropiaDesde(4,4);
+
+		Posicion  posicionable = new Posicion(4,4);
+
+		Posicionable plaza = jugador.getPosicionable(posicionable);
+
+
+		//construccion plaza 3 turnos
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+
+
+
 		//creo 3 aldeanos
 		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
 		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
 		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
-		
-		assertEquals (6,jugador.getPoblacion());
+
+		assertEquals (7,jugador.getPoblacion());
 		
 	}
 /*	PRUEBAS A CAMBIAR CUANDO ESTE IMPLEMENTADO EL PATRON DOUBLE DISPATCH PARA ATAQUES
@@ -103,24 +107,26 @@ public class PoblacionTest {
 	public void test04CreoUnJugadorConMasDe50UnidadesYComoSuperaElTopePoblacionDevuelveException()  {
 		Mapa mapa = new Mapa();
 		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
-		Posicionable plaza = new PlazaCentral();
-		
+		jugador.crearPlazaCentralPropiaDesde(4,4);
+		Posicion posicionPlaza = new Posicion(4,4);
+		Posicionable plaza = jugador.getPosicionable(posicionPlaza);
+
 		//construccion plaza 3 turnos
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 
-		plaza.posicionarEnFilaColumna(1,1);
 		jugador.agregarPosicionableEnFilaColumna(plaza,1,1);
-		
-		jugador.crearUnidadPropia(plaza.getPosicion(),'A');		//creo un aldeano para que produzca oro
-		
-		for(int i=0;i<100;i++)//produsco oro suficiente para crear mas de 50 aldeanos
+
+		jugador.crearUnidadPropia(posicionPlaza,'A');		//creo un aldeano para que produzca oro
+
+		for(int i=0;i<100;i++)//produzco oro suficiente para crear mas de 50 aldeanos
 			jugador.avanzarTurno();
-		
-		while(1>0)
-			jugador.crearUnidadPropia(plaza.getPosicion(),'A');
-			
+
+		while(true) {
+			jugador.crearUnidadPropia(posicionPlaza, 'A');
+		}
+
 	}
 	
 	@Test(expected=JugadorSinOroException.class)

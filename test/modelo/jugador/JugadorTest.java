@@ -47,7 +47,7 @@ public class JugadorTest {
 		Posicion posicionCastillo = new Posicion(4, 4);
 		jugador.crearUnidadPropia(posicionCastillo, 'A');
 
-		assertSame(4, jugador.getPoblacion());
+		assertSame(17, jugador.getPoblacion());
 
 	}
 
@@ -62,7 +62,7 @@ public class JugadorTest {
 		Posicion posicionPlaza = new Posicion(2, 9);
 		jugador.crearUnidadPropia(posicionPlaza, 'A');
 
-		assertSame(4, jugador.getPoblacion());
+		assertSame(5, jugador.getPoblacion());
 	}
 
 	@Test

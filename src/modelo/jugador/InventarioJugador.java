@@ -7,7 +7,7 @@ public class InventarioJugador {
 	private int oro;
 	private int poblacion;
 	private int produccionDeOro;
-	
+
 	public InventarioJugador(int oroInicial,int poblacionInicial,int produccionOroInicial) {
 		this.oro = oroInicial;
 		this.poblacion = poblacionInicial;
@@ -34,6 +34,7 @@ public class InventarioJugador {
 	}
 	
 	public void decrementarPoblacion() {
+
 		this.poblacion--;
 	}
 	
