@@ -21,7 +21,6 @@ import java.util.Map;
 public class Jugador {
 	private Mapa mapa;
 	private String nombre;
-	private InventarioJugador inventario;
 	private Jugador enemigo;
 	private Poblacion poblacion;
 	private Castillo castillo;
