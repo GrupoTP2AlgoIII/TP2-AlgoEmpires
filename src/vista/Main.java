@@ -24,8 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
     	
-    	PantallaInicial pantallaInicial = new PantallaInicial();        
-         
+    	PantallaInicial pantallaInicial = new PantallaInicial(primaryStage);
         Scene scene = new Scene(pantallaInicial); 
          
         primaryStage.setTitle("AlgoEmpires");

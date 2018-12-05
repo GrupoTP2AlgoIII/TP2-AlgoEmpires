@@ -9,17 +9,17 @@ import javafx.scene.input.KeyEvent;
 
 public class TextoEventHandler implements EventHandler<KeyEvent> {
 
-    private Button botonEnviar;
+    private Button botonOK;
 
-    public TextoEventHandler(Button botonEnviar) {
-        this.botonEnviar = botonEnviar;
+    public TextoEventHandler(Button botonOK) {
+        this.botonOK = botonOK;
     }
 
     @Override
     public void handle(KeyEvent event) {
 
         if (event.getCode() == KeyCode.ENTER) {
-            Event.fireEvent(botonEnviar, new ActionEvent());
+            Event.fireEvent(botonOK, new ActionEvent());
         }
     }
 }
