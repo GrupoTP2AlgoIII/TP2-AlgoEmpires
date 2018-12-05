@@ -23,6 +23,7 @@ public class ConstruccionDatos {
 		TextField xInput = new TextField();
 		TextField yInput = new TextField();
 		Button botonListo = new Button ("Listo");
+		botonListo.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
 				
 		GridPane layout = new GridPane();
 		

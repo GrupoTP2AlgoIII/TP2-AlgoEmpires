@@ -58,8 +58,8 @@ public class PantallaInicial extends GridPane{
 	    BotonOKEventHandler botonOKEventHandler = new BotonOKEventHandler(stage, nombreInput, nombreInput2, nombreLabel, nombreLabel2);
         botonOK.setOnAction(botonOKEventHandler);
 
-	    TextoEventHandler textoEventHandler = new TextoEventHandler(botonOK);
-	    nombreInput.setOnKeyPressed(textoEventHandler);
+//	    TextoEventHandler textoEventHandler = new TextoEventHandler(botonOK);
+//	    nombreInput.setOnKeyPressed(textoEventHandler);
 
 
 	}

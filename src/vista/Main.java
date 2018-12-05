@@ -1,17 +1,8 @@
 package vista;
 
-
-
-
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
+import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -24,13 +15,25 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
     	
+        primaryStage.setOnCloseRequest(e -> {
+        	e.consume();
+        	cerrarPrograma();
+        });
+    	
     	PantallaInicial pantallaInicial = new PantallaInicial(primaryStage);
-        Scene scene = new Scene(pantallaInicial); 
-         
+        Scene scene = new Scene(pantallaInicial);
+                 
         primaryStage.setTitle("AlgoEmpires");
         primaryStage.setScene(scene); 
         primaryStage.show();
         
+    }
+    
+    private void cerrarPrograma() {
+    	Boolean respuesta = RespuestaBox.display("Salir", "¿Esta seguro que quiere salir?");
+    	if (respuesta) {
+    		Platform.exit();
+    	}
     }
     
 }

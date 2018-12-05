@@ -1,5 +1,6 @@
 package controlador;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -13,7 +14,16 @@ public class BotonesIzquierda extends VBox {
 	
 	public BotonesIzquierda(Juego juego) {
 		
+	    this.setPadding(new Insets(15, 12, 15, 12));
+	    this.setSpacing(10);
+	    this.setStyle("-fx-background-color: BEIGE;"); //fondo
+		
 		Button botonCuartel = new Button("Construir Cuartel");
+		Button botonPlazaCentral = new Button("Construir Plaza Central");
+		
+		botonCuartel.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+		botonPlazaCentral.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+		
 		botonCuartel.setOnAction(e -> {
 			try {
 			Posicion posicion = ConstruccionDatos.pedirDatos("Coordenadas para construir cuartel");
@@ -25,7 +35,7 @@ public class BotonesIzquierda extends VBox {
 			}
 		});
 		
-		Button botonPlazaCentral = new Button("Construir Plaza Central");
+		
 		//botonPlazaCentral.setOnAction(value);
 		this.getChildren().addAll(botonCuartel, botonPlazaCentral);
 		this.setAlignment(Pos.CENTER);
