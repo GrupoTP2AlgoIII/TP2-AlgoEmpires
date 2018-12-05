@@ -22,6 +22,7 @@ public class AtaqueTest {
 	@Test
 	public void test01AtacarUnaUnidadDentroDelRangoDeAlcance () {
 		
+<<<<<<< HEAD
 		Mapa mapa = new Mapa ();
 		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
 		Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
@@ -30,6 +31,14 @@ public class AtaqueTest {
 		primerJugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
 		segundoJugador.agregarPosicionableEnFilaColumna (espadachin, 7, 7);
 		arquero.atacar(espadachin, new Posicion (7,7));
+=======
+		Arquero arquero = new Arquero (15, 15);
+		Espadachin espadachin = new Espadachin (17,17);
+		Juego juego = new Juego ("Pedro", "Maria");
+		juego.agregarUnidadEnFilaColumna(arquero, 15, 15);
+		juego.agregarUnidadEnFilaColumna(espadachin, 17, 17);
+		arquero.atacar(espadachin, new Posicion (17,17));
+>>>>>>> e3196d3454c726a63e5a35478a6b4e82847057bd
 		
 		//el espadachin inicia con vida = 100
 		//el ataque del arquero le resta 15 a la vida del espadachin
@@ -40,6 +49,7 @@ public class AtaqueTest {
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test02AtacarUnaUnidadFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
+<<<<<<< HEAD
 		Mapa mapa = new Mapa ();
 		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
 		Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
@@ -49,12 +59,21 @@ public class AtaqueTest {
 		segundoJugador.agregarPosicionableEnFilaColumna (espadachin, 15, 15);
 
 		arquero.atacar(espadachin, new Posicion (15,15));
+=======
+		Arquero arquero = new Arquero (15, 15);
+		Espadachin espadachin = new Espadachin (25,25);
+		Juego juego = new Juego ("Pedro", "Maria");
+		juego.agregarUnidadEnFilaColumna(arquero, 15, 15);
+		juego.agregarUnidadEnFilaColumna(espadachin, 25, 25);
+		arquero.atacar(espadachin, new Posicion (25,25));
+>>>>>>> e3196d3454c726a63e5a35478a6b4e82847057bd
 		
 	}
 	
 	@Test(expected = AtacandoEnPosicionFueraDelAlcanceError.class) 
 	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
+<<<<<<< HEAD
 		
 		Mapa mapa = new Mapa ();
 		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
@@ -68,12 +87,23 @@ public class AtaqueTest {
 		arma.avanzarTurno();
 
 		arma.atacar(arquero);
+=======
+		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio (15, 15);
+		armaDeAsedio.montar();
+		armaDeAsedio.avanzarTurno();
+		Arquero arquero = new Arquero (25, 25);
+		Juego juego = new Juego ("Pedro", "Maria");
+		juego.agregarUnidadEnFilaColumna(arquero, 25, 25);
+		juego.agregarUnidadEnFilaColumna(armaDeAsedio, 15, 15);
+		armaDeAsedio.atacar(arquero);
+>>>>>>> e3196d3454c726a63e5a35478a6b4e82847057bd
 		
 	}
 
 	@Test
 	public void test04ArqueroAtacaACuartelYTodoElCuartelPerteneceAlRangoDeAlcanceDelArquero ()  {
 		
+<<<<<<< HEAD
 		Mapa mapa = new Mapa ();
 		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
 		Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
@@ -83,6 +113,13 @@ public class AtaqueTest {
 		segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 7, 4);
 		
 		arquero.atacar(cuartel, new Posicion (7,4));
+=======
+		Arquero arquero = new Arquero (15, 15);
+		Cuartel cuartel = new Cuartel(17, 14, 18, 15);
+		Juego juego = new Juego ("Pedro", "Maria");
+		juego.agregarUnidadEnFilaColumna(arquero, 15, 15);
+		arquero.atacar(cuartel, new Posicion (17,14));
+>>>>>>> e3196d3454c726a63e5a35478a6b4e82847057bd
 		
 		//el cuartel inicialmente tiene 240 de vida
 		//el arquero le resta 10 de vida

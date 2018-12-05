@@ -18,6 +18,7 @@ public class Juego {
 		
 		this.mapa = new Mapa ();
         this.jugadorActual = new Jugador (this.mapa, nombreJugador1, nombreJugador2);
+        this.iniciarJuego();
         
 	}
 	
