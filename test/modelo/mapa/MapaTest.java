@@ -193,5 +193,28 @@ public class MapaTest {
 		Posicion unaPosicion = new Posicion (10,10);
 		mapa.obtenerPosicionableEn(unaPosicion).desplazarHasta(new Posicion (11,11));
 	}
+	
+	@Test (expected = PosicionFueraDelMapaError.class)
+	public void test21PosicionarUnidadEnFilaYColumnaFueraDelMapaLanzaExcepcion () {
+		
+		Mapa mapa = new Mapa ();
+		Arquero arquero = new Arquero (51,51);
+		mapa.posicionarEnFilaColumna(arquero, 51, 50);
+	}
+	
+	@Test (expected = PosicionFueraDelMapaError.class)
+	public void test22PosicionarUnidadEnPosicionFueraDelMapaLanzaExcepcion () {
+		
+		Mapa mapa = new Mapa ();
+		Arquero arquero = new Arquero (51,50);
+		mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (0, 50));
+	}
+	
+	@Test (expected = PosicionFueraDelMapaError.class)
+	public void test21PosicionarUnidadEnPosicionDesdeFueraDelMapaLanzaExcepcion () {
+		
+		Mapa mapa = new Mapa ();
+		mapa.posicionarDesdeEnHasta(new Posicion (51, 50), new Posicion (50,50));
+	}
 
 }

@@ -6,10 +6,12 @@ import org.junit.Test;
 import modelo.edificio.castillo.Castillo;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
+import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
+import modelo.mapa.PosicionNoAdyacenteError;
 import modelo.unidad.AtacandoAUnAliadoError;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.jugador.PosicionOcupadaError;
@@ -250,6 +252,50 @@ public class JugadorTest {
 		Posicionable aldeanoDeJugador = mapa.obtenerPosicionableEn(posicionDelAldeanoDeJugador);
 
 		arqueroDeJugador1.atacar(aldeanoDeJugador);	
+	}
+	
+	@Test (expected = PosicionNoAdyacenteError.class)
+	public void test11PosicionarAUnaUnidadUbicadaEnUnaPosicionEnUnaPosicionNoAdyacenteDebeLanzarExcepcion ( ) {
+		
+		Mapa mapa = new Mapa ();
+		Jugador jugador = new Jugador (mapa, "anto", "juan");
+		Arquero arquero = new Arquero (1, 1, jugador);
+		jugador.agregarPosicionableEnFilaColumna(arquero, 1, 1);
+		jugador.posicionarDesdeEnHasta(1, 1, 1, 3);
+		
+	}
+	
+	@Test (expected = PosicionNoAdyacenteError.class)
+	public void test12PosicionarAUnaUnidadUbicadaEnUnaPosicionEnUnaPosicionNoAdyacenteDebeLanzarExcepcion ( ) {
+		
+		Mapa mapa = new Mapa ();
+		Jugador jugador = new Jugador (mapa, "anto", "juan");
+		Arquero arquero = new Arquero (5, 5, jugador);
+		jugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
+		jugador.posicionarDesdeEnHasta(5, 5, 3, 5);
+		
+	}
+	
+	@Test (expected = PosicionNoAdyacenteError.class)
+	public void test13PosicionarAUnaUnidadUbicadaEnUnaPosicionEnUnaPosicionNoAdyacenteDebeLanzarExcepcion ( ) {
+		
+		Mapa mapa = new Mapa ();
+		Jugador jugador = new Jugador (mapa, "anto", "juan");
+		Arquero arquero = new Arquero (5, 5, jugador);
+		jugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
+		jugador.posicionarDesdeEnHasta(5, 5, 7, 5);
+		
+	}
+	
+	@Test (expected = PosicionNoAdyacenteError.class)
+	public void test14PosicionarAUnaUnidadUbicadaEnUnaPosicionEnUnaPosicionNoAdyacenteDebeLanzarExcepcion ( ) {
+		
+		Mapa mapa = new Mapa ();
+		Jugador jugador = new Jugador (mapa, "anto", "juan");
+		Arquero arquero = new Arquero (5, 5, jugador);
+		jugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
+		jugador.posicionarDesdeEnHasta(5, 5, 5, 3);
+		
 	}
 }
 

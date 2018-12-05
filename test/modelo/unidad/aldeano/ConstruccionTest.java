@@ -14,7 +14,6 @@ import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
-import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.arquero.Arquero;
 

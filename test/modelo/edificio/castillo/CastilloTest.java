@@ -1,11 +1,16 @@
 package modelo.edificio.castillo;
 
+import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.edificio.EdificiosNoSePuedenDesplazarError;
+import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
+import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
+import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
+import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
 
 import org.junit.Test;
@@ -59,6 +64,73 @@ public class CastilloTest {
     	
     	Castillo castillo = new Castillo ();
     	castillo.desplazarHasta(new Posicion (5,5));
+    	
+    }
+    
+    @Test
+    public void test04CastilloRecibeDanioDeArqueroYSeLeDescuentaVida () {
+    	
+    	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Arquero arquero = new Arquero (1, 1, primerJugador);
+    	Castillo castillo = new Castillo (1,2,4,5, segundoJugador);
+    	castillo.recibirDanioDe(arquero);
+    	
+    	assertEquals (castillo.getVida(), 990);
+    }
+    
+    @Test
+    public void test05CastilloRecibeDanioDePosicionableYSeLeDescuentaVida () {
+    	
+    	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Posicionable arquero = new Arquero (1, 1, primerJugador);
+    	Castillo castillo = new Castillo (1,2,4,5, segundoJugador);
+    	castillo.recibirDanioDe(arquero);
+    	
+    	assertEquals (castillo.getVida(), 990);   	
+    }
+    
+    @Test (expected = DesplazarAPosicionOcupadaError.class)
+    public void test06ElCastilloNoPuedeRecibirNingunPosicionableYaQueSuPosicionEstaOcupada () {
+       	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Arquero arquero = new Arquero (1,1, primerJugador);
+    	Castillo castillo = new Castillo (1, 2, 4 ,5, segundoJugador);
+    	mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (1,1));
+    	mapa.posicionarPosicionableEnPosicion(castillo, new Posicion (1, 2));
+    	mapa.posicionarDesdeEnHasta (new Posicion (1,1), new Posicion (1,2));
+ 
+    }
+    
+    @Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
+    public void test07CastilloAtacaAUnaUnidadQueSeEncuentraFueraDeSuAlcanceLanzaExcepcion () {
+       	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Arquero arquero = new Arquero (40, 40, primerJugador);
+    	Castillo castillo = new Castillo (1, 2, 4 ,5, segundoJugador);
+    	mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (40,40));
+    	mapa.posicionarPosicionableEnPosicion(castillo, new Posicion (1, 2));
+    	
+    	castillo.atacar(arquero, new Posicion (40, 40));
+    	
+    }
+    
+    @Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
+    public void test08CastilloAtacaAUnEdificioQueSeEncuentraFueraDeSuAlcanceLanzaExcepcion () {
+       	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Cuartel cuartel = new Cuartel (10, 10, 11, 11, primerJugador);
+    	Castillo castillo = new Castillo (1, 2, 4 ,5, segundoJugador);
+    	mapa.posicionarPosicionableEnPosicion(cuartel, new Posicion (10,10));
+    	mapa.posicionarPosicionableEnPosicion(castillo, new Posicion (1, 2));
+    	
+    	castillo.atacar(cuartel, new Posicion (10, 10));
     	
     }
     

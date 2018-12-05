@@ -153,4 +153,42 @@ public class JuegoTest {
 		
 	}
 	
+	@Test
+	public void test08JuegoAgregaCuartelDesdeHastaYElCuartelCreaUnArqueroQueAvanzaUnaPosicion () {
+		Mapa mapa = new Mapa ();
+		Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+		Juego juego = new Juego ("anto", "juan");
+		Cuartel cuartel = new Cuartel (1, 1, 2, 2, primerJugador);
+		juego.agregarEdificioDesdeHasta(cuartel, 1, 1, 2, 2);
+		cuartel.avanzarTurno();
+		cuartel.avanzarTurno ();
+		cuartel.avanzarTurno();
+		Unidad arquero = cuartel.crearUnidadPropia('A', primerJugador);
+		arquero.posicionarEnFilaColumna(2, 3);
+		arquero.desplazarHasta(new Posicion (2, 4));
+		
+		assertEquals (arquero.getPosicion().getFila(), 2);
+		assertEquals (arquero.getPosicion().getColumna(), 4);
+		
+	}
+
+/*	
+	@Test
+	public void test09JuegoAvanzaElTurnoYHaceQueElCastilloDelJugadorActualAtaqueAlArqueroAlAlcance () {
+		Juego juego = new Juego ("anto", "juan");
+
+		//jugador es anto
+		juego.avanzarTurno();
+		//ahora el jugador es juan
+		Arquero arquero = new Arquero (4, 3);
+		juego.agregarUnidadEnFilaColumna(arquero, 4, 3);
+		juego.avanzarTurno();
+		//jugador es anto
+		juego.avanzarTurno();
+		//el castillo de anto ubicado desde (4,4) deberia atacar al arquero de juan
+		
+		assertEquals (arquero.getVida(), 55);
+		
+	}
+*/
 }

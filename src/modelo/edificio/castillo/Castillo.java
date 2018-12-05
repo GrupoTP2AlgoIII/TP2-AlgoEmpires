@@ -37,8 +37,8 @@ public class Castillo extends Edificio {
         this.ataque = new Ataque (20, 20, this.alcance);
         this.atacables = new ArrayList<Posicionable>();
     }
-    
-	  public Castillo(int desdeX, int desdeY, int hastaX, int hastaY) {
+
+	  public Castillo(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugador) {
 		   
 		   this.posicionDesde = new Posicion (desdeX, desdeY);
 		   this.posicionHasta = new Posicion (hastaX, hastaY);
@@ -50,6 +50,7 @@ public class Castillo extends Edificio {
 	       this.ataque = new Ataque (20, 20, this.alcance);
 	       this.estado = new EstadoEdificioDisponible ();
 	       this.atacables = new ArrayList<Posicionable>();
+	       this.propietario = jugador;
 	    }
 	  
 	  @Override
@@ -103,5 +104,5 @@ public class Castillo extends Edificio {
 		}
 
 	}
-	  
+  
 }

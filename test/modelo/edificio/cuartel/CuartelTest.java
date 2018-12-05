@@ -1,8 +1,14 @@
 package modelo.edificio.cuartel;
 
 import modelo.edificio.EdificiosNoSePuedenDesplazarError;
+import modelo.edificio.plazaCentral.PlazaCentral;
+import modelo.jugador.Jugador;
+import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
+import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
+import modelo.unidad.aldeano.Aldeano;
+import modelo.unidad.arquero.Arquero;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -48,5 +54,61 @@ public class CuartelTest {
     	
     	Cuartel cuartel = new Cuartel ();
     	cuartel.desplazarHasta(new Posicion (5,5));
+    }
+    
+    @Test (expected = CuartelNoPuedeAtacarError.class)
+    public void test04ElCuartelNoPuedeAtacarAUnaUnidad () {
+    	
+    	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Cuartel cuartel = new Cuartel (1, 1, 2, 2, primerJugador);
+    	Arquero arquero = new Arquero (2, 3, segundoJugador);
+    	
+    	cuartel.atacar(arquero, new Posicion (2,3));
+    }
+    
+    @Test (expected = CuartelNoPuedeAtacarError.class)
+    public void test05ElCuartelNoPuedeAtacarAUnEdificio () {
+    	
+    	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Cuartel cuartel = new Cuartel (1, 1, 2, 2, primerJugador);
+    	PlazaCentral plaza = new PlazaCentral (2, 3, 3, 4, segundoJugador);
+    	
+    	cuartel.atacar(plaza, new Posicion (2,3));
+    }
+    
+    @Test (expected = CuartelNoPuedeAtacarError.class)
+    public void test06ElCuartelNoPuedeAtacarAUnPosicionable () {
+    	
+    	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Cuartel cuartel = new Cuartel (1, 1, 2, 2, primerJugador);
+    	Posicionable arquero = new Arquero (2, 3, segundoJugador);
+    	
+    	cuartel.atacar(arquero);
+    }
+    
+    @Test
+    public void test07CuartelEsCreadoYCreaEspadachinQueAtacaAUnAldeanoYLeResta25DeVida() {
+    	Mapa mapa = new Mapa ();
+    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
+    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Cuartel cuartel =  new Cuartel(1, 1, 2, 2, primerJugador);
+    	Aldeano aldeano = new Aldeano (2,4,segundoJugador);
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+        cuartel.avanzarTurno();
+
+        Unidad soldier = cuartel.crearUnidadPropia('S', primerJugador);
+        soldier.posicionarEnFilaColumna(2,3);
+ 
+        soldier.atacar(aldeano, new Posicion (2,4));
+        
+        assertEquals (aldeano.getVida(), 25);
+		
     }
 }

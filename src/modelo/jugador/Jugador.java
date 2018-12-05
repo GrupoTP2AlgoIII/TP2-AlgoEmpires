@@ -10,7 +10,6 @@ import modelo.mapa.PosicionNoAdyacenteError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
-import modelo.vacio.Vacio;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,10 +88,11 @@ public class Jugador {
 		this.castillo.atacarEnemigosAlAlcance();
 	}
 
+	/*
 	private void quitarPosicionablesDestruidos() {
 		this.poblacion.quitarPosicionablesDestruidos();
 	}
-
+*/
 
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 
@@ -114,11 +114,11 @@ public class Jugador {
 	}
 
 	public void crearCastilloDesde(int desdeX, int desdeY) {
-
+		
 		Castillo castillo = new Castillo(0);
 		Posicion posicionDesde = new Posicion (desdeX, desdeY);
 		ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
-			atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo.calcularLado(), castillo.calcularRango());
+		atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo.calcularLado(), castillo.calcularRango());
 		//atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo); le paso el castillo al mapa
 		castillo.setAtacables(atacables);
 		this.castillo = castillo;
@@ -161,11 +161,11 @@ public class Jugador {
 	public Posicionable getPosicionable (Posicion posicion) {
 		return this.poblacion.obtenerPosicionable(posicion);
 	}
-	
+/*	
 	public void setEnemigo (Jugador jugadorEnemigo) {
 		this.enemigo = jugadorEnemigo;
 	}
-	
+*/	
 	public Jugador jugadorSiguiente() {
 		return this.enemigo;
 	}

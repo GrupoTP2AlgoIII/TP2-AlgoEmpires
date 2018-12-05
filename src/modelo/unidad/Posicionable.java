@@ -54,7 +54,7 @@ public abstract class Posicionable {
 		return this.posicion;
 	}
 
-	public abstract boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna);
+	//public abstract boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna);
 
 	public abstract void desplazarHasta(Posicion hasta);
 

@@ -41,12 +41,12 @@ public class Posicion {
 		
 		return this.y;
 	}
-
+/*
 	public boolean noPerteneceAlRango(int filas, int columnas) {
 		
 		return (x > filas) || (x < 1) || (y > columnas) || (y < 1);
 	}
-	
+*/	
 
     // Fuente para redefinir los metodos equals y hashcode:
 	// https://www.geeksforgeeks.org/override-equalsobject-hashcode-method/

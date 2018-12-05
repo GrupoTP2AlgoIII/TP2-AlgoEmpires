@@ -25,13 +25,14 @@ public abstract class Unidad extends Posicionable {
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
 	}
-	
+
     @Override
     public int avanzarTurno() {
 	    this.cantidadDeMovimientos=0;
 	    return 0;
     }
-	public void recibirDanio (int danio) {
+ 
+ 	public void recibirDanio (int danio) {
 		this.vida -= danio;
 	}
 	
@@ -88,15 +89,18 @@ public abstract class Unidad extends Posicionable {
      * devuelve si el posicionable se encuentra dentro de la cuadricula formada por el alcanceEnFila y alcanceEnColumna
      * a partri de la posicion.
      */
-
+/*
 	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
 		
 		return this.posicion.perteneceALaCuadricula(posicion, alcanceEnFila, alcanceEnColumna);
 	}
-
+*/
+	
+//metodos para pruebas
 	public int getVida() {
 		return this.vida;
 	}
+	
 	
 
 

@@ -1,4 +1,4 @@
-package modelo.unidad.espadachin;
+package modelo.unidad.arquero;
 
 
 import org.junit.Test;
@@ -8,12 +8,12 @@ import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.AtacandoAUnAliadoError;
-import modelo.unidad.arquero.Arquero;
+import modelo.unidad.espadachin.Espadachin;
 
-public class EspadachinTest {
-	
+public class ArqueroTest {
+
 	@Test (expected = AtacandoAUnAliadoError.class)
-	public void test01AtacarUnArqueroDelMismoJugadorDebeLanzarExcepcion () {
+	public void test01AtacarUnEspadachinDelMismoJugadorDebeLanzarExcepcion () {
 		
 		Mapa mapa = new Mapa ();
 		Jugador jugador = new Jugador (mapa, "juan", "amto");
@@ -22,7 +22,7 @@ public class EspadachinTest {
 		jugador.agregarPosicionableEnFilaColumna(espadachin, 5, 5);
 		jugador.agregarPosicionableEnFilaColumna(arquero, 5, 4);
 		
-		espadachin.atacar(arquero, new Posicion (5, 4));
+		arquero.atacar(espadachin, new Posicion (5, 5));
 	}
 	
 	@Test (expected = AtacandoAUnAliadoError.class)
@@ -30,11 +30,12 @@ public class EspadachinTest {
 		
 		Mapa mapa = new Mapa ();
 		Jugador jugador = new Jugador (mapa, "juan", "amto");
-		Espadachin espadachin = new Espadachin (5, 5, jugador);
+		Arquero arquero = new Arquero (5, 5, jugador);
 		Cuartel cuartel = new Cuartel (5, 4, 6, 5, jugador);
-		jugador.agregarPosicionableEnFilaColumna(espadachin, 5, 5);
+		jugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
 		jugador.agregarPosicionableEnFilaColumna(cuartel, 5, 4);
 		
-		espadachin.atacar(cuartel, new Posicion (5, 4));
+		arquero.atacar(cuartel, new Posicion (5, 4));
 	}
+
 }
