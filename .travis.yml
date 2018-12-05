@@ -17,3 +17,7 @@ notifications:
       - andresgonzalez.fba@gmail.com
       - pacugliari@hotmail.com
 on_failure: always
+
+ignore: 
+  - "src/vista/.*"
+  - "src/controlador/.*"
