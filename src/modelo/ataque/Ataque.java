@@ -2,6 +2,7 @@ package modelo.ataque;
 
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
+import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class Ataque {
@@ -21,8 +22,11 @@ public class Ataque {
 	}
 	
 	public void atacar (Edificio recibeAtaque) {
-		recibeAtaque.recibirDanio (this.danioEdificio);
-		
+		recibeAtaque.recibirDanio (this.danioEdificio);		
+	}
+	
+	public void atacar (Posicionable recibeAtaque) {
+		recibeAtaque.recibirDanio (this.danioUnidad);
 	}
 	
 	public void atacar (Unidad unidadAtacada, Posicion posicionAtacado, Posicion posicionAtacante) {

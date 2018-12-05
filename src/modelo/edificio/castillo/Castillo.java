@@ -1,6 +1,8 @@
 package modelo.edificio.castillo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
@@ -14,8 +16,9 @@ public class Castillo extends Edificio {
 	
 	private Ataque ataque;
 	private int alcance = 3;
-	private ArrayList<Posicionable> atacables;
-
+	//private ArrayList<Posicionable> atacables;
+	private HashMap <Posicion, Posicionable> atacables;
+	
     public Castillo() {
         this.vida = 1000;
         this.tamanio = 16;
@@ -23,8 +26,8 @@ public class Castillo extends Edificio {
 	    this.costo = 50;
         this.vidaFull = vida;
         this.ataque = new Ataque (20, 20, this.alcance);
-        this.atacables = new ArrayList<Posicionable>();
-        
+        //this.atacables = new ArrayList<Posicionable>();
+        this.atacables = new HashMap<Posicion, Posicionable>();
     }
     
     public Castillo(int turnos) {
@@ -35,7 +38,8 @@ public class Castillo extends Edificio {
 	    this.costo = 50;
         this.vidaFull = vida;
         this.ataque = new Ataque (20, 20, this.alcance);
-        this.atacables = new ArrayList<Posicionable>();
+        //this.atacables = new ArrayList<Posicionable>();
+        this.atacables = new HashMap<Posicion, Posicionable>();
     }
 
 	  public Castillo(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugador) {
@@ -49,7 +53,8 @@ public class Castillo extends Edificio {
 	       this.vidaFull = vida;	       
 	       this.ataque = new Ataque (20, 20, this.alcance);
 	       this.estado = new EstadoEdificioDisponible ();
-	       this.atacables = new ArrayList<Posicionable>();
+	       //this.atacables = new ArrayList<Posicionable>();
+	       this.atacables = new HashMap<Posicion, Posicionable>();
 	       this.propietario = jugador;
 	    }
 	  
@@ -93,15 +98,31 @@ public class Castillo extends Edificio {
 		return this.alcance;
 	}
 	
-	public void setAtacables(ArrayList<Posicionable> atacables) {
+//	public void setAtacables(ArrayList<Posicionable> atacables) {
+//		this.atacables = atacables;
+//	}
+	
+	public void setAtacables(HashMap<Posicion, Posicionable> atacables) {
 		this.atacables = atacables;
 	}
 	
 	public void atacarEnemigosAlAlcance () {
 				
-		for (Posicionable posicionableAtacable : atacables) {
-			this.atacar(posicionableAtacable);
+//		Itero los atacables en una lista
+//		for (Posicionable posicionableAtacable : atacables) {
+//			this.ataque.atacar(posicionableAtacable);
+//		}
+		
+//		Itero los atacables a partir de las claves del hashmap
+//		for (Posicion posicionAtacable: atacables.keySet()) {
+//		this.ataque.atacar(this.atacables.get(posicionAtacable));
+//	}
+		
+//		Itero los atacables a partir de los valores del hashmap		
+		for (Posicionable posicionableAtacable: atacables.values()) {
+			this.ataque.atacar(posicionableAtacable);
 		}
+
 
 	}
   

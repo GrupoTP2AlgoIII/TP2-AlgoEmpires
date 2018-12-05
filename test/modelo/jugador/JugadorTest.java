@@ -297,5 +297,29 @@ public class JugadorTest {
 		jugador.posicionarDesdeEnHasta(5, 5, 5, 3);
 		
 	}
+	
+	@Test
+	public void test15ElCastilloAtacaASuAlrededor() {
+		
+		Mapa mapa = new Mapa();
+		Jugador jugador = new Jugador(mapa, "Jorge", "Maria");
+		Jugador jugador2 = jugador.jugadorSiguiente();
+		
+		jugador2.iniciarAldeanosPropiosDesde(8, 4); // Crea aldeanos en (8,4), (8,5), (8,6) con 50 de vida
+		jugador.crearCastilloDesde(4, 4);		
+		//jugador2.iniciarAldeanosPropiosDesde(8, 4); // Aca no funciona
+				
+		jugador.castilloAtacar(); // le resta 30 de vida a los aldeanos
+		
+		assertEquals(30, jugador2.getPosicionable(new Posicion(8,4)).getVida());
+		assertEquals(30, jugador2.getPosicionable(new Posicion(8,5)).getVida());
+		assertEquals(30, jugador2.getPosicionable(new Posicion(8,6)).getVida());
+		
+//		assertEquals(30, mapa.obtenerPosicionableEn(new Posicion(8,4)).getVida());
+//		assertEquals(30, mapa.obtenerPosicionableEn(new Posicion(8,5)).getVida());
+//		assertEquals(30, mapa.obtenerPosicionableEn(new Posicion(8,6)).getVida());
+		
+		
+	}
 }
 

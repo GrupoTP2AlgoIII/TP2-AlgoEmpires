@@ -46,15 +46,12 @@ public class Juego {
 		return this.mapa.obtenerPosicionableEn(posicion);
 	}
 
-	// ESTO METODO SE VA A MODIFICAR CUANDO SE REFACTORICE AVANZAR TURNO EN JUGADOR
 	public void avanzarTurno () {
 		this.jugadorActual.avanzarTurno();
 		this.jugadorActual = this.jugadorActual.jugadorSiguiente();
 		
-		// Esto deberia quedar
-		// this.JugadorActual = jugadorActual.avanzarTurno(); porque el metodo en la clase Jugador debe devolver el enemigo
+		// Esto podria quedar
+		// this.JugadorActual = jugadorActual.avanzarTurno(); si el metodo en la clase Jugador devuelve el enemigo
 	}
-	
-
 
 }

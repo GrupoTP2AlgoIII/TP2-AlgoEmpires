@@ -72,7 +72,7 @@ public class Mapa {
 		
 		this.mapa.get(posicionDelPosicionable).recibirPosicionable();
 		this.mapa.put(posicionDelPosicionable, posicionable);
-		this.mapaAux.put(posicionDelPosicionable, posicionable);
+		//this.mapaAux.put(posicionDelPosicionable, posicionable);
 	}
 	
 	public void posicionarPosicionableEnPosicion(Posicionable posicionable, Posicion posicion)  {
@@ -149,9 +149,10 @@ public class Mapa {
 		return this.mapaAux;		
 	}
 	
-	public ArrayList<Posicionable> crearRangoDeAtacablesEn(int desdeX, int desdeY, int lado, int rango){
+	public HashMap<Posicion, Posicionable> crearRangoDeAtacablesEn(int desdeX, int desdeY, int lado, int rango){
 		
-		ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
+		//ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
+		HashMap<Posicion, Posicionable> atacables = new HashMap <Posicion, Posicionable>();
 		
 		int hastaX = desdeX + lado;
 		int hastaY = desdeY + lado;
@@ -159,7 +160,8 @@ public class Mapa {
 		for (int i = (desdeX - rango); i <= (hastaX + rango); i++) {
 			for (int j = (desdeY - rango); j <= (hastaY + rango); j++) {
 				Posicion posicion = new Posicion (i,j);
-				atacables.add(this.obtenerPosicionableEn(posicion));
+				//atacables.add( this.obtenerPosicionableEn(posicion));
+				atacables.put(posicion, this.obtenerPosicionableEn(posicion));
 			}
 		}
 		

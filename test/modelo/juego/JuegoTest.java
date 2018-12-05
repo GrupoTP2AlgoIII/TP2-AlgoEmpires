@@ -172,7 +172,7 @@ public class JuegoTest {
 		
 	}
 
-/*	
+	/*
 	@Test
 	public void test09JuegoAvanzaElTurnoYHaceQueElCastilloDelJugadorActualAtaqueAlArqueroAlAlcance () {
 		Juego juego = new Juego ("anto", "juan");
@@ -181,14 +181,16 @@ public class JuegoTest {
 		juego.avanzarTurno();
 		//ahora el jugador es juan
 		Arquero arquero = new Arquero (4, 3);
-		juego.agregarUnidadEnFilaColumna(arquero, 4, 3);
+		juego.agregarUnidadEnFilaColumna(arquero, 4, 3); //el arquero tiene 75 de vida
 		juego.avanzarTurno();
 		//jugador es anto
 		juego.avanzarTurno();
-		//el castillo de anto ubicado desde (4,4) deberia atacar al arquero de juan
+		//el castillo de anto ubicado desde (4,4) deberia atacar al arquero de juan, le resta 20 de vida
 		
-		assertEquals (arquero.getVida(), 55);
+		assertEquals (55, juego.obtenerPosicionableEn(new Posicion(4,3)).getVida());
 		
 	}
-*/
+	*/
+	
+
 }

@@ -117,17 +117,14 @@ public class Jugador {
 		
 		Castillo castillo = new Castillo(0);
 		Posicion posicionDesde = new Posicion (desdeX, desdeY);
-		ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
-		atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo.calcularLado(), castillo.calcularRango());
-		//atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo); le paso el castillo al mapa
+		//ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
+		HashMap<Posicion, Posicionable> atacables = new HashMap<Posicion, Posicionable>();
+		atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo.calcularLado(), castillo.calcularRango());		
 		castillo.setAtacables(atacables);
 		this.castillo = castillo;
 		Map <Posicion, Posicionable> castilloConstruido = this.mapa.ponerEdificio(castillo, posicionDesde);
 		this.poblacion.agregarEdificio(castilloConstruido);
-
-
-		//this.agregarEdificioDesdeHasta(castillo, desdeX, desdeY, desdeX+castillo.calcularLado(), desdeY+castillo.calcularLado()); no es necesario usar los metodos de arriba
-
+		
 	}
 
 	public void crearPlazaCentralPropiaDesde(int desdeX, int desdeY) {
@@ -146,8 +143,7 @@ public class Jugador {
 		this.mapa.posicionarDesdeEnHasta (new Posicion (desdeX, desdeY),new Posicion (hastaX, hastaY));
 
 	}
-
-
+	
 	//METODOS PARA PRUEBAS
 
 	public int getPoblacion() {
@@ -161,11 +157,7 @@ public class Jugador {
 	public Posicionable getPosicionable (Posicion posicion) {
 		return this.poblacion.obtenerPosicionable(posicion);
 	}
-/*	
-	public void setEnemigo (Jugador jugadorEnemigo) {
-		this.enemigo = jugadorEnemigo;
-	}
-*/	
+	
 	public Jugador jugadorSiguiente() {
 		return this.enemigo;
 	}
@@ -174,12 +166,9 @@ public class Jugador {
 		return this.nombre;
 	}
 	
-//	public Jugador (Mapa mapa, String nombre) {
-//		
-//		this.mapa = mapa;
-//		this.nombre = nombre;
-//		
-//		this.iniciarAtributos();
-//		
-//	}
+	public void castilloAtacar () {
+		this.castillo.atacarEnemigosAlAlcance();
+	}
+	
+	
 }

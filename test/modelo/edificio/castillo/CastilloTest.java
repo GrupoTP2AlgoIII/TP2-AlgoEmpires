@@ -18,6 +18,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CastilloTest {
 
@@ -45,9 +46,14 @@ public class CastilloTest {
     	mapa.posicionarEnFilaColumna(new Espadachin(), 8, 8);
     	mapa.ponerEdificioDesdeHasta(new PlazaCentral(0), 8, 4, 9, 5);
     	
-    	ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
-    	atacables.add(mapa.obtenerPosicionableEn(new Posicion(8,8)));
-    	atacables.add(mapa.obtenerPosicionableEn(new Posicion(8,4)));
+//    	ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
+//    	atacables.add(mapa.obtenerPosicionableEn(new Posicion(8,8)));
+//    	atacables.add(mapa.obtenerPosicionableEn(new Posicion(8,4)));
+    	HashMap<Posicion, Posicionable> atacables = new HashMap <Posicion, Posicionable> ();
+    	Posicion posicion1 = new Posicion(8,8);
+    	Posicion posicion2 = new Posicion(8,4);
+    	atacables.put(posicion1, mapa.obtenerPosicionableEn(posicion1));
+    	atacables.put(posicion2, mapa.obtenerPosicionableEn(posicion2));
     	
     	mapa.ponerEdificioDesdeHasta(new Castillo(0), 4, 4, 7, 7);
     	Castillo castillo = (Castillo) mapa.obtenerPosicionableEn(new Posicion(4,4));
