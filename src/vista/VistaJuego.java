@@ -16,12 +16,10 @@ public class VistaJuego extends BorderPane{
 	public VistaJuego(String nombreJugador1, String nombreJugador2) {
 		
 		this.juego = new Juego(nombreJugador1, nombreJugador2);
-		this.juego.iniciarJuego();
 		this.botonesArriba = new BotonesArriba(this.juego, nombreJugador1, nombreJugador2);		
 		this.setTop(this.botonesArriba);
 		this.botonesIzquierda = new BotonesIzquierda(this.juego);
 		this.setLeft(this.botonesIzquierda);
-		
 		
 	}
 

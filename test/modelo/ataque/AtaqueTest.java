@@ -21,12 +21,12 @@ public class AtaqueTest {
 	@Test
 	public void test01AtacarUnaUnidadDentroDelRangoDeAlcance () {
 		
-		Arquero arquero = new Arquero (5, 5);
-		Espadachin espadachin = new Espadachin (7,7);
+		Arquero arquero = new Arquero (15, 15);
+		Espadachin espadachin = new Espadachin (17,17);
 		Juego juego = new Juego ("Pedro", "Maria");
-		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
-		juego.agregarUnidadEnFilaColumna(espadachin, 7, 7);
-		arquero.atacar(espadachin, new Posicion (7,7));
+		juego.agregarUnidadEnFilaColumna(arquero, 15, 15);
+		juego.agregarUnidadEnFilaColumna(espadachin, 17, 17);
+		arquero.atacar(espadachin, new Posicion (17,17));
 		
 		//el espadachin inicia con vida = 100
 		//el ataque del arquero le resta 15 a la vida del espadachin
@@ -37,25 +37,25 @@ public class AtaqueTest {
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test02AtacarUnaUnidadFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
-		Arquero arquero = new Arquero (5, 5);
-		Espadachin espadachin = new Espadachin (15,15);
+		Arquero arquero = new Arquero (15, 15);
+		Espadachin espadachin = new Espadachin (25,25);
 		Juego juego = new Juego ("Pedro", "Maria");
-		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
-		juego.agregarUnidadEnFilaColumna(espadachin, 15, 15);
-		arquero.atacar(espadachin, new Posicion (15,15));
+		juego.agregarUnidadEnFilaColumna(arquero, 15, 15);
+		juego.agregarUnidadEnFilaColumna(espadachin, 25, 25);
+		arquero.atacar(espadachin, new Posicion (25,25));
 		
 	}
 	
 	@Test(expected = AtacandoEnPosicionFueraDelAlcanceError.class) 
 	public void test03ArmaDeAsedioAtacaAUnArqueroFueraDelRangoDeAlcanceLanzaExcepcion () {
 		
-		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio (5, 5);
+		ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio (15, 15);
 		armaDeAsedio.montar();
 		armaDeAsedio.avanzarTurno();
-		Arquero arquero = new Arquero (40, 40);
+		Arquero arquero = new Arquero (25, 25);
 		Juego juego = new Juego ("Pedro", "Maria");
-		juego.agregarUnidadEnFilaColumna(arquero, 40, 40);
-		juego.agregarUnidadEnFilaColumna(armaDeAsedio, 5, 5);
+		juego.agregarUnidadEnFilaColumna(arquero, 25, 25);
+		juego.agregarUnidadEnFilaColumna(armaDeAsedio, 15, 15);
 		armaDeAsedio.atacar(arquero);
 		
 	}
@@ -63,11 +63,11 @@ public class AtaqueTest {
 	@Test
 	public void test04ArqueroAtacaACuartelYTodoElCuartelPerteneceAlRangoDeAlcanceDelArquero ()  {
 		
-		Arquero arquero = new Arquero (5, 5);
-		Cuartel cuartel = new Cuartel(7, 4, 8, 5);
+		Arquero arquero = new Arquero (15, 15);
+		Cuartel cuartel = new Cuartel(17, 14, 18, 15);
 		Juego juego = new Juego ("Pedro", "Maria");
-		juego.agregarUnidadEnFilaColumna(arquero, 5, 5);
-		arquero.atacar(cuartel, new Posicion (7,4));
+		juego.agregarUnidadEnFilaColumna(arquero, 15, 15);
+		arquero.atacar(cuartel, new Posicion (17,14));
 		
 		//el cuartel inicialmente tiene 240 de vida
 		//el arquero le resta 10 de vida

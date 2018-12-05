@@ -30,7 +30,7 @@ public class Main extends Application {
     }
     
     private void cerrarPrograma() {
-    	Boolean respuesta = RespuestaBox.display("Salir", "¿Esta seguro que quiere salir?");
+    	Boolean respuesta = RespuestaBox.display("Salir", "Esta seguro que quiere salir?");
     	if (respuesta) {
     		Platform.exit();
     	}

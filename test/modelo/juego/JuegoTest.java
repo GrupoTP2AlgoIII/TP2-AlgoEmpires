@@ -17,7 +17,6 @@ public class JuegoTest {
 	public void test01IniciarJuegoInicializaAldeanosJugador1()  {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.iniciarJuego();
 
 		for (int i = 6; i <= 8; i++) {
 			Posicion posicion = new Posicion (8, i);
@@ -30,7 +29,6 @@ public class JuegoTest {
 	public void test02IniciarJuegoInicializaAldeanosJugador2()  {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.iniciarJuego();
 		
 		for (int j = 43; j <= 45; j++) {
 			Posicion posicion = new Posicion (43, j);
@@ -42,7 +40,6 @@ public class JuegoTest {
 	public void test03IniciarJuegoInicializaCastilloJugador1() {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.iniciarJuego();
 			
 		Posicion posicionCastillo = new Posicion (4,4);
 		Posicionable castillo = juego.obtenerPosicionableEn(posicionCastillo);
@@ -57,7 +54,6 @@ public class JuegoTest {
 	public void test04IniciarJuegoInicializaCastilloJugador2() {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.iniciarJuego();
 
 		Posicion posicionCastillo = new Posicion (44,44);
 		Posicionable castillo = juego.obtenerPosicionableEn(posicionCastillo);
@@ -71,7 +67,6 @@ public class JuegoTest {
 	public void test05IniciarJuegoInicializaPlazaCentralJugador1() {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.iniciarJuego();
 
 		Posicion posicionPlaza = new Posicion (2,8);
 		Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
@@ -86,8 +81,7 @@ public class JuegoTest {
 	public void test06IniciarJuegoInicializaPlazaCentralJugador2() {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.iniciarJuego();
-
+		
 		Posicion posicionPlaza = new Posicion (2,8);
 		Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
 		
@@ -101,8 +95,7 @@ public class JuegoTest {
 	public void test07IniciarJuegoInicializaPlazaCentralConstruidaJugador1()  {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.iniciarJuego();
-		
+				
 		Arquero arquero = new Arquero(5,5);
 		Cuartel cuartel = new Cuartel(3,3,4,4);
 		cuartel.avanzarTurno();
@@ -126,8 +119,7 @@ public class JuegoTest {
 		
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.iniciarJuego();
-		
+				
 		Arquero arquero = new Arquero(12, 12);
 		Cuartel cuartel = new Cuartel(10, 10, 11, 11);
 		cuartel.avanzarTurno();
