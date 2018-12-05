@@ -97,8 +97,6 @@ public class JuegoTest {
 	public void test07IniciarJuegoInicializaPlazaCentralConstruidaJugador1()  {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-<<<<<<< HEAD
-		juego.iniciarJuego();
 		
 		Mapa mapa = new Mapa ();
 		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
@@ -108,16 +106,11 @@ public class JuegoTest {
 		primerJugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
 		segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 3, 3);
 		
-=======
-				
-		Arquero arquero = new Arquero(5,5);
-		Cuartel cuartel = new Cuartel(3,3,4,4);
->>>>>>> e3196d3454c726a63e5a35478a6b4e82847057bd
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		arquero.atacar(cuartel, new Posicion (4,4)); // le resta vida
+		arquero.atacar(cuartel, new Posicion (3,3)); // le resta vida
 				
 		Posicion posicionPlaza = new Posicion (2,9);
 		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidad('A'); // se puede crear aldeano
@@ -134,8 +127,6 @@ public class JuegoTest {
 		
 		
 		Juego juego = new Juego("Pedro", "Maria");
-<<<<<<< HEAD
-		juego.iniciarJuego();
 		
 		
 		Mapa mapa = new Mapa ();
@@ -146,11 +137,6 @@ public class JuegoTest {
 		primerJugador.agregarPosicionableEnFilaColumna(arquero, 12, 12);
 		segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 10, 10);
 		
-=======
-				
-		Arquero arquero = new Arquero(12, 12);
-		Cuartel cuartel = new Cuartel(10, 10, 11, 11);
->>>>>>> e3196d3454c726a63e5a35478a6b4e82847057bd
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
