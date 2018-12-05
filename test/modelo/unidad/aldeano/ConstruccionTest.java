@@ -14,6 +14,7 @@ import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.PosicionFueraDelMapaError;
 import modelo.unidad.Posicionable;
+import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.arquero.Arquero;
 
@@ -266,28 +267,28 @@ public class ConstruccionTest {
 	
 		assertEquals (250,cuartel.getVida());
 	}
-/*	
+
 	@Test
 	public void test12CreoUnAldeanoQueConstruyaUnCuartelYComoEstaConstruidoCreaUnArqueroQueAtacaUnAldeanoRestandole15DeVida() {
 		
-		//Mapa mapa = new Mapa ();
-		//Jugador primerJugador = new Jugador ( mapa, "anto", "juan");
-		//Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
-		Aldeano aldeano = new Aldeano();
-		Cuartel cuartel = (Cuartel)aldeano.construir('C');	
+		Mapa mapa = new Mapa ();
+		Jugador primerJugador = new Jugador ( mapa, "anto", "juan");
+		Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+		
+		Aldeano aldeano = new Aldeano(4, 4, primerJugador);
+		Cuartel cuartel = (Cuartel)aldeano.construirPropio('C', primerJugador);
 		
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		
-		Unidad arquero = cuartel.crearUnidad('A');
+		Arquero arquero = (Arquero)cuartel.crearUnidadPropia('A', segundoJugador);
+		arquero.posicionarEnFilaColumna(5, 5);
 		
-		
-	//	primerJugador.agregarPosicionableEnFilaColumna(arquero, 1, 1);
-		arquero.atacar(aldeano, new Posicion (1,1));
+		arquero.atacar(aldeano, new Posicion (4,4));
 		assertEquals (35,aldeano.getVida());
 	}
-*/
+	
 	@Test
 	public void test13CreoDosCuartelesConJugador1YJugador2YAvanzarTurnoJugador1YGetTurnosConstruccionDeCuartel2Devuelve3(){
 		Mapa mapa = new Mapa();
