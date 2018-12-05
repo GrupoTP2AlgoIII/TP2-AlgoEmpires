@@ -9,6 +9,13 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -21,7 +28,11 @@ public class PantallaInicial extends GridPane{
 	public PantallaInicial(Stage stage) {
 		
 		super();
-			
+		
+		Image imagenFondo = new Image ("file:img/age-of-empires-definitive-edition-2.jpg");
+		BackgroundImage fondo= new BackgroundImage(imagenFondo, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		this.setBackground(new Background(fondo));
+		
 		Label nombreLabel = new Label ("Jugador 1:");
 		TextField nombreInput = new TextField();
 		Label nombreLabel2 = new Label ("Jugador 2:");
@@ -44,12 +55,13 @@ public class PantallaInicial extends GridPane{
         this.add(botonOK, 0, 2);
         this.add(botonLimpiar, 1, 2);
         
+                               
         //Estilo a los nodos
         botonOK.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;"); 
         botonLimpiar.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");         
 	    nombreLabel.setStyle("-fx-font: normal bold 20px 'serif' "); 
 	    nombreLabel2.setStyle("-fx-font: normal bold 20px 'serif' ");  
-	    this.setStyle("-fx-background-color: BEIGE;"); //fondo
+	    //this.setStyle("-fx-background-color: BEIGE;"); //color del fondo
 	             
 	    BotonLimpiarEventHandler botonLimpiarEventHandler = new BotonLimpiarEventHandler(nombreInput, nombreInput2);
 	    botonLimpiar.setOnAction(botonLimpiarEventHandler);
