@@ -19,5 +19,5 @@ notifications:
 on_failure: always
 
 ignore: 
-  - "src/vista/.*"
-  - "src/controlador/.*"
+  - "src/vista"
+  - "src/controlador"
