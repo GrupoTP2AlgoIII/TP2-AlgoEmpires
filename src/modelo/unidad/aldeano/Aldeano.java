@@ -27,6 +27,16 @@ public class Aldeano extends Unidad {
 			this.produccionOro = 20;
 			this.propietario = jugadorDado;
 		}
+		
+		public Aldeano (int fila, int columna, Jugador jugador) {
+			
+			super (fila, columna);
+			this.vida = 50;
+			this.costo = 25;
+			this.produccionOro = 20;
+			this.propietario = jugador;
+			
+		}
 
 
 	@Override

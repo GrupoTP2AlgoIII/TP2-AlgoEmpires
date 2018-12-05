@@ -31,6 +31,18 @@ public class PlazaCentral extends Edificio {
 		        this.vidaFull = 450;
 
 		    }
+		   
+		    public PlazaCentral(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugador) {
+		    	this.posicionDesde = new Posicion (desdeX, desdeY);
+		    	this.posicionHasta = new Posicion (hastaX, hastaY);
+		        this.vida = 450;
+                this.costo = 100 ;
+		        this.tamanio = 4;
+		        this.velocidadReparacion = 25;
+		        this.vidaFull = 450;
+		        this.propietario = jugador;
+
+		    }
 
 		   public PlazaCentral(int turnos) {
 			   super(turnos);
@@ -98,5 +110,6 @@ public class PlazaCentral extends Edificio {
 				return false;
 
 			}
+			
 
 }

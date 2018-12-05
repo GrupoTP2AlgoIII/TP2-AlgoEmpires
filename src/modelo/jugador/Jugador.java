@@ -91,7 +91,7 @@ public class Jugador {
 
 	private void quitarPosicionablesDestruidos() {
 		this.poblacion.quitarPosicionablesDestruidos();
-			}
+	}
 
 
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {

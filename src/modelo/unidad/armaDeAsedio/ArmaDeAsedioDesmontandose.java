@@ -3,7 +3,6 @@ package modelo.unidad.armaDeAsedio;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
-import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class ArmaDeAsedioDesmontandose implements EstadoArmaDeAsedio{
@@ -15,15 +14,13 @@ public class ArmaDeAsedioDesmontandose implements EstadoArmaDeAsedio{
 	}
 
 	@Override
-	public void atacar(Unidad posicionable, Posicionable atacante, Posicion posicion, int alcance,
-			Ataque ataque) {
+	public void atacar(Unidad unidad, Posicion posicionAtacado, Posicion posicionAtacante, Ataque ataque) {
 		throw new ArmaDeAsedioDesmontandoseException ();
 		
 	}
 	
 	@Override
-	public void atacar(Edificio posicionable, Posicionable atacante, Posicion posicion, int alcance,
-			Ataque ataque) {
+	public void atacar(Edificio edificio, Posicion posicionAtacado, Posicion posicionAtacante, Ataque ataque) {
 		throw new ArmaDeAsedioDesmontandoseException ();
 		
 	}

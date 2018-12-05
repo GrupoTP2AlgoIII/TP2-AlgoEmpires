@@ -1,29 +1,21 @@
 package modelo.unidad.armaDeAsedio;
 
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.mapa.Posicion;
-import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
 public class ArmaDeAsedioMontada implements EstadoArmaDeAsedio {
 	
 	
-	public void atacar(Unidad atacado,Posicionable atacante, Posicion posicion, int alcance, Ataque ataque)  {
-		
-		if (!atacado.estaEnRangoDePosicion (posicion, alcance, alcance)) {
-			throw new AtacandoEnPosicionFueraDelAlcanceError();
-		}
-		ataque.atacar(atacado);	
+	public void atacar(Unidad unidad, Posicion posicionAtacado, Posicion posicionAtacante, Ataque ataque)  {
+	
+		ataque.atacar(unidad, posicionAtacado, posicionAtacante);	
 	}
 	
-	public void atacar(Edificio atacado,Posicionable atacante, Posicion posicion, int alcance, Ataque ataque)  {
+	public void atacar(Edificio edificio, Posicion posicionAtacado, Posicion posicionAtacante, Ataque ataque)  {
 		
-		if (!atacado.estaEnRangoDePosicion (posicion, alcance, alcance)) {
-			throw new AtacandoEnPosicionFueraDelAlcanceError();
-		}
-		ataque.atacar(atacado);	
+		ataque.atacar(edificio, posicionAtacado, posicionAtacante);	
 	}
 	
 	

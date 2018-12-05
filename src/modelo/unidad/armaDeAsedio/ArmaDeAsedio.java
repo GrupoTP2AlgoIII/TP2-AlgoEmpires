@@ -2,7 +2,9 @@ package modelo.unidad.armaDeAsedio;
 
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
+import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
+import modelo.unidad.AtacandoAUnAliadoError;
 import modelo.unidad.Unidad;
 
 public class ArmaDeAsedio extends Unidad {
@@ -13,7 +15,7 @@ public class ArmaDeAsedio extends Unidad {
 	public ArmaDeAsedio() {
 		this.vida = 150;
 		this.costo = 200;
-		this.ataque = new Ataque(75,0, this.alcance);
+		this.ataque = new Ataque (75,0, this.alcance);
 		
 	}
 	
@@ -29,23 +31,39 @@ public class ArmaDeAsedio extends Unidad {
 		
 	}
 	
+	public ArmaDeAsedio(int fila, int columna, Jugador jugadorDado) {
+		
+		super (fila, columna);
+		this.vida = 150;
+		this.costo = 200;
+		this.ataque = new Ataque(75,0, this.alcance);
+		this.estado = new ArmaDeAsedioDesmontada ();
+		this.cantidadDeMovimientos = 0;
+		this.movimientosPermitidos = 1;
+		this.propietario = jugadorDado;
+		
+	}
+	
 	@Override
 	public void desplazarHasta(Posicion hasta) {
 		this.posicion = estado.desplazarPosicionHasta(hasta, this.posicion);
 	}
 	
-	public void atacar(Edificio atacado) {
-		
-		estado.atacar(atacado,this, this.posicion, this.alcance, this.ataque);
+	public void atacar(Edificio edificio, Posicion posicionAtacado) {
+		if  (posicionableEstaEnPropietario(edificio)) {
+			throw new AtacandoAUnAliadoError ();
+		}
+		estado.atacar(edificio, posicionAtacado, this.posicion, this.ataque);
 
 	}
 
-	public void atacar(Unidad atacado) {
-		
-		estado.atacar(atacado,this, this.posicion, this.alcance, this.ataque);
+	public void atacar(Unidad unidad, Posicion posicionAtacado) {
+		if  (posicionableEstaEnPropietario(unidad)) {
+			throw new AtacandoAUnAliadoError ();
+		}		
+		estado.atacar(unidad, posicionAtacado, this.posicion, this.ataque);
 
 	}
-	
 	
 	
 	public void montar() {	

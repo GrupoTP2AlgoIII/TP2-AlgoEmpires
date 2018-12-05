@@ -40,6 +40,18 @@ public class Cuartel extends Edificio{
 	       this.vidaFull = vida;
 	    }
 	   
+	   public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugador) {
+		   
+		   this.posicionDesde = new Posicion (desdeX, desdeY);
+		   this.posicionHasta = new Posicion (hastaX, hastaY);
+	   	   this.vida = 250;
+		   this.costo = 50;
+	       this.tamanio = 4;
+	       this.velocidadReparacion = 50;
+	       this.vidaFull = vida;
+	       this.propietario = jugador;
+	    }
+	   
 	   public void atacar (Posicionable posicionable) {
 		   throw new CuartelNoPuedeAtacarError ();
 	   }

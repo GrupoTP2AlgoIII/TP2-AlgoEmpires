@@ -3,7 +3,6 @@ package modelo.edificio.cuartel;
 import modelo.edificio.EdificiosNoSePuedenDesplazarError;
 import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
-import modelo.unidad.aldeano.Aldeano;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,11 +17,13 @@ public class CuartelTest {
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
         
+        
+        
 		Unidad arquero = cuartel.crearUnidad('A');
-		Aldeano aldeano = new Aldeano();
-		arquero.atacar(aldeano, new Posicion (1,1));
 		
-		assertEquals (35,aldeano.getVida());
+		arquero.recibirDanio(10);
+		
+		assertEquals (arquero.getVida(), 65);
 
     }
 

@@ -1,10 +1,10 @@
 package modelo.unidad.espadachin;
 
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
+import modelo.unidad.AtacandoAUnAliadoError;
 import modelo.unidad.Unidad;
 
 public class Espadachin extends Unidad {
@@ -23,31 +23,38 @@ public class Espadachin extends Unidad {
 		this.ataque = new Ataque(15,25, this.alcance);
 		this.propietario = jugadorDado;
 	}
+	
+	public Espadachin (int fila, int columna) {
+		super (fila, columna);
+		this.vida = 100;
+		this.costo = 50;
+		this.ataque = new Ataque(15,25, this.alcance);	
+		
+	}
 
-
-	public Espadachin(int fila, int columna) {
+	public Espadachin(int fila, int columna, Jugador jugadorDado) {
 		
 		super (fila, columna);
 		this.vida = 100;
 		this.costo = 50;
 		this.ataque = new Ataque(15,25, this.alcance);
+		this.propietario = jugadorDado;
 	}
 	
 	@Override
 	public void atacar (Unidad unidad, Posicion posicionAtacado) {
-		if (!posicionAtacado.perteneceALaCuadricula(this.posicion, this.alcance, this.alcance)) {
-			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		if  (posicionableEstaEnPropietario(unidad)) {
+			throw new AtacandoAUnAliadoError ();
 		}
-		this.ataque.atacar(unidad);
+		this.ataque.atacar(unidad, posicionAtacado, this.posicion);
 	}
-	
+
 	@Override
 	public void atacar (Edificio edificio, Posicion posicionAtacado) {
-		if (!posicionAtacado.perteneceALaCuadricula(this.posicion, this.alcance, this.alcance)) {
-			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		if  (posicionableEstaEnPropietario(edificio)) {
+			throw new AtacandoAUnAliadoError ();
 		}
-		this.ataque.atacar(edificio);
-	}
-	
+		this.ataque.atacar(edificio, posicionAtacado, this.posicion);
+	}	
 
 }

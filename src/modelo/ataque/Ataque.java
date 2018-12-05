@@ -1,6 +1,7 @@
 package modelo.ataque;
 
 import modelo.edificio.Edificio;
+import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
 
 public class Ataque {
@@ -22,6 +23,20 @@ public class Ataque {
 	public void atacar (Edificio recibeAtaque) {
 		recibeAtaque.recibirDanio (this.danioEdificio);
 		
+	}
+	
+	public void atacar (Unidad unidadAtacada, Posicion posicionAtacado, Posicion posicionAtacante) {
+		if (!posicionAtacado.perteneceALaCuadricula(posicionAtacante, distancia, this.distancia)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
+		this.atacar(unidadAtacada);
+	}
+	
+	public void atacar (Edificio edificioAtacado, Posicion posicionAtacado, Posicion posicionAtacante) {
+		if (!posicionAtacado.perteneceALaCuadricula(posicionAtacante, distancia, this.distancia)) {
+			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+		}
+		this.atacar(edificioAtacado);
 	}
 	
 }

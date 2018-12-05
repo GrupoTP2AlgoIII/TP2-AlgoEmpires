@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import modelo.edificio.cuartel.Cuartel;
+import modelo.jugador.Jugador;
+import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -103,8 +105,14 @@ public class JuegoTest {
 		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 		
-		Arquero arquero = new Arquero(5,5);
-		Cuartel cuartel = new Cuartel(3,3,4,4);
+		Mapa mapa = new Mapa ();
+		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
+		Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
+		Arquero arquero = new Arquero (5, 5, primerJugador);
+		Cuartel cuartel = new Cuartel (3, 3, 4, 4, segundoJugador);
+		primerJugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
+		segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 3, 3);
+		
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
@@ -128,8 +136,15 @@ public class JuegoTest {
 		Juego juego = new Juego("Pedro", "Maria");
 		juego.iniciarJuego();
 		
-		Arquero arquero = new Arquero(12, 12);
-		Cuartel cuartel = new Cuartel(10, 10, 11, 11);
+		
+		Mapa mapa = new Mapa ();
+		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
+		Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
+		Arquero arquero = new Arquero (12, 12, primerJugador);
+		Cuartel cuartel = new Cuartel (10, 10, 11, 11, segundoJugador);
+		primerJugador.agregarPosicionableEnFilaColumna(arquero, 12, 12);
+		segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 10, 10);
+		
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
 		cuartel.avanzarTurno();
