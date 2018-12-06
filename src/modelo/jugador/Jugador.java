@@ -170,5 +170,15 @@ public class Jugador {
 		this.castillo.atacarEnemigosAlAlcance();
 	}
 	
+	// Metodos para vista
+	
+	public int obtenerOro() {
+		return this.poblacion.obtenerOro();
+	}
+	
+	public int obtenerCantidadPoblacion() {
+		return this.poblacion.obtenerCantidadPoblacion();
+	}
+	
 	
 }

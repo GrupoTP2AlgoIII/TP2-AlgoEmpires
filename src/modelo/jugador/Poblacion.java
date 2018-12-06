@@ -125,5 +125,15 @@ public class Poblacion {
     public void agregarEdificio(Map <Posicion, Posicionable> plazaConstruida){
         this.posicionables.putAll(plazaConstruida);
     }
+    
+    // Metodo para la vista
+    
+    public int obtenerOro() {
+    	return this.oro;
+    }
+    
+    public int obtenerCantidadPoblacion() {
+    	return this.poblacion;
+    }
 }
 

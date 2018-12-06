@@ -16,6 +16,7 @@ public class Castillo extends Edificio {
 	
 	private Ataque ataque;
 	private int alcance = 3;
+	private int danio = 20;
 	//private ArrayList<Posicionable> atacables;
 	private HashMap <Posicion, Posicionable> atacables;
 	
@@ -25,7 +26,7 @@ public class Castillo extends Edificio {
         this.velocidadReparacion = 15;
 	    this.costo = 50;
         this.vidaFull = vida;
-        this.ataque = new Ataque (20, 20, this.alcance);
+        this.ataque = new Ataque (this.danio, this.danio, this.alcance);
         //this.atacables = new ArrayList<Posicionable>();
         this.atacables = new HashMap<Posicion, Posicionable>();
     }
@@ -37,7 +38,7 @@ public class Castillo extends Edificio {
         this.velocidadReparacion = 15;
 	    this.costo = 50;
         this.vidaFull = vida;
-        this.ataque = new Ataque (20, 20, this.alcance);
+        this.ataque = new Ataque (this.danio, this.danio, this.alcance);
         //this.atacables = new ArrayList<Posicionable>();
         this.atacables = new HashMap<Posicion, Posicionable>();
     }
@@ -51,7 +52,7 @@ public class Castillo extends Edificio {
 	   	   this.velocidadReparacion = 15;
 		   this.costo = 50;	       
 	       this.vidaFull = vida;	       
-	       this.ataque = new Ataque (20, 20, this.alcance);
+	       this.ataque = new Ataque (this.danio, this.danio, this.alcance);
 	       this.estado = new EstadoEdificioDisponible ();
 	       //this.atacables = new ArrayList<Posicionable>();
 	       this.atacables = new HashMap<Posicion, Posicionable>();

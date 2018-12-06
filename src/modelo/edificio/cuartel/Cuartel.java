@@ -37,7 +37,7 @@ public class Cuartel extends Edificio{
 	       this.velocidadReparacion = 50;
 	       this.vidaFull = vida;
 	       this.propietario = jugador;
-	    }
+	   }
 	   
 	   public void atacar (Posicionable posicionable) {
 		   throw new CuartelNoPuedeAtacarError ();

@@ -15,29 +15,18 @@ public class BotonesArriba extends HBox {
 	    this.setSpacing(10);
 	    this.setStyle("-fx-background-color: BEIGE;"); //fondo
 	    
-		Label nombreLabel = new Label (nombreJ1);
-		Label nombreLabel2 = new Label (nombreJ2);
-		//Label oroLabel = new Label (juego.obtenerOroJugadorActual());
-		//Label vidaCastilloLabel = new Label (juego.obtenerVidaCastilloJugadorActual());    
+		Label jugadorLabel = new Label ("Jugador actual: ");
+	    Label nombreLabel = new Label (nombreJ1);
+		//Label vidaCastilloLabel = new Label (juego.obtenerVidaCastilloJugadorActual());    	
 		
+
 		
-		Button botonPasarTurno = new Button("Pasar Turno");
-		botonPasarTurno.setOnAction(e -> {
-			try {
-				juego.avanzarTurno();
-				System.out.println("avanzar turno bien");
-			}
-			catch (Exception excepcion2) {
-				System.out.println("error al avanzar turno");
-			}
-		});
-		
-        // Estilos a los nodos
-		botonPasarTurno.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");         
-	    nombreLabel.setStyle("-fx-font: normal bold 20px 'serif' "); 
-	    nombreLabel2.setStyle("-fx-font: normal bold 20px 'serif' ");
+        // Estilos a los nodos   
+	    nombreLabel.setStyle("-fx-font: normal bold 20px 'serif' ");
+	    jugadorLabel.setStyle("-fx-font: normal bold 20px 'serif' ");
+	    //nombreLabel2.setStyle("-fx-font: normal bold 20px 'serif' ");
 	    
-		this.getChildren().addAll(nombreLabel, botonPasarTurno, nombreLabel2);
+		this.getChildren().addAll(jugadorLabel, nombreLabel);
 		this.setAlignment(Pos.CENTER);
 		
 		//Faltaria obtener cada dato del jugador, como la vida de su castillo, su oro y los nombres( estos por constructor)

@@ -33,6 +33,13 @@ public class PantallaInicial extends GridPane{
 		BackgroundImage fondo= new BackgroundImage(imagenFondo, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		this.setBackground(new Background(fondo));
 		
+//		Image imagenSonido = new Image ("file:img/mute.jpg", 45, 45, true, true);
+//		Button botonSonido = new Button ();
+//		botonSonido.setGraphic(new ImageView(imagenSonido));
+//		botonSonido.setTranslateX(10);
+//		botonSonido.setTranslateY(10);
+//		botonSonido.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+		
 		Label nombreLabel = new Label ("Jugador 1:");
 		TextField nombreInput = new TextField();
 		Label nombreLabel2 = new Label ("Jugador 2:");
@@ -53,8 +60,7 @@ public class PantallaInicial extends GridPane{
         this.add(nombreLabel2, 0, 1);
         this.add(nombreInput2, 1, 1);
         this.add(botonOK, 0, 2);
-        this.add(botonLimpiar, 1, 2);
-        
+        this.add(botonLimpiar, 1, 2);        
                                
         //Estilo a los nodos
         botonOK.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;"); 

@@ -11,6 +11,7 @@ public class ArmaDeAsedio extends Unidad {
 
 	private int alcance = 5;
 	private EstadoArmaDeAsedio estado;
+	private int danio = 75;
 	
 	public ArmaDeAsedio() {
 		this.vida = 150;
@@ -24,7 +25,7 @@ public class ArmaDeAsedio extends Unidad {
 		super (fila, columna);
 		this.vida = 150;
 		this.costo = 200;
-		this.ataque = new Ataque(75,0, this.alcance);
+		this.ataque = new Ataque(this.danio,0, this.alcance);
 		this.estado = new ArmaDeAsedioDesmontada ();
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
@@ -36,7 +37,7 @@ public class ArmaDeAsedio extends Unidad {
 		super (fila, columna);
 		this.vida = 150;
 		this.costo = 200;
-		this.ataque = new Ataque(75,0, this.alcance);
+		this.ataque = new Ataque(this.danio,0, this.alcance);
 		this.estado = new ArmaDeAsedioDesmontada ();
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;

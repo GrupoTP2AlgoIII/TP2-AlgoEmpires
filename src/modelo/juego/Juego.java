@@ -53,5 +53,20 @@ public class Juego {
 		// Esto podria quedar
 		// this.JugadorActual = jugadorActual.avanzarTurno(); si el metodo en la clase Jugador devuelve el enemigo
 	}
+	
+	// METODOS PARA LA VISTA
+	
+	public int obtenerOroJugadorActual() {
+		return this.jugadorActual.obtenerOro();
+	}
+	
+	public int obtenerCantidadPoblacionJugadorActual() {
+		return this.jugadorActual.obtenerCantidadPoblacion();
+	}
+	
+	public int obtenerVidaPosicionableEn (int x, int y) {
+		return this.mapa.obtenerPosicionableEn(new Posicion(x,y)).getVida();
+	}
+
 
 }

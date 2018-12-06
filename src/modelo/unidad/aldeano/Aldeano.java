@@ -35,7 +35,6 @@ public class Aldeano extends Unidad {
 			this.costo = 25;
 			this.produccionOro = 20;
 			this.propietario = jugador;
-			
 		}
 
 

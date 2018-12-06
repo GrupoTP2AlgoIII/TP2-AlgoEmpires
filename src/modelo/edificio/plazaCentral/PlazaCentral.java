@@ -29,7 +29,6 @@ public class PlazaCentral extends Edificio {
 		        this.velocidadReparacion = 25;
 		        this.vidaFull = 450;
 		        this.propietario = jugador;
-
 		    }
 
 		   public PlazaCentral(int turnos) {

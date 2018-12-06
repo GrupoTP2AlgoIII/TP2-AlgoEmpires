@@ -102,10 +102,4 @@ public abstract class Posicionable {
 		return this.vida;
 	}
 
-
-
-
-
-
-
 }
