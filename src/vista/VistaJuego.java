@@ -35,7 +35,7 @@ public class VistaJuego extends BorderPane{
 		this.setRight((this.botonesDerecha));
 		this.setBottom(this.crearPanelInferior(juego, nombreJugador1, nombreJugador2));
 				
-		Media sound = new Media(new File("C:\\\\Users\\\\Tomás-adm\\\\Desktop\\\\FIUBA\\\\Algoritmos III\\\\TP2\\\\TP\\\\sound\\Age-of-Empires-Ambient-Sounds.mp3").toURI().toString());
+		Media sound = new Media(new File("sound/Age-of-Empires-Ambient-Sounds.mp3").toURI().toString());
 		this.mediaPlayer = new MediaPlayer(sound);
 		this.mediaPlayer.setAutoPlay(true);
 		
