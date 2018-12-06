@@ -1,6 +1,7 @@
 package modelo.edificio;
 
 import modelo.jugador.Jugador;
+import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
 
 public class EstadoEdificioOcupado implements EstadoEdificio{
@@ -17,7 +18,7 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 
 		edificio.sumarVida();
 		this.turnosOcupado--;
-		if(this.turnosOcupado==0) {
+		if(this.turnosOcupado == 0) {
 			return new EstadoEdificioDisponible();
 		}
 		return this;
@@ -65,7 +66,7 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 	}
 
 	@Override
-	public Unidad crearArqueroDeJugador(Jugador jugador)  {
+	public Unidad crearArqueroDeJugador(Jugador jugador, Posicion posicionEdificio)  {
 		throw new EdificioOcupadoException();
 	}
 }

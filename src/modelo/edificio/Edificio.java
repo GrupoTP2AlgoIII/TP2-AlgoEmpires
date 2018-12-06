@@ -91,8 +91,8 @@ public abstract class Edificio extends Posicionable {
 
 		ArrayList<Posicion> posicionesEdificio = new ArrayList<Posicion>();
 
-		for(int i=0;i< this.calcularLado();i++){
-			for(int j=0;j< this.calcularLado() ;j++){
+		for(int i = 0; i < this.calcularLado(); i++){
+			for(int j = 0; j < this.calcularLado() ; j++){
 				Posicion posicionAux = new Posicion(posicionDeConstruccion);
 				posicionAux.sumarDesplazamiento(i,j);
 				posicionesEdificio.add(posicionAux);

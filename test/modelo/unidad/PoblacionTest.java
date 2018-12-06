@@ -152,7 +152,7 @@ public class PoblacionTest {
 	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() {
 		Mapa mapa = new Mapa();
 		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
-		Posicionable cuartel = new Cuartel();
+		Posicionable cuartel = new Cuartel(jugador);
 		
 		//construccion plaza 3 turnos
 		cuartel.avanzarTurno();
@@ -163,7 +163,7 @@ public class PoblacionTest {
 		jugador.agregarPosicionableEnFilaColumna(cuartel,25,25);
 		
 		jugador.crearUnidadPropia(cuartel.getPosicion(),'A');
-		Posicion posicionArquero = new Posicion(26,25);
+		Posicion posicionArquero = new Posicion(26,26);
 		jugador.crearUnidadPropia(posicionArquero,'A');
 	}
 

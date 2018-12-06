@@ -168,7 +168,7 @@ public class JugadorTest {
 		Posicionable aldeanoDeJugador2 = mapa.obtenerPosicionableEn(posicionDelAldeanoDeJugador2);
 
 		arqueroDeJugador1.atacar(aldeanoDeJugador2);
-
+		
 
 		assertEquals(aldeanoDeJugador2.getVida(), 35);
 

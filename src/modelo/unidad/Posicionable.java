@@ -94,6 +94,10 @@ public abstract class Posicionable {
 	public Edificio construirPropio(char tipoConstruccion, Jugador jugador) {
 		throw new ConstruccionEdificioException();
 	}
+	
+	public Edificio construirPropio (char tipoConstruccion, Jugador jugador, Posicion posicionDeConstruccion) {
+		throw new ConstruccionEdificioException();
+	}
 
 
 	//METODOS DE PRUEBAS

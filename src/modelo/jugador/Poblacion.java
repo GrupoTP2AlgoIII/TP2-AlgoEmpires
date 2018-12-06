@@ -113,10 +113,16 @@ public class Poblacion {
     }
 
     public Posicionable obtenerEdificio(Posicion posicionEdificio){
+    	if (!posicionables.containsKey(posicionEdificio)) {
+    		throw new PosicionNoPerteneceAPoblacionError ();
+    	}
         return this.posicionables.get(posicionEdificio);
     }
 
     public Posicionable obtenerPosicionable(Posicion posicion){
+    	if (!posicionables.containsKey(posicion)) {
+    		throw new PosicionNoPerteneceAPoblacionError ();
+    	}
         return this.posicionables.get(posicion);
     }
 

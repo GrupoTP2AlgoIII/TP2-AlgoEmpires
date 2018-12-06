@@ -139,8 +139,8 @@ public class Mapa {
 		  while(!posicionesDelEdificio.isEmpty()){	   
 			   try {
 				Posicion posicionActual = posicionesDelEdificio.remove(0);
+				edificio.posicionarEnPosicion(posicionActual);
 		    	this.posicionarPosicionableEnPosicion(edificio,posicionActual);
-		   		edificio.posicionarEnPosicion(posicionActual);
 		       } catch(DesplazarAPosicionOcupadaError e){
 		    	   
 		       }
@@ -166,6 +166,19 @@ public class Mapa {
 		}
 		
 		return atacables;
+		
+	}
+
+	public void atacar(int desdeX, int desdeY, int hastaX, int hastaY) {
+		
+		Posicion posicionAtacante = new Posicion (desdeX, desdeY);
+		Posicion posicionRecibeElAtaque = new Posicion (hastaX, hastaY);
+		
+		Posicionable atacante = this.mapa.get(posicionAtacante);
+		Posicionable recibeElAtaque = this.mapa.get(posicionRecibeElAtaque);
+		
+		atacante.atacar(recibeElAtaque);
+		
 		
 	}
 	

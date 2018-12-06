@@ -53,7 +53,24 @@ public class Aldeano extends Unidad {
 
 		public Edificio construirPropio(char tipo, Jugador jugador) {
 			if(tipo == 'C') {
-				Edificio cuartel = new Cuartel(jugador);
+				Posicion posicionAux = this.posicion;
+				posicionAux.sumarDesplazamiento(1, 1);
+				Edificio cuartel = new Cuartel(posicionAux, jugador);
+				
+				estado = estado.construir(cuartel);
+				return cuartel;
+			}
+
+			Edificio plaza = new PlazaCentral(0, jugador);
+			estado = estado.construir(plaza);
+			return plaza;
+		}
+		
+		@Override
+		public Edificio construirPropio(char tipo, Jugador jugador, Posicion posicionDeConstruccion) {
+			if(tipo == 'C') {
+				Edificio cuartel = new Cuartel(posicionDeConstruccion, jugador);
+				
 				estado = estado.construir(cuartel);
 				return cuartel;
 			}

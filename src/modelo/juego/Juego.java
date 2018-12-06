@@ -67,6 +67,21 @@ public class Juego {
 	public int obtenerVidaPosicionableEn (int x, int y) {
 		return this.mapa.obtenerPosicionableEn(new Posicion(x,y)).getVida();
 	}
+	
+	public void atacar (int desdeX, int desdeY, int hastaX, int hastaY) {
+		
+		this.mapa.atacar (desdeX, desdeY, hastaX, hastaY);
+	}
+	
+	public void crearUnidadPropia (Posicion posicionEdificio, char tipoUnidad) {
+		
+		this.jugadorActual.crearUnidadPropia(posicionEdificio, tipoUnidad);
+	}
+	
+	public void crearEdificioPropio (Posicion posicionAldeano, Posicion posicionDeConstruccion, char tipoConstruccion) {
+		
+		this.jugadorActual.construirEdificioPropio(posicionAldeano, posicionDeConstruccion, tipoConstruccion);
+	}
 
 
 }

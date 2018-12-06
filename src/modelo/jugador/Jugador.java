@@ -58,7 +58,7 @@ public class Jugador {
 		
 		this.crearCastilloDesde(4, 4);
 		this.crearPlazaCentralPropiaDesde(1, 8);
-		this.iniciarAldeanosPropiosDesde(8, 6);		
+		this.iniciarAldeanosPropiosDesde(8, 6);	
 				
 		this.enemigo.crearCastilloDesde(this.mapa.getFilas() - 6, this.mapa.getColumnas() - 6);		
 		this.enemigo.crearPlazaCentralPropiaDesde(this.mapa.getFilas() - 1, this.mapa.getColumnas() - 8);
@@ -69,13 +69,14 @@ public class Jugador {
 	public void construirEdificioPropio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
 		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
 		Posicionable aldeano = this.poblacion.obtenerPosicionable(posicionAldeano);
-		Edificio edificio = aldeano.construirPropio(tipoConstruccion, this);
+		Edificio edificio = aldeano.construirPropio(tipoConstruccion, this, posicionDeConstruccion);
 		this.poblacion.descontarOro(edificio);
 		Map <Posicion, Posicionable> edificioAgregado = this.mapa.ponerEdificio(edificio,posicionDeConstruccion);
 		this.poblacion.agregarEdificio(edificioAgregado);
 	}
 
 	public void crearUnidadPropia(Posicion posicionEdificio,char tipoUnidad){
+
 		Posicionable edificio = this.poblacion.obtenerEdificio(posicionEdificio);
 		Unidad unidad =  edificio.crearUnidadPropia(tipoUnidad, this);
 		this.poblacion.descontarOro(unidad);
@@ -88,7 +89,7 @@ public class Jugador {
 		this.castillo.atacarEnemigosAlAlcance();
 	}
 
-	/*
+/*
 	private void quitarPosicionablesDestruidos() {
 		this.poblacion.quitarPosicionablesDestruidos();
 	}
@@ -106,7 +107,7 @@ public class Jugador {
 	public void iniciarAldeanosPropiosDesde(int x, int y)  {
 
 		for (int i = y; i <= (y +2); i++ ) {
-			Unidad aldeano = new Aldeano(this);
+			Unidad aldeano = new Aldeano(x, i, this);
 			this.agregarPosicionableEnFilaColumna(aldeano, x, i);
 			//this.inventario.aumentarPoblacion(aldeano);
 		}
@@ -178,6 +179,17 @@ public class Jugador {
 	
 	public int obtenerCantidadPoblacion() {
 		return this.poblacion.obtenerCantidadPoblacion();
+	}
+
+	public void perderLaPartida() {
+		
+		throw new JuegoFinalizadoException (this.enemigo.getNombre());
+	}
+
+	public void buscarPosicion(Unidad unidad, Posicion posicionEdificio) {
+		
+		this.mapa.buscarPosicionYUbicar(unidad, posicionEdificio);
+		
 	}
 	
 	

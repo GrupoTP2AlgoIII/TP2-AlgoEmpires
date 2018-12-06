@@ -1,6 +1,7 @@
 package modelo.edificio;
 
 import modelo.jugador.Jugador;
+import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
@@ -17,8 +18,9 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 	}
 
 	@Override
-	public Unidad crearArqueroDeJugador(Jugador jugador) {
+	public Unidad crearArqueroDeJugador(Jugador jugador, Posicion posicionEdifico) {
 		Unidad arquero = new Arquero(jugador);
+		jugador.buscarPosicion (arquero, posicionEdifico);
 		return arquero;
 	}
 

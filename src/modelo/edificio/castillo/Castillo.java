@@ -60,6 +60,15 @@ public class Castillo extends Edificio {
 	    }
 	  
 	  @Override
+	  public void recibirDanio (int danio) {
+		  this.vida -= danio;
+		  if (this.vida <= 0) {	  
+			  this.propietario.perderLaPartida ();
+		  }
+		  
+	  }
+	  
+	  @Override
 	  public Unidad crearUnidad(char tipo) {
 		  return estado.crearArmaAsedio();
 	  }

@@ -1,6 +1,7 @@
 package modelo.edificio;
 
 import modelo.jugador.Jugador;
+import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
 
 public interface EstadoEdificio {
@@ -9,7 +10,7 @@ public interface EstadoEdificio {
 	//la cual es su propietaria
 
 	public Unidad crearArquero();
-	public Unidad crearArqueroDeJugador(Jugador jugador);
+	public Unidad crearArqueroDeJugador(Jugador jugador, Posicion posicionEdificio);
 
 
 
