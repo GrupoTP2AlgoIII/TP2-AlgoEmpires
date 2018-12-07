@@ -54,19 +54,6 @@ public class Juego {
 		// this.JugadorActual = jugadorActual.avanzarTurno(); si el metodo en la clase Jugador devuelve el enemigo
 	}
 	
-	// METODOS PARA LA VISTA
-	
-	public int obtenerOroJugadorActual() {
-		return this.jugadorActual.obtenerOro();
-	}
-	
-	public int obtenerCantidadPoblacionJugadorActual() {
-		return this.jugadorActual.obtenerCantidadPoblacion();
-	}
-	
-	public int obtenerVidaPosicionableEn (int x, int y) {
-		return this.mapa.obtenerPosicionableEn(new Posicion(x,y)).getVida();
-	}
 	
 	public void atacar (int desdeX, int desdeY, int hastaX, int hastaY) {
 		
@@ -81,7 +68,22 @@ public class Juego {
 	public void crearEdificioPropio (Posicion posicionAldeano, Posicion posicionDeConstruccion, char tipoConstruccion) {
 		
 		this.jugadorActual.construirEdificioPropio(posicionAldeano, posicionDeConstruccion, tipoConstruccion);
+	}	
+	
+	// METODOS PARA LA VISTA
+	
+	public int obtenerOroJugadorActual() {
+		return this.jugadorActual.obtenerOro();
 	}
+	
+	public int obtenerCantidadPoblacionJugadorActual() {
+		return this.jugadorActual.obtenerCantidadPoblacion();
+	}
+	
+	public int obtenerVidaPosicionableEn (int x, int y) {
+		return this.mapa.obtenerPosicionableEn(new Posicion(x,y)).getVida();
+	}
+
 
 
 }

@@ -65,8 +65,7 @@ public abstract class Posicionable {
 	}
 
 	//Para que funcione ataque
-	public  Unidad crearUnidadPropia(char tipo, Jugador jugador)
-	{
+	public  Unidad crearUnidadPropia(char tipo, Jugador jugador) {
 		throw new CrearUnidadException();
 	}
 
@@ -94,11 +93,6 @@ public abstract class Posicionable {
 	public Edificio construirPropio(char tipoConstruccion, Jugador jugador) {
 		throw new ConstruccionEdificioException();
 	}
-	
-	public Edificio construirPropio (char tipoConstruccion, Jugador jugador, Posicion posicionDeConstruccion) {
-		throw new ConstruccionEdificioException();
-	}
-
 
 	//METODOS DE PRUEBAS
 

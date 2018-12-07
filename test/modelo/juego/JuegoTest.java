@@ -159,7 +159,7 @@ public class JuegoTest {
 		Mapa mapa = new Mapa ();
 		Jugador primerJugador = new Jugador (mapa, "anto", "juan");
 		Juego juego = new Juego ("anto", "juan");
-		Cuartel cuartel = new Cuartel (new Posicion (1,1), primerJugador);
+		Cuartel cuartel = new Cuartel (1,1,2,2,primerJugador);
 		juego.agregarEdificioDesdeHasta(cuartel, 1, 1, 2, 2);
 		
 		cuartel.avanzarTurno();

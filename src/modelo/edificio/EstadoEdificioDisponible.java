@@ -18,9 +18,8 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 	}
 
 	@Override
-	public Unidad crearArqueroDeJugador(Jugador jugador, Posicion posicionEdifico) {
+	public Unidad crearArqueroDeJugador(Jugador jugador) {
 		Unidad arquero = new Arquero(jugador);
-		jugador.buscarPosicion (arquero, posicionEdifico);
 		return arquero;
 	}
 

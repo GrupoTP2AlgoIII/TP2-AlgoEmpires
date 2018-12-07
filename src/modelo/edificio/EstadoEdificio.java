@@ -10,7 +10,7 @@ public interface EstadoEdificio {
 	//la cual es su propietaria
 
 	public Unidad crearArquero();
-	public Unidad crearArqueroDeJugador(Jugador jugador, Posicion posicionEdificio);
+	public Unidad crearArqueroDeJugador(Jugador jugador);
 
 
 

@@ -66,7 +66,7 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 	}
 
 	@Override
-	public Unidad crearArqueroDeJugador(Jugador jugador, Posicion posicionEdificio)  {
+	public Unidad crearArqueroDeJugador(Jugador jugador)  {
 		throw new EdificioOcupadoException();
 	}
 }

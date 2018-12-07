@@ -136,41 +136,30 @@ public class JugadorTest {
 		
 		jugador2.iniciarAldeanosPropiosDesde(10, 10);
 
-
-		Posicion posicion1 = new Posicion(5, 5);
-//		Posicion posicion2 = new Posicion(5, 6);
-//		Posicion posicion3 = new Posicion(5, 7);
-		Posicion posicion4 = new Posicion(6, 6);
-
-
+		Posicion posicionAldeanoJugador = new Posicion(5, 5);
+		Posicion posicionUnAldeano1 = new Posicion (5,6);
+		Posicion posicionCreacionCuartel = new Posicion(6, 6);
+		
+		Posicion posicionCreacionPlaza = new Posicion (4,4);
 		Posicion posicionDelAldeanoDeJugador2 = new Posicion(10, 10);
 
+		jugador.construirEdificioPropio(posicionAldeanoJugador, posicionCreacionPlaza, 'P');
+		jugador.construirEdificioPropio(posicionUnAldeano1, posicionCreacionCuartel, 'C');
 
-		jugador.crearPlazaCentralPropiaDesde(1, 8);
-
-		jugador.construirEdificioPropio(posicion1, posicion4, 'C');
-
-
-		Posicion posicionPlaza = new Posicion(2, 9);
-
-		jugador.crearUnidadPropia(posicionPlaza, 'A');
-
-
-		Posicionable cuartel = mapa.obtenerPosicionableEn(posicion4);
-
-
-		cuartel.avanzarTurno();
-		cuartel.avanzarTurno();
-		cuartel.avanzarTurno();
-
-
-		Unidad arqueroDeJugador1 = cuartel.crearUnidadPropia('A', jugador);
-		Posicionable aldeanoDeJugador2 = mapa.obtenerPosicionableEn(posicionDelAldeanoDeJugador2);
-
-		arqueroDeJugador1.atacar(aldeanoDeJugador2);
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 		
-
-		assertEquals(aldeanoDeJugador2.getVida(), 35);
+		//creo un Arquero
+		jugador.crearUnidadPropia(posicionCreacionCuartel, 'A');
+		
+		Posicion posicionArquero = new Posicion (7,8);
+		
+		Posicionable arquero = mapa.obtenerPosicionableEn(posicionArquero);
+		Posicionable aldeanoEnemigo = mapa.obtenerPosicionableEn(posicionDelAldeanoDeJugador2);
+		arquero.atacar(aldeanoEnemigo);
+		
+		assertEquals (aldeanoEnemigo.getVida(), 35);
 
 	}
 	

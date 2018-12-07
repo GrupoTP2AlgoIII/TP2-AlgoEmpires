@@ -148,23 +148,24 @@ public class PoblacionTest {
 	}
 	
 
-	@Test(expected=CrearUnidadException.class)
+	@Test(expected = CrearUnidadException.class)
 	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() {
 		Mapa mapa = new Mapa();
 		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
-		Posicionable cuartel = new Cuartel(jugador);
+		jugador.iniciarAldeanosPropiosDesde(5, 5);
+		Posicion posicionDeAldeano = new Posicion (5,5);
+		Posicion posicionDelCuartel = new Posicion (4,4);
+		jugador.construirEdificioPropio(posicionDeAldeano, posicionDelCuartel, 'C');
 		
-		//construccion plaza 3 turnos
-		cuartel.avanzarTurno();
-		cuartel.avanzarTurno();
-		cuartel.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
+		jugador.avanzarTurno();
 
-		cuartel.posicionarEnFilaColumna(25,25);
-		jugador.agregarPosicionableEnFilaColumna(cuartel,25,25);
 		
-		jugador.crearUnidadPropia(cuartel.getPosicion(),'A');
-		Posicion posicionArquero = new Posicion(26,26);
-		jugador.crearUnidadPropia(posicionArquero,'A');
+		jugador.crearUnidadPropia(posicionDelCuartel,'A');
+		Posicion posicionArqueroCreado = new Posicion(5,5);
+		jugador.crearUnidadPropia(posicionArqueroCreado,'A');
 	}
 
 

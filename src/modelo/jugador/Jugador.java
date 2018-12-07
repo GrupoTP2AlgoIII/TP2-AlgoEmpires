@@ -69,7 +69,7 @@ public class Jugador {
 	public void construirEdificioPropio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
 		posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
 		Posicionable aldeano = this.poblacion.obtenerPosicionable(posicionAldeano);
-		Edificio edificio = aldeano.construirPropio(tipoConstruccion, this, posicionDeConstruccion);
+		Edificio edificio = aldeano.construirPropio(tipoConstruccion, this);
 		this.poblacion.descontarOro(edificio);
 		Map <Posicion, Posicionable> edificioAgregado = this.mapa.ponerEdificio(edificio,posicionDeConstruccion);
 		this.poblacion.agregarEdificio(edificioAgregado);
@@ -184,12 +184,6 @@ public class Jugador {
 	public void perderLaPartida() {
 		
 		throw new JuegoFinalizadoException (this.enemigo.getNombre());
-	}
-
-	public void buscarPosicion(Unidad unidad, Posicion posicionEdificio) {
-		
-		this.mapa.buscarPosicionYUbicar(unidad, posicionEdificio);
-		
 	}
 	
 	

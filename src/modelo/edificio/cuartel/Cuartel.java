@@ -26,7 +26,7 @@ public class Cuartel extends Edificio{
 			this.vidaFull = vida;
 			this.propietario = jugador;
 		}
-		
+/*		
 		public Cuartel(Posicion desde, Jugador jugador) {
 			this.posicion = desde;
 			this.vida = 250;
@@ -36,7 +36,7 @@ public class Cuartel extends Edificio{
 			this.vidaFull = vida;
 			this.propietario = jugador;
 		}
-	   
+*/	   
 	   public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugador) {
 		   
 		   this.posicionDesde = new Posicion (desdeX, desdeY);
@@ -72,7 +72,7 @@ public class Cuartel extends Edificio{
 		@Override
 		public Unidad crearUnidadPropia(char tipo, Jugador jugador) {
 			if(tipo == 'A')
-				return estado.crearArqueroDeJugador(this.propietario, this.posicion);
+				return estado.crearArqueroDeJugador(this.propietario);
 			else
 				return estado.crearEspadachinDeJugador(this.propietario);
 		} 
