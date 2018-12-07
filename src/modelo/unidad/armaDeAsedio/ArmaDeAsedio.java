@@ -45,6 +45,17 @@ public class ArmaDeAsedio extends Unidad {
 		
 	}
 	
+	public ArmaDeAsedio(Jugador jugador) {
+		
+		this.vida = 150;
+		this.costo = 200;
+		this.ataque = new Ataque(this.danio,0, this.alcance);
+		this.estado = new ArmaDeAsedioDesmontada ();
+		this.cantidadDeMovimientos = 0;
+		this.movimientosPermitidos = 1;
+		this.propietario = jugador;
+	}
+
 	@Override
 	public void desplazarHasta(Posicion hasta) {
 		this.posicion = estado.desplazarPosicionHasta(hasta, this.posicion);

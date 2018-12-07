@@ -49,6 +49,11 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 	public Unidad crearArmaAsedio() {
 		throw new EdificioOcupadoException();
 	}
+	
+	@Override
+	public Unidad crearArmaDeAsedioDeJugador (Jugador jugador) {
+		throw new EdificioOcupadoException ();
+	}
 
 	@Override
 	public Unidad crearEspadachin() {

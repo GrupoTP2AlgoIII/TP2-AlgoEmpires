@@ -24,17 +24,22 @@ public class CastilloTest {
 
     @Test
     public void test01CrearCastilloYCreoArmaAsedio() {
+    	Mapa mapa = new Mapa ();
+    	Jugador jugador = new Jugador (mapa, "anto", "juan");
         Castillo sanJorge = new Castillo();
+        
         sanJorge.avanzarTurno();
         sanJorge.avanzarTurno();
         sanJorge.avanzarTurno();
         
-        Unidad escorpion = sanJorge.crearUnidad('A');
+        Unidad escorpion = sanJorge.crearUnidadPropia('A', jugador);
+        //Unidad escorpion = sanJorge.crearUnidad('A');
 		boolean retorno = false;
 		
 		if(escorpion != null) {
 			retorno = true;
 		}	
+		
 		assertEquals (true,retorno);
     }
     

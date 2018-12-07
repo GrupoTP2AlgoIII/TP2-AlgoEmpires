@@ -24,9 +24,10 @@ public class ConstruccionTest {
 	
 	@Test(expected=EdificioOcupadoException.class)
 	public void test01CreoUnCuartelYComoEstaEnConstruccionCrearArqueroDevuelveException() {
+		Mapa mapa = new Mapa ();
+		Jugador jugador = new Jugador (mapa, "anto", "juan");
 		Cuartel cuartel = new Cuartel();
-		
-		cuartel.crearUnidad('A');
+		cuartel.crearUnidadPropia('A', jugador);
 	}
 
 	/*
@@ -53,9 +54,11 @@ public class ConstruccionTest {
 
 	@Test(expected=EdificioOcupadoException.class)
 	public void test03CreoUnaPlazaCentralYComoEstaEnConstruccionCrearAldeanoDevuelveException() {
+		Mapa mapa = new Mapa ();
+		Jugador jugador = new Jugador (mapa, "anto", "juan");
 		PlazaCentral plaza = new PlazaCentral();
 		
-		plaza.crearUnidad('A');
+		plaza.crearUnidadPropia('A', jugador);
 
 	}
 	
@@ -84,7 +87,7 @@ public class ConstruccionTest {
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		
-		Aldeano aldeano = (Aldeano)plaza.crearUnidad('A');
+		Aldeano aldeano = (Aldeano)plaza.crearUnidadPropia('A', segundoJugador);
 		aldeano.reparar(cuartel);
 		cuartel.avanzarTurno();
 	
@@ -197,7 +200,7 @@ public class ConstruccionTest {
 		plaza.avanzarTurno();
 		plaza.avanzarTurno();
 		
-		Aldeano otroAldeano = (Aldeano)plaza.crearUnidad('A');
+		Aldeano otroAldeano = (Aldeano)plaza.crearUnidadPropia('A', segundoJugador);
 		
 
 		primerJugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);

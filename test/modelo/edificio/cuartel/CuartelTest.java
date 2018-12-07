@@ -17,6 +17,9 @@ public class CuartelTest {
 
     @Test
     public void test01CuartelEsCreadoYCreaArqueroQueAtacaAUnAldeanoYLeResta15DeVida(){
+    	Mapa mapa = new Mapa ();
+    	Jugador jugador = new Jugador (mapa, "anto", "juan");
+    	
         Cuartel cuartel =  new Cuartel();
 
         cuartel.avanzarTurno();
@@ -25,7 +28,7 @@ public class CuartelTest {
         
         
         
-		Unidad arquero = cuartel.crearUnidad('A');
+		Unidad arquero = cuartel.crearUnidadPropia('A', jugador);
 		
 		arquero.recibirDanio(10);
 		
@@ -35,12 +38,15 @@ public class CuartelTest {
 
     @Test
     public void test02CuartelEsCreadoYCreaEspadachinQueAtacaAUnAldeanoYLeResta25DeVida() {
+    	Mapa mapa = new Mapa ();
+    	Jugador jugador = new Jugador (mapa, "anto", "juan");
+    	
         Cuartel cuartel =  new Cuartel();
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
         cuartel.avanzarTurno();
 
-        Unidad soldier = cuartel.crearUnidad('S');
+        Unidad soldier = cuartel.crearUnidadPropia('S', jugador);
         soldier.posicionarEnFilaColumna(1,1);
         //soldier.desplazarHasta(new Posicion (1,1));
         

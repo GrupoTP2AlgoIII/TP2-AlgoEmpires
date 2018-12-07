@@ -79,9 +79,11 @@ public class Jugador {
 
 		Posicionable edificio = this.poblacion.obtenerEdificio(posicionEdificio);
 		Unidad unidad =  edificio.crearUnidadPropia(tipoUnidad, this);
+
 		this.poblacion.descontarOro(unidad);
 		this.mapa.buscarPosicionYUbicar(unidad,posicionEdificio);
 		this.poblacion.aumentarPoblacion(unidad);
+
 	}
 
 	public void avanzarTurno() {

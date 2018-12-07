@@ -59,11 +59,11 @@ public abstract class Posicionable {
 	public abstract void desplazarHasta(Posicion hasta);
 
 	public abstract void recibirPosicionable();
-
+/*
 	public  Unidad crearUnidad(char tipo) {
 		throw new CrearUnidadException();
 	}
-
+*/
 	//Para que funcione ataque
 	public  Unidad crearUnidadPropia(char tipo, Jugador jugador) {
 		throw new CrearUnidadException();

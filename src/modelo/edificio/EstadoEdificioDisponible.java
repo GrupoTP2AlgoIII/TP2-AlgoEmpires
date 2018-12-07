@@ -60,6 +60,12 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 		Unidad armaDeAsedio = new ArmaDeAsedio();
 		return armaDeAsedio;
 	}
+	
+	@Override
+	public Unidad crearArmaDeAsedioDeJugador (Jugador jugador) {
+		Unidad armaDeAsedio = new ArmaDeAsedio (jugador);
+		return armaDeAsedio;
+	}
 
 	@Override
 	public Unidad crearEspadachin() {

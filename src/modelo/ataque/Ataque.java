@@ -38,6 +38,10 @@ public class Ataque {
 	
 	public void atacar (Edificio edificioAtacado, Posicion posicionAtacado, Posicion posicionAtacante) {
 		if (!posicionAtacado.perteneceALaCuadricula(posicionAtacante, distancia, this.distancia)) {
+			System.out.println(posicionAtacado.getFila());
+			System.out.println(posicionAtacado.getColumna());
+			System.out.println(posicionAtacante.getFila());
+			System.out.println(posicionAtacante.getColumna());
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
 		this.atacar(edificioAtacado);

@@ -62,11 +62,11 @@ public class PlazaCentral extends Edificio {
 		   public void atacar (Edificio edificio, Posicion posicionAtacado) {
 			   throw new PlazaCentralNoPuedeAtacarError ();
 		   }
-
+/*
 			public Unidad crearUnidad(char tipo) {
 				return estado.crearAldeano();
 			}
-
+*/
 		public Unidad crearUnidadPropia(char tipo, Jugador jugador) {
 			return estado.crearAldeanoDeJugador(this.propietario);
 		}		

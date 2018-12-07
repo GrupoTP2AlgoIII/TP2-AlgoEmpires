@@ -26,7 +26,8 @@ public interface EstadoEdificio {
 
 	public Unidad crearArmaAsedio();
 
-
+	public Unidad crearArmaDeAsedioDeJugador (Jugador jugador);
+	
 	public Unidad crearEspadachin();
 
 	public Unidad crearEspadachinDeJugador(Jugador jugador);

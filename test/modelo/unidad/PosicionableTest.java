@@ -13,8 +13,10 @@ public class PosicionableTest {
 	@Test (expected = CrearUnidadException.class)
 	public void test01AldeanoNoPuedeCrearUnaUnidad() {
 		
+		Mapa mapa = new Mapa ();
+		Jugador jugador = new Jugador (mapa, "anto", "juan");
 		Posicionable aldeano = new Aldeano ();
-		aldeano.crearUnidad('A');
+		aldeano.crearUnidadPropia('A', jugador);
 	}
 	
 

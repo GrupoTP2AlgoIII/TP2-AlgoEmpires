@@ -60,7 +60,7 @@ public class Cuartel extends Edificio{
 	   public void atacar (Edificio edificio, Posicion posicionAtacado) {
 		   throw new CuartelNoPuedeAtacarError ();
 	   }
-	   
+/*	   
 	   	@Override
 	    public Unidad crearUnidad(char tipo) {
 	    	if(tipo == 'A')
@@ -68,7 +68,7 @@ public class Cuartel extends Edificio{
 	    	else
 	    		return estado.crearEspadachin();
 		}
-
+*/
 		@Override
 		public Unidad crearUnidadPropia(char tipo, Jugador jugador) {
 			if(tipo == 'A')

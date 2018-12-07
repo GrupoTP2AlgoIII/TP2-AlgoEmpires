@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
@@ -43,11 +44,13 @@ public class JuegoTest {
 	public void test03IniciarJuegoInicializaCastilloJugador1() {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-			
 		Posicion posicionCastillo = new Posicion (4,4);
-		Posicionable castillo = juego.obtenerPosicionableEn(posicionCastillo);
+		juego.crearUnidadPropia(posicionCastillo, 'A');
 		
-		Unidad armaAsedio = castillo.crearUnidad('A');
+		
+		//Posicionable castillo = juego.obtenerPosicionableEn(posicionCastillo);
+		
+		Unidad armaAsedio = (Unidad)juego.obtenerPosicionableEn(new Posicion (5,8));
 		
 		assertEquals(150, armaAsedio.getVida());		
 
@@ -57,11 +60,11 @@ public class JuegoTest {
 	public void test04IniciarJuegoInicializaCastilloJugador2() {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-
+		juego.avanzarTurno();
 		Posicion posicionCastillo = new Posicion (44,44);
-		Posicionable castillo = juego.obtenerPosicionableEn(posicionCastillo);
-		
-		Unidad armaAsedio = castillo.crearUnidad('A');
+		//Posicionable castillo = juego.obtenerPosicionableEn(posicionCastillo);
+		juego.crearUnidadPropia(posicionCastillo, 'A');
+		Unidad armaAsedio = (Unidad)juego.obtenerPosicionableEn(new Posicion (45,48));
 		
 		assertEquals(150, armaAsedio.getVida());
 	}
@@ -71,12 +74,20 @@ public class JuegoTest {
 		
 		Juego juego = new Juego("Pedro", "Maria");
 
-		Posicion posicionPlaza = new Posicion (2,8);
-		Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
+		Posicion posicionPlaza = new Posicion (9,7);
+		Posicion posicionAldeano = new Posicion (8,6);
+		//Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
+		juego.crearEdificioPropio(posicionAldeano, posicionPlaza, 'P');
+		juego.avanzarTurno();
+		juego.avanzarTurno();
+		juego.avanzarTurno();
+		juego.avanzarTurno();
 		
-		Unidad aldeano = plazaCentral.crearUnidad('A');
+		//Unidad aldeano = plazaCentral.crearUnidad('A');
+		juego.crearUnidadPropia(posicionPlaza, 'A');
+		Unidad aldeanoCreado = (Unidad)juego.obtenerPosicionableEn(new Posicion (10,9));
 		
-		assertEquals(50, aldeano.getVida());
+		assertEquals(50, aldeanoCreado.getVida());
 		
 	}
 	
@@ -86,9 +97,11 @@ public class JuegoTest {
 		Juego juego = new Juego("Pedro", "Maria");
 		
 		Posicion posicionPlaza = new Posicion (2,8);
-		Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
+		//Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
 		
-		Unidad aldeano = plazaCentral.crearUnidad('A');
+		juego.crearUnidadPropia(posicionPlaza, 'A');
+		Aldeano aldeano = (Aldeano) juego.obtenerPosicionableEn(new Posicion (3,8));
+		//Unidad aldeano = plazaCentral.crearUnidad('A');
 		
 		assertEquals(50, aldeano.getVida());
 		
@@ -98,31 +111,54 @@ public class JuegoTest {
 	public void test07IniciarJuegoInicializaPlazaCentralConstruidaJugador1()  {
 		
 		Juego juego = new Juego("Pedro", "Maria");
+		//juega pedro
+		Posicion posicionAldeanoJugador1 = new Posicion (8,6);
+		Posicion posicionCuartelJugador1 = new Posicion (9,7);
+		juego.crearEdificioPropio(posicionAldeanoJugador1, posicionCuartelJugador1, 'C');
+		juego.avanzarTurno();
+		//juega maria
+		Posicion posicionAldeanoJugador2 = new Posicion (43,43);
+		Posicion posicionCuartelJugador2 = new Posicion (44,44);
+		juego.crearEdificioPropio(posicionAldeanoJugador2, posicionCuartelJugador2, 'C');
+		juego.avanzarTurno();
+		//juega pedro
+		juego.avanzarTurno();
+		//juega maria
+		juego.avanzarTurno();
+		//juega pedro
+		juego.crearUnidadPropia(posicionCuartelJugador1, 'A');
+		juego.avanzarTurno();
+		//juega maria
+		juego.avanzarTurno();
+		//juega Pedro
+		//Mapa mapa = new Mapa ();
+		//Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
+		//Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
+		//Arquero arquero = new Arquero (5, 5, primerJugador);
+		//Cuartel cuartel = new Cuartel (3, 3, 4, 4, segundoJugador);
+		//primerJugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
+		//segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 3, 3);
 		
-		Mapa mapa = new Mapa ();
-		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
-		Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
-		Arquero arquero = new Arquero (5, 5, primerJugador);
-		Cuartel cuartel = new Cuartel (3, 3, 4, 4, segundoJugador);
-		primerJugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
-		segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 3, 3);
+		//cuartel.avanzarTurno();
+		//cuartel.avanzarTurno();
+		//cuartel.avanzarTurno();
 		
-		cuartel.avanzarTurno();
-		cuartel.avanzarTurno();
-		cuartel.avanzarTurno();
-		
-		arquero.atacar(cuartel, new Posicion (3,3)); // le resta vida
+		//arquero.atacar(cuartel, new Posicion (3,3)); // le resta vida
 				
-		Posicion posicionPlaza = new Posicion (2,9);
-		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidad('A'); // se puede crear aldeano
+		Posicion posicionPlazaJugador1 = new Posicion (2,9);
+		juego.crearUnidadPropia(posicionPlazaJugador1, 'A');
+	
+		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(new Posicion (3,9));
 		
-		aldeano.reparar(cuartel);
-		cuartel.avanzarTurno();
+		Cuartel cuartelJugador1 = (Cuartel)juego.obtenerPosicionableEn(posicionCuartelJugador1);
 		
-		assertEquals(250, cuartel.getVida());	// el aldeano creado reparo el cuartel
+		aldeano.reparar(cuartelJugador1);
+		cuartelJugador1.avanzarTurno();
+		
+		assertEquals(250, cuartelJugador1.getVida());	// el aldeano creado reparo el cuartel
 		
 	}
-	
+
 	@Test 
 	public void test08IniciarJuegoInicializaPlazaCentralConstruidaJugador2() {
 		
@@ -130,27 +166,58 @@ public class JuegoTest {
 		Juego juego = new Juego("Pedro", "Maria");
 		
 		
-		Mapa mapa = new Mapa ();
-		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
-		Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
-		Arquero arquero = new Arquero (12, 12, primerJugador);
-		Cuartel cuartel = new Cuartel (10, 10, 11, 11, segundoJugador);
-		primerJugador.agregarPosicionableEnFilaColumna(arquero, 12, 12);
-		segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 10, 10);
+		//Mapa mapa = new Mapa ();
+		//Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
+		//Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
 		
-		cuartel.avanzarTurno();
-		cuartel.avanzarTurno();
-		cuartel.avanzarTurno();
+		//Arquero arquero = new Arquero (12, 12, primerJugador);
+		//Cuartel cuartel = new Cuartel (10, 10, 11, 11, segundoJugador);
+		//primerJugador.agregarPosicionableEnFilaColumna(arquero, 12, 12);
+		//segundoJugador.agregarPosicionableEnFilaColumna (cuartel, 10, 10);
 		
-		arquero.atacar(cuartel, new Posicion (11,11));
+		//juega Pedro
+		Posicion posicionUnAldeanoJugador1 = new Posicion (8, 6);
+		Posicion posicionCuartelJugador1 = new Posicion (9, 7);
+		juego.crearEdificioPropio(posicionUnAldeanoJugador1, posicionCuartelJugador1, 'C');
+		
+		juego.avanzarTurno();
+		
+		//juega Maria
+		Posicion posicionUnAldeanoJugador2 = new Posicion (43,43);
+		Posicion posicionCuartelJugador2 = new Posicion (42,42);
+		juego.crearEdificioPropio(posicionUnAldeanoJugador2, posicionCuartelJugador2, 'C');
+		
+		juego.avanzarTurno();
+		//juega Pedro
+		juego.avanzarTurno();
+		//juega Maria
+		juego.avanzarTurno();
+		//juega Pedro
+		juego.crearUnidadPropia(posicionCuartelJugador1, 'A');
+		juego.avanzarTurno();
+		//juega Maria
+		juego.avanzarTurno();
+		//juega Pedro
+		Arquero arquero = (Arquero)juego.obtenerPosicionableEn(new Posicion (10,9));
+		arquero.posicionarEnFilaColumna(41, 42);
+		juego.agregarUnidadEnFilaColumna(arquero, 41, 42);
+		juego.atacar(41, 42, 42, 42);
+		
+		//cuartel.avanzarTurno();
+		//cuartel.avanzarTurno();
+		//cuartel.avanzarTurno();
+		
+		//arquero.atacar(cuartel, new Posicion (11,11));
 				
-		Posicion posicionPlaza = new Posicion (50,43);
-		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidad('A');
+		//Posicion posicionPlaza = new Posicion (50,43);
+		//Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidad('A');
+
+		Aldeano aldeanoJugador2 = (Aldeano)juego.obtenerPosicionableEn(posicionUnAldeanoJugador2);
+		Edificio cuartelJugador2 = (Edificio)juego.obtenerPosicionableEn(posicionCuartelJugador2);
+		aldeanoJugador2.reparar(cuartelJugador2);
+		cuartelJugador2.avanzarTurno();
 		
-		aldeano.reparar(cuartel);
-		cuartel.avanzarTurno();
-		
-		assertEquals(250, cuartel.getVida());	
+		assertEquals(250, cuartelJugador2.getVida());	
 		
 	}
 	
