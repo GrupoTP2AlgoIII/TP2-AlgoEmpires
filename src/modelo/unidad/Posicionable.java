@@ -54,16 +54,10 @@ public abstract class Posicionable {
 		return this.posicion;
 	}
 
-	//public abstract boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna);
-
 	public abstract void desplazarHasta(Posicion hasta);
 
 	public abstract void recibirPosicionable();
-/*
-	public  Unidad crearUnidad(char tipo) {
-		throw new CrearUnidadException();
-	}
-*/
+
 	//Para que funcione ataque
 	public  Unidad crearUnidadPropia(char tipo, Jugador jugador) {
 		throw new CrearUnidadException();

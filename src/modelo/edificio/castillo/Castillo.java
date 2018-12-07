@@ -67,12 +67,7 @@ public class Castillo extends Edificio {
 		  }
 		  
 	  }
-/*	  
-	  @Override
-	  public Unidad crearUnidad(char tipo) {
-		  return estado.crearArmaAsedio();
-	  }
-*/	  
+	  
 	  @Override
 	  public Unidad crearUnidadPropia (char tipo, Jugador jugador) {
 		  return estado.crearArmaAsedio();

@@ -91,12 +91,6 @@ public class Jugador {
 		this.castillo.atacarEnemigosAlAlcance();
 	}
 
-/*
-	private void quitarPosicionablesDestruidos() {
-		this.poblacion.quitarPosicionablesDestruidos();
-	}
-*/
-
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
 
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);

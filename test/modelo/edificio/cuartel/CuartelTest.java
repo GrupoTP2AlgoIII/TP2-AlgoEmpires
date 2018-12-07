@@ -48,7 +48,6 @@ public class CuartelTest {
 
         Unidad soldier = cuartel.crearUnidadPropia('S', jugador);
         soldier.posicionarEnFilaColumna(1,1);
-        //soldier.desplazarHasta(new Posicion (1,1));
         
         assertEquals (soldier.getPosicion().getFila(), 1);
         assertEquals (soldier.getPosicion().getColumna(), 1);

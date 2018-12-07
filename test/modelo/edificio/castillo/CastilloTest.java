@@ -33,7 +33,6 @@ public class CastilloTest {
         sanJorge.avanzarTurno();
         
         Unidad escorpion = sanJorge.crearUnidadPropia('A', jugador);
-        //Unidad escorpion = sanJorge.crearUnidad('A');
 		boolean retorno = false;
 		
 		if(escorpion != null) {

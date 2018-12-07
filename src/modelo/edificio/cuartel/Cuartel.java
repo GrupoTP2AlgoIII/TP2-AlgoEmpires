@@ -26,17 +26,7 @@ public class Cuartel extends Edificio{
 			this.vidaFull = vida;
 			this.propietario = jugador;
 		}
-/*		
-		public Cuartel(Posicion desde, Jugador jugador) {
-			this.posicion = desde;
-			this.vida = 250;
-			this.costo = 50;
-			this.tamanio = 4;
-			this.velocidadReparacion = 50;
-			this.vidaFull = vida;
-			this.propietario = jugador;
-		}
-*/	   
+	   
 	   public Cuartel(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugador) {
 		   
 		   this.posicionDesde = new Posicion (desdeX, desdeY);
