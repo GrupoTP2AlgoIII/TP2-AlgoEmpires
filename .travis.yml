@@ -18,6 +18,3 @@ notifications:
       - pacugliari@hotmail.com
 on_failure: always
 
-ignore: 
-  - "src/vista"
-  - "src/controlador"
