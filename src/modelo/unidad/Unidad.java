@@ -25,6 +25,11 @@ public abstract class Unidad extends Posicionable {
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
 	}
+	
+	@Override
+	public int decrementarPoblacion() {
+		return 1;
+	}
 
     @Override
     public int avanzarTurno() {
@@ -60,6 +65,7 @@ public abstract class Unidad extends Posicionable {
 		Poblacion poblacionPropietaraio = this.propietario.obtenerPoblacion();
 		return poblacionPropietaraio.posicionableEstaEnPoblacion(posicionable);
 	}
+	
 
 	public void atacar(Posicionable posicionable) {
 		if  (posicionableEstaEnPropietario(posicionable)) {
@@ -70,14 +76,21 @@ public abstract class Unidad extends Posicionable {
 	}
 
 	public void desplazarHasta (Posicion hasta) {
+		
+		this.mover();
+		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
 			
 			throw new MovimientosPorTurnoExcedidosError ();
 			
 		}
-		this.posicion.comprobarAdyacencia(hasta);
-		this.cantidadDeMovimientos ++;
+		//this.posicion.comprobarAdyacencia(hasta); //Atencion con este metodo
+		this.cantidadDeMovimientos ++;//Se puede comentar esta linea para avanzar unidades mas rapido al probarlo
 		this.posicionarEnPosicion(hasta);
+		
+	}
+	
+	protected void mover() {
 		
 	}
 	
@@ -87,7 +100,7 @@ public abstract class Unidad extends Posicionable {
 	
 	/*
      * devuelve si el posicionable se encuentra dentro de la cuadricula formada por el alcanceEnFila y alcanceEnColumna
-     * a partri de la posicion.
+     * a partir de la posicion.
      */
 /*
 	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
@@ -101,6 +114,10 @@ public abstract class Unidad extends Posicionable {
 		return this.vida;
 	}
 	
+	//METODO DE VISTA
+	public String obtenerColor() {
+		return this.propietario.obtenerColor();
+	}
 	
 
 

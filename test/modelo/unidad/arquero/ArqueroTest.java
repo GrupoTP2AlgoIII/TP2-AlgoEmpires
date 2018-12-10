@@ -26,7 +26,7 @@ public class ArqueroTest {
 	}
 	
 	@Test (expected = AtacandoAUnAliadoError.class)
-	public void test01AtacarUnCuartelDelMismoJugadorDebeLanzarExcepcion () {
+	public void test02AtacarUnCuartelDelMismoJugadorDebeLanzarExcepcion () {
 		
 		Mapa mapa = new Mapa ();
 		Jugador jugador = new Jugador (mapa, "juan", "amto");
@@ -36,6 +36,7 @@ public class ArqueroTest {
 		jugador.agregarPosicionableEnFilaColumna(cuartel, 5, 4);
 		
 		arquero.atacar(cuartel, new Posicion (5, 4));
+		//assertEquals (235, cuartel.getVida());
 	}
 
 }

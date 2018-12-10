@@ -21,6 +21,7 @@ public class ArmaDeAsedioMontada implements EstadoArmaDeAsedio {
 	
 	@Override
 	public EstadoArmaDeAsedio avanzarTurno() {
+		
 		return this;
 		
 	}

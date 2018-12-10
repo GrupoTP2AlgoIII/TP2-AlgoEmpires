@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Poblacion {
     private int oro;
-    private int poblacion;
+    //private int poblacion;
     private int produccionDeOro;
     private int topeDePoblacion;
     private int cantidadPoblacion;
@@ -22,37 +22,50 @@ public class Poblacion {
     {
         this.posicionables = new HashMap<Posicion, Posicionable>();
         this.oro = 200; //oro inicial = 200
-        this.produccionDeOro = 60; // 3 x 20 (3 aldeanos por 20 de oro);
+        this.produccionDeOro = 0;
         this.topeDePoblacion = 50;
+        this.cantidadPoblacion = 0;
 
     }
-
+    
+    public void posicionablePerteneceAJugador(Posicion posicionPosicionable) {
+    	if(!(this.posicionables.containsKey(posicionPosicionable))) {
+    		throw new PosicionNoPerteneceAJugadorException();
+    	}
+    }
+    
     public boolean posicionableEstaEnPoblacion(Posicionable posicionableDado){
         return posicionables.containsValue(posicionableDado);
     }
+    
+//    public boolean posicionableEstaEnPoblacion(Edificio posicionableDado){ //agrego
+//        return posicionables.containsValue(posicionableDado);
+//    }
+//    
+//    public boolean posicionableEstaEnPoblacion(Unidad posicionableDado){ //agrego
+//        return posicionables.containsValue(posicionableDado);
+//    }
+      
+    public boolean posicionableEstaEnPoblacion(Posicion posicionableDado){
+        return posicionables.containsKey(posicionableDado);
+    } 
 
-
-    public void descontarOro(Posicionable unidad)
-    {
+    public void descontarOro(Posicionable unidad) {
         this.oro=unidad.descontarOro(this.oro);
     }
 
-    public void aumentarOro(int oroAIncrementar)
-    {
+    public void aumentarOro(int oroAIncrementar) {
         this.oro += oroAIncrementar;
     }
-    public void decrementarProduccionDeOro(Posicionable unidad)
-    {
-        unidad.decrementarProduccion(this.produccionDeOro);
+    
+    public void decrementarProduccionDeOro(Posicionable unidad){
+    	this.produccionDeOro = unidad.decrementarProduccion(this.produccionDeOro);
     }
-
-
 
     public void aumentarPoblacion(Unidad unidad) {
         if(this.cantidadPoblacion < this.topeDePoblacion) {
             this.produccionDeOro = unidad.aumentarProduccionDeOro(this.produccionDeOro);
             this.agregarUnidad(unidad);
-            this.cantidadPoblacion += 1;
         }else {
             throw new JugadorSuperaTopePoblacionalException();
         }
@@ -60,44 +73,27 @@ public class Poblacion {
     }
 
     public void quitarPosicionablesDestruidos() {
-        Posicionable vacio = new Vacio();
         for (Posicion posicion : posicionables.keySet()){
             Posicionable actual = posicionables.get(posicion);
             if(actual.getVida() <= 0) {
                 this.decrementarProduccionDeOro(actual);
-                posicionables.replace(posicion,actual, vacio);
+                this.decrementarPoblacion(actual);
+                posicionables.put(posicion,new Vacio(posicion));
             }
         }
     }
 
+    private void decrementarPoblacion(Posicionable actual) {
+		this.cantidadPoblacion -= actual.decrementarPoblacion();
+	}
+    
     public void avanzarTurno() {
-        this.quitarPosicionablesDestruidos();
-        Posicionable anterior = null;
         for (Posicionable actual : posicionables.values()){
-            if(anterior != actual) {
-                int produccionRecursoUnidad =actual.avanzarTurno();
-                this.aumentarOro(produccionRecursoUnidad);
-            }
-            anterior = actual;
+             int produccionRecursoUnidad =actual.avanzarTurno();
+             this.aumentarOro(produccionRecursoUnidad);
         }
 
     }
-
-    public void decrementarPoblacion(Unidad unidad) {
-        Posicionable vacio = new Vacio();
-        for (Posicion posicion : posicionables.keySet()) {
-            Posicionable actual = posicionables.get(posicion);
-            if (actual.getVida() <= 0) {
-                this.decrementarProduccionDeOro(actual);
-                posicionables.replace(posicion, actual, vacio);
-            }
-            posicionables.replace(posicion, actual, vacio);
-            this.poblacion--;
-        }
-    }
-
-
-
 
     public int getCantidad(){
         return posicionables.size();
@@ -109,7 +105,7 @@ public class Poblacion {
 
     public void agregarUnidad(Unidad unidad){
         this.posicionables.put(unidad.getPosicion(),unidad);
-        this.cantidadPoblacion+=1;
+        this.cantidadPoblacion++;
     }
 
     public Posicionable obtenerEdificio(Posicion posicionEdificio){
@@ -126,7 +122,7 @@ public class Poblacion {
         return this.posicionables.get(posicion);
     }
 
-    //Esta es una decision de diseño
+    //Esta es una decision de disenio
 
     public void agregarEdificio(Map <Posicion, Posicionable> plazaConstruida){
         this.posicionables.putAll(plazaConstruida);
@@ -139,7 +135,23 @@ public class Poblacion {
     }
     
     public int obtenerCantidadPoblacion() {
-    	return this.poblacion;
+    	return this.cantidadPoblacion;
     }
+    
+	public int obtenerProduccionOro() {
+		return this.produccionDeOro;
+	}
+
+	public void reemplazarPosicionDesdeEnHasta(Posicion desde, Posicion hasta) {
+		this.posicionables.put(hasta, this.posicionables.get(desde));
+		this.posicionables.put(desde, new Vacio(desde));		
+	}
+
+	public void actualizar() {
+        for (Posicionable actual : posicionables.values()){
+        	actual.actualizar();
+        }
+		
+	}
 }
 

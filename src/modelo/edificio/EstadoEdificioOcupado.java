@@ -1,17 +1,15 @@
 package modelo.edificio;
 
 import modelo.jugador.Jugador;
-import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
 
 public class EstadoEdificioOcupado implements EstadoEdificio{
+	
 	private int turnosOcupado;
 
 	public EstadoEdificioOcupado(int turnosOcupado) {
 		this.turnosOcupado = turnosOcupado;
 	}
-
-
 
 	@Override
 	public EstadoEdificio avanzarTurno(Edificio edificio) {
@@ -19,6 +17,7 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 		edificio.sumarVida();
 		this.turnosOcupado--;
 		if(this.turnosOcupado == 0) {
+			edificio.sumarVida();
 			return new EstadoEdificioDisponible();
 		}
 		return this;
@@ -30,10 +29,6 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 		throw new EdificioOcupadoException();
 	}
 
-	@Override
-	public Unidad crearAldeano()  {
-		throw new EdificioOcupadoException();
-	}
 
 	@Override
 	public Unidad crearAldeanoDeJugador(Jugador propietario) {
@@ -45,33 +40,22 @@ public class EstadoEdificioOcupado implements EstadoEdificio{
 		return this.turnosOcupado;
 	}
 
-	@Override
-	public Unidad crearArmaAsedio() {
-		throw new EdificioOcupadoException();
-	}
 	
 	@Override
 	public Unidad crearArmaDeAsedioDeJugador (Jugador jugador) {
 		throw new EdificioOcupadoException ();
 	}
 
-	@Override
-	public Unidad crearEspadachin() {
-		throw new EdificioOcupadoException();
-	}
 
 	@Override
 	public Unidad crearEspadachinDeJugador(Jugador jugador) {
 		throw new EdificioOcupadoException();
 	}
 
-	@Override
-	public Unidad crearArquero() {
-		throw new EdificioOcupadoException();
-	}
 
 	@Override
 	public Unidad crearArqueroDeJugador(Jugador jugador)  {
 		throw new EdificioOcupadoException();
 	}
+	
 }

@@ -1,16 +1,15 @@
 package vista;
 
-import controlador.BotonLimpiarEventHandler;
-import controlador.BotonOKEventHandler;
+import controlador.boton.BotonLimpiarEventHandler;
+import controlador.boton.BotonOKEventHandler;
 //import controlador.BotonOKEventHandler;
-import controlador.TextoEventHandler;
+import controlador.boton.TextoEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -32,14 +31,7 @@ public class PantallaInicial extends GridPane{
 		Image imagenFondo = new Image ("file:img/age-of-empires-definitive-edition-2.jpg");
 		BackgroundImage fondo= new BackgroundImage(imagenFondo, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		this.setBackground(new Background(fondo));
-		
-//		Image imagenSonido = new Image ("file:img/mute.jpg", 45, 45, true, true);
-//		Button botonSonido = new Button ();
-//		botonSonido.setGraphic(new ImageView(imagenSonido));
-//		botonSonido.setTranslateX(10);
-//		botonSonido.setTranslateY(10);
-//		botonSonido.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-		
+			
 		Label nombreLabel = new Label ("Jugador 1:");
 		TextField nombreInput = new TextField();
 		Label nombreLabel2 = new Label ("Jugador 2:");
@@ -72,12 +64,11 @@ public class PantallaInicial extends GridPane{
 	    BotonLimpiarEventHandler botonLimpiarEventHandler = new BotonLimpiarEventHandler(nombreInput, nombreInput2);
 	    botonLimpiar.setOnAction(botonLimpiarEventHandler);
         
-        // NO FUNCIONA BIEN, ACEPTA NOMBRES VACIOS
-	    BotonOKEventHandler botonOKEventHandler = new BotonOKEventHandler(stage, nombreInput, nombreInput2, nombreLabel, nombreLabel2);
+        BotonOKEventHandler botonOKEventHandler = new BotonOKEventHandler(stage, nombreInput, nombreInput2, nombreLabel, nombreLabel2);
         botonOK.setOnAction(botonOKEventHandler);
 
-//	    TextoEventHandler textoEventHandler = new TextoEventHandler(botonOK);
-//	    nombreInput.setOnKeyPressed(textoEventHandler);
+	    TextoEventHandler textoEventHandler = new TextoEventHandler(botonOK);
+	    nombreInput.setOnKeyPressed(textoEventHandler);
 
 
 	}

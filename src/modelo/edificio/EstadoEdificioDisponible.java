@@ -1,7 +1,6 @@
 package modelo.edificio;
 
 import modelo.jugador.Jugador;
-import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
@@ -9,13 +8,6 @@ import modelo.unidad.arquero.Arquero;
 import modelo.unidad.espadachin.Espadachin;
 
 public class EstadoEdificioDisponible implements EstadoEdificio {
-
-
-	@Override
-	public Unidad crearArquero() {
-		Unidad arquero = new Arquero();
-		return arquero;
-	}
 
 	@Override
 	public Unidad crearArqueroDeJugador(Jugador jugador) {
@@ -36,11 +28,6 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 
 	}
 
-	@Override
-	public Unidad crearAldeano() {
-		Unidad aldeano = new Aldeano();
-		return aldeano;
-	}
 
 	@Override
 	public Unidad crearAldeanoDeJugador(Jugador jugador) {
@@ -48,18 +35,11 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 		return aldeano;
 	}
 
-
-
 	@Override
 	public int getTurnosOcupado() {
 		return 0;
 	}
 
-	@Override
-	public Unidad crearArmaAsedio() {
-		Unidad armaDeAsedio = new ArmaDeAsedio();
-		return armaDeAsedio;
-	}
 	
 	@Override
 	public Unidad crearArmaDeAsedioDeJugador (Jugador jugador) {
@@ -68,16 +48,9 @@ public class EstadoEdificioDisponible implements EstadoEdificio {
 	}
 
 	@Override
-	public Unidad crearEspadachin() {
-		Unidad espadachin = new Espadachin();
-		return espadachin;
-	}
-
-	@Override
 	public Unidad crearEspadachinDeJugador(Jugador jugador) {
 		Unidad espadachin = new Espadachin(jugador);
 		return espadachin;
 	}
-
 
 }

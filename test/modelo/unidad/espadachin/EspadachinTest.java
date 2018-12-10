@@ -1,6 +1,8 @@
 package modelo.unidad.espadachin;
 
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import modelo.edificio.cuartel.Cuartel;
@@ -26,7 +28,7 @@ public class EspadachinTest {
 	}
 	
 	@Test (expected = AtacandoAUnAliadoError.class)
-	public void test01AtacarUnCuartelDelMismoJugadorDebeLanzarExcepcion () {
+	public void test02AtacarUnCuartelDelMismoJugadorDebeLanzarExcepcion () {
 		
 		Mapa mapa = new Mapa ();
 		Jugador jugador = new Jugador (mapa, "juan", "amto");

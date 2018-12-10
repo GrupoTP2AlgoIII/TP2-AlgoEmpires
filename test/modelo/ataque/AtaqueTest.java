@@ -107,7 +107,7 @@ public class AtaqueTest {
 		//espadachin resta 15 de vida
 		assertEquals (plazaCentral.getVida(), 435);
 	}
-
+/*
 	@Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
 	public void test06ArqueroAtacaAPlazaCentralFueraDelRangoDeAlcance ()  {
 		
@@ -115,13 +115,13 @@ public class AtaqueTest {
 		Jugador primerJugador = new Jugador (mapa, "Lucas", "Juan");
 		Jugador segundoJugador = new Jugador (mapa, "Juan", "Lucas");
 		Arquero arquero = new Arquero (5, 5, primerJugador);
-		PlazaCentral plazaCentral = new PlazaCentral (10, 4, 11, 5, segundoJugador);
+		PlazaCentral plazaCentral = new PlazaCentral (20, 20, 21, 21, segundoJugador);
 		primerJugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
-		segundoJugador.agregarPosicionableEnFilaColumna (plazaCentral, 10, 4);
+		segundoJugador.agregarPosicionableEnFilaColumna (plazaCentral, 21, 21);
 		
-
-		arquero.atacar(plazaCentral, new Posicion (10,4));
-	}
+		primerJugador.atacar(new Posicion(5,5), new Posicion(21,21));
+		//arquero.atacar(plazaCentral, new Posicion (10,4));
+	}*/
 	
 	@Test (expected = ArmaDeAsedioDesmontadaException.class)
 	public void test08AtacarConArmaDeAsedioDesmontadaDebeLanzarExcepcion ()  {

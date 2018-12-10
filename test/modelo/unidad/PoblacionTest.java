@@ -137,11 +137,14 @@ public class PoblacionTest {
 		
 		//construccion plaza 3 turnos
 		plaza.avanzarTurno();
+		plaza.actualizar();
 		plaza.avanzarTurno();
+		plaza.actualizar();
 		plaza.avanzarTurno();
+		plaza.actualizar();
 
-		plaza.posicionarEnFilaColumna(25,25);
-		jugador.agregarPosicionableEnFilaColumna(plaza,25,25);
+		plaza.posicionarEnFilaColumna(11,11);
+		jugador.agregarPosicionableEnFilaColumna(plaza,11,11);
 		
 		while(1>0)//creo aldeanos hasta que el jugador se quede sin oro y arroje excepcion
 		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
@@ -152,20 +155,23 @@ public class PoblacionTest {
 	public void test06CreoUnCuartelYTratoDeCrearUnAldeanoDevuelveUnaException() {
 		Mapa mapa = new Mapa();
 		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
-		jugador.iniciarAldeanosPropiosDesde(5, 5);
-		Posicion posicionDeAldeano = new Posicion (5,5);
-		Posicion posicionDelCuartel = new Posicion (4,4);
-		jugador.construirEdificioPropio(posicionDeAldeano, posicionDelCuartel, 'C');
+		Posicionable cuartel = new Cuartel(jugador);
 		
-		jugador.avanzarTurno();
-		jugador.avanzarTurno();
-		jugador.avanzarTurno();
-		jugador.avanzarTurno();
+		//construccion plaza 3 turnos
+		cuartel.avanzarTurno();
+		cuartel.actualizar();
+		cuartel.avanzarTurno();
+		cuartel.actualizar();
+		cuartel.avanzarTurno();
+		cuartel.actualizar();
 
+
+		cuartel.posicionarEnFilaColumna(25,25);
+		jugador.agregarPosicionableEnFilaColumna(cuartel,25,25);
 		
-		jugador.crearUnidadPropia(posicionDelCuartel,'A');
-		Posicion posicionArqueroCreado = new Posicion(5,5);
-		jugador.crearUnidadPropia(posicionArqueroCreado,'A');
+		jugador.crearUnidadPropia(cuartel.getPosicion(),'A');
+		Posicion posicionArquero = new Posicion(26,25);
+		jugador.crearUnidadPropia(posicionArquero,'A');
 	}
 
 

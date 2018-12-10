@@ -23,7 +23,7 @@ public class ArmaDeAsedioTest {
 		arma.montar();
 		arma.avanzarTurno();
 		
-		Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+		Jugador segundoJugador = primerJugador.jugadorSiguiente();
 		Arquero arquero = new Arquero (5, 4, segundoJugador);
 		
 		arma.atacar(arquero, new Posicion (5, 4));

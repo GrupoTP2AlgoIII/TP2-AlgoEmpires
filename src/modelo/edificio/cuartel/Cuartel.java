@@ -2,6 +2,7 @@ package modelo.edificio.cuartel;
 
 
 
+import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
@@ -50,15 +51,7 @@ public class Cuartel extends Edificio{
 	   public void atacar (Edificio edificio, Posicion posicionAtacado) {
 		   throw new CuartelNoPuedeAtacarError ();
 	   }
-/*	   
-	   	@Override
-	    public Unidad crearUnidad(char tipo) {
-	    	if(tipo == 'A')
-	    		return estado.crearArquero();
-	    	else
-	    		return estado.crearEspadachin();
-		}
-*/
+
 		@Override
 		public Unidad crearUnidadPropia(char tipo, Jugador jugador) {
 			if(tipo == 'A')
@@ -66,5 +59,11 @@ public class Cuartel extends Edificio{
 			else
 				return estado.crearEspadachinDeJugador(this.propietario);
 		} 
+		
+		//VISTA
+		@Override
+		protected Ataque getAtaque() {
+			return new Ataque (0,0,0);
+		}
 	
 }

@@ -25,6 +25,10 @@ public class Ataque {
 		recibeAtaque.recibirDanio (this.danioEdificio);		
 	}
 	
+//	public void atacar (Edificio recibeAtaque) {
+//		recibeAtaque.recibirDanio (this.danioUnidad);		
+//	}
+	
 	public void atacar (Posicionable recibeAtaque) {
 		recibeAtaque.recibirDanio (this.danioUnidad);
 	}
@@ -37,14 +41,37 @@ public class Ataque {
 	}
 	
 	public void atacar (Edificio edificioAtacado, Posicion posicionAtacado, Posicion posicionAtacante) {
-		if (!posicionAtacado.perteneceALaCuadricula(posicionAtacante, distancia, this.distancia)) {
-			System.out.println(posicionAtacado.getFila());
-			System.out.println(posicionAtacado.getColumna());
-			System.out.println(posicionAtacante.getFila());
-			System.out.println(posicionAtacante.getColumna());
+		
+		if (!edificioAtacado.poseeEstaPosicion(posicionAtacado) && 
+				!posicionAtacado.perteneceALaCuadricula(posicionAtacado, distancia, distancia)) {
+			
 			throw new AtacandoEnPosicionFueraDelAlcanceError ();
 		}
+		
 		this.atacar(edificioAtacado);
+	}
+	
+//	public void atacar (Edificio edificioAtacado, Posicion posicionAtacado, Posicion posicionAtacante) {
+//		if (!posicionAtacado.perteneceALaCuadricula(posicionAtacante, distancia, this.distancia)) {
+//			System.out.println(posicionAtacado.getFila());
+//			System.out.println(posicionAtacado.getColumna());
+//			System.out.println(posicionAtacante.getFila());
+//			System.out.println(posicionAtacante.getColumna());
+//			throw new AtacandoEnPosicionFueraDelAlcanceError ();
+//		}
+//		this.atacar(edificioAtacado);
+//	}
+	
+	public int getRango() {
+		return this.distancia;		
+	}
+
+	public int getAtaqueUnidad() {
+		return this.danioUnidad;
+	}
+
+	public int getAtaqueEdificio() {
+		return this.danioEdificio;
 	}
 	
 }

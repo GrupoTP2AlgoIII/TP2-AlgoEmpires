@@ -55,6 +55,12 @@ public class Espadachin extends Unidad {
 			throw new AtacandoAUnAliadoError ();
 		}
 		this.ataque.atacar(edificio, posicionAtacado, this.posicion);
-	}	
+	}
+	
+	//VISTA
+	@Override
+	protected Ataque getAtaque() {
+		return this.ataque;
+	}
 
 }

@@ -29,8 +29,12 @@ public class CastilloTest {
         Castillo sanJorge = new Castillo();
         
         sanJorge.avanzarTurno();
+        sanJorge.actualizar();
         sanJorge.avanzarTurno();
+        sanJorge.actualizar();
         sanJorge.avanzarTurno();
+        sanJorge.actualizar();
+
         
         Unidad escorpion = sanJorge.crearUnidadPropia('A', jugador);
 		boolean retorno = false;
@@ -50,16 +54,13 @@ public class CastilloTest {
     	mapa.posicionarEnFilaColumna(new Espadachin(), 8, 8);
     	mapa.ponerEdificioDesdeHasta(new PlazaCentral(0), 8, 4, 9, 5);
     	
-//    	ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
-//    	atacables.add(mapa.obtenerPosicionableEn(new Posicion(8,8)));
-//    	atacables.add(mapa.obtenerPosicionableEn(new Posicion(8,4)));
     	HashMap<Posicion, Posicionable> atacables = new HashMap <Posicion, Posicionable> ();
     	Posicion posicion1 = new Posicion(8,8);
     	Posicion posicion2 = new Posicion(8,4);
     	atacables.put(posicion1, mapa.obtenerPosicionableEn(posicion1));
     	atacables.put(posicion2, mapa.obtenerPosicionableEn(posicion2));
     	
-    	mapa.ponerEdificioDesdeHasta(new Castillo(0), 4, 4, 7, 7);
+    	mapa.ponerEdificioDesdeHasta(new Castillo(0,new Jugador(mapa,"Juan","Pedro")), 4, 4, 7, 7);
     	Castillo castillo = (Castillo) mapa.obtenerPosicionableEn(new Posicion(4,4));
     	castillo.setAtacables(atacables);
     	castillo.atacarEnemigosAlAlcance();
@@ -82,7 +83,7 @@ public class CastilloTest {
     	
     	Mapa mapa = new Mapa ();
     	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
-    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Jugador segundoJugador = primerJugador.jugadorSiguiente();
     	Arquero arquero = new Arquero (1, 1, primerJugador);
     	Castillo castillo = new Castillo (1,2,4,5, segundoJugador);
     	castillo.recibirDanioDe(arquero);
@@ -95,7 +96,7 @@ public class CastilloTest {
     	
     	Mapa mapa = new Mapa ();
     	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
-    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Jugador segundoJugador = primerJugador.jugadorSiguiente();
     	Posicionable arquero = new Arquero (1, 1, primerJugador);
     	Castillo castillo = new Castillo (1,2,4,5, segundoJugador);
     	castillo.recibirDanioDe(arquero);
@@ -107,7 +108,7 @@ public class CastilloTest {
     public void test06ElCastilloNoPuedeRecibirNingunPosicionableYaQueSuPosicionEstaOcupada () {
        	Mapa mapa = new Mapa ();
     	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
-    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Jugador segundoJugador = primerJugador.jugadorSiguiente();
     	Arquero arquero = new Arquero (1,1, primerJugador);
     	Castillo castillo = new Castillo (1, 2, 4 ,5, segundoJugador);
     	mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (1,1));
@@ -120,13 +121,13 @@ public class CastilloTest {
     public void test07CastilloAtacaAUnaUnidadQueSeEncuentraFueraDeSuAlcanceLanzaExcepcion () {
        	Mapa mapa = new Mapa ();
     	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
-    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
-    	Arquero arquero = new Arquero (40, 40, primerJugador);
+    	Jugador segundoJugador = primerJugador.jugadorSiguiente();
+    	Arquero arquero = new Arquero (15, 15, primerJugador);
     	Castillo castillo = new Castillo (1, 2, 4 ,5, segundoJugador);
-    	mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (40,40));
+    	mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (15,15));
     	mapa.posicionarPosicionableEnPosicion(castillo, new Posicion (1, 2));
     	
-    	castillo.atacar(arquero, new Posicion (40, 40));
+    	castillo.atacar(arquero, new Posicion (15, 15));
     	
     }
     
@@ -134,7 +135,7 @@ public class CastilloTest {
     public void test08CastilloAtacaAUnEdificioQueSeEncuentraFueraDeSuAlcanceLanzaExcepcion () {
        	Mapa mapa = new Mapa ();
     	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
-    	Jugador segundoJugador = new Jugador (mapa, "juan", "anto");
+    	Jugador segundoJugador = primerJugador.jugadorSiguiente();
     	Cuartel cuartel = new Cuartel (10, 10, 11, 11, primerJugador);
     	Castillo castillo = new Castillo (1, 2, 4 ,5, segundoJugador);
     	mapa.posicionarPosicionableEnPosicion(cuartel, new Posicion (10,10));

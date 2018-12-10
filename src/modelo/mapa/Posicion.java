@@ -85,19 +85,29 @@ public class Posicion {
 	}
 
 	public boolean perteneceALaCuadricula(Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
-		
+		/*
 		return ((this.x >= posicion.getFila() - alcanceEnFila) && (this.x <= posicion.getFila() + alcanceEnFila) &&
 					(this.y >= posicion.getColumna() - alcanceEnColumna) && (this.y <= posicion.getColumna() + alcanceEnColumna));
+		*/
+		int resultadoX = this.x - posicion.getFila();
+		int resultadoY = this.y - posicion.getColumna();
+		
+		if	(resultadoX > alcanceEnFila || resultadoX < (-1*alcanceEnFila) 
+				|| resultadoY > alcanceEnColumna || resultadoY < (-1*alcanceEnColumna) ) {
+			return false;
+		}
+		return true;
+		
 	}
 
 	public void comprobarAdyacencia(Posicion otraPosicion) {
-		if(this.x > (otraPosicion.getFila())+1 || this.x < (otraPosicion.getFila() -1)) {
+
+		int resultadoX = this.x - otraPosicion.getFila();
+		int resultadoY = this.y - otraPosicion.getColumna();
+		
+		if	(resultadoX > 1 || resultadoX < -1 || resultadoY > 1 || resultadoY < -1 ) {
 			throw new PosicionNoAdyacenteError();
 		}
-		
-		if(this.y > (otraPosicion.getColumna())+1 || this.y < (otraPosicion.getColumna() -1)) {
-			throw new PosicionNoAdyacenteError();
-		}	
 	}
 
 	public ArrayList<Posicion> generarPosicionesDeSpawn() {
@@ -117,12 +127,7 @@ public class Posicion {
 
 	public void sumarDesplazamiento(int unDesplazamiento,int otroDesplazamiento) {
 		this.x += unDesplazamiento;
-		this.y += otroDesplazamiento;
-		
+		this.y += otroDesplazamiento;		
 	}
-
-
-
+	
 }
-
-

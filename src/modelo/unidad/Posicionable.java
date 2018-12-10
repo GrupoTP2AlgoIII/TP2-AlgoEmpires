@@ -1,5 +1,6 @@
 package modelo.unidad;
 
+import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.jugador.Jugador;
 import modelo.jugador.JugadorSinOroException;
@@ -10,6 +11,7 @@ public abstract class Posicionable {
 	protected Posicion posicion;
 	protected int vida;
 	protected int costo;
+
 
 	public Posicionable () {
 
@@ -44,11 +46,9 @@ public abstract class Posicionable {
 		this.posicion = otraPosicion;
 	}
 
-
 	public int avanzarTurno() {
 		return 0;
 	}
-
 
 	public Posicion getPosicion(){
 		return this.posicion;
@@ -87,11 +87,56 @@ public abstract class Posicionable {
 	public Edificio construirPropio(char tipoConstruccion, Jugador jugador) {
 		throw new ConstruccionEdificioException();
 	}
+	
+	
+//	public void atacar (Posicionable posicionable, Posicion posicionAtacado) {
+//		
+//	}
 
 	//METODOS DE PRUEBAS
 
 	public int getVida() {
 		return this.vida;
 	}
+	
+	public int getRango() {	 
+		 return this.getAtaque().getRango();
+	}
 
+	protected abstract Ataque getAtaque();
+
+	public int getAtaqueUnidad() {
+		 return this.getAtaque().getAtaqueUnidad();
+	}
+
+	public int getAtaqueEdificio() {
+		 return this.getAtaque().getAtaqueEdificio();
+	}
+
+	public abstract String obtenerColor();
+
+	public void montar() {
+		throw new PosicionableNoSePuedeMontar();		
+	}
+
+	public void desarmar() {
+		throw new PosicionableNoSePuedeDesmontar();		
+	}
+
+	public int decrementarPoblacion() {
+		return 0;
+	}
+
+	public void reparar(Posicionable posicionableEdificio) {
+		throw new PosicionableNoPuedeReparar();		
+	}
+
+	public void aceptaReparacion() {
+		throw new PosicionableNoAceptaReparacionException();
+		
+	}
+
+	public void actualizar() {
+		
+	}
 }

@@ -1,5 +1,6 @@
 package modelo.vacio;
 
+import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.jugador.PosicionDesocupadaError;
 import modelo.mapa.Posicion;
@@ -35,19 +36,19 @@ public class Vacio extends Posicionable{
 	}
 	
 	public void recibirDanio (int danio) {
-		// No pasa nada		
+		throw new PosicionableVacioNoPuedeSerAtacadoException();	
 	}
 	
 	public void recibirDanioDe (Posicionable posicionable) {
-		// No pasa nada
+		throw new PosicionableVacioNoPuedeSerAtacadoException();	
 	}
 	
 	public void recibirDanioDe (Unidad unidad) {
-		// No pasa nada
+		throw new PosicionableVacioNoPuedeSerAtacadoException();	
 	}
 	
 	public void recibirDanioDe (Edificio edificio) {
-		// No pasa nada
+		throw new PosicionableVacioNoPuedeSerAtacadoException();	
 	}
 	
 	public void atacar (Posicionable posicionable) {
@@ -60,6 +61,24 @@ public class Vacio extends Posicionable{
 	
 	public void atacar (Edificio edificio, Posicion posicionAtacado) {
 		throw new PosicionDesocupadaError ();
+	}
+	
+	public void atacar (Vacio vacio, Posicion posicionAtacado) {
+		
+	}
+	public void atacar (Posicionable posicionable, Posicion posicionAtacado) {
+		
+	}
+	
+	//VISTA
+	@Override
+	protected Ataque getAtaque() {
+		return new Ataque (0,0,0);
+	}
+
+	@Override
+	public String obtenerColor() {
+		return (new String("green"));
 	}
 
 }

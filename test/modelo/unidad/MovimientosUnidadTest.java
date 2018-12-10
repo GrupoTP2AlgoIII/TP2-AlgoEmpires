@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import modelo.juego.Juego;
 import modelo.jugador.PosicionDesocupadaError;
+import modelo.jugador.PosicionNoPerteneceAJugadorException;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
 import modelo.unidad.arquero.Arquero;
@@ -122,8 +123,15 @@ public class MovimientosUnidadTest {
 		juego.desplazarUnidadDesdeHasta (11, 10, 11, 11);
 	}
 	
-	@Test (expected = PosicionDesocupadaError.class)
-	public void test18MoverDesdeUnaPosicionVacia ()  {
+//	@Test (expected = PosicionNoPerteneceAJugadorException.class)
+//	public void test18MoverDesdeUnaPosicionVacia ()  {
+//		
+//		Juego juego = new Juego ("Pedro", "Maria");
+//		juego.desplazarUnidadDesdeHasta (11, 10, 11, 11);
+//	}
+	
+	@Test (expected = PosicionNoPerteneceAJugadorException.class)
+	public void test18MoverDesdeUnaPosicionQueNoLePertenece ()  {
 		
 		Juego juego = new Juego ("Pedro", "Maria");
 		juego.desplazarUnidadDesdeHasta (11, 10, 11, 11);
@@ -140,6 +148,9 @@ public class MovimientosUnidadTest {
 		juego.desplazarUnidadDesdeHasta (10, 10, 11, 10);
 				
 	}
+	
+
+	
 
 
 }

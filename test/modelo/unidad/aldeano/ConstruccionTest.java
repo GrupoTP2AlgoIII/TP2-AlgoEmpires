@@ -77,15 +77,21 @@ public class ConstruccionTest {
 		segundoJugador.agregarPosicionableEnFilaColumna(cuartel, 7, 4);
 			
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		
 		
 		arquero.atacar(cuartel,new Posicion (7,4));	//le resta 10 de vida
 		
 		plaza.avanzarTurno();
+		plaza.actualizar();
 		plaza.avanzarTurno();
+		plaza.actualizar();
 		plaza.avanzarTurno();
+		plaza.actualizar();
 		
 		Aldeano aldeano = (Aldeano)plaza.crearUnidadPropia('A', segundoJugador);
 		aldeano.reparar(cuartel);
@@ -197,8 +203,11 @@ public class ConstruccionTest {
 		Arquero arquero = new Arquero(5,5, primerJugador);
 		PlazaCentral plaza = (PlazaCentral) aldeano.construir('P');
 		plaza.avanzarTurno();
+		plaza.actualizar();
 		plaza.avanzarTurno();
+		plaza.actualizar();
 		plaza.avanzarTurno();
+		plaza.actualizar();
 		
 		Aldeano otroAldeano = (Aldeano)plaza.crearUnidadPropia('A', segundoJugador);
 		
@@ -209,8 +218,11 @@ public class ConstruccionTest {
 		Edificio cuartelDaniado = new Cuartel(7,4,8,5, segundoJugador);
 		segundoJugador.agregarPosicionableEnFilaColumna(cuartelDaniado, 7, 4);
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		arquero.atacar(cuartelDaniado, new Posicion (7,4));
 		
 		otroAldeano.reparar(cuartelDaniado);
@@ -234,8 +246,12 @@ public class ConstruccionTest {
 		int oroGenerado;
 		
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
+
 		
 		arquero.atacar(cuartel, new Posicion (7,4));
 		aldeano.reparar(cuartel);
@@ -259,8 +275,11 @@ public class ConstruccionTest {
 		Arquero arquero = new Arquero(5,5, primerJugador);
 		
 		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
+		cuartel.actualizar();
 		cuartel.avanzarTurno();	    //construccion cuartel - 3 turnos	
+		cuartel.actualizar();
 		cuartel.avanzarTurno();		//construccion cuartel - 3 turnos
+		cuartel.actualizar();
 		
 		arquero.atacar(cuartel, new Posicion (7,4));
 		aldeano.reparar(cuartel);
@@ -281,8 +300,12 @@ public class ConstruccionTest {
 		Cuartel cuartel = (Cuartel)aldeano.construirPropio('C', primerJugador);
 		
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
+
 		
 		Arquero arquero = (Arquero)cuartel.crearUnidadPropia('A', segundoJugador);
 		arquero.posicionarEnFilaColumna(5, 5);
@@ -328,8 +351,12 @@ public class ConstruccionTest {
 		Arquero arquero = new Arquero(5,5, primerJugador);
 		
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
+
 		
 		
 		arquero.atacar(cuartelDaniado, new Posicion (7,4));
@@ -349,11 +376,17 @@ public class ConstruccionTest {
 		Arquero arquero = new Arquero(5,5, primerJugador);
 		
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		otroCuartelDaniado.avanzarTurno();
+		otroCuartelDaniado.actualizar();
 		otroCuartelDaniado.avanzarTurno();
+		otroCuartelDaniado.actualizar();
 		otroCuartelDaniado.avanzarTurno();
+		otroCuartelDaniado.actualizar();
 		
 		arquero.atacar(cuartelDaniado, new Posicion (7,4));
 		arquero.atacar(otroCuartelDaniado, new Posicion (2,7));

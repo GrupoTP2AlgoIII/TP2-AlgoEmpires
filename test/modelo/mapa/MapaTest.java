@@ -19,7 +19,7 @@ public class MapaTest {
 				
 		int cantidadCasilleros = mapa.obtenerTamanioMapa();
 		
-		assertEquals (2500, cantidadCasilleros);
+		assertEquals (900, cantidadCasilleros);
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)
@@ -118,9 +118,9 @@ public class MapaTest {
 	public void test12DesplazarHaciaLaDerechaEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
-		Posicionable posicionable = new Arquero(1,50);
-		mapa.posicionarEnFilaColumna(posicionable, 1, 50);
-		mapa.posicionarDesdeEnHasta(new Posicion (1, 50), new Posicion (1,51));
+		Posicionable posicionable = new Arquero(1,31);
+		mapa.posicionarEnFilaColumna(posicionable, 1, 31);
+		mapa.posicionarDesdeEnHasta(new Posicion (1, 31), new Posicion (1,31));
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
@@ -136,27 +136,27 @@ public class MapaTest {
 	public void test14DesplazarHaciaAbajoEnPosicionFueraDelMapaError (){
 		
 		Mapa mapa = new Mapa ();
-		Posicionable posicionable = new Arquero(50,1);
-		mapa.posicionarEnFilaColumna(posicionable, 50, 1);
-		mapa.posicionarDesdeEnHasta(new Posicion (1, 50), new Posicion (0,50));
+		Posicionable posicionable = new Arquero(30,1);
+		mapa.posicionarEnFilaColumna(posicionable, 30, 1);
+		mapa.posicionarDesdeEnHasta(new Posicion (1, 30), new Posicion (0,30));
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
 	public void test15DesplazarHaciaArribaEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
-		Posicionable posicionable = new Arquero(50,1);
-		mapa.posicionarEnFilaColumna(posicionable, 50, 1);
-		mapa.posicionarDesdeEnHasta(new Posicion (50, 1), new Posicion (51,1));
+		Posicionable posicionable = new Arquero(30,1);
+		mapa.posicionarEnFilaColumna(posicionable, 30, 1);
+		mapa.posicionarDesdeEnHasta(new Posicion (30, 1), new Posicion (31,1));
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
 	public void test16DesplazarHaciaLaDerechaEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
-		Posicionable posicionable = new Arquero(1,50);
-		mapa.posicionarEnFilaColumna(posicionable, 1, 50);
-		mapa.posicionarDesdeEnHasta(new Posicion (28, 50), new Posicion (28,51));
+		Posicionable posicionable = new Arquero(1,30);
+		mapa.posicionarEnFilaColumna(posicionable, 1, 30);
+		mapa.posicionarDesdeEnHasta(new Posicion (28, 30), new Posicion (28,31));
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
@@ -172,9 +172,9 @@ public class MapaTest {
 	public void test18DesplazarEnPosicionFueraDelMapaError () {
 		
 		Mapa mapa = new Mapa ();
-		Posicionable posicionable = new Arquero(50,50);
-		mapa.posicionarEnFilaColumna(posicionable, 50, 50);
-		mapa.posicionarDesdeEnHasta(new Posicion (50, 50), new Posicion (51,50));
+		Posicionable posicionable = new Arquero(30,30);
+		mapa.posicionarEnFilaColumna(posicionable, 30, 30);
+		mapa.posicionarDesdeEnHasta(new Posicion (30, 30), new Posicion (31,30));
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
@@ -198,23 +198,23 @@ public class MapaTest {
 	public void test21PosicionarUnidadEnFilaYColumnaFueraDelMapaLanzaExcepcion () {
 		
 		Mapa mapa = new Mapa ();
-		Arquero arquero = new Arquero (51,51);
-		mapa.posicionarEnFilaColumna(arquero, 51, 50);
+		Arquero arquero = new Arquero (31,31);
+		mapa.posicionarEnFilaColumna(arquero, 31, 50);
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
 	public void test22PosicionarUnidadEnPosicionFueraDelMapaLanzaExcepcion () {
 		
 		Mapa mapa = new Mapa ();
-		Arquero arquero = new Arquero (51,50);
-		mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (0, 50));
+		Arquero arquero = new Arquero (31,30);
+		mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (0, 30));
 	}
 	
 	@Test (expected = PosicionFueraDelMapaError.class)
 	public void test21PosicionarUnidadEnPosicionDesdeFueraDelMapaLanzaExcepcion () {
 		
 		Mapa mapa = new Mapa ();
-		mapa.posicionarDesdeEnHasta(new Posicion (51, 50), new Posicion (50,50));
+		mapa.posicionarDesdeEnHasta(new Posicion (31, 30), new Posicion (30,30));
 	}
 
 }

@@ -23,11 +23,13 @@ public class CuartelTest {
         Cuartel cuartel =  new Cuartel();
 
         cuartel.avanzarTurno();
+        cuartel.actualizar();
         cuartel.avanzarTurno();
+        cuartel.actualizar();
         cuartel.avanzarTurno();
+        cuartel.actualizar();
         
-        
-        
+         
 		Unidad arquero = cuartel.crearUnidadPropia('A', jugador);
 		
 		arquero.recibirDanio(10);
@@ -43,8 +45,11 @@ public class CuartelTest {
     	
         Cuartel cuartel =  new Cuartel();
         cuartel.avanzarTurno();
+        cuartel.actualizar();
         cuartel.avanzarTurno();
+        cuartel.actualizar();
         cuartel.avanzarTurno();
+        cuartel.actualizar();
 
         Unidad soldier = cuartel.crearUnidadPropia('S', jugador);
         soldier.posicionarEnFilaColumna(1,1);
@@ -105,8 +110,11 @@ public class CuartelTest {
     	Cuartel cuartel =  new Cuartel(1, 1, 2, 2, primerJugador);
     	Aldeano aldeano = new Aldeano (2,4,segundoJugador);
         cuartel.avanzarTurno();
+        cuartel.actualizar();
         cuartel.avanzarTurno();
+        cuartel.actualizar();
         cuartel.avanzarTurno();
+        cuartel.actualizar();
 
         Unidad soldier = cuartel.crearUnidadPropia('S', primerJugador);
         soldier.posicionarEnFilaColumna(2,3);

@@ -17,9 +17,10 @@ public abstract class Edificio extends Posicionable {
     protected Posicion posicionDesde;
     protected Posicion posicionHasta;
 	protected Jugador propietario;
-
-
-
+	protected ArrayList<Posicion> posiciones = new ArrayList<Posicion>();//para edificios
+	private boolean avanzoTurno = false;	//es para los edificios ya que tienen mas de 1 posiciones y cuando avanzas el
+											//turno aveces se avanza mas de 1 vez
+	
 	public Edificio(){
 		int turnosEnConstruccionInicial = 3;
 		estado = new EstadoEdificioOcupado(turnosEnConstruccionInicial);
@@ -33,6 +34,30 @@ public abstract class Edificio extends Posicionable {
 		}
 	}
 
+	 @Override
+	 public void actualizar() {
+		 this.avanzoTurno = false;
+	 }
+	 
+	@Override
+	public void posicionarEnPosicion (Posicion otraPosicion) {
+		this.posiciones.add(otraPosicion);
+		this.posicion = otraPosicion;
+    }
+	
+	 @Override
+	public void posicionarEnFilaColumna(int fila, int columna) {
+
+		this.posiciones.add(new Posicion (fila,columna));
+		this.posicion.posicionarEnFilaColumna(fila, columna);
+
+	}
+	
+	@Override
+	public void aceptaReparacion() {
+		
+	}
+	
 	public void recibirDanio (int danio) {
 		this.vida -= danio;
 	}
@@ -54,7 +79,10 @@ public abstract class Edificio extends Posicionable {
 	}
 
 	 public int avanzarTurno() {
-		 estado = estado.avanzarTurno(this);
+		 if(!this.avanzoTurno) {
+			 estado = estado.avanzarTurno(this);			 
+		 }
+		 this.avanzoTurno = true;
 		 return 0;
 	 }
 
@@ -104,14 +132,20 @@ public abstract class Edificio extends Posicionable {
 	private int calcularLado() {
 		return ((int) Math.sqrt(this.tamanio));
 	}
-
+	
 
 	//METODOS DE PRUEBAS
 	public int getTurnosConstruccion() {
 		return estado.getTurnosOcupado();
 	}
+	
+	//METODO DE VISTA
+	public String obtenerColor() {
+		return this.propietario.obtenerColor();
+	}
 
-
-
+	public boolean poseeEstaPosicion(Posicion unaPosicion) {
+		return (this.posiciones.contains(unaPosicion));
+	}
 
 }

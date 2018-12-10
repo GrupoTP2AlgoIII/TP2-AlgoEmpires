@@ -1,8 +1,6 @@
 package modelo.edificio.castillo;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
 import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
@@ -17,7 +15,6 @@ public class Castillo extends Edificio {
 	private Ataque ataque;
 	private int alcance = 3;
 	private int danio = 20;
-	//private ArrayList<Posicionable> atacables;
 	private HashMap <Posicion, Posicionable> atacables;
 	
     public Castillo() {
@@ -27,11 +24,10 @@ public class Castillo extends Edificio {
 	    this.costo = 50;
         this.vidaFull = vida;
         this.ataque = new Ataque (this.danio, this.danio, this.alcance);
-        //this.atacables = new ArrayList<Posicionable>();
         this.atacables = new HashMap<Posicion, Posicionable>();
     }
     
-    public Castillo(int turnos) {
+    public Castillo(int turnos,Jugador jugadorDado) {
         super(turnos);
     	this.vida = 1000;
         this.tamanio = 16;
@@ -39,8 +35,8 @@ public class Castillo extends Edificio {
 	    this.costo = 50;
         this.vidaFull = vida;
         this.ataque = new Ataque (this.danio, this.danio, this.alcance);
-        //this.atacables = new ArrayList<Posicionable>();
         this.atacables = new HashMap<Posicion, Posicionable>();
+        this.propietario = jugadorDado;
     }
 
 	  public Castillo(int desdeX, int desdeY, int hastaX, int hastaY, Jugador jugador) {
@@ -54,7 +50,6 @@ public class Castillo extends Edificio {
 	       this.vidaFull = vida;	       
 	       this.ataque = new Ataque (this.danio, this.danio, this.alcance);
 	       this.estado = new EstadoEdificioDisponible ();
-	       //this.atacables = new ArrayList<Posicionable>();
 	       this.atacables = new HashMap<Posicion, Posicionable>();
 	       this.propietario = jugador;
 	    }
@@ -70,7 +65,7 @@ public class Castillo extends Edificio {
 	  
 	  @Override
 	  public Unidad crearUnidadPropia (char tipo, Jugador jugador) {
-		  return estado.crearArmaAsedio();
+		  return estado.crearArmaDeAsedioDeJugador(this.propietario);
 	  }
 	  
 	public void atacar (Posicionable posicionable) {
@@ -125,10 +120,18 @@ public class Castillo extends Edificio {
 		
 //		Itero los atacables a partir de los valores del hashmap		
 		for (Posicionable posicionableAtacable: atacables.values()) {
-			this.ataque.atacar(posicionableAtacable);
+			try {
+				this.ataque.atacar(posicionableAtacable);
+			}catch(Exception e) {
+				
+			}
+
 		}
-
-
+	}
+	
+	@Override
+	protected Ataque getAtaque() {
+		return this.ataque;
 	}
   
 }

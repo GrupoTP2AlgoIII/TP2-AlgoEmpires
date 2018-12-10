@@ -2,10 +2,7 @@ package vista;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.Scene; 
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -16,27 +13,27 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) {
     	
-        primaryStage.setOnCloseRequest(e -> {
-        	e.consume();
-        	cerrarPrograma();
-        });
-    	
-    	PantallaInicial pantallaInicial = new PantallaInicial(primaryStage);
+    	stage.setOnCloseRequest(e -> {
+    		e.consume();
+         	cerrarPrograma();
+         });
+     	
+     	PantallaInicial pantallaInicial = new PantallaInicial(stage);
         Scene scene = new Scene(pantallaInicial);
-                 
-        primaryStage.setTitle("AlgoEmpires");
-        primaryStage.setScene(scene); 
-        primaryStage.show();
-        
-    }
-    
-    private void cerrarPrograma() {
-    	Boolean respuesta = RespuestaBox.display("Salir", "Esta seguro que quiere salir?");
-    	if (respuesta) {
-    		Platform.exit();
-    	}
-    }
-        
+                  
+        stage.setTitle("AlgoEmpires");
+        stage.setScene(scene); 
+        stage.show();
+         
+     }
+     
+     private void cerrarPrograma() {
+     	Boolean respuesta = RespuestaBox.display("Salir", "Esta seguro que quiere salir?");
+     	if (respuesta) {
+     		Platform.exit();
+     	}
+     }
+
 }

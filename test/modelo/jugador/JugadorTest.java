@@ -3,6 +3,7 @@ package modelo.jugador;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import modelo.edificio.Edificio;
 import modelo.edificio.castillo.Castillo;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
@@ -77,18 +78,26 @@ public class JugadorTest {
 
 		assertSame(3, jugador.getPoblacion());
 	}
-
-
-	@Test(expected = PosicionDesocupadaError.class)
+	
+//	@Test(expected = PosicionDesocupadaError.class)
+//	public void test05DesplazarHaciaArribaPosicionDesocupadaArrojaError() {
+//
+//		Mapa mapa = new Mapa();
+//		
+//		Jugador jugador = new Jugador(mapa, "nombre", "Maria");
+//		//jugador.posicionarDesdeEnHasta(10, 10, 11, 10);
+//		jugador.posicionarDesdeEnHasta(new Posicion(10,10),new Posicion(11,10));
+//	}
+	
+	@Test(expected = PosicionNoPerteneceAJugadorException.class)
 	public void test05DesplazarHaciaArribaPosicionDesocupadaArrojaError() {
 
 		Mapa mapa = new Mapa();
 		
 		Jugador jugador = new Jugador(mapa, "nombre", "Maria");
-		jugador.posicionarDesdeEnHasta(10, 10, 11, 10);
-
+		//jugador.posicionarDesdeEnHasta(10, 10, 11, 10);
+		jugador.posicionarDesdeEnHasta(new Posicion(10,10),new Posicion(11,10));
 	}
-
 
 	@Test
 	public void test06InicioElJuegoCreoDosJugadoresYCreoPlazaCentral() {
@@ -136,30 +145,29 @@ public class JugadorTest {
 		
 		jugador2.iniciarAldeanosPropiosDesde(10, 10);
 
-		Posicion posicionAldeanoJugador = new Posicion(5, 5);
-		Posicion posicionUnAldeano1 = new Posicion (5,6);
-		Posicion posicionCreacionCuartel = new Posicion(6, 6);
-		
-		Posicion posicionCreacionPlaza = new Posicion (4,4);
+		Posicion posicion1 = new Posicion(5, 5);
+		Posicion posicion4 = new Posicion(6, 6);
+
 		Posicion posicionDelAldeanoDeJugador2 = new Posicion(10, 10);
 
-		jugador.construirEdificioPropio(posicionAldeanoJugador, posicionCreacionPlaza, 'P');
-		jugador.construirEdificioPropio(posicionUnAldeano1, posicionCreacionCuartel, 'C');
 
-		jugador.avanzarTurno();
-		jugador.avanzarTurno();
-		jugador.avanzarTurno();
+		jugador.construirEdificioPropio(posicion1, posicion4, 'C');
+
+		Edificio cuartel = (Edificio) mapa.obtenerPosicionableEn(new Posicion(7,7));
+
+
+		cuartel.avanzarTurno();
+		cuartel.actualizar();
+		cuartel.avanzarTurno();
+		cuartel.actualizar();
+		cuartel.avanzarTurno();
+		cuartel.actualizar();
+
+		jugador.crearUnidadPropia(posicion4,'A');
+		Posicionable arqueroDeJugador1 = mapa.obtenerPosicionableEn(new Posicion(7,8));
+		Posicionable aldeanoDeJugador2 = mapa.obtenerPosicionableEn(posicionDelAldeanoDeJugador2);
 		
-		//creo un Arquero
-		jugador.crearUnidadPropia(posicionCreacionCuartel, 'A');
-		
-		Posicion posicionArquero = new Posicion (7,8);
-		
-		Posicionable arquero = mapa.obtenerPosicionableEn(posicionArquero);
-		Posicionable aldeanoEnemigo = mapa.obtenerPosicionableEn(posicionDelAldeanoDeJugador2);
-		arquero.atacar(aldeanoEnemigo);
-		
-		assertEquals (aldeanoEnemigo.getVida(), 35);
+		arqueroDeJugador1.atacar(aldeanoDeJugador2);
 
 	}
 	
@@ -233,8 +241,11 @@ public class JugadorTest {
 
 
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 
 
 		Unidad arqueroDeJugador1 = cuartel.crearUnidadPropia('A', jugador);
@@ -250,7 +261,8 @@ public class JugadorTest {
 		Jugador jugador = new Jugador (mapa, "anto", "juan");
 		Arquero arquero = new Arquero (1, 1, jugador);
 		jugador.agregarPosicionableEnFilaColumna(arquero, 1, 1);
-		jugador.posicionarDesdeEnHasta(1, 1, 1, 3);
+		//jugador.posicionarDesdeEnHasta(1, 1, 1, 3);
+		jugador.posicionarDesdeEnHasta(new Posicion(1,1),new Posicion(1,3));
 		
 	}
 	
@@ -261,7 +273,8 @@ public class JugadorTest {
 		Jugador jugador = new Jugador (mapa, "anto", "juan");
 		Arquero arquero = new Arquero (5, 5, jugador);
 		jugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
-		jugador.posicionarDesdeEnHasta(5, 5, 3, 5);
+		//jugador.posicionarDesdeEnHasta(5, 5, 3, 5);
+		jugador.posicionarDesdeEnHasta(new Posicion(5,5),new Posicion(3,5));
 		
 	}
 	
@@ -272,7 +285,8 @@ public class JugadorTest {
 		Jugador jugador = new Jugador (mapa, "anto", "juan");
 		Arquero arquero = new Arquero (5, 5, jugador);
 		jugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
-		jugador.posicionarDesdeEnHasta(5, 5, 7, 5);
+		//jugador.posicionarDesdeEnHasta(5, 5, 7, 5);
+		jugador.posicionarDesdeEnHasta(new Posicion(5,5), new Posicion(7,5));
 		
 	}
 	
@@ -283,7 +297,8 @@ public class JugadorTest {
 		Jugador jugador = new Jugador (mapa, "anto", "juan");
 		Arquero arquero = new Arquero (5, 5, jugador);
 		jugador.agregarPosicionableEnFilaColumna(arquero, 5, 5);
-		jugador.posicionarDesdeEnHasta(5, 5, 5, 3);
+		//jugador.posicionarDesdeEnHasta(5, 5, 5, 3);
+		jugador.posicionarDesdeEnHasta(new Posicion(5,5), new Posicion(5,3));
 		
 	}
 	

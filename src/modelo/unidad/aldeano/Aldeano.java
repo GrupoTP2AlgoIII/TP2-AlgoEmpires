@@ -1,5 +1,6 @@
 package modelo.unidad.aldeano;
 
+import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
@@ -20,13 +21,20 @@ public class Aldeano extends Unidad {
 	        this.produccionOro = 20;
 	    }
 
-
 		public Aldeano(Jugador jugadorDado) {
 			this.vida = 50;
 			this.costo = 25;
 			this.produccionOro = 20;
 			this.propietario = jugadorDado;
 		}
+		
+		public Aldeano(Jugador jugadorDado,Posicion posicion) {
+			this.vida = 50;
+			this.costo = 25;
+			this.produccionOro = 20;
+			this.propietario = jugadorDado;
+			this.posicion = posicion;
+	    }
 		
 		public Aldeano (int fila, int columna, Jugador jugador) {
 			
@@ -37,8 +45,7 @@ public class Aldeano extends Unidad {
 			this.propietario = jugador;
 		}
 
-
-	@Override
+		@Override
 	    public Edificio construir(char tipo) {
 	    	if(tipo == 'C') {
 	    		Edificio cuartel = new Cuartel();
@@ -54,15 +61,12 @@ public class Aldeano extends Unidad {
 		@Override
 		public Edificio construirPropio(char tipo, Jugador jugador) {
 			if(tipo == 'C') {
-				//Posicion posicionAux = this.posicion;
-				//posicionAux.sumarDesplazamiento(1, 1);
-				//Edificio cuartel = new Cuartel(posicionAux, jugador);
 				Edificio cuartel = new Cuartel (jugador);
 				estado = estado.construir(cuartel);
 				return cuartel;
 			}
 
-			Edificio plaza = new PlazaCentral(0, jugador);
+			Edificio plaza = new PlazaCentral(jugador);
 			estado = estado.construir(plaza);
 			return plaza;
 		}
@@ -73,13 +77,19 @@ public class Aldeano extends Unidad {
 	    	this.cantidadDeMovimientos=0;
 	    	return estado.obtenerOro();
 	    }
-
-
-
-
-	public void reparar(Edificio edificio) {
-		edificio.reparar();
-		estado = estado.reparar(edificio);
+	    
+		@Override
+		protected void mover() {
+			if(!(this.estado.obtenerOro() == this.produccionOro)) {
+				throw new AldeanoOcupadoException();
+			}			
+		}
+		
+	    public void reparar(Posicionable edificio) {
+	    	edificio.aceptaReparacion();
+	    	Edificio edificioAReparar = (Edificio) edificio;
+	    	edificioAReparar.reparar();
+	    	estado = estado.reparar(edificioAReparar);
 		}
 
 		@Override
@@ -110,6 +120,11 @@ public class Aldeano extends Unidad {
 			return produccionDeOro;
 
 		}
-
-
+		
+		//VISTA
+		@Override
+		protected Ataque getAtaque() {
+			return new Ataque (0,0,0);
+		}
+		
 }

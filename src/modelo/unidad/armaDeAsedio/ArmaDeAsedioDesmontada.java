@@ -6,8 +6,6 @@ import modelo.mapa.Posicion;
 import modelo.unidad.Unidad;
 
 public class ArmaDeAsedioDesmontada implements EstadoArmaDeAsedio {
-	
-
 
 	@Override
 	public void atacar(Edificio edificio, Posicion posicionAtacado, Posicion posicionAtacante, Ataque ataque)  {
@@ -25,6 +23,7 @@ public class ArmaDeAsedioDesmontada implements EstadoArmaDeAsedio {
 	
 	@Override
 	public EstadoArmaDeAsedio avanzarTurno() {
+		
 		return this;
 		
 	}

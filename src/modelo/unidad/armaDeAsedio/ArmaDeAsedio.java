@@ -17,6 +17,7 @@ public class ArmaDeAsedio extends Unidad {
 		this.vida = 150;
 		this.costo = 200;
 		this.ataque = new Ataque (75,0, this.alcance);
+		this.estado = new ArmaDeAsedioDesmontada ();
 		
 	}
 	
@@ -76,8 +77,7 @@ public class ArmaDeAsedio extends Unidad {
 		estado.atacar(unidad, posicionAtacado, this.posicion, this.ataque);
 
 	}
-	
-	
+		
 	public void montar() {	
 		this.estado = new ArmaDeAsedioMontandose();
 		
@@ -93,8 +93,9 @@ public class ArmaDeAsedio extends Unidad {
 		return 0;
 	}
 	
-
-
-	
+	@Override
+	protected Ataque getAtaque() {
+		return this.ataque;
+	}	
 
 }

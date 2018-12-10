@@ -18,17 +18,13 @@ public class Juego {
 		
 		this.mapa = new Mapa ();
         this.jugadorActual = new Jugador (this.mapa, nombreJugador1, nombreJugador2);
-        this.iniciarJuego();
+        this.jugadorActual.iniciarPosicionables();
         
-	}
-	
-	public void iniciarJuego() {
-		this.jugadorActual.iniciarPosicionables();
 	}
 	
 	public void desplazarUnidadDesdeHasta (int desdeX, int desdeY, int hastaX, int hastaY) {
 		
-		this.jugadorActual.posicionarDesdeEnHasta (desdeX, desdeY, hastaX, hastaY);
+		this.jugadorActual.posicionarDesdeEnHasta (new Posicion(desdeX,desdeY), new Posicion(hastaX,hastaY));
 	}
 
 	public void agregarUnidadEnFilaColumna(Unidad unidad, int fila, int columna) {
@@ -49,16 +45,14 @@ public class Juego {
 	public void avanzarTurno () {
 		this.jugadorActual.avanzarTurno();
 		this.jugadorActual = this.jugadorActual.jugadorSiguiente();
+		this.jugadorActual.actualizar();
 		
-		// Esto podria quedar
-		// this.JugadorActual = jugadorActual.avanzarTurno(); si el metodo en la clase Jugador devuelve el enemigo
-	}
+	}	
 	
-	
-	public void atacar (int desdeX, int desdeY, int hastaX, int hastaY) {
-		
-		this.mapa.atacar (desdeX, desdeY, hastaX, hastaY);
-	}
+//	public void atacar (int desdeX, int desdeY, int hastaX, int hastaY) {
+//		
+//		this.mapa.atacar (desdeX, desdeY, hastaX, hastaY);
+//	}
 	
 	public void crearUnidadPropia (Posicion posicionEdificio, char tipoUnidad) {
 		
@@ -68,7 +62,13 @@ public class Juego {
 	public void crearEdificioPropio (Posicion posicionAldeano, Posicion posicionDeConstruccion, char tipoConstruccion) {
 		
 		this.jugadorActual.construirEdificioPropio(posicionAldeano, posicionDeConstruccion, tipoConstruccion);
-	}	
+	}
+	
+	// Metodo para un test
+	
+	public void cambiarJugadorActual() {
+		this.jugadorActual = jugadorActual.jugadorSiguiente();
+	}
 	
 	// METODOS PARA LA VISTA
 	
@@ -83,7 +83,35 @@ public class Juego {
 	public int obtenerVidaPosicionableEn (int x, int y) {
 		return this.mapa.obtenerPosicionableEn(new Posicion(x,y)).getVida();
 	}
+	
+	public String obtenerNombreJugadorActual() {
+		return this.jugadorActual.getNombre();
+	}
+	
+	public Posicionable obtener (int x,int y) {
+		Posicion esta = new Posicion(x,y);
+		return (this.mapa.obtenerPosicionableEn(esta));
+	}
+	
+	public String obtenerColorJugadorActual() {
+		return this.jugadorActual.obtenerColor();
+	}
 
-
-
+	public int obtenerProduccionOro() {
+		return this.jugadorActual.obtenerPoblacion().obtenerProduccionOro();
+	}
+	
+	public Jugador obtenerJugadorActual() {
+		return this.jugadorActual;
+	}
+	
+	public Mapa obtenerMapa() {
+		return this.mapa;
+	}
+	
+	public void actualizarJuego() {
+		this.jugadorActual.actualizar();
+		this.mapa.actualizarMapa();
+	}
+	
 }
