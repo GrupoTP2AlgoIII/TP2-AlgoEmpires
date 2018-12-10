@@ -3,10 +3,7 @@ package modelo.juego;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import modelo.edificio.Edificio;
 import modelo.edificio.cuartel.Cuartel;
-import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
@@ -14,7 +11,6 @@ import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 import modelo.unidad.aldeano.Aldeano;
 import modelo.unidad.arquero.Arquero;
-import modelo.unidad.espadachin.Espadachin;
 
 public class JuegoTest {
 

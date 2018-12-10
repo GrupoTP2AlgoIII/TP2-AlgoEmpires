@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import modelo.juego.Juego;
-import modelo.jugador.PosicionDesocupadaError;
 import modelo.jugador.PosicionNoPerteneceAJugadorException;
 import modelo.mapa.Mapa;
 import modelo.mapa.Posicion;
