@@ -62,7 +62,7 @@ public class ContenedorDatosPosicionable extends VBox {
 	    
 	    HBox cajaAtaqueUnidadPosicionable = new HBox(10);
 	    
-	    Label ataqueUnidad = new Label("Daño ataque unidad:");
+	    Label ataqueUnidad = new Label("Danio ataque unidad:");
 	    ataqueUnidad.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 10));
 	    
 	    
@@ -73,7 +73,7 @@ public class ContenedorDatosPosicionable extends VBox {
 	    
 	    HBox cajaAtaqueEdificioPosicionable = new HBox(10);
 	    
-	    Label ataqueEdificio = new Label("Daño ataque edificio:");
+	    Label ataqueEdificio = new Label("Danio ataque edificio:");
 	    ataqueEdificio.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 10));
 	    
 	    numeroEdificioAtaque = new Text("numero");
