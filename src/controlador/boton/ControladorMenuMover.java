@@ -2,7 +2,17 @@ package controlador.boton;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import modelo.jugador.PosicionNoPerteneceAJugadorException;
+import modelo.jugador.PosicionNoPerteneceAPoblacionError;
+import modelo.jugador.PosicionOcupadaError;
 import modelo.mapa.Posicion;
+import modelo.unidad.DesplazarAPosicionOcupadaError;
+import modelo.unidad.MovimientosPorTurnoExcedidosError;
+import modelo.unidad.PosicionFueraDelMapaError;
+import modelo.unidad.aldeano.AldeanoOcupadoException;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioDesmontandoseException;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontadaException;
+import modelo.unidad.armaDeAsedio.ArmaDeAsedioMontandoseException;
 import vista.ContenedorDatosPosicionable;
 import vista.ContenedorMensajesJuego;
 import vista.ContenedorPrincipal;
@@ -25,6 +35,26 @@ public class ControladorMenuMover implements EventHandler<ActionEvent> {
 			ContenedorPrincipal.getInstance().getJuego().obtenerJugadorActual().posicionarDesdeEnHasta(posicionActual,posicionAMover);
 			ContenedorPrincipal.getInstance().actualizarSinLimpiarConsola();
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Movimiento exitoso");
+		}catch (ArmaDeAsedioDesmontandoseException e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,el arma de asedio se esta desmontando");
+		}catch (PosicionNoPerteneceAPoblacionError e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,la unidad no pertence a jugador");
+		}catch (PosicionNoPerteneceAJugadorException e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,la unidad no pertence a jugador");
+		}catch (PosicionOcupadaError e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,posicion ocupada");
+		}catch (DesplazarAPosicionOcupadaError e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,posicion ocupada");
+		}catch (MovimientosPorTurnoExcedidosError e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,cantidad maxima de movimientos por turno es 1");
+		}catch (PosicionFueraDelMapaError e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,posicion fuera del mapa");
+		}catch (ArmaDeAsedioMontadaException e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,el arma de asedio esta montada");
+		}catch (ArmaDeAsedioMontandoseException e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,el arma de asedio se esta montando");
+		}catch (AldeanoOcupadoException e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover,el aldeano esta ocupado");
 		}catch (Exception e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover");
 		}
