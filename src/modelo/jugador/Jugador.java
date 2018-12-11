@@ -117,7 +117,8 @@ public class Jugador {
 
 		Posicion posicionDelPosicionable = new Posicion (fila, columna);
 
-		this.mapa.posicionarEnFilaColumna(posicionable, fila, columna);
+		//this.mapa.posicionarEnFilaColumna(posicionable, fila, columna);
+		this.mapa.posicionarPosicionableEnPosicion(posicionable, posicionDelPosicionable);
 		this.poblacion.agregarPosicionable(posicionDelPosicionable, posicionable);
 
 	}
