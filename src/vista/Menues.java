@@ -17,8 +17,28 @@ import javafx.scene.control.MenuItem;
 
 public class Menues{
    	
+	public ContextMenu crearMenu(String tipoPosicionable) {
+		switch (tipoPosicionable) {
+		case "A ":
+			return crearMenuAldeano();
+		case "ES":
+			return crearMenuEspadachin();
+		case "AR":
+			return crearMenuArquero();
+		case "AS":
+			return crearMenuArmaDeAsedio();
+		case "PC":
+			return crearMenuPlazaCentral();
+		case "CL":
+			return crearMenuCuartel();
+		case "CT":
+			return crearMenuCastillo();
+		default:
+			return null;
+		}
+	}
 	
-	public ContextMenu crearMenuAldeano (){
+	private ContextMenu crearMenuAldeano (){
         ContextMenu menuAldeano = new ContextMenu();
 		Menu construir = new Menu();
         construir.setText("Construir");
@@ -31,7 +51,7 @@ public class Menues{
         return menuAldeano;
     }
 	
-	public ContextMenu crearMenuArquero(){      
+	private ContextMenu crearMenuArquero(){      
         ContextMenu menuArquero = new ContextMenu();
 		MenuItem atacar = new ItemsMenu ("Atacar",new ControladorMenuAtacar());
         MenuItem mover = new ItemsMenu ("Mover",new ControladorMenuMover());
@@ -39,7 +59,7 @@ public class Menues{
         return menuArquero;
     }
 	
-	public ContextMenu crearMenuArmaDeAsedio(){
+	private ContextMenu crearMenuArmaDeAsedio(){
         ContextMenu menuArmaDeAsedio = new ContextMenu();
         MenuItem atacar = new ItemsMenu ("Atacar",new ControladorMenuAtacar());
         MenuItem mover = new ItemsMenu ("Mover",new ControladorMenuMover());
@@ -49,7 +69,7 @@ public class Menues{
         return menuArmaDeAsedio;
     }
 	
-	public ContextMenu crearMenuEspadachin (){ 
+	private ContextMenu crearMenuEspadachin (){ 
         ContextMenu menuEspadachin = new ContextMenu();
         MenuItem atacar = new ItemsMenu ("Atacar",new ControladorMenuAtacar());
         MenuItem mover = new ItemsMenu ("Mover",new ControladorMenuMover());
@@ -57,14 +77,14 @@ public class Menues{
         return menuEspadachin;
     }
 
-	public ContextMenu crearMenuPlazaCentral() {
+	private ContextMenu crearMenuPlazaCentral() {
         ContextMenu menuPlazaCentral = new ContextMenu();
         MenuItem crearAldeano = new ItemsMenu ("Crear aldeano (Costo = 25)",new ControladorMenuPlazaCentral());
         menuPlazaCentral.getItems().addAll(crearAldeano);
 		return menuPlazaCentral;
 	}
 
-	public ContextMenu crearMenuCuartel() {
+	private ContextMenu crearMenuCuartel() {
         ContextMenu menuCuartel = new ContextMenu();
         MenuItem crearEspadachin = new ItemsMenu ("Crear espadachin (Costo = 50)",new ControladorMenuCuartelCrearEspadachin());
         MenuItem crearArquero = new ItemsMenu ("Crear arquero (Costo = 75)",new ControladorMenuCuartelCrearArquero());
@@ -72,7 +92,7 @@ public class Menues{
 		return menuCuartel;
 	}
 
-	public ContextMenu crearMenuCastillo() {
+	private ContextMenu crearMenuCastillo() {
 	       ContextMenu menuCastillo = new ContextMenu();
 	        MenuItem crearArmaDeAsedio = new ItemsMenu ("Crear arma de asedio (Costo = 200)",new ControladorMenuCastillo());
 	        menuCastillo.getItems().addAll(crearArmaDeAsedio);

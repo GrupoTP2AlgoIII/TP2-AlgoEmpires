@@ -19,6 +19,7 @@ public class ArmaDeAsedio extends Unidad {
 		this.costo = 200;
 		this.ataque = new Ataque (75,0, this.alcance);
 		this.estado = new ArmaDeAsedioDesmontada ();
+		this.simbolo = "AS";
 		
 	}
 	
@@ -31,6 +32,7 @@ public class ArmaDeAsedio extends Unidad {
 		this.estado = new ArmaDeAsedioDesmontada ();
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
+		this.simbolo = "AS";
 		
 	}
 	
@@ -44,6 +46,7 @@ public class ArmaDeAsedio extends Unidad {
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
 		this.propietario = jugadorDado;
+		this.simbolo = "AS";
 		
 	}
 	
@@ -56,15 +59,14 @@ public class ArmaDeAsedio extends Unidad {
 		this.cantidadDeMovimientos = 0;
 		this.movimientosPermitidos = 1;
 		this.propietario = jugador;
+		this.simbolo = "AS";
 	}
 
 	@Override
 	public void desplazarHasta(Posicion hasta) {
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
-			
-			throw new MovimientosPorTurnoExcedidosError ();
-			
-		}	
+			throw new MovimientosPorTurnoExcedidosError ();	
+		}
 		this.posicion = estado.desplazarPosicionHasta(hasta, this.posicion);
 		this.cantidadDeMovimientos++;
 	}
@@ -74,15 +76,13 @@ public class ArmaDeAsedio extends Unidad {
 			throw new AtacandoAUnAliadoError ();
 		}
 		estado.atacar(edificio, posicionAtacado, this.posicion, this.ataque);
-
 	}
 
 	public void atacar(Unidad unidad, Posicion posicionAtacado) {
 		if  (posicionableEstaEnPropietario(unidad)) {
 			throw new AtacandoAUnAliadoError ();
-		}		
-		estado.atacar(unidad, posicionAtacado, this.posicion, this.ataque);
-
+		}
+		estado.atacar(unidad, posicionAtacado, this.posicion, this.ataque);		
 	}
 		
 	public void montar() {	

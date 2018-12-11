@@ -11,10 +11,12 @@ import modelo.unidad.Unidad;
 
 public class Cuartel extends Edificio{
 
+		
 	   public Cuartel() {
 	   	    this.vida = 250;
 		    this.costo = 50;
 	        this.tamanio = 4;
+	        this.simbolo = "CL";
 	        this.velocidadReparacion = 50;
 	        this.vidaFull = vida;
 	    }
@@ -23,6 +25,7 @@ public class Cuartel extends Edificio{
 			this.vida = 250;
 			this.costo = 50;
 			this.tamanio = 4;
+	        this.simbolo = "CL";
 			this.velocidadReparacion = 50;
 			this.vidaFull = vida;
 			this.propietario = jugador;
@@ -35,6 +38,7 @@ public class Cuartel extends Edificio{
 	   	   this.vida = 250;
 		   this.costo = 50;
 	       this.tamanio = 4;
+	        this.simbolo = "CL";
 	       this.velocidadReparacion = 50;
 	       this.vidaFull = vida;
 	       this.propietario = jugador;
@@ -65,5 +69,7 @@ public class Cuartel extends Edificio{
 		protected Ataque getAtaque() {
 			return new Ataque (0,0,0);
 		}
+
+		
 	
 }

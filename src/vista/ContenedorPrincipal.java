@@ -22,16 +22,9 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import modelo.edificio.castillo.Castillo;
-import modelo.edificio.cuartel.Cuartel;
-import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.mapa.Posicion;
 import modelo.unidad.Posicionable;
-import modelo.unidad.aldeano.Aldeano;
-import modelo.unidad.armaDeAsedio.ArmaDeAsedio;
-import modelo.unidad.arquero.Arquero;
-import modelo.unidad.espadachin.Espadachin;
 
 public class ContenedorPrincipal extends BorderPane {
 	
@@ -70,67 +63,18 @@ public class ContenedorPrincipal extends BorderPane {
         tablero.setHgap(3);       
         tablero.setAlignment(Pos.CENTER); 
         Menues menues = new Menues();  
-
-        
+       
         for(int i=0;i<this.juego.obtenerMapa().getFilas();i++) {
         	for(int j=0;j<this.juego.obtenerMapa().getColumnas();j++) {
-
                 posicionableActual = juego.obtener(i+1, j+1);
                 Boton casillero = new Boton("***", new ControladorPosicionable(posicionableActual,new Posicion(i+1,j+1)));
-                casillero.setEstilo("-fx-background-color: green");
-                String colorPosicionableActual = posicionableActual.obtenerColor();
-                
-        		
-        		//Es para ejemplificar un posicionable
-             
-        		if(posicionableActual.getClass()==Aldeano.class) {
-        			casillero.setEstilo("-fx-background-color: "+colorPosicionableActual);
-        			casillero.setTexto("A ");
-        			casillero.setContextMenu(menues.crearMenuAldeano());
-        		} 
-        		
-        		if(posicionableActual.getClass()==Espadachin.class) {
-        			casillero.setEstilo("-fx-background-color: "+colorPosicionableActual);
-        			casillero.setTexto("ES");
-        			casillero.setContextMenu(menues.crearMenuEspadachin());
-        		}
-        		
-        		if(posicionableActual.getClass()==Arquero.class) {
-        			casillero.setEstilo("-fx-background-color: "+colorPosicionableActual);
-        			casillero.setTexto("AR");
-        			casillero.setContextMenu(menues.crearMenuArquero());
-        		}
-        		
-        		if(posicionableActual.getClass()==ArmaDeAsedio.class) {
-        			casillero.setEstilo("-fx-background-color: "+colorPosicionableActual);
-        			casillero.setTexto("AS");
-        			casillero.setContextMenu(menues.crearMenuArmaDeAsedio());
-        		}
-        		
-        		if(posicionableActual.getClass()==PlazaCentral.class) {
-        			casillero.setEstilo("-fx-background-color: "+colorPosicionableActual);
-        			casillero.setTexto("PC");
-        			casillero.setContextMenu(menues.crearMenuPlazaCentral());
-        		}
-        		
-        		if(posicionableActual.getClass()==Cuartel.class) {
-        			casillero.setEstilo("-fx-background-color: "+colorPosicionableActual);
-        			casillero.setTexto("CL");
-        			casillero.setContextMenu(menues.crearMenuCuartel());
-        		}
-        		
-           		if(posicionableActual.getClass()==Castillo.class) {
-           			casillero.setEstilo("-fx-background-color: "+colorPosicionableActual);
-           			casillero.setTexto("CT");
-           			casillero.setContextMenu(menues.crearMenuCastillo());
-        		}
-        		
+        		casillero.setEstilo("-fx-background-color: "+posicionableActual.obtenerColor());
+        		casillero.setTexto(posicionableActual.obtenerSimbolo());
+        		casillero.setContextMenu(menues.crearMenu(posicionableActual.obtenerSimbolo()));         		
            		tablero.add(casillero,j,i);
         		this.setCenter(tablero);
         	}
-        }
- 
-		
+        }	
 	}
 
 	private void setDerecha() {

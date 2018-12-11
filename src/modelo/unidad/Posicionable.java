@@ -11,6 +11,7 @@ public abstract class Posicionable {
 	protected Posicion posicion;
 	protected int vida;
 	protected int costo;
+	protected String simbolo;
 
 
 	public Posicionable () {
@@ -129,5 +130,9 @@ public abstract class Posicionable {
 
 	public void actualizar() {
 		
+	}
+
+	public String obtenerSimbolo() {
+		return this.simbolo;
 	}
 }

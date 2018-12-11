@@ -65,7 +65,6 @@ public class Jugador {
 	
 	//PARA QUE ANDE ATAQUE
 	public void construirEdificioPropio(Posicion posicionAldeano,Posicion posicionDeConstruccion,char tipoConstruccion) {
-		//posicionAldeano.comprobarAdyacencia(posicionDeConstruccion);
 		this.mapa.sePuedeConstruirEn(posicionDeConstruccion,tipoConstruccion);
 		Posicionable aldeano = this.poblacion.obtenerPosicionable(posicionAldeano);
 		Edificio edificio = aldeano.construirPropio(tipoConstruccion, this);
@@ -101,8 +100,6 @@ public class Jugador {
 	
 	public void reparar (Posicion aldeano,Posicion edificio) {
 		this.poblacion.posicionablePerteneceAJugador(aldeano);
-		//this.poblacion.posicionablePerteneceAJugador(edificio);
-		//aldeano.comprobarAdyacencia(edificio);
 		Posicionable posicionableAldeano = this.mapa.obtenerPosicionableEn(aldeano);
 		Posicionable posicionableEdificio = this.mapa.obtenerPosicionableEn(edificio);
 		posicionableAldeano.reparar(posicionableEdificio);
@@ -111,7 +108,8 @@ public class Jugador {
 	public void avanzarTurno() {
 		HashMap<Posicion, Posicionable> atacables = this.mapa.crearRangoDeAtacablesEn(castillo.posicionDesde(), castillo.calcularLado(), castillo.calcularRango());		
 		this.castillo.atacarEnemigosAlAlcance(atacables);
-		this.poblacion.actualizar();
+		//this.poblacion.actualizar();
+		this.actualizar();
 		this.poblacion.avanzarTurno();
 	}
 

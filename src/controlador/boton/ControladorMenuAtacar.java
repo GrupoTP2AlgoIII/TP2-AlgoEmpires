@@ -44,6 +44,8 @@ public class ControladorMenuAtacar implements EventHandler<ActionEvent> {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al atacar,la unidad no pertenece al jugador");
 		}catch (PosicionDesocupadaError e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al atacar,la posicion esta vacia");
+			ContenedorPrincipal.getInstance().getJuego().actualizarJuego();
+			ContenedorPrincipal.getInstance().actualizarSinLimpiarConsola();
 		}catch (AtaquesPorTurnoExcedidosError e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al atacar,cantidad maxima de ataques por turno es 1");
 		}catch (AtacandoAUnAliadoError e) {

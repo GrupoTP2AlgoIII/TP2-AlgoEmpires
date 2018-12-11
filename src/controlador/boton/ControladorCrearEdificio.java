@@ -52,7 +52,6 @@ public class ControladorCrearEdificio {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al construir,no posee oro suficiente");
 		}catch (Exception e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al construir");
-			e.printStackTrace();
 		}
 		
 	}

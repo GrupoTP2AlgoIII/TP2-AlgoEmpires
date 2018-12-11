@@ -80,5 +80,12 @@ public class Vacio extends Posicionable{
 	public String obtenerColor() {
 		return (new String("green"));
 	}
+	
+	@Override
+	public String obtenerSimbolo() {
+		return "***";
+	}
+	
+	
 
 }

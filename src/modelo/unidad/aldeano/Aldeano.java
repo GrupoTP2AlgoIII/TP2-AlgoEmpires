@@ -18,6 +18,7 @@ public class Aldeano extends Unidad {
 	   public Aldeano() {
 	        this.vida = 50;
 	        this.costo = 25;
+	        this.simbolo = "A ";
 	        this.produccionOro = 20;
 	    }
 
@@ -25,6 +26,7 @@ public class Aldeano extends Unidad {
 			this.vida = 50;
 			this.costo = 25;
 			this.produccionOro = 20;
+			this.simbolo = "A ";
 			this.propietario = jugadorDado;
 		}
 		
@@ -32,6 +34,7 @@ public class Aldeano extends Unidad {
 			this.vida = 50;
 			this.costo = 25;
 			this.produccionOro = 20;
+			this.simbolo = "A ";
 			this.propietario = jugadorDado;
 			this.posicion = posicion;
 	    }
@@ -42,6 +45,7 @@ public class Aldeano extends Unidad {
 			this.vida = 50;
 			this.costo = 25;
 			this.produccionOro = 20;
+			this.simbolo = "A ";
 			this.propietario = jugador;
 		}
 

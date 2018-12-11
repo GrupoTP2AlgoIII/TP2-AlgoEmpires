@@ -15,6 +15,7 @@ public class Espadachin extends Unidad {
 		this.vida = 100;
 		this.costo = 50;
 		this.ataque = new Ataque(15,25, this.alcance);
+		this.simbolo = "ES";
 	}
 
 	public Espadachin(Jugador jugadorDado) {
@@ -22,13 +23,15 @@ public class Espadachin extends Unidad {
 		this.costo = 50;
 		this.ataque = new Ataque(15,25, this.alcance);
 		this.propietario = jugadorDado;
+		this.simbolo = "ES";
 	}
 	
 	public Espadachin (int fila, int columna) {
 		super (fila, columna);
 		this.vida = 100;
 		this.costo = 50;
-		this.ataque = new Ataque(15,25, this.alcance);	
+		this.ataque = new Ataque(15,25, this.alcance);
+		this.simbolo = "ES";
 		
 	}
 
@@ -39,6 +42,7 @@ public class Espadachin extends Unidad {
 		this.costo = 50;
 		this.ataque = new Ataque(15,25, this.alcance);
 		this.propietario = jugadorDado;
+		this.simbolo = "ES";
 	}
 	
 	@Override

@@ -22,6 +22,7 @@ public class Castillo extends Edificio {
         this.tamanio = 16;
         this.velocidadReparacion = 15;
 	    this.costo = 50;
+        this.simbolo = "CT";
         this.vidaFull = vida;
         this.ataque = new Ataque (this.danio, this.danio, this.alcance);
     }
@@ -33,6 +34,7 @@ public class Castillo extends Edificio {
         this.velocidadReparacion = 15;
 	    this.costo = 50;
         this.vidaFull = vida;
+        this.simbolo = "CT";
         this.posicionDesde = posicionInicio;
         this.ataque = new Ataque (this.danio, this.danio, this.alcance);
         this.propietario = jugadorDado;
@@ -46,7 +48,8 @@ public class Castillo extends Edificio {
 	   	   this.tamanio = 16;
 	   	   this.velocidadReparacion = 15;
 		   this.costo = 50;	       
-	       this.vidaFull = vida;	       
+	       this.vidaFull = vida;
+	       this.simbolo = "CT";
 	       this.ataque = new Ataque (this.danio, this.danio, this.alcance);
 	       this.estado = new EstadoEdificioDisponible ();
 	       this.propietario = jugador;

@@ -15,6 +15,7 @@ public class Arquero extends Unidad {
 		this.vida = 75;
 		this.costo = 75;
 		this.ataque = new Ataque(10,15, this.alcance);
+		this.simbolo = "AR";
 	}
 
 	public Arquero(int fila, int columna, Jugador jugadorDado) {
@@ -23,6 +24,7 @@ public class Arquero extends Unidad {
 		this.costo = 75;
 		this.ataque = new Ataque(10,15, this.alcance);
 		this.propietario = jugadorDado;
+		this.simbolo = "AR";
 	}
 	
 	public Arquero(Jugador jugadorDado) {
@@ -30,6 +32,7 @@ public class Arquero extends Unidad {
 		this.costo = 75;
 		this.ataque = new Ataque(10,15, this.alcance);
 		this.propietario = jugadorDado;
+		this.simbolo = "AR";
 	}	
 	
 	public Arquero (int fila, int columna) {
@@ -38,6 +41,7 @@ public class Arquero extends Unidad {
 		this.vida = 75;
 		this.costo = 75;
 		this.ataque = new Ataque(10,15, this.alcance);
+		this.simbolo = "AR";
 	}
 	
 	@Override

@@ -65,8 +65,7 @@ public abstract class Unidad extends Posicionable {
 	public void atacar(Posicionable posicionable) {
 		if  (posicionableEstaEnPropietario(posicionable)) {
 			throw new AtacandoAUnAliadoError ();
-		}
-		if (this.cantidadDeAtaques >= this.ataquesPermitidos) {		
+		}else if (this.cantidadDeAtaques >= this.ataquesPermitidos) {		
 			throw new AtaquesPorTurnoExcedidosError ();
 		}
 		this.cantidadDeAtaques++;
@@ -78,13 +77,11 @@ public abstract class Unidad extends Posicionable {
 		this.mover();
 		
 		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
-			
 			throw new MovimientosPorTurnoExcedidosError ();
 			
 		}
 		this.cantidadDeMovimientos ++;//Se puede comentar esta linea para avanzar unidades mas rapido al probarlo
-		this.posicionarEnPosicion(hasta);
-		
+		this.posicionarEnPosicion(hasta);			
 	}
 	
 	protected void mover() {

@@ -46,9 +46,14 @@ public class Juego {
 		this.jugadorActual.avanzarTurno();
 		this.actualizarJuego();
 		this.jugadorActual = this.jugadorActual.jugadorSiguiente();
-		this.jugadorActual.actualizar();
+		this.actualizarJuego();
 		
-	}	
+	}
+	
+	public void actualizarJuego() {
+		this.jugadorActual.actualizar();
+		this.mapa.actualizarMapa();
+	}
 	
 //	public void atacar (int desdeX, int desdeY, int hastaX, int hastaY) {
 //		
@@ -110,9 +115,6 @@ public class Juego {
 		return this.mapa;
 	}
 	
-	public void actualizarJuego() {
-		this.jugadorActual.actualizar();
-		this.mapa.actualizarMapa();
-	}
+
 	
 }

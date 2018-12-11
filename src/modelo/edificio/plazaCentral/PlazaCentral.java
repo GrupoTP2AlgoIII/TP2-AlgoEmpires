@@ -15,6 +15,7 @@ public class PlazaCentral extends Edificio {
 		this.vida = 450;
 		this.costo = 100 ;
 		this.tamanio = 4;
+		this.simbolo = "PC";
 		this.velocidadReparacion = 25;
 		this.vidaFull = 450;
 	}
@@ -27,6 +28,7 @@ public class PlazaCentral extends Edificio {
         this.tamanio = 4;
         this.velocidadReparacion = 25;
         this.vidaFull = 450;
+        this.simbolo = "PC";
         this.propietario = jugador;
         this.posiciones.add(new Posicion(desdeX,desdeY));
     }
@@ -36,6 +38,7 @@ public class PlazaCentral extends Edificio {
 	   this.vida = 450;
 	   this.costo = 100;
 	   this.tamanio = 4;
+	   this.simbolo = "PC";
 	   this.velocidadReparacion = 25;
 	   this.vidaFull = 450;
    }
@@ -47,6 +50,7 @@ public class PlazaCentral extends Edificio {
 	   this.tamanio = 4;
 	   this.velocidadReparacion = 25;
 	   this.vidaFull = 450;
+	   this.simbolo = "PC";
 	   this.propietario = jugadorDado;
 
    }
@@ -55,6 +59,7 @@ public class PlazaCentral extends Edificio {
 		this.vida = 450;
 		this.costo = 100;
 		this.tamanio = 4;
+		this.simbolo = "PC";
 		this.velocidadReparacion = 25;
 		this.vidaFull = 450;
 		this.propietario = jugador;
