@@ -1,9 +1,11 @@
 package vista;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,8 +36,12 @@ public class RespuestaBox {
 			stage.close();
 		});
 		
-		VBox layout = new VBox();
-		layout.getChildren().addAll(mensajeLabel, salirBoton, quedarseBoton);
+		VBox layout = new VBox(10);
+		layout.setPadding(new Insets(10));
+		HBox layoutBotones = new HBox(10);
+		layoutBotones.setAlignment(Pos.CENTER);
+		layoutBotones.getChildren().addAll(salirBoton,quedarseBoton);
+		layout.getChildren().addAll(mensajeLabel, layoutBotones);
 		layout.setAlignment(Pos.CENTER);
 		
 		Scene scene = new Scene(layout);

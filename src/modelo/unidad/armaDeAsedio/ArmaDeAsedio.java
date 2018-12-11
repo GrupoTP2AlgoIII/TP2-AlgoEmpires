@@ -90,6 +90,7 @@ public class ArmaDeAsedio extends Unidad {
 	public int avanzarTurno () {	
 		this.estado = this.estado.avanzarTurno();
 		this.cantidadDeMovimientos = 0;
+		this.cantidadDeAtaques = 0;
 		return 0;
 	}
 	

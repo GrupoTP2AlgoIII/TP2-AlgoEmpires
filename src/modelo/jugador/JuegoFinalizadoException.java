@@ -2,8 +2,14 @@ package modelo.jugador;
 
 public class JuegoFinalizadoException extends RuntimeException {
 
+	private String nombreJugadorGanador;
+	
 	public JuegoFinalizadoException (String mensaje) {
-		super(mensaje);
+		this.nombreJugadorGanador = mensaje;
+	}
+	
+	public String getNombreGanador() {
+		return this.nombreJugadorGanador;
 	}
 	
 	/**

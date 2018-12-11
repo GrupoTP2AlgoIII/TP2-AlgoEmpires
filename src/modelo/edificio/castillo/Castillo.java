@@ -1,12 +1,13 @@
 package modelo.edificio.castillo;
 
+
 import java.util.HashMap;
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.ataque.Ataque;
 import modelo.edificio.Edificio;
 import modelo.edificio.EstadoEdificioDisponible;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
+import modelo.unidad.AtacandoAUnAliadoError;
 import modelo.unidad.Posicionable;
 import modelo.unidad.Unidad;
 
@@ -15,7 +16,6 @@ public class Castillo extends Edificio {
 	private Ataque ataque;
 	private int alcance = 3;
 	private int danio = 20;
-	private HashMap <Posicion, Posicionable> atacables;
 	
     public Castillo() {
         this.vida = 1000;
@@ -24,18 +24,17 @@ public class Castillo extends Edificio {
 	    this.costo = 50;
         this.vidaFull = vida;
         this.ataque = new Ataque (this.danio, this.danio, this.alcance);
-        this.atacables = new HashMap<Posicion, Posicionable>();
     }
     
-    public Castillo(int turnos,Jugador jugadorDado) {
+    public Castillo(int turnos,Jugador jugadorDado,Posicion posicionInicio) {
         super(turnos);
     	this.vida = 1000;
         this.tamanio = 16;
         this.velocidadReparacion = 15;
 	    this.costo = 50;
         this.vidaFull = vida;
+        this.posicionDesde = posicionInicio;
         this.ataque = new Ataque (this.danio, this.danio, this.alcance);
-        this.atacables = new HashMap<Posicion, Posicionable>();
         this.propietario = jugadorDado;
     }
 
@@ -50,7 +49,6 @@ public class Castillo extends Edificio {
 	       this.vidaFull = vida;	       
 	       this.ataque = new Ataque (this.danio, this.danio, this.alcance);
 	       this.estado = new EstadoEdificioDisponible ();
-	       this.atacables = new HashMap<Posicion, Posicionable>();
 	       this.propietario = jugador;
 	    }
 	  
@@ -67,25 +65,7 @@ public class Castillo extends Edificio {
 	  public Unidad crearUnidadPropia (char tipo, Jugador jugador) {
 		  return estado.crearArmaDeAsedioDeJugador(this.propietario);
 	  }
-	  
-	public void atacar (Posicionable posicionable) {
-
-		posicionable.recibirDanioDe(this);
-	}
 		
-	public void atacar (Unidad unidad, Posicion posicionAtacado) {
-		if (!posicionAtacado.perteneceALaCuadricula(this.posicion, this.alcance, this.alcance)) {
-			throw new AtacandoEnPosicionFueraDelAlcanceError ();
-		}
-		this.ataque.atacar(unidad);
-	}
-		
-	public void atacar (Edificio edificio, Posicion posicionAtacado) {
-		if (!posicionAtacado.perteneceALaCuadricula(this.posicion, this.alcance, this.alcance)) {
-			throw new AtacandoEnPosicionFueraDelAlcanceError ();
-		}
-		this.ataque.atacar(edificio);
-	}
 	
 	public int calcularLado() {
 		
@@ -98,34 +78,22 @@ public class Castillo extends Edificio {
 		return this.alcance;
 	}
 	
-//	public void setAtacables(ArrayList<Posicionable> atacables) {
-//		this.atacables = atacables;
-//	}
-	
-	public void setAtacables(HashMap<Posicion, Posicionable> atacables) {
-		this.atacables = atacables;
+	@Override
+	public void atacar(Posicionable posicionable) {
+		if  (posicionableEstaEnPropietario(posicionable)) {
+			throw new AtacandoAUnAliadoError ();
+		}
+		posicionable.recibirDanio(this.danio);
 	}
 	
-	public void atacarEnemigosAlAlcance () {
-				
-//		Itero los atacables en una lista
-//		for (Posicionable posicionableAtacable : atacables) {
-//			this.ataque.atacar(posicionableAtacable);
-//		}
+	public void atacarEnemigosAlAlcance (HashMap<Posicion, Posicionable> atacables) {
 		
-//		Itero los atacables a partir de las claves del hashmap
-//		for (Posicion posicionAtacable: atacables.keySet()) {
-//		this.ataque.atacar(this.atacables.get(posicionAtacable));
-//	}
-		
-//		Itero los atacables a partir de los valores del hashmap		
 		for (Posicionable posicionableAtacable: atacables.values()) {
 			try {
-				this.ataque.atacar(posicionableAtacable);
+				this.atacar(posicionableAtacable);
 			}catch(Exception e) {
 				
 			}
-
 		}
 	}
 	
@@ -133,5 +101,11 @@ public class Castillo extends Edificio {
 	protected Ataque getAtaque() {
 		return this.ataque;
 	}
+
+
+
+
+
+
   
 }

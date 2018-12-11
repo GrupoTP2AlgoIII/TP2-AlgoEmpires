@@ -1,5 +1,6 @@
 package controlador.boton;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -35,7 +36,12 @@ public class ControladorSeleccionUsuarioDesdeHasta {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		
 		Posicion posicionAux = new Posicion(this.desde.getFila()-this.ladoRango/2,this.desde.getColumna()-this.ladoRango/2);
-		GridPane posicionesDeConstruccion = new GridPane();
+		GridPane posicionesDeAccion = new GridPane();
+		posicionesDeAccion.autosize();
+		posicionesDeAccion.setPadding(new Insets(3, 3, 3,3)); 
+		posicionesDeAccion.setVgap(3); 
+		posicionesDeAccion.setHgap(3);       
+		posicionesDeAccion.setAlignment(Pos.CENTER); 
 		GridPane tablero = ContenedorPrincipal.getInstance().getTablero();
 		for(int i=0;i<this.ladoRango;i++) {
 			for(int j=0;j<this.ladoRango;j++) {		
@@ -52,13 +58,13 @@ public class ControladorSeleccionUsuarioDesdeHasta {
 						this.hasta = posicion.getPosicion();
 						stage.close();
 						});	
-						posicionesDeConstruccion.add(posicion, j, i);
+						posicionesDeAccion.add(posicion, j, i);
 				    }
 
 				}
 			}
 		HBox contenedorPosiciones = new HBox();
-		contenedorPosiciones.getChildren().add(posicionesDeConstruccion);
+		contenedorPosiciones.getChildren().add(posicionesDeAccion);
 		contenedorPosiciones.setAlignment(Pos.CENTER);
 		
 		Scene scene = new Scene(contenedorPosiciones);

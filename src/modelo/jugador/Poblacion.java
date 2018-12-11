@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class Poblacion {
     private int oro;
-    //private int poblacion;
     private int produccionDeOro;
     private int topeDePoblacion;
     private int cantidadPoblacion;
@@ -21,7 +20,7 @@ public class Poblacion {
 
     {
         this.posicionables = new HashMap<Posicion, Posicionable>();
-        this.oro = 200; //oro inicial = 200
+        this.oro = 100; //oro inicial = 200
         this.produccionDeOro = 0;
         this.topeDePoblacion = 50;
         this.cantidadPoblacion = 0;
@@ -37,14 +36,6 @@ public class Poblacion {
     public boolean posicionableEstaEnPoblacion(Posicionable posicionableDado){
         return posicionables.containsValue(posicionableDado);
     }
-    
-//    public boolean posicionableEstaEnPoblacion(Edificio posicionableDado){ //agrego
-//        return posicionables.containsValue(posicionableDado);
-//    }
-//    
-//    public boolean posicionableEstaEnPoblacion(Unidad posicionableDado){ //agrego
-//        return posicionables.containsValue(posicionableDado);
-//    }
       
     public boolean posicionableEstaEnPoblacion(Posicion posicionableDado){
         return posicionables.containsKey(posicionableDado);
@@ -58,13 +49,15 @@ public class Poblacion {
         this.oro += oroAIncrementar;
     }
     
-    public void decrementarProduccionDeOro(Posicionable unidad){
-    	this.produccionDeOro = unidad.decrementarProduccion(this.produccionDeOro);
+    public void produccionDeOro(){
+    	this.produccionDeOro = 0;
+    	for (Posicionable actual : this.posicionables.values()) {
+    		this.produccionDeOro += actual.produccionDeOro();
+    	}
     }
 
     public void aumentarPoblacion(Unidad unidad) {
         if(this.cantidadPoblacion < this.topeDePoblacion) {
-            this.produccionDeOro = unidad.aumentarProduccionDeOro(this.produccionDeOro);
             this.agregarUnidad(unidad);
         }else {
             throw new JugadorSuperaTopePoblacionalException();
@@ -76,7 +69,6 @@ public class Poblacion {
         for (Posicion posicion : posicionables.keySet()){
             Posicionable actual = posicionables.get(posicion);
             if(actual.getVida() <= 0) {
-                this.decrementarProduccionDeOro(actual);
                 this.decrementarPoblacion(actual);
                 posicionables.put(posicion,new Vacio(posicion));
             }
@@ -139,6 +131,7 @@ public class Poblacion {
     }
     
 	public int obtenerProduccionOro() {
+        this.produccionDeOro();
 		return this.produccionDeOro;
 	}
 
@@ -148,7 +141,7 @@ public class Poblacion {
 	}
 
 	public void actualizar() {
-        for (Posicionable actual : posicionables.values()){
+		for (Posicionable actual : posicionables.values()){
         	actual.actualizar();
         }
 		

@@ -18,8 +18,9 @@ public class PoblacionTest {
 	public void test01CreoUnJugadorCon3AldeanosYAgregoTresAldeanosYGetPoblacionDevuelve6()  {
 		Mapa mapa = new Mapa();
 		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
-
-		jugador.crearPlazaCentralPropiaDesde(4,4);
+		jugador.crearCastilloDesde(1, 1);
+		jugador.iniciarAldeanosPropiosDesde(10,10);
+		jugador.crearPlazaCentralPropiaDesde(5,5);
 
 		Posicion  posicionable = new Posicion(4,4);
 
@@ -27,18 +28,16 @@ public class PoblacionTest {
 
 
 		//construccion plaza 3 turnos
-		jugador.avanzarTurno();
-		jugador.avanzarTurno();
-		jugador.avanzarTurno();
-
-
-
+		for (int i=0;i<100;i++) {
+			jugador.avanzarTurno();
+		}
+	
 		//creo 3 aldeanos
 		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
 		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
 		jugador.crearUnidadPropia(plaza.getPosicion(),'A');
 
-		assertEquals (7,jugador.getPoblacion());
+		assertEquals (6,jugador.obtenerCantidadPoblacion());
 		
 	}
 /*	PRUEBAS A CAMBIAR CUANDO ESTE IMPLEMENTADO EL PATRON DOUBLE DISPATCH PARA ATAQUES
@@ -108,6 +107,7 @@ public class PoblacionTest {
 		Mapa mapa = new Mapa();
 		Jugador jugador = new Jugador(mapa,"Pablo","Maria");
 		jugador.crearPlazaCentralPropiaDesde(4,4);
+		jugador.crearCastilloDesde(10, 10);
 		Posicion posicionPlaza = new Posicion(4,4);
 		Posicionable plaza = jugador.getPosicionable(posicionPlaza);
 

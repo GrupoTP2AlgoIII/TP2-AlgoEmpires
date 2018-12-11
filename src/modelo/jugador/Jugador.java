@@ -49,8 +49,6 @@ public class Jugador {
 	private void iniciarAtributos () {
 
 		this.poblacion = new Poblacion(new HashMap <Posicion, Posicionable> ());
-
-		this.castillo = new Castillo(0, this);
 		
 	}
 	
@@ -111,8 +109,10 @@ public class Jugador {
 	}
 
 	public void avanzarTurno() {
+		HashMap<Posicion, Posicionable> atacables = this.mapa.crearRangoDeAtacablesEn(castillo.posicionDesde(), castillo.calcularLado(), castillo.calcularRango());		
+		this.castillo.atacarEnemigosAlAlcance(atacables);
+		this.poblacion.actualizar();
 		this.poblacion.avanzarTurno();
-		this.castillo.atacarEnemigosAlAlcance();
 	}
 
 	public void agregarPosicionableEnFilaColumna(Posicionable posicionable, int fila, int columna) {
@@ -141,13 +141,9 @@ public class Jugador {
 
 	public void crearCastilloDesde(int desdeX, int desdeY) {
 		
-		Castillo castillo = new Castillo(0, this);
-		Posicion posicionDesde = new Posicion (desdeX, desdeY);
-		HashMap<Posicion, Posicionable> atacables = new HashMap<Posicion, Posicionable>();
-		atacables = this.mapa.crearRangoDeAtacablesEn(desdeX, desdeY, castillo.calcularLado(), castillo.calcularRango());		
-		castillo.setAtacables(atacables);
-		this.castillo = castillo;
-		Map <Posicion, Posicionable> castilloConstruido = this.mapa.ponerEdificio(castillo, posicionDesde);
+		Posicion desde = new Posicion(desdeX,desdeY);
+		castillo = new Castillo(0, this,desde);
+		Map <Posicion, Posicionable> castilloConstruido = this.mapa.ponerEdificio(castillo, desde);
 		this.poblacion.agregarEdificio(castilloConstruido);
 		
 	}
@@ -201,9 +197,6 @@ public class Jugador {
 		return this.nombre;
 	}
 	
-	public void castilloAtacar () {
-		this.castillo.atacarEnemigosAlAlcance();
-	}
 	
 	// Metodos para vista
 	

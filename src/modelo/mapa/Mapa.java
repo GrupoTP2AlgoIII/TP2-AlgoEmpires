@@ -142,11 +142,13 @@ public class Mapa {
 		return this.mapaAux;	
 	}
 	
-	public HashMap<Posicion, Posicionable> crearRangoDeAtacablesEn(int desdeX, int desdeY, int lado, int rango){
+	public HashMap<Posicion, Posicionable> crearRangoDeAtacablesEn(Posicion desde, int lado, int rango){
 		
 		//ArrayList<Posicionable> atacables = new ArrayList<Posicionable>();
 		HashMap<Posicion, Posicionable> atacables = new HashMap <Posicion, Posicionable>();
 		
+		int desdeX = desde.getFila();
+		int desdeY = desde.getColumna();
 		int hastaX = desdeX + lado;
 		int hastaY = desdeY + lado;
 				

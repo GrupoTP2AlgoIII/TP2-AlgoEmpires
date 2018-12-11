@@ -4,8 +4,11 @@ import java.io.File;
 
 import controlador.boton.ControladorAvanzarTurno;
 import controlador.boton.ControladorPosicionable;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -13,6 +16,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import modelo.edificio.castillo.Castillo;
 import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
@@ -212,6 +221,29 @@ public class ContenedorPrincipal extends BorderPane {
 			this.sonidoOn = false;
 		}
 		
+	}
+
+	public void finJuego(String string) {
+		Stage ventana = new Stage();
+		VBox contenedorVentana = new VBox(10);
+		contenedorVentana.setPadding(new Insets(10));
+		Text texto = new Text("El ganador del juego es: "+string);
+		texto.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+		texto.setFill(Color.BLUE);
+		Button botonFin = new Button();
+		botonFin.setText("FIN");
+		botonFin.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				ventana.close();
+			}		
+		});
+		contenedorVentana.setAlignment(Pos.CENTER);
+		contenedorVentana.getChildren().addAll(texto,botonFin);
+		Scene scene = new Scene(contenedorVentana);
+		scene.setFill(Color.BLACK);
+		ventana.setScene(scene);
+        ventana.showAndWait();	
 	}
 
 

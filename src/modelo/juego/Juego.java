@@ -44,6 +44,7 @@ public class Juego {
 
 	public void avanzarTurno () {
 		this.jugadorActual.avanzarTurno();
+		this.actualizarJuego();
 		this.jugadorActual = this.jugadorActual.jugadorSiguiente();
 		this.jugadorActual.actualizar();
 		

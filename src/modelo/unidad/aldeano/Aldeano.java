@@ -109,16 +109,8 @@ public class Aldeano extends Unidad {
 		}
 
 		@Override
-		public int decrementarProduccion(int oro) {
-			oro -= this.produccionOro;
-			return oro;
-		}
-
-		@Override
-		public int aumentarProduccionDeOro(int produccionDeOro) {
-			produccionDeOro += estado.obtenerOro();
-			return produccionDeOro;
-
+		public int produccionDeOro() {
+			return this.estado.obtenerOro();
 		}
 		
 		//VISTA

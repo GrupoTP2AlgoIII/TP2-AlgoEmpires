@@ -42,8 +42,11 @@ public class JuegoTest {
 		
 		Juego juego = new Juego("Pedro", "Maria");
 		Posicion posicionCastillo = new Posicion (4,4);
-		juego.crearUnidadPropia(posicionCastillo, 'A');
-		
+		for (int i = 0; i < 4; i++) {
+			juego.avanzarTurno();
+			juego.actualizarJuego();
+		}
+		juego.crearUnidadPropia(posicionCastillo, 'A');		
 		
 		Unidad armaAsedio = (Unidad)juego.obtenerPosicionableEn(new Posicion (5,8));
 		
@@ -55,7 +58,10 @@ public class JuegoTest {
 	public void test04IniciarJuegoInicializaCastilloJugador2() {
 		
 		Juego juego = new Juego("Pedro", "Maria");
-		juego.avanzarTurno();
+		for (int i = 0; i < 5; i++) {
+			juego.avanzarTurno();
+			juego.actualizarJuego();
+		}
 		Posicion posicionCastillo = new Posicion (24,24);
 		juego.crearUnidadPropia(posicionCastillo, 'A');
 		Unidad armaAsedio = (Unidad)juego.obtenerPosicionableEn(new Posicion (25,28));
@@ -179,7 +185,9 @@ public class JuegoTest {
 		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidadPropia('A', segundoJugador); // se puede crear aldeano
 		
 		aldeano.reparar(cuartel);
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
+		cuartel.actualizar();
 		
 		assertEquals(250, cuartel.getVida());	// el aldeano creado reparo el cuartel
 		
@@ -215,8 +223,10 @@ public class JuegoTest {
 		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidadPropia('A', segundoJugador);
 		
 		aldeano.reparar(cuartel);
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
-		
+		cuartel.actualizar();
+				
 		assertEquals(250, cuartel.getVida());	
 		
 	}

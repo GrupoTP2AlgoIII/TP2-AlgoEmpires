@@ -35,7 +35,7 @@ public abstract class Posicionable {
 	public abstract void atacar(Edificio edificio, Posicion posicion);
 	public abstract void atacar(Unidad unidad, Posicion posicion2);
 
-
+	
 	public void posicionarEnFilaColumna(int fila, int columna) {
 
 		this.posicion.posicionarEnFilaColumna (fila, columna);
@@ -72,12 +72,8 @@ public abstract class Posicionable {
 			throw new JugadorSinOroException();
 	}
 
-	public int decrementarProduccion(int produccionDeOro) {
-		return produccionDeOro;
-	}
-
-	public int aumentarProduccionDeOro(int produccionDeOro) {
-		return produccionDeOro;
+	public int produccionDeOro() {
+		return 0;
 	}
 
 	public Edificio construir(char tipoConstruccion) {
@@ -87,11 +83,6 @@ public abstract class Posicionable {
 	public Edificio construirPropio(char tipoConstruccion, Jugador jugador) {
 		throw new ConstruccionEdificioException();
 	}
-	
-	
-//	public void atacar (Posicionable posicionable, Posicion posicionAtacado) {
-//		
-//	}
 
 	//METODOS DE PRUEBAS
 

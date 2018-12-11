@@ -2,6 +2,7 @@ package controlador.boton;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import modelo.jugador.JuegoFinalizadoException;
 import modelo.mapa.Posicion;
 import vista.ContenedorDatosPosicionable;
 import vista.ContenedorMensajesJuego;
@@ -26,9 +27,13 @@ public class ControladorMenuAtacar implements EventHandler<ActionEvent> {
 			ContenedorPrincipal.getInstance().getJuego().actualizarJuego();
 			ContenedorPrincipal.getInstance().actualizarSinLimpiarConsola();
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Ataque exitoso");
+		}catch (JuegoFinalizadoException e) {
+			ContenedorPrincipal.getInstance().getJuego().actualizarJuego();
+			ContenedorPrincipal.getInstance().actualizarSinLimpiarConsola();
+			ContenedorPrincipal.getInstance().finJuego(e.getNombreGanador());
 		}catch (Exception e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al atacar");
 		}
-		}
+	}
 
 }

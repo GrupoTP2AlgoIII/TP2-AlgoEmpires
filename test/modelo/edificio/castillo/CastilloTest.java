@@ -1,8 +1,6 @@
 package modelo.edificio.castillo;
 
-import modelo.ataque.AtacandoEnPosicionFueraDelAlcanceError;
 import modelo.edificio.EdificiosNoSePuedenDesplazarError;
-import modelo.edificio.cuartel.Cuartel;
 import modelo.edificio.plazaCentral.PlazaCentral;
 import modelo.jugador.Jugador;
 import modelo.mapa.Mapa;
@@ -58,10 +56,9 @@ public class CastilloTest {
     	atacables.put(posicion1, mapa.obtenerPosicionableEn(posicion1));
     	atacables.put(posicion2, mapa.obtenerPosicionableEn(posicion2));
     	
-    	mapa.ponerEdificioDesdeHasta(new Castillo(0,new Jugador(mapa,"Juan","Pedro")), 4, 4, 7, 7);
+    	mapa.ponerEdificioDesdeHasta(new Castillo(0,new Jugador(mapa,"Juan","Pedro"),new Posicion(4,4)), 4, 4, 7, 7);
     	Castillo castillo = (Castillo) mapa.obtenerPosicionableEn(new Posicion(4,4));
-    	castillo.setAtacables(atacables);
-    	castillo.atacarEnemigosAlAlcance();
+    	castillo.atacarEnemigosAlAlcance(atacables);
     	
     	assertEquals(80, mapa.obtenerPosicionableEn(new Posicion(8,8)).getVida());
     	assertEquals(430, mapa.obtenerPosicionableEn(new Posicion(8,4)).getVida()); 	
@@ -113,34 +110,6 @@ public class CastilloTest {
     	mapa.posicionarPosicionableEnPosicion(castillo, new Posicion (1, 2));
     	mapa.posicionarDesdeEnHasta (new Posicion (1,1), new Posicion (1,2));
  
-    }
-    
-    @Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
-    public void test07CastilloAtacaAUnaUnidadQueSeEncuentraFueraDeSuAlcanceLanzaExcepcion () {
-       	Mapa mapa = new Mapa ();
-    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
-    	Jugador segundoJugador = primerJugador.jugadorSiguiente();
-    	Arquero arquero = new Arquero (15, 15, primerJugador);
-    	Castillo castillo = new Castillo (1, 2, 4 ,5, segundoJugador);
-    	mapa.posicionarPosicionableEnPosicion(arquero, new Posicion (15,15));
-    	mapa.posicionarPosicionableEnPosicion(castillo, new Posicion (1, 2));
-    	
-    	castillo.atacar(arquero, new Posicion (15, 15));
-    	
-    }
-    
-    @Test (expected = AtacandoEnPosicionFueraDelAlcanceError.class)
-    public void test08CastilloAtacaAUnEdificioQueSeEncuentraFueraDeSuAlcanceLanzaExcepcion () {
-       	Mapa mapa = new Mapa ();
-    	Jugador primerJugador = new Jugador (mapa, "anto", "juan");
-    	Jugador segundoJugador = primerJugador.jugadorSiguiente();
-    	Cuartel cuartel = new Cuartel (10, 10, 11, 11, primerJugador);
-    	Castillo castillo = new Castillo (1, 2, 4 ,5, segundoJugador);
-    	mapa.posicionarPosicionableEnPosicion(cuartel, new Posicion (10,10));
-    	mapa.posicionarPosicionableEnPosicion(castillo, new Posicion (1, 2));
-    	
-    	castillo.atacar(cuartel, new Posicion (10, 10));
-    	
     }
     
 }

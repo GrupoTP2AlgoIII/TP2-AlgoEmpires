@@ -4,6 +4,7 @@ package modelo.edificio;
 import java.util.ArrayList;
 
 import modelo.jugador.Jugador;
+import modelo.jugador.Poblacion;
 import modelo.mapa.Posicion;
 import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.Posicionable;
@@ -59,7 +60,10 @@ public abstract class Edificio extends Posicionable {
 	}
 	
 	public void recibirDanio (int danio) {
-		this.vida -= danio;
+		 if(!this.avanzoTurno) {
+			 this.vida -= danio;			 
+		 }
+		 this.avanzoTurno = true;	
 	}
 
 	public void recibirDanioDe (Posicionable posicionable) {
@@ -74,6 +78,21 @@ public abstract class Edificio extends Posicionable {
 		edificio.atacar(this, this.posicion);
 	}
 
+	@Override
+	public void atacar (Unidad unidad, Posicion posicionAtacado) {
+		throw new EdificioNoPuedeAtacarException();
+	}
+	
+	@Override
+	public void atacar (Edificio edificio, Posicion posicionAtacado) {
+		throw new EdificioNoPuedeAtacarException();
+	}
+	
+	@Override
+	public void atacar(Posicionable posicionable) {
+		throw new EdificioNoPuedeAtacarException();
+	}
+	
 	 public void recibirPosicionable () {
 		throw new DesplazarAPosicionOcupadaError ();
 	}
@@ -99,7 +118,11 @@ public abstract class Edificio extends Posicionable {
 			this.vida = this.vidaFull;
 		}
 	}
-
+	
+	public boolean posicionableEstaEnPropietario(Posicionable posicionable){
+		Poblacion poblacionPropietaraio = this.propietario.obtenerPoblacion();
+		return poblacionPropietaraio.posicionableEstaEnPoblacion(posicionable);
+	}
 
 	public void desplazarHasta (Posicion hasta) {
 
@@ -133,6 +156,10 @@ public abstract class Edificio extends Posicionable {
 		return ((int) Math.sqrt(this.tamanio));
 	}
 	
+	
+	public Posicion posicionDesde() {
+		return this.posicionDesde;
+	}
 
 	//METODOS DE PRUEBAS
 	public int getTurnosConstruccion() {

@@ -10,6 +10,8 @@ public abstract class Unidad extends Posicionable {
 	
 	protected int cantidadDeMovimientos;
 	protected int movimientosPermitidos;
+	protected int ataquesPermitidos = 1;
+	protected int cantidadDeAtaques = 0;
 	protected Ataque ataque;
 	protected int alcance;
 	protected Jugador propietario;
@@ -34,6 +36,7 @@ public abstract class Unidad extends Posicionable {
     @Override
     public int avanzarTurno() {
 	    this.cantidadDeMovimientos=0;
+		this.cantidadDeAtaques = 0;
 	    return 0;
     }
  
@@ -53,14 +56,6 @@ public abstract class Unidad extends Posicionable {
 		edificio.atacar(this, this.posicion);
 	}
 	
-	public void atacar (Unidad unidad, Posicion posicionAtacado) {
-		
-	}
-	
-	public void atacar (Edificio edificio, Posicion posicionAtacado) {
-
-	}
-
 	public boolean posicionableEstaEnPropietario(Posicionable posicionable){
 		Poblacion poblacionPropietaraio = this.propietario.obtenerPoblacion();
 		return poblacionPropietaraio.posicionableEstaEnPoblacion(posicionable);
@@ -71,7 +66,10 @@ public abstract class Unidad extends Posicionable {
 		if  (posicionableEstaEnPropietario(posicionable)) {
 			throw new AtacandoAUnAliadoError ();
 		}
-
+		if (this.cantidadDeAtaques >= this.ataquesPermitidos) {		
+			throw new AtaquesPorTurnoExcedidosError ();
+		}
+		this.cantidadDeAtaques++;
 		posicionable.recibirDanioDe (this);
 	}
 
@@ -84,7 +82,6 @@ public abstract class Unidad extends Posicionable {
 			throw new MovimientosPorTurnoExcedidosError ();
 			
 		}
-		//this.posicion.comprobarAdyacencia(hasta); //Atencion con este metodo
 		this.cantidadDeMovimientos ++;//Se puede comentar esta linea para avanzar unidades mas rapido al probarlo
 		this.posicionarEnPosicion(hasta);
 		
@@ -97,17 +94,6 @@ public abstract class Unidad extends Posicionable {
 	public void recibirPosicionable () {
 		throw new DesplazarAPosicionOcupadaError ();
 	}
-	
-	/*
-     * devuelve si el posicionable se encuentra dentro de la cuadricula formada por el alcanceEnFila y alcanceEnColumna
-     * a partir de la posicion.
-     */
-/*
-	public boolean estaEnRangoDePosicion (Posicion posicion, int alcanceEnFila, int alcanceEnColumna) {
-		
-		return this.posicion.perteneceALaCuadricula(posicion, alcanceEnFila, alcanceEnColumna);
-	}
-*/
 	
 //metodos para pruebas
 	public int getVida() {

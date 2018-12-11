@@ -1,28 +1,36 @@
 package controlador.boton;
 
-
-
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import modelo.mapa.Posicion;
+import vista.ContenedorDatosPosicionable;
+import vista.ContenedorMensajesJuego;
+import vista.ContenedorPrincipal;
 
 public class ControladorMenuMover implements EventHandler<ActionEvent> {
 
+	private Posicion posicionActual;
+	private Posicion posicionAMover;
 	
 	@Override
 	public void handle(ActionEvent event) {
+		posicionActual = ContenedorDatosPosicionable.getInstance().getPosicion();
+		int ladoAreaAtaque = 3;
+		ControladorSeleccionUsuarioDesdeHasta controlador = new ControladorSeleccionUsuarioDesdeHasta(posicionActual,
+				posicionAMover,ladoAreaAtaque);		
+		this.posicionActual = controlador.getDesdeCalculada();
+		this.posicionAMover = controlador.getHastaCalculada();
 		
+		try {
+			ContenedorPrincipal.getInstance().getJuego().obtenerJugadorActual().posicionarDesdeEnHasta(posicionActual,posicionAMover);
+			ContenedorPrincipal.getInstance().actualizarSinLimpiarConsola();
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Movimiento exitoso");
+		}catch (Exception e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al mover");
+		}
+		
+		//VERSION DE MOVER USANDO TECLAS W,A,S,D
+		/*
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		
@@ -57,7 +65,7 @@ public class ControladorMenuMover implements EventHandler<ActionEvent> {
 		contenedorStage.getChildren().addAll(contenedorTexto,contenedorBoton);
 		Scene scene = new Scene(contenedorStage);	
 		stage.setScene(scene);
-		stage.showAndWait();
+		stage.showAndWait();*/
 				 
 }
 	

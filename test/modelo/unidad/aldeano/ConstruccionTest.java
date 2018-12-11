@@ -95,6 +95,7 @@ public class ConstruccionTest {
 		
 		Aldeano aldeano = (Aldeano)plaza.crearUnidadPropia('A', segundoJugador);
 		aldeano.reparar(cuartel);
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
 	
 	
@@ -119,7 +120,7 @@ public class ConstruccionTest {
 		Mapa mapa = new Mapa();
 		Jugador jugador1 = new Jugador(mapa,"Jorge", "Pablo");
 		Jugador jugador2 = jugador1.jugadorSiguiente();
-			
+		jugador1.crearCastilloDesde(10, 10);	
 		
 		Posicionable aldeano1 = new Aldeano();
 		Posicionable aldeano2 = new Aldeano();
@@ -135,7 +136,8 @@ public class ConstruccionTest {
 
 		Edificio cuartel = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		jugador1.avanzarTurno();
-		
+
+
 		assertEquals (2,(cuartel.getTurnosConstruccion()));
 		
 		posicionAldeano = new Posicion(25,25);
@@ -153,7 +155,8 @@ public class ConstruccionTest {
 		Mapa mapa = new Mapa();
 		Jugador jugador1 = new Jugador(mapa,"Jorge", "Pablo");
 		Jugador jugador2 = jugador1.jugadorSiguiente();
-			
+		jugador1.crearCastilloDesde(10, 10);
+		jugador2.crearCastilloDesde(20, 20);
 		
 		Posicionable aldeano1 = new Aldeano();
 		Posicionable aldeano2 = new Aldeano();
@@ -226,7 +229,9 @@ public class ConstruccionTest {
 		arquero.atacar(cuartelDaniado, new Posicion (7,4));
 		
 		otroAldeano.reparar(cuartelDaniado);
+		cuartelDaniado.actualizar();
 		cuartelDaniado.avanzarTurno();
+		cuartelDaniado.actualizar();
 		
 		assertEquals (250,cuartelDaniado.getVida());
 		
@@ -283,6 +288,7 @@ public class ConstruccionTest {
 		
 		arquero.atacar(cuartel, new Posicion (7,4));
 		aldeano.reparar(cuartel);
+		cuartel.actualizar();
 		cuartel.avanzarTurno();
 		
 	
@@ -319,7 +325,8 @@ public class ConstruccionTest {
 		Mapa mapa = new Mapa();
 		Jugador jugador1 = new Jugador(mapa,"Jorge", "Pablo");
 		Jugador jugador2 = jugador1.jugadorSiguiente();
-			
+		jugador1.crearCastilloDesde(10, 10);
+		jugador2.crearCastilloDesde(20, 20);
 		
 		Posicionable aldeano1 = new Aldeano();
 		Posicionable aldeano2 = new Aldeano();
