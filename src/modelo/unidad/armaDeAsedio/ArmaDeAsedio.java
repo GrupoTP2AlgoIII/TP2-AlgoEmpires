@@ -5,6 +5,7 @@ import modelo.edificio.Edificio;
 import modelo.jugador.Jugador;
 import modelo.mapa.Posicion;
 import modelo.unidad.AtacandoAUnAliadoError;
+import modelo.unidad.MovimientosPorTurnoExcedidosError;
 import modelo.unidad.Unidad;
 
 public class ArmaDeAsedio extends Unidad {
@@ -59,7 +60,13 @@ public class ArmaDeAsedio extends Unidad {
 
 	@Override
 	public void desplazarHasta(Posicion hasta) {
+		if (this.cantidadDeMovimientos >= this.movimientosPermitidos) {
+			
+			throw new MovimientosPorTurnoExcedidosError ();
+			
+		}	
 		this.posicion = estado.desplazarPosicionHasta(hasta, this.posicion);
+		this.cantidadDeMovimientos++;
 	}
 	
 	public void atacar(Edificio edificio, Posicion posicionAtacado) {

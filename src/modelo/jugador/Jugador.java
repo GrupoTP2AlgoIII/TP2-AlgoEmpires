@@ -101,8 +101,8 @@ public class Jugador {
 	
 	public void reparar (Posicion aldeano,Posicion edificio) {
 		this.poblacion.posicionablePerteneceAJugador(aldeano);
-		this.poblacion.posicionablePerteneceAJugador(edificio);
-		aldeano.comprobarAdyacencia(edificio);
+		//this.poblacion.posicionablePerteneceAJugador(edificio);
+		//aldeano.comprobarAdyacencia(edificio);
 		Posicionable posicionableAldeano = this.mapa.obtenerPosicionableEn(aldeano);
 		Posicionable posicionableEdificio = this.mapa.obtenerPosicionableEn(edificio);
 		posicionableAldeano.reparar(posicionableEdificio);

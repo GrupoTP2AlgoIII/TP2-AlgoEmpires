@@ -6,6 +6,8 @@ import modelo.jugador.PosicionDesocupadaError;
 import modelo.jugador.PosicionNoPerteneceAJugadorException;
 import modelo.jugador.PosicionNoPerteneceAPoblacionError;
 import modelo.mapa.Posicion;
+import modelo.unidad.PosicionableNoAceptaReparacionException;
+import modelo.unidad.PosicionableNoPuedeReparar;
 import modelo.unidad.aldeano.AldeanoOcupadoException;
 import modelo.vacio.PosicionableVacioNoPuedeSerAtacadoException;
 import vista.ContenedorMensajesJuego;
@@ -31,6 +33,10 @@ public class ControladorMenuReparar implements EventHandler<ActionEvent> {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Reparacion exitosa,reparando..");
 		}catch (PosicionableVacioNoPuedeSerAtacadoException e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al reparar,la posicion esta vacia");
+		}catch (PosicionableNoAceptaReparacionException e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al reparar,la posicion esta vacia/o es una unidad");
+		}catch (PosicionableNoPuedeReparar e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al reparar,la posicion esta vacia/o es una unidad");
 		}catch (PosicionNoPerteneceAPoblacionError e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al reparar,la unidad no pertence al jugador");
 		}catch (PosicionNoPerteneceAJugadorException e) {

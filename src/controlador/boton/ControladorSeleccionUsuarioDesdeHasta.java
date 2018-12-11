@@ -50,15 +50,15 @@ public class ControladorSeleccionUsuarioDesdeHasta {
 				    for (Node node : tablero.getChildren()) {
 				        if (GridPane.getColumnIndex(node) == posicionAux.getColumna()+j-1  && GridPane.getRowIndex(node) == posicionAux.getFila()-1+i) {
 				        	botonClickeado = new Boton((Boton)node);
+							Boton posicion = new Boton(this.botonClickeado);
+					        posicion.setCoordenadas(posicionAux.getFila()+i,posicionAux.getColumna()+j);
+							posicion.setOnAction(e -> {
+							this.hasta = posicion.getPosicion();
+							stage.close();
+							});	
+							posicionesDeAccion.add(posicion, j, i);
 				        }
 				    }
-						Boton posicion = new Boton(this.botonClickeado);
-				        posicion.setCoordenadas(posicionAux.getFila()+i,posicionAux.getColumna()+j);
-						posicion.setOnAction(e -> {
-						this.hasta = posicion.getPosicion();
-						stage.close();
-						});	
-						posicionesDeAccion.add(posicion, j, i);
 				    }
 
 				}

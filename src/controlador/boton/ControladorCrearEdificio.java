@@ -4,6 +4,7 @@ import modelo.jugador.JugadorSinOroException;
 import modelo.jugador.PosicionNoPerteneceAJugadorException;
 import modelo.jugador.PosicionNoPerteneceAPoblacionError;
 import modelo.mapa.Posicion;
+import modelo.unidad.DesplazarAPosicionOcupadaError;
 import modelo.unidad.aldeano.AldeanoOcupadoException;
 import vista.ContenedorMensajesJuego;
 import vista.ContenedorPrincipal;
@@ -41,6 +42,8 @@ public class ControladorCrearEdificio {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Construyendo "+this.mensajeConsola);
 		}catch (AldeanoOcupadoException e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al construir,el aldeano esta ocupado");
+		}catch (DesplazarAPosicionOcupadaError e) {
+			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al construir,no hay espacio suficiente");
 		}catch (PosicionNoPerteneceAPoblacionError e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al construir,el aldeano no pertence a tu poblacion");
 		}catch (PosicionNoPerteneceAJugadorException e) {
@@ -49,6 +52,7 @@ public class ControladorCrearEdificio {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al construir,no posee oro suficiente");
 		}catch (Exception e) {
 			ContenedorMensajesJuego.getInstance().agregarMensaje("Error al construir");
+			e.printStackTrace();
 		}
 		
 	}
