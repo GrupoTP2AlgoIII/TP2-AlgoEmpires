@@ -166,11 +166,11 @@ public class PoblacionTest {
 		cuartel.actualizar();
 
 
-		cuartel.posicionarEnFilaColumna(25,25);
-		jugador.agregarPosicionableEnFilaColumna(cuartel,25,25);
+		cuartel.posicionarEnFilaColumna(10,10);
+		jugador.agregarPosicionableEnFilaColumna(cuartel,10,10);
 		
 		jugador.crearUnidadPropia(cuartel.getPosicion(),'A');
-		Posicion posicionArquero = new Posicion(26,25);
+		Posicion posicionArquero = new Posicion(11,10);
 		jugador.crearUnidadPropia(posicionArquero,'A');
 	}
 

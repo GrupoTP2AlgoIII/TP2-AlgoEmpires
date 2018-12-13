@@ -31,8 +31,8 @@ public class JuegoTest {
 		
 		Juego juego = new Juego("Pedro", "Maria");
 		
-		for (int j = 23; j <= 25; j++) {
-			Posicion posicion = new Posicion (23, j);
+		for (int j = 13; j <= 13; j++) {
+			Posicion posicion = new Posicion (13, j);
 			assertEquals(20, juego.obtenerPosicionableEn(posicion).avanzarTurno());
 		}
 	}
@@ -62,9 +62,9 @@ public class JuegoTest {
 			juego.avanzarTurno();
 			juego.actualizarJuego();
 		}
-		Posicion posicionCastillo = new Posicion (24,24);
+		Posicion posicionCastillo = new Posicion (14,14);
 		juego.crearUnidadPropia(posicionCastillo, 'A');
-		Unidad armaAsedio = (Unidad)juego.obtenerPosicionableEn(new Posicion (25,28));
+		Unidad armaAsedio = (Unidad)juego.obtenerPosicionableEn(new Posicion (15,18));
 		
 		assertEquals(150, armaAsedio.getVida());
 	}
@@ -111,7 +111,7 @@ public class JuegoTest {
 		
 		Juego juego = new Juego("Pedro", "Maria");
 		
-		Posicion posicionPlaza = new Posicion (24,20);
+		Posicion posicionPlaza = new Posicion (14,10);
 		Posicionable plazaCentral = juego.obtenerPosicionableEn(posicionPlaza);
 		juego.cambiarJugadorActual();
 		Unidad aldeano = plazaCentral.crearUnidadPropia('A', juego.obtenerJugadorActual());
@@ -219,7 +219,7 @@ public class JuegoTest {
 		
 		arquero.atacar(cuartel, new Posicion (11,11));
 		//50,43
-		Posicion posicionPlaza = new Posicion (24,20);
+		Posicion posicionPlaza = new Posicion (14,10);
 		Aldeano aldeano = (Aldeano)juego.obtenerPosicionableEn(posicionPlaza).crearUnidadPropia('A', segundoJugador);
 		
 		aldeano.reparar(cuartel);

@@ -140,7 +140,7 @@ public class JugadorTest {
 		Mapa mapa = new Mapa();
 		
 		Jugador jugador = new Jugador(mapa, "Jorge", "Maria");
-		jugador.crearCastilloDesde(20, 20);
+		jugador.crearCastilloDesde(17, 17);
 		jugador.iniciarAldeanosPropiosDesde(5, 5);
 
 		Jugador jugador2 = jugador.jugadorSiguiente();

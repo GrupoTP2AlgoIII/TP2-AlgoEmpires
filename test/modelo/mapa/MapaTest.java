@@ -19,7 +19,7 @@ public class MapaTest {
 				
 		int cantidadCasilleros = mapa.obtenerTamanioMapa();
 		
-		assertEquals (900, cantidadCasilleros);
+		assertEquals (400, cantidadCasilleros);
 	}
 	
 	@Test (expected = DesplazarAPosicionOcupadaError.class)

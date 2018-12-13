@@ -41,7 +41,7 @@ public class BotonOKEventHandler implements EventHandler<ActionEvent> {
         	ventanaJuego.autosize();
         	ventanaJuego.getChildren().add(contenedorPrincipal);
         	Scene scene = new Scene (ventanaJuego);
-            stage.setResizable(false);
+            stage.setResizable(true);
         	this.stage.setScene(scene);    	
         }		
     }

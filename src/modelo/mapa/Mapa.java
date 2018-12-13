@@ -22,8 +22,8 @@ public class Mapa {
 	public Mapa () {
 		this.mapa = new HashMap <Posicion, Posicionable>();
 		this.mapaAux = new HashMap <Posicion, Posicionable>();
-		this.filas = 30;
-		this.columnas = 30;
+		this.filas = 20;
+		this.columnas = 20;
 		this.iniciarMapaVacio();
 	}
 	

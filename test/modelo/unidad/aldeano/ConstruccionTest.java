@@ -125,9 +125,9 @@ public class ConstruccionTest {
 		Posicionable aldeano1 = new Aldeano();
 		Posicionable aldeano2 = new Aldeano();
 		aldeano1.posicionarEnFilaColumna(15,15);
-		aldeano2.posicionarEnFilaColumna(25,25);
+		aldeano2.posicionarEnFilaColumna(17,5);
 		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 15, 15);
-		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 25, 25);
+		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 17, 5);
 		
 		Posicion posicionAldeano = new Posicion(15,15);
 		Posicion posicionConstruccion = new Posicion(16,16);
@@ -140,8 +140,8 @@ public class ConstruccionTest {
 
 		assertEquals (2,(cuartel.getTurnosConstruccion()));
 		
-		posicionAldeano = new Posicion(25,25);
-		posicionConstruccion = new Posicion(26,26);
+		posicionAldeano = new Posicion(17,5);
+		posicionConstruccion = new Posicion(18,6);
 		jugador2.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 		Edificio cuartel2 = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		
@@ -155,18 +155,18 @@ public class ConstruccionTest {
 		Mapa mapa = new Mapa();
 		Jugador jugador1 = new Jugador(mapa,"Jorge", "Pablo");
 		Jugador jugador2 = jugador1.jugadorSiguiente();
-		jugador1.crearCastilloDesde(10, 10);
-		jugador2.crearCastilloDesde(20, 20);
+		jugador1.crearCastilloDesde(5, 5);
+		jugador2.crearCastilloDesde(15, 15);
 		
 		Posicionable aldeano1 = new Aldeano();
 		Posicionable aldeano2 = new Aldeano();
-		aldeano1.posicionarEnFilaColumna(15,15);
-		aldeano2.posicionarEnFilaColumna(5,5);
-		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 15, 15);
-		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 5, 5);
+		aldeano1.posicionarEnFilaColumna(10,10);
+		aldeano2.posicionarEnFilaColumna(17,5);
+		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 10, 10);
+		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 17, 5);
 		
-		Posicion posicionAldeano = new Posicion(15,15);
-		Posicion posicionConstruccion = new Posicion(16,16);
+		Posicion posicionAldeano = new Posicion(10,10);
+		Posicion posicionConstruccion = new Posicion(11,11);
 				
 		jugador1.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 			
@@ -175,8 +175,8 @@ public class ConstruccionTest {
 		
 		assertEquals (2,(cuartel.getTurnosConstruccion()));
 		
-		posicionAldeano = new Posicion(5,5);
-		posicionConstruccion = new Posicion(6,6);
+		posicionAldeano = new Posicion(17,5);
+		posicionConstruccion = new Posicion(18,6);
 		jugador2.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 		Edificio cuartel2 = (Edificio) mapa.obtenerPosicionableEn(posicionConstruccion);
 		jugador2.avanzarTurno();
@@ -325,18 +325,18 @@ public class ConstruccionTest {
 		Mapa mapa = new Mapa();
 		Jugador jugador1 = new Jugador(mapa,"Jorge", "Pablo");
 		Jugador jugador2 = jugador1.jugadorSiguiente();
-		jugador1.crearCastilloDesde(10, 10);
-		jugador2.crearCastilloDesde(20, 20);
+		jugador1.crearCastilloDesde(5, 5);
+		jugador2.crearCastilloDesde(15, 15);
 		
 		Posicionable aldeano1 = new Aldeano();
 		Posicionable aldeano2 = new Aldeano();
-		aldeano1.posicionarEnFilaColumna(15,15);
-		aldeano2.posicionarEnFilaColumna(5,5);
-		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 15, 15);
-		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 5, 5);
+		aldeano1.posicionarEnFilaColumna(10,10);
+		aldeano2.posicionarEnFilaColumna(17,5);
+		jugador1.agregarPosicionableEnFilaColumna(aldeano1, 10, 10);
+		jugador2.agregarPosicionableEnFilaColumna(aldeano2, 17, 5);
 		
-		Posicion posicionAldeano = new Posicion(15,15);
-		Posicion posicionConstruccion = new Posicion(16,16);
+		Posicion posicionAldeano = new Posicion(10,10);
+		Posicion posicionConstruccion = new Posicion(11,11);
 				
 		jugador1.construirEdificioPropio(posicionAldeano,posicionConstruccion,'C');
 			
